@@ -1,1 +1,1 @@
-This is an SENG 403 project. aaa
+This is an SENG 403 project.
