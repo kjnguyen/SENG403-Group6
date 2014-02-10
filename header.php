@@ -42,3 +42,57 @@
 					<li><a href="index-6.html">Contacts</a></li>
 				</ul>
 			</nav>
+            
+            <!-- From Jack: You will have change the listing here...-->
+            <ul class="pagination">
+					<li>
+						<a href="#" rel="0">
+							<img src="images/f_thumb1.png" alt="">
+							<span class="left">
+								Villa<br />
+								2007 year<br />
+								5000 sq.ft
+							</span>
+							<span class="right">
+								Brick, glass<br />
+								3 beds<br />
+								2 baths
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" rel="1">
+							<img src="images/f_thumb2.png" alt="">
+							<span class="left">
+								Villa<br />
+								2009 year<br />
+								3500 sq.ft
+							</span>
+							<span class="right">
+								Brick, glass<br />
+								5 beds<br />
+								3 baths
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" rel="2">
+							<img src="images/f_thumb3.png" alt="">
+							<span class="left">
+								Villa<br />
+								2010 year<br />
+								4200 sq.ft
+							</span>
+							<span class="right">
+								Brick, glass<br />
+								4 beds<br />
+								3 baths
+							</span>
+						</a>
+					</li>
+				</ul>
+				<img src="images/extra-banner.png" alt="" class="extra-banner">
+			</div>
+			<!-- faded slider end -->
+		</div>
+	</header>

@@ -22,7 +22,8 @@
 		</div>
 
 		<footer>
-			
+			<p class="pull-left">&copy;
+            <p class="pull-right"></p>
 		</footer>
 		<?php } ?>
 

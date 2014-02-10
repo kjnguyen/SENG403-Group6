@@ -12,6 +12,7 @@
 					<li><a href="index-6.html">contacts</a></li>		
 				</ul>
 			</nav>
+            <p class="copy">-</p>
 		</div>
 	</footer>
 	<script type="text/javascript"> Cufon.now(); </script>
