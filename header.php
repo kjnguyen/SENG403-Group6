@@ -44,7 +44,14 @@
 			</nav>
             
             <!-- From Jack: You will have change the listing here...-->
-            <ul class="pagination">
+			<!-- faded slider begin -->
+			<div id="faded">
+				<div class="rap">
+					<a href="#"><img src="images/big-img1.jpg" alt="" width="571" height="398"></a>
+					<a href="#"><img src="images/big-img2.jpg" alt="" width="571" height="398"></a>
+					<a href="#"><img src="images/big-img3.jpg" alt="" width="571" height="398"></a>
+				</div>
+				<ul class="pagination">
 					<li>
 						<a href="#" rel="0">
 							<img src="images/f_thumb1.png" alt="">
