@@ -36,11 +36,7 @@ function search_listing($city, $province, $min_price, $max_price, $num_bdrm, $di
     
     while ($row = mysqli_fetch_assoc($results)) {
         $listing_info[] = $row;
-    }
-    
-    
-    
-    
+    }    
     mysqli_close($con);
     return $row;
 }
