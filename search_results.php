@@ -15,7 +15,7 @@
                                                     mysqli_select_db($con, 's403_project');
                                                     //mysqli_connect("localhost", "root", "1234", "s403_project");
                                                     echo mysqli_error($con);
-                                                    echo "hello, this is displaying from the live Company table <br>";
+                                                    echo "hello, this is displaying all the listings<br>";
                                                     $query = "select ID, date_listed, sq_ft, num_bdrms, address, description from Listing";
                                                     $results = mysqli_query($con, $query);
                                                     echo mysqli_error($con);
