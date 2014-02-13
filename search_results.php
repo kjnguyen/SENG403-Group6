@@ -35,7 +35,6 @@
                                                     echo "city = $city, province = $province, min_price = $min_price, max_price = $max_price, num_bdrm = $num_bdrm, district  = $district, status = $status<br>";
 
                                                     $results_array = search_listing($city, $province, $min_price, $max_price, $num_bdrm, $district, $status);
-                                                    echo $results_array;
 //                                                    while ($row = mysqli_fetch_assoc($results)) {
                                                     foreach ($results_array as $row) {
                                                         echo '<li class="" style="width: auto;">';
