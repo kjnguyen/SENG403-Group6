@@ -16,15 +16,21 @@
                                                     //mysqli_connect("localhost", "root", "1234", "s403_project");
                                                     echo mysqli_error($con);
                                                     echo "hello, this is displaying from the live Company table <br>";
-                                                    $query = "select * from Company";
+                                                    $query = "select ID, date_listed, sq_ft, num_bdrms, address, description from Listing";
                                                     $results = mysqli_query($con, $query);
                                                     echo mysqli_error($con);
                                                     while ($row = mysqli_fetch_assoc($results)) {
-                                                        echo $row['name'];
+                                                        echo $row['ID'];
+                                                        echo ' | ';
+                                                        echo $row['date_listed'];
+                                                        echo ' | ';
+                                                        echo $row['sq_ft'];
+                                                        echo ' | ';
+                                                        echo $row['num_bdrms'];
                                                         echo ' | ';
                                                         echo $row['address'];
                                                         echo ' | ';
-                                                        echo $row['desription'];
+                                                        echo $row['description'];
                                                         echo '<br>';
                                                     }
                      
