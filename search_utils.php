@@ -31,14 +31,16 @@ function search_listing($city, $province, $min_price, $max_price, $num_bdrm, $di
     }
     $condition_args = parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district, $status);
     $query = 'select ID, date_listed, sq_ft, num_bdrms, address, description from Listing'.$condition_args;
+    echo $query;
     $results = mysqli_query($con, $query);
+    echo mysqli_error($con);
     $listing_info = array();
     
     while ($row = mysqli_fetch_assoc($results)) {
         $listing_info[] = $row;
     }    
     mysqli_close($con);
-    return $row;
+    return $listing_info;
 }
 
 /**
@@ -50,12 +52,16 @@ function search_listing($city, $province, $min_price, $max_price, $num_bdrm, $di
 function get_city_id($city, $province) {
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
-    $city_query = sprintf("select ID from city where name='%s' and province='%s' LIMIT 1", mysqli_real_escape_string($city), mysqli_real_escape_string($province));
+    $city_query = "select ID from City where lower(name)=lower('$city') and lower(province)=lower('$province') LIMIT 1";
+
     $city_result = mysqli_query($con, $city_query);
-    $city_id=0;
-    if (!($city_id = mysqli_fetch_assoc($city_result))) {
-        $city_id=NULL;
+//    echo mysqli_error($con);
+    $city_id=NULL;
+    if ($ID_array = mysqli_fetch_assoc($city_result)) {
+        $city_id = $ID_array['ID'];
     }
+
+    
     mysqli_close($con);
     return $city_id;
 }
@@ -71,12 +77,12 @@ function get_city_id($city, $province) {
  * @return type
  */
 function parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district, $status) {
-    $conditions = " where city_id = $city_id and";
+    $conditions = " where cityID = $city_id and";
     if (is_numeric($min_price)) {$conditions .= " price >= $min_price and";}
     if (is_numeric($max_price)) {$conditions .= " price <= $max_price and";}
     if (is_int($num_bdrm)) {$conditions .= " num_bdrms = $num_bdrm and";}
-    if ($district != NULL) {$conditions .= sprintf(" district = '%s' and", mysqli_real_escape_string($district));}
-    if ($status != NULL) {$conditions .= sprintf(" status = '%s' and", mysqli_real_escape_string($status));}
+    if ($district != NULL) {$conditions .= " lower(district) = lower('$district') and";}
+    if ($status != NULL) {$conditions .= " lower(status) = lower('$status') and";}
     return substr($conditions, 0, -4);
 }
 ?>
