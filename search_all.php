@@ -21,19 +21,7 @@
                                                     $query = "select ID, date_listed, sq_ft, num_bdrms, address, description from Listing";
                                                     $results = mysqli_query($con, $query);
                                                     echo mysqli_error($con);
-                                                    
-                                                    $city = $_Get['city'];
-                                                    $province = $_Get['province'];
-                                                    $min_price = $_Get['min_price'];
-                                                    $max_price = $_Get['max_price'];
-                                                    $num_bdrm = $_Get['num_bdrm'];
-                                                    $district = $_Get['district'];
-                                                    $status = $_Get['status'];
-                                                    
-                                                    echo "Search Criteria: <br>";
-                                                    echo "city = $city, province = $province, min_price = $min_price, max_price = $max_price, num_bdrm = $num_bdrm, district  = $district, status = $status<br>";
 
-                                                    $results_array = search_listing($city, $province, $min_price, $max_price, $num_bdrm, $district, $status);
                                                     
                                                     while ($row = mysqli_fetch_assoc($results)) {
                                                         echo '<li class="" style="width: auto;">';
