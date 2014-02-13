@@ -26,6 +26,8 @@ function search_listing($city, $province, $min_price, $max_price, $num_bdrm, $di
     $city_id = get_city_id($city, $province);
     if ($city_id == NULL) {
         echo "ERROR: you must specify city and province before searching";
+        echo "<br> Example URL: <br>";
+        echo "http://www.s403.jack-l.com/search_results.php?city=Calgary&province=Alberta&max_price=200000<br>";
         mysqli_close($con);
         return NULL;
     }
