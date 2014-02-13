@@ -43,6 +43,8 @@ function get_city_id($city, $province) {
 
 function parse_conditions($min_price, $max_price, $num_bdrm, $district, $status) {
     $conditions = "";
-    if ($min_price != NULL) $condition .= "price ";
+    if ($min_price != NULL) $condition .= " price >= $min_price and";
+    if ($max_price != NULL) $condition .= " price <= $max_price and";
+    if ($num_bdrm != NULL) $condition .= " num_bdrms = $num_bdrm and";
 }
 ?>
