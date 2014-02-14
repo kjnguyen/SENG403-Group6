@@ -1,4 +1,7 @@
-<?php include('header.php'); ?>
+<?php
+    define("INCLUDE_FILE", true);
+    include('header.php');
+?>
 
 
 			<div>
@@ -30,4 +33,6 @@
 			</div><!--/row-->
 
     
-<?php include('footer.php'); ?>
+<?php
+    include('footer.php');
+?>

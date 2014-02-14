@@ -1,8 +1,18 @@
+<?php
+    //Prevent Direct Access, return 404 page not found
+    if(!defined("INCLUDE_FILE"))
+    {
+         header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);die();
+    }
+    //Start session
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Free HTML5 Bootstrap Admin Template</title>
+	<title>4J Estates</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Charisma, a fully featured, responsive, HTML5, Bootstrap admin template.">
 	<meta name="author" content="Muhammad Usman">

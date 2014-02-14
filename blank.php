@@ -1,4 +1,5 @@
 <?php
+    define("INCLUDE_FILE", true);
     include_once "header.php";
 ?>
 

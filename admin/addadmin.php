@@ -31,7 +31,7 @@
     $Username = 'admin';
     $Email = 'admin@example.com';
     $Permission = '1';
-    $Password = hash('sha512', '1234567a', true);
+    $Password = hash('sha512', '1234567a');
     
     //Query
     unset($query);
