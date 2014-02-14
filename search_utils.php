@@ -1,10 +1,17 @@
 <?php
 
+//Prevent Direct Access, return 404 page not found
+if(!defined("search_utils.php"))
+{
+    echo '404 Not Found';
+     header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);die();
+}
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+define("mysqlcon.php", True);
 include_once 'mysqlcon.php';
 
 /**
