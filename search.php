@@ -25,7 +25,7 @@ if(!defined("search.php"))
          "
          ?>
     <p>Status:
-    <select name="size">
+    <select name="status">
         <?php
         define("search_utils.php", True);
         include_once 'search_utils.php';

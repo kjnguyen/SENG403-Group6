@@ -24,7 +24,7 @@
                                                     $status = $_GET['status'];
                                                     
 //                                                    echo "Search Criteria: <br>";
-//                                                    echo "city = $city, province = $province, min_price = $min_price, max_price = $max_price, num_bdrm = $num_bdrm, district  = $district, status = $status<br>";
+//                                                    echo "city = $city, province = $province, min_price = $min_price, max_price = $max_price, num_bdrm = $num_bdrm, district  = $district, status = ".$status."<br>";
 
                                                     $results_array = search_listing($city, $province, $min_price, $max_price, $num_bdrm, $district, $status);
                                                     

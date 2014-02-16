@@ -89,7 +89,7 @@ function parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district
     $conditions = " where cityID = $city_id and";
     if (is_numeric($min_price)) {$conditions .= " price >= $min_price and";}
     if (is_numeric($max_price)) {$conditions .= " price <= $max_price and";}
-    if (is_int($num_bdrm)) {$conditions .= " num_bdrms = $num_bdrm and";}
+    if (is_numeric($num_bdrm)) {$conditions .= " num_bdrms = $num_bdrm and";}
     if ($district != NULL) {$conditions .= " lower(district) = lower('$district') and";}
     if ($status != NULL) {$conditions .= " lower(status) = lower('$status') and";}
     return substr($conditions, 0, -4);
