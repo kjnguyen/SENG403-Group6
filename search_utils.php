@@ -94,4 +94,19 @@ function parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district
     if ($status != NULL) {$conditions .= " lower(status) = lower('$status') and";}
     return substr($conditions, 0, -4);
 }
+
+function get_list_of_status() {
+    $con = getSQLConnection();
+    mysqli_select_db($con, 's403_project');
+    $query = "select distinct status from Listing";
+    $results = mysqli_query($con, $query);
+    echo mysqli_error($con);
+    $status = array();
+    
+    while ($row = mysqli_fetch_assoc($results)) {
+        $status[] = $row;
+    }
+    mysqli_close($con);
+    return $status;
+}
 ?>

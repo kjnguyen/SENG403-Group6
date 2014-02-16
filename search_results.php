@@ -30,7 +30,7 @@
                                                     $results_array = search_listing($city, $province, $min_price, $max_price, $num_bdrm, $district, $status);
                                                     
                                                     if (empty($results_array)) {
-                                                        echo "<h3>No Results Found</h3>";
+                                                        echo "<h1>No Results Found</h1>";
                                                     }
                                                     else {
                                                         foreach ($results_array as $row) {
@@ -45,9 +45,7 @@
                                                             echo '</a></li>';
                                                         }
                                                     }
-
-                                                    
-                                                    
+    
                                                 ?>
                                                 </ul>
                                                 </div>
