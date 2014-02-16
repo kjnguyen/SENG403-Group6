@@ -8,7 +8,7 @@
 			<div class="clearfix">
 				<section id="mainContent" class="grid_10">
 					<article>
-						<h2>WELCOME</h2>
+						<h2>Welcome to 4J Estates Online Real Estate Catalog</h2>
 						<h3>H3</h3>
 					</article>
 				</section>
