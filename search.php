@@ -34,11 +34,11 @@ if(!defined("search.php"))
         if(!empty($status)) {
             $selected = $_GET['status'];
             foreach ($status as $s) {
-                echo "<option value=\"".$s['status']."\">".$s['status'];
+                echo "<option value=\"".$s['status']."\"";
                 if ($s['status'] == $selected) {
                     echo " selected=\"selected\"";
                 }
-                echo "</option>";
+                echo ">".$s['status']."</option>";
             }
         }
         ?>
