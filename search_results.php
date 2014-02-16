@@ -8,13 +8,12 @@
 			<div class="clearfix">
 				<section id="mainContent" class="grid_10" style="position: relative; width: 100%;">
 					<article style="position: relative; width: 100%;">
-						<h2>Xiao's Search Results Page</h2>
+						<h2>Listing Search Results</h2>
                                                 <div id="faded" style="position: relative; width: 100%;">
                                                 <ul class="pagination" style="position: relative; top: 0px; left: 0px;">
                                                 <?php
                                                     define("search_utils.php", True);
                                                     include_once 'search_utils.php';
-                                                    echo "hello, this is the listing search results div <br>";
                                                     
                                                     $city = $_GET['city'];
                                                     $province = $_GET['province'];
@@ -24,8 +23,8 @@
                                                     $district = $_GET['district'];
                                                     $status = $_GET['status'];
                                                     
-                                                    echo "Search Criteria: <br>";
-                                                    echo "city = $city, province = $province, min_price = $min_price, max_price = $max_price, num_bdrm = $num_bdrm, district  = $district, status = $status<br>";
+//                                                    echo "Search Criteria: <br>";
+//                                                    echo "city = $city, province = $province, min_price = $min_price, max_price = $max_price, num_bdrm = $num_bdrm, district  = $district, status = $status<br>";
 
                                                     $results_array = search_listing($city, $province, $min_price, $max_price, $num_bdrm, $district, $status);
                                                     

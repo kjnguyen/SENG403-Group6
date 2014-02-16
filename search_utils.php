@@ -32,15 +32,15 @@ function search_listing($city, $province, $min_price, $max_price, $num_bdrm, $di
     
     $city_id = get_city_id($city, $province);
     if ($city_id == NULL) {
-        echo "ERROR: you must specify city and province before searching";
-        echo "<br> Example URL: <br>";
-        echo "http://www.s403.jack-l.com/search_results.php?city=Calgary&province=Alberta&max_price=200000<br>";
+        echo "ERROR: you must specify a valid city and province, try calgary/alberta";
+//        echo "<br> Example URL: <br>";
+//        echo "http://www.s403.jack-l.com/search_results.php?city=Calgary&province=Alberta&max_price=200000<br>";
         mysqli_close($con);
         return NULL;
     }
     $condition_args = parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district, $status);
     $query = 'select ID, date_listed, sq_ft, num_bdrms, address, description from Listing'.$condition_args;
-    echo $query;
+//    echo $query;
     $results = mysqli_query($con, $query);
     echo mysqli_error($con);
     $listing_info = array();
