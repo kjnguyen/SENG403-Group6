@@ -13,7 +13,30 @@
 			<div class="row-fluid">
 				<div class="well span5 center login-box">
 					<div class="alert alert-info">
-						Please login with your Username and Password.
+                                            <?php
+                                            //Display login message or error message
+                                            if (isset($_SESSION['Authed_Error'])) {
+                                                if ($_SESSION['Authed_Error'] == -1) {
+                                                    echo 'Internal server error. Please try again!';
+                                                } else if ($_SESSION['Authed_Error'] == 0) {
+                                                    echo 'Successfully logged out. Please try again!';
+                                                } else if ($_SESSION['Authed_Error'] == 1) {
+                                                    echo 'Invalid login request. Please try again!';
+                                                } else if ($_SESSION['Authed_Error'] == 2) {
+                                                    echo 'Invalid username. Please try again!';
+                                                } else if ($_SESSION['Authed_Error'] == 3) {
+                                                    echo 'Invalid username or password!';
+                                                } else if ($_SESSION['Authed_Error'] == 4) {
+                                                    echo 'You are not logged in, please login first!';
+                                                } else {
+                                                    echo 'Please enter your username and password to login.';
+                                                }
+                                                unset($_SESSION['Authed_Error']);
+                                            } else {
+                                                echo 'Please enter your username and password to login.';
+                                            }
+                                            ?>
+                                            
 					</div>
 					<form class="form-horizontal" action="auth.php" method="post">
 						<fieldset>

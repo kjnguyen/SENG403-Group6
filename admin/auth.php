@@ -22,7 +22,20 @@
             ReturnToLoginPage(2);
         }
         
-        CompareData($Username, $Password);
+        //Check username and password with database
+        $CmpResult = CompareData($Username, $Password);
+        if ($CmpResult == 1) {
+            //Redirect user to index.php page
+            header("location:./index.php");
+        } else if ($CmpResult == 0) {
+            //Internal error, for example database failed
+            ReturnToLoginPage(-1);
+        } else if ($CmpResult == -1) {
+            //Wrong username or password
+            ReturnToLoginPage(3);
+        }
+        
+        
     }
     
     /*
@@ -136,24 +149,27 @@
         $_SESSION['Authed_Exipre'] = time() + 3600;
         
         //echo $_SESSION['Authed_UserID'].' ||| '.$_SESSION['Authed_Username'].' ||| '.$_SESSION['Authed_Email'].' ||| '.$_SESSION['Authed_Permission'].' ||| '.$_SESSION['Authed_Exipre'];
-        
-        //Redirect user to index.php page
-        header("location:./index.php");
+    
+        return 1;
     }
     
     /*
      * Redirect userback to login page
      * $ReturnID definition
+     * -1 = internal server error, database cannot be connect
+     * 0 = logout
      * 1 = Invalid function call, missing arugs?
      * 2 = Invalid username
-     * 3 = 
+     * 3 = Username & password not match
+     * 4 = not logged in
      */
     
     function ReturnToLoginPage($ReturnID) {
         if ($ReturnID == null) {
             $ReturnID = 0;
         }
-        header("location:./login.php?ReturnID=$ReturnID");
+        $_SESSION['Authed_Error'] = $ReturnID;
+        header("location:./login.php");
         die();
     }
 ?>

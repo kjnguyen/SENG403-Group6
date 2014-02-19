@@ -17,6 +17,7 @@
     
     //This function must be call before login
     function CheckLogin() {
+        $_SESSION['Authed_Error'] = 4;
         //Check variable set
         if (!isset($_SESSION['Authed_UserID']) || !isset($_SESSION['Authed_Username']) || !isset($_SESSION['Authed_Email']) || !isset($_SESSION['Authed_Permission']) || !isset($_SESSION['Authed_Exipre'])) {
             header("location:./login.php");
@@ -35,8 +36,8 @@
         } else {
             $_SESSION['Authed_Exipre'] = time() + 3600;
         }
-        
-        
+        //Everything passed
+        unset($_SESSION['Authed_Error']);
     }
     
     //Must be call before any header output
