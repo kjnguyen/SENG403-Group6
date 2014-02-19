@@ -34,13 +34,14 @@
                                                     else {
                                                         foreach ($results_array as $row) {
                                                             echo '<li class="" style="width: auto;">';
-                                                            echo '<a href="#" rel="0">';
+                                                            echo '<a href="item.php?ID='.$row['ID'].'" rel="0">';
                                                             echo '<img src="images/f_thumb1.png" alt="">';
                                                             echo 'ID:   '.$row['ID'].'<br>';
                                                             echo $row['sq_ft'].' Sqr. Ft.<br>';                                                                
                                                             echo $row['num_bdrms'].' bedrooms<br>';
-                                                            echo 'Date Listed:  '.$row['date_listed'].'<br>';
-                                                            echo 'Address:    '.$row['address'];
+//                                                            echo 'Date Listed:  '.$row['date_listed'].'<br>';
+                                                            echo 'Address:    '.$row['address'].'<br>';
+                                                            echo 'Price:    $'.$row['price'];
                                                             echo '</a></li>';
                                                         }
                                                     }

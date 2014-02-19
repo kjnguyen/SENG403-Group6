@@ -39,7 +39,7 @@ function search_listing($city, $province, $min_price, $max_price, $num_bdrm, $di
         return NULL;
     }
     $condition_args = parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district, $status);
-    $query = 'select ID, date_listed, sq_ft, num_bdrms, address, description from Listing'.$condition_args;
+    $query = 'select ID, date_listed, sq_ft, price, num_bdrms, address, description from Listing'.$condition_args;
 //    echo $query;
     $results = mysqli_query($con, $query);
     echo mysqli_error($con);
@@ -50,6 +50,25 @@ function search_listing($city, $province, $min_price, $max_price, $num_bdrm, $di
     }    
     mysqli_close($con);
     return $listing_info;
+}
+
+/**
+ * 
+ * @param type $ID
+ * @return null
+ */
+function search_one_item($ID) {
+    $con = getSQLConnection();
+    mysqli_select_db($con, 's403_project');
+    $query = "select l.*, c.name as c_name, c.address as c_address, c.manager_name as c_manager_name, c.phone_no as c_phone_no from Listing as l join Company as c on l.CompID = c.ID where l.ID = $ID";
+    $result = mysqli_query($con, $query);
+    mysqli_close($con);
+    if ($row = mysqli_fetch_assoc($result)){
+        return $row;
+    }
+    else {
+        return NULL;
+    }
 }
 
 /**
@@ -95,6 +114,10 @@ function parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district
     return substr($conditions, 0, -4);
 }
 
+/**
+ * 
+ * @return type
+ */
 function get_list_of_status() {
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
