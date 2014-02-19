@@ -135,7 +135,10 @@
         $_SESSION['Authed_Permission'] = $F_Perm;
         $_SESSION['Authed_Exipre'] = time() + 3600;
         
-        echo $_SESSION['Authed_UserID'].' ||| '.$_SESSION['Authed_Username'].' ||| '.$_SESSION['Authed_Email'].' ||| '.$_SESSION['Authed_Permission'].' ||| '.$_SESSION['Authed_Exipre'];
+        //echo $_SESSION['Authed_UserID'].' ||| '.$_SESSION['Authed_Username'].' ||| '.$_SESSION['Authed_Email'].' ||| '.$_SESSION['Authed_Permission'].' ||| '.$_SESSION['Authed_Exipre'];
+        
+        //Redirect user to index.php page
+        header("location:./index.php");
     }
     
     /*

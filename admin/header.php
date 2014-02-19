@@ -6,6 +6,12 @@
     }
     //Start session
     session_start();
+    
+    //Check user login
+    include_once 'auth_utils.php';
+    if(!isset($no_visible_elements) || !$no_visible_elements) {
+        CheckLogin();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +96,7 @@
 				<!-- user dropdown starts -->
 				<div class="btn-group pull-right" >
 					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-						<i class="icon-user"></i><span class="hidden-phone"> admin</span>
+						<i class="icon-user"></i><span class="hidden-phone"> <?php echo $_SESSION['Authed_Username'];?></span>
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
