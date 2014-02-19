@@ -2,7 +2,7 @@
     include_once "header.php";
 ?>
 
-	<!-- content -->
+	<!-- Search Results Page -->
 	<section id="content">
 		<div class="container_16">
 			<div class="clearfix">

@@ -3,6 +3,9 @@
     session_start();
 ?>
 
+<!-- Item page
+to-do: find a better way to handle this - I only need part of the header-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

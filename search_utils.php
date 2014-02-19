@@ -1,4 +1,6 @@
 <?php
+// This file hosts all the search functions
+
 
 //Prevent Direct Access, return 404 page not found
 if(!defined("search_utils.php"))

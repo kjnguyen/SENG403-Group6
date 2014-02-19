@@ -1,4 +1,4 @@
-<!-- Search Form -->
+<!-- Search Form (include in the header -->
 
 <?php
 
