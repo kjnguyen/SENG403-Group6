@@ -1,14 +1,6 @@
-<!-- Search Form -->
+<!-- Modify Form -->
 
-<?php
-/*
-//Prevent Direct Access, return 404 page not found
-if(!defined("modify.php"))
-{
-    echo '404 Not Found';
-     header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);die();
-}*/
-?>
+
 <?php
     include_once "header.php";
 ?>
