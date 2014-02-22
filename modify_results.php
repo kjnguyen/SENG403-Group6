@@ -42,7 +42,7 @@
 						        <?php
 						        define("modify_utils.php", True);
 						        include_once 'modify_utils.php';
-						        $status = get_list_of_status();
+						        $status = modify_list_of_status();
 						        echo "<option value=\"\">Any</option>";
 						        if(!empty($status)) {
 						            $selected = $_GET['status'];
