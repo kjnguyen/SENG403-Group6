@@ -38,7 +38,7 @@
 			</div>
 			<nav>
 				<ul>
-					<li><a href="index.html">Home</a></li>
+					<li><a href="index.php">Home</a></li>
 					<li><a href="index-1.html" class="current">Selling</a></li>
 					<li><a href="index-2.html">Buying</a></li>
 					<li><a href="index-3.html">Renting</a></li>
