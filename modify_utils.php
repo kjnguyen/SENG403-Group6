@@ -44,14 +44,6 @@ function delete_listing($id){
     mysqli_close($con);
 }
 
-function modify_test($id){
-    $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project')
-    $num=25555;
-    $query = "UPDATE listing SET price='$num' WHERE ID='$id'";
-    $result = mysqli_query($con, $sql);
-     mysqli_close($con);
-}
 
 function modify_list_of_status() {
     $con = getSQLConnection();
