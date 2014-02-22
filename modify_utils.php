@@ -54,7 +54,7 @@ function delete_listing($id){
     mysqli_close($con);
 }
 
-function get_list_of_status() {
+function modify_list_of_status() {
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
     $query = "select distinct status from Listing";
