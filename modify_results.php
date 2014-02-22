@@ -1,9 +1,15 @@
 <?php
-   // include_once "header.php";
+    include_once "header.php";
 ?>
 
 	<!-- content -->
-
+	<section id="content">
+		<div class="container_16">
+			<div class="clearfix">
+				<section id="mainContent" class="grid_10" style="position: relative; width: 100%;">
+					<article style="position: relative; width: 100%;">
+						<h2>Modify listing</h2>
+                                               <div id="faded" style="position: relative; width: 100%;"> 
                                                
                                                 <?php
                                                  
@@ -36,11 +42,17 @@
                                                             $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type, 
                                                             $district, $maintenance, $status, $address, $description);
                                                     
-                                                    
+                                                    echo"Modifiction Sent!\n"
     
                                                 ?>
                                                 
-
+						</div>
+                            		
+					</article>
+				</section>
+			</div>
+		</div>
+	</section>
 <?php
-   // include_once "footer.php";
+    include_once "footer.php";
 ?>
