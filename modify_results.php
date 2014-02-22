@@ -46,6 +46,8 @@
     						    echo "<br>id = $id";
     						    echo "<br>price = $price";
     						    echo "<br>district = $district";
+    						    
+    						    modify_test($id);
                                                 ?>
                                                 
 						</div>
