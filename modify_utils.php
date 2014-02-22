@@ -44,6 +44,14 @@ function delete_listing($id){
     mysqli_close($con);
 }
 
+function modify_test($id){
+    $con = getSQLConnection();
+    mysqli_select_db($con, 's403_project')
+    $descr="Modify_test succesful";
+    $query = "UPDATE listing SET description='$descr' WHERE ID='$id'";
+    $result = mysqli_query($con, $sql);
+}
+
 function modify_list_of_status() {
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
