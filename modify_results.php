@@ -17,7 +17,7 @@
                                                     include_once 'modify_utils.php';
                                                ?> 
                                                
-                                                <form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="position: absolute; top: 0px; font-size: 80%;">
+                                                <form name="Modify" method="get" action="modify.php" id="contacts-form" style="position: absolute; top: 0px; font-size: 80%;">
                                                
                                                 <fieldset>
 						    <legend>Modify Criteria</legend><br>
@@ -63,7 +63,7 @@
 						</fieldset>
                                                 
                                                 </form>
-                                                <?php
+                                                <?php/*
                                                 
                                                     $id = $_GET['ID'];
                                                     $CompID = $_GET['CompID'];
@@ -83,7 +83,7 @@
                                                      
                                                     
                                                   /*  mysql_connect("$host","$user", "$pass")or die("cannot connect");  
-                                                    mysql_select_db("$db")or die("cannot select DB");  */
+                                                    mysql_select_db("$db")or die("cannot select DB");  *//*
                                                     
 
                                                     $results_array = modify_values($id, $CompID, $price, $sq_ft, $num_floors, 
@@ -92,7 +92,7 @@
                                                     
                                                     
     
-                                                ?>
+                                             */   ?>
                                                 </ul>
                                                 </div>
 					</article>
