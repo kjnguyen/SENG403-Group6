@@ -15,7 +15,7 @@
 						<h2>Modify listing</h2>
                                                <div id="faded" style="position: relative; width: 100%;"> 
 						
-<form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="position: absolute; top: 0px; font-size: 80%;">
+<form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="font-size: 80%;">
 
 <fieldset>
     <legend>Modify Criteria</legend><br>
