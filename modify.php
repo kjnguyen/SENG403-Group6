@@ -18,7 +18,7 @@
 <form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="font-size: 80%;">
 
 <fieldset>
-    <legend>Modify Criteria</legend><br>
+    <legend>Modification Criteria:</legend><br>
         <?php
         echo "
         <p><label>ID number(required): </label><input type=\"text\" name=\"ID\" value=\"".$_GET['ID']."\"/></a></p>
