@@ -9,6 +9,19 @@ if(!defined("modify.php"))
      header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);die();
 }*/
 ?>
+<?php
+    include_once "header.php";
+?>
+
+
+	<!-- content -->
+	<section id="content">
+		<div class="container_16">
+			<div class="clearfix">
+				<section id="mainContent" class="grid_10" style="position: relative; width: 100%;">
+					<article style="position: relative; width: 100%;">
+						<h2>Modify listing</h2>
+                                               <div id="faded" style="position: relative; width: 100%;"> 
 
 <form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="position: absolute; top: 0px; font-size: 80%;">
 
@@ -56,3 +69,14 @@ if(!defined("modify.php"))
 </fieldset>
 
 </form>
+
+</ul>
+                            </div>
+					</article>
+				</section>
+			</div>
+		</div>
+	</section>
+<?php
+    include_once "footer.php";
+?>
