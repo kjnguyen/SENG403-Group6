@@ -42,7 +42,7 @@
 					<li><a href="index-1.html" class="current">Selling</a></li>
 					<li><a href="index-2.html">Buying</a></li>
 					<li><a href="index-3.html">Renting</a></li>
-					<li><a href="modify.php">Moving</a></li>
+					<li><a href="modify_results.php">Moving</a></li>
 					<li><a href="index-5.html">Finance</a></li>
 					<li><a href="index-6.html">Contacts</a></li>
 				</ul>
