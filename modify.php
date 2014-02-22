@@ -13,7 +13,7 @@
 				<section id="mainContent" class="grid_10" style="position: relative; width: 100%;">
 					<article style="position: relative; width: 100%;">
 						<h2>Modify listing</h2>
-                                               <div id="faded" style="position: relative; width: 100%;"> 
+                                               
 						
 <form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="font-size: 80%;">
 
@@ -62,7 +62,7 @@
 
 </form>
 
-					</div>
+				
                             		
 					</article>
 				</section>
