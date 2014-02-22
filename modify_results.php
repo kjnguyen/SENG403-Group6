@@ -44,6 +44,8 @@
                                                     
                                                     echo"Modifiction Sent!";
     						    echo "<br>id = $id";
+    						    echo "<br>price = $price";
+    						    echo "<br>district = $district";
                                                 ?>
                                                 
 						</div>
