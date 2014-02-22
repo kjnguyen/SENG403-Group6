@@ -10,7 +10,7 @@
 					<article style="position: relative; width: 100%;">
 						<h2>Modify listing</h2>
                                                 <div id="faded" style="position: relative; width: 100%;">
-                                               // <ul class="pagination" style="position: relative; top: 0px; left: 0px;">
+                                               
                                                 <?php
                                                     /*$host = "localhost";
                                                     $user = "localhost";
