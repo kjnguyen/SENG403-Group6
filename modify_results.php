@@ -56,7 +56,7 @@
 						        }
 						        ?>
 						    </select></p>
-						    <p><button type="reset" value="Reset" class="button">Reset</button> <button type="submit" value="Search" class="button">Search</button></p>
+						    <p><button type="reset" value="Reset" class="button">Reset</button> <button type="submit" value="Modify" class="button">Modify</button></p>
 						</fieldset>
                                                 
                                                 <?php
