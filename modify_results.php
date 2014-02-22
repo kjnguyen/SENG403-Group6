@@ -15,7 +15,7 @@
                                                  
                                                     define("modify_utils.php", True);
                                                     include_once 'modify_utils.php';
-                                                
+                                               ?> 
                                                 <fieldset>
 						    <legend>Modify Criteria</legend><br>
 						        <?php
@@ -59,7 +59,7 @@
 						    <p><button type="reset" value="Reset" class="button">Reset</button> <button type="submit" value="Search" class="button">Search</button></p>
 						</fieldset>
                                                 
-                                                
+                                                <?php
                                                 
                                                     $id = $_GET['ID'];
                                                     $CompID = $_GET['CompID'];
