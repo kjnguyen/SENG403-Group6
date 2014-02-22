@@ -18,10 +18,10 @@ if ($_SERVER['PHP_SELF'] == '/' . basename(__FILE__))
 
 define("IMG_UPLOAD_DIR", "/listing/images/");
 
-/* Saves uploaded pictures to the file system and database
- * Returns false on error otherwise the list in an array (may be empty), order is same as the $_FILES
- * array when iterating though it with a foreach loop. Array may contain false values if that particular
- * file failed to save.
+/* Saves uploaded pictures to the file system and database. Looks in the $_FILES array.
+ * Returns false on error otherwise the list in an array (may be empty) containing associative arrays with
+ * id and path. The order order of the array is same as the $_FILES array when iterating though it with
+ * a foreach loop. Array may contain false values if that particular file failed to save.
  */
 function addPictures(mysqli $con, $ListingID)
 {
@@ -89,7 +89,7 @@ function addPictures(mysqli $con, $ListingID)
           $statement->close();
           $con->commit(); // Everything is ok with the file, save sql changes
           
-          array_push($filePaths, (IMG_UPLOAD_DIR . $destination));
+          array_push($filePaths, array("id"=>$imgID, "path"=>(IMG_UPLOAD_DIR . $destination)));
         }
         else
         {
@@ -116,7 +116,8 @@ function addPictures(mysqli $con, $ListingID)
 }
 
 /* Get a list of paths to the pictures for a listing
- * Returns false on error otherwise the list in an array (may be empty)
+ * Returns false on error otherwise the list in an array (may be empty) containing associative
+ * arrays with id and path.
  */
 function getPictures(mysqli $con, $ListingID)
 {
@@ -127,7 +128,7 @@ function getPictures(mysqli $con, $ListingID)
   
   $list = array();
   
-  $statement = $con->prepare("SELECT fileName FROM Pictures WHERE listingID = ?");
+  $statement = $con->prepare("SELECT ID, fileName FROM Pictures WHERE listingID = ?");
   
   if(!$statement) // Ensure statement is created
   {
@@ -136,11 +137,11 @@ function getPictures(mysqli $con, $ListingID)
   
   $statement->bind_param("i", $ListingID);
   $statement->execute();
-  $statement->bind_result($filePath);
+  $statement->bind_result($imgID, $partialPath);
   
   while($statement->fetch())
   {
-    array_push($list, (IMG_UPLOAD_DIR . $filePath));
+    array_push($list, array("id"=>$imgID, "path"=>(IMG_UPLOAD_DIR . $partialPath)));
   }
   
   $statement->close(); // Must be called otherwise the sql connection can't be used
@@ -148,4 +149,53 @@ function getPictures(mysqli $con, $ListingID)
   return $list;
 }
 
+/* Deletes a picture from the file system and database.
+ * Returns TRUE on success or FALSE on failure.
+ */
+function removePicture(mysqli $con, $ListingID, $imgID)
+{
+  if(mysqli_connect_errno($con))
+  {
+    return false;
+  }
+  
+  // Listing ID is used to ensure we are removing from the correct listing
+  $statement = $con->prepare("SELECT fileName FROM Pictures WHERE ID = ? AND listingID = ?");
+  
+  if(!$statement) // Ensure statement is created
+  {
+    return false;
+  }
+  
+  $statement->bind_param("ii", $imgID, $ListingID);
+  $statement->execute();
+  $statement->bind_result($imgID, $partialPath);
+  
+  if(!$statement->fetch()) // If ID and listingID combination not found quit
+  {
+    $statement->close();
+    return false;
+  }
+  
+  $statement->close();
+  
+  $fullPath = $_SERVER['DOCUMENT_ROOT'] . IMG_UPLOAD_DIR . $partialPath;
+  
+  if(!file_exists($fullPath) || unlink($fullPath)) // Ensure file has been deleted
+  {
+    // Listing ID is used to ensure we are removing from the correct listing
+    $statement = $con->prepare("DELETE FROM Pictures WHERE ID = ?");
+    $statement->bind_param("i", $imgID);
+    
+    if($statement->execute())
+    {
+      $statement->close();
+      return false;
+    }
+  }
+  
+  $statement->close();
+  
+  return true;
+}
 ?>
