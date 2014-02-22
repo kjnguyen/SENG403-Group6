@@ -14,7 +14,7 @@
 					<article style="position: relative; width: 100%;">
 						<h2>Modify listing</h2>
                                                <div id="faded" style="position: relative; width: 100%;"> 
-						</div>
+						
 <form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="position: absolute; top: 0px; font-size: 80%;">
 
 <fieldset>
@@ -57,12 +57,12 @@
         }
         ?>
     </select></p>
-    <p><button type="reset" value="Reset" class="button">Reset</button> <button type="submit" value="Search" class="button">Search</button></p>
+    <p><button type="reset" value="Reset" class="button">Reset</button> <button type="submit" value="Modify" class="button">Modify</button></p>
 </fieldset>
 
 </form>
 
-
+					</div>
                             		
 					</article>
 				</section>
