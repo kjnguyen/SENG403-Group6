@@ -1,13 +1,13 @@
 <!-- Search Form -->
 
 <?php
-
+/*
 //Prevent Direct Access, return 404 page not found
 if(!defined("modify.php"))
 {
     echo '404 Not Found';
      header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);die();
-}
+}*/
 ?>
 
 <form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="position: absolute; top: 0px; font-size: 80%;">
