@@ -57,8 +57,9 @@
         }
         ?>
     </select></p>
-    <p><button type="reset" value="Reset" class="button">Reset</button> <button type="submit" value="Modify" class="button">Modify</button></p>
+    
 </fieldset>
+<p><button type="reset" value="Reset" class="button">Reset</button> <button type="submit" value="Modify" class="button">Modify</button></p>
 
 </form>
 
