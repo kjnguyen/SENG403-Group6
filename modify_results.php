@@ -42,8 +42,8 @@
                                                             $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type, 
                                                             $district, $maintenance, $status, $address, $description);
                                                     
-                                                    echo"Modifiction Sent!\n";
-    						    echo "id = $id";
+                                                    echo"Modifiction Sent!";
+    						    echo "<br>id = $id";
                                                 ?>
                                                 
 						</div>
