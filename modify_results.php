@@ -19,6 +19,8 @@
                                                     mysql_connect("$host", "$user", "$pass")or die("cannot connect");
                                                     mysql_select_db("$db")or die("cannot select DB");
                                                  */
+                                                    define("modify.php", True);
+                                                    include_once 'modify.php';
                                                     define("modify_utils.php", True);
                                                     include_once 'modify_utils.php';
                                                 
