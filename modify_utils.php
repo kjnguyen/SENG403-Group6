@@ -50,6 +50,7 @@ function modify_test($id){
     $descr="Modify_test succesful";
     $query = "UPDATE listing SET description='$descr' WHERE ID='$id'";
     $result = mysqli_query($con, $sql);
+     mysqli_close($con);
 }
 
 function modify_list_of_status() {
