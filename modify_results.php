@@ -16,6 +16,9 @@
                                                     define("modify_utils.php", True);
                                                     include_once 'modify_utils.php';
                                                ?> 
+                                               
+                                                <form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="position: absolute; top: 0px; font-size: 80%;">
+                                               
                                                 <fieldset>
 						    <legend>Modify Criteria</legend><br>
 						        <?php
@@ -59,6 +62,7 @@
 						    <p><button type="reset" value="Reset" class="button">Reset</button> <button type="submit" value="Modify" class="button">Modify</button></p>
 						</fieldset>
                                                 
+                                                </form>
                                                 <?php
                                                 
                                                     $id = $_GET['ID'];
