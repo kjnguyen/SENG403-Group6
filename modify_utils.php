@@ -28,12 +28,7 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
             . "bldg_type='$bldg_type', district='$district', maintenance='$maintenance', status='$status',"
             . "address='$address', description='$description' WHERE ID='$id'" ;
    $result = mysqli_query($con, $sql);
-   /*if(!$result){
-     //  trigger_error("Modification error!");
-   }*/
-   else {
-       echo"Modification successful\n";
-   }
+
    mysqli_close($con);
 
 }  
@@ -44,12 +39,7 @@ function delete_listing($id){
     
     $sql = "DELETE FROM listing WHERE ID=$id";
     $result = mysql_query($sql);
-   /*if(!$result){
-       trigger_error("Deletion error!");
-    }*/
-    else {
-       echo"Deletion successful\n";
-    }
+
     
     mysqli_close($con);
 }
