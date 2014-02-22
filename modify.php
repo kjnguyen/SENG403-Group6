@@ -18,7 +18,7 @@
 <form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="font-size: 80%;">
 
 <fieldset>
-    <legend>Modification Criteria:</legend><br>
+    <legend>Modification Criteria:</legend>
         <?php
         echo "
         <p><label>ID number(required): </label><input type=\"text\" name=\"ID\" value=\"".$_GET['ID']."\"/></a></p>
@@ -43,7 +43,7 @@
         <?php
         define("modify_utils.php", True);
         include_once 'modify_utils.php';
-        $status = get_list_of_status();
+        $status = modify_list_of_status();
         echo "<option value=\"\">Any</option>";
         if(!empty($status)) {
             $selected = $_GET['status'];
