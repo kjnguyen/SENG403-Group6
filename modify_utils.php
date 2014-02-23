@@ -26,18 +26,38 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
    if(!$id){
        return $message = "ID is required";
    }     
-    $sql = "UPDATE Listing SET CompID='$CompID', price='$price', sq_ft='$sq_ft', num_floors='$num_floors', "
+    /*$sql = "UPDATE Listing SET CompID='$CompID' AND price='$price', sq_ft='$sq_ft', num_floors='$num_floors', "
             . "num_bdrm='$num_bdrm', num_baths='$num_baths', year_built='$year_built', prop_type='$prop_type',"
             . "bldg_type='$bldg_type', district='$district', maintenance='$maintenance', status='$status',"
-            . "address='$address', description='$description' WHERE ID='$id'" ;
+            . "address='$address', description='$description' WHERE ID='$id'" ;*/
     
-   
-  // $sql = "UPDATE Listing SET price='$price' WHERE ID='$id'";        
+   if($price){
+   $sql = "UPDATE Listing SET price='$price' WHERE ID='$id'";        
    $result = mysqli_query($con, $sql);
- 
+   }
+    if($CompID){
+   $sql = "UPDATE Listing SET CompID='$CompID' WHERE ID='$id'";        
+   $result = mysqli_query($con, $sql);
+   }
+   
+   
    mysqli_close($con);
 
 }  
+/*
+function parse_conditions($CompID, $price, $sq_ft, $num_floors,
+        $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type,
+        $district, $maintenance, $status, $address, $description) {
+    $conditions = " where cityID = $city_id and";
+    if (is_numeric($min_price)) {$conditions .= " price >= $min_price and";}
+    if (is_numeric($max_price)) {$conditions .= " price <= $max_price and";}
+    if (is_numeric($num_bdrm)) {$conditions .= " num_bdrms = $num_bdrm and";}
+    if ($district != NULL) {$conditions .= " lower(district) = lower('$district') and";}
+    if ($status != NULL) {$conditions .= " lower(status) = lower('$status') and";}
+    return substr($conditions, 0, -4);
+}*/
+
+
 //Delete listing with passed in id number
 function delete_listing($id){
     $con = getSQLConnection();
