@@ -72,6 +72,7 @@ function modify_list_of_status() {
     return $status;
 }
 
+//currently sorting results by CompID instead of ID
 function get_list_of_id() {
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
