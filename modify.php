@@ -16,9 +16,30 @@
 
 <fieldset>
     <legend>Modification Criteria:</legend>
+        
+    <p>ID Number:
+    <select name="ID">
         <?php
-        echo "
-        <p><label>ID number(required): </label><input type=\"text\" name=\"ID\" value=\"".$_GET['ID']."\"/></a></p>
+        define("modify_utils.php", True);
+        include_once 'modify_utils.php';
+        $id = get_list_of_id();
+        if(!empty($id)) {
+            $selected = $_GET['ID'];
+            foreach ($id as $i) {
+                echo "<option value=\"".$i['ID']."\"";
+                if ($i['ID'] == $selected) {
+                    echo " selected=\"selected\"";
+                }
+                echo ">".$i['ID']."</option>";
+            }
+        }
+        ?>
+    </select></p>   
+        
+        <?php
+       // echo "
+      //  <p><label>ID number(required): </label><input type=\"text\" name=\"ID\" value=\"".$_GET['ID']."\"/></a></p>
+      echo "
         <p><label>Company ID: </label><input type=\"text\" name=\"CompID\" value=\"".$_GET['CompID']."\"/></p>
         <p><label>Price: </label><input type=\"text\" name=\"price\" value=\"".$_GET['price']."\"/></p> 
         <p><label>Square Feet: </label><input type=\"text\" name=\"sq_ft\" value=\"".$_GET['sq_ft']."\"/></p>
