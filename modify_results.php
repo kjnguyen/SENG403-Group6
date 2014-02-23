@@ -43,7 +43,7 @@
                                                             $district, $maintenance, $status, $address, $description);
                                                     
                                                     echo"Modifiction Sent!";
-                                                    echo "<br>Values that were updated:"
+                                                    echo "<br>Values that were updated:";
     						    echo "<br>ID = $id";
     						    echo "<br>Company ID = $CompID";
     						    echo "<br>Price = $price";
