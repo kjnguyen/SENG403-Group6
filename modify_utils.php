@@ -72,6 +72,22 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
     if($district){
    $sql = "UPDATE Listing SET district='$district' WHERE ID='$id'";        
    $result = mysqli_query($con, $sql);
+   } 
+    if($maintenance){
+   $sql = "UPDATE Listing SET maintenance='$maintenance' WHERE ID='$id'";        
+   $result = mysqli_query($con, $sql);
+   }
+    if($status){
+   $sql = "UPDATE Listing SET status='$status' WHERE ID='$id'";        
+   $result = mysqli_query($con, $sql);
+   }  
+    if($address){
+   $sql = "UPDATE Listing SET address='$address' WHERE ID='$id'";        
+   $result = mysqli_query($con, $sql);
+   }
+    if($description){
+   $sql = "UPDATE Listing SET description='$description' WHERE ID='$id'";        
+   $result = mysqli_query($con, $sql);
    }   
    
    mysqli_close($con);
