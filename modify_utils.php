@@ -23,10 +23,12 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
     
-    $sql = "UPDATE listing SET CompID='$CompID', price='$price', sq_ft='$sq_ft', num_floors='$num_floors', "
+   /* $sql = "UPDATE listing SET CompID='$CompID', price='$price', sq_ft='$sq_ft', num_floors='$num_floors', "
             . "num_bdrm='$num_bdrm', num_baths='$num_baths', year_built='$year_built', prop_type='$prop_type',"
             . "bldg_type='$bldg_type', district='$district', maintenance='$maintenance', status='$status',"
-            . "address='$address', description='$description' WHERE ID='$id'" ;
+            . "address='$address', description='$description' WHERE ID='$id'" ;*/
+            
+   $sql = "UPDATE listing SET price='$price' WHERE ID='$id'";        
    $result = mysqli_query($con, $sql);
 
    mysqli_close($con);
