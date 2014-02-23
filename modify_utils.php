@@ -34,18 +34,6 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
    $sql = "UPDATE Listing SET price='$price' WHERE ID='$id'";        
    $result = mysqli_query($con, $sql);
  
-    $sql = "SELECT * FROM Listing WHERE ID='$id'";
-    $results = mysqli_query($con, $sql);
-    
-    $listing_info = array();
-    
-    while ($row = mysqli_fetch_assoc($results)) {
-        $listing_info[] = $row;
-    }    
-    echo 'ID:   '.$listing_info['ID'].'<br>';
-    echo $listing_info['price'].' Price.<br>';     
-    
-
    mysqli_close($con);
 
 }  
@@ -77,7 +65,7 @@ function modify_list_of_status() {
     return $status;
 }
 
-//currently sorting results by CompID instead of ID
+// TO FIX: currently sorting results by CompID instead of ID
 function get_list_of_id() {
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
