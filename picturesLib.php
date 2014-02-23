@@ -276,6 +276,12 @@ function swapPictureOrder(mysqli $con, $pic1, $pic2)
   $exeResult = $statement->execute();
   $statement->close();
   
+  // Unlock table
+  if($con->query("UNLOCK TABLES;") == false)
+  {
+    trigger_error("Unable to unlock Pictures table.", E_NOTICE);
+  }
+  
   return $exeResult;
 }
 

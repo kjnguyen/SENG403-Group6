@@ -78,6 +78,10 @@
         ?>
     </select></p>
     
+    <?php
+    include_once "pictures.php";
+    ?>
+    
     <p><button type="reset" value="Reset" class="button">Reset</button> <button type="submit" value="Modify" class="button">Modify</button></p>
 
 </fieldset>
