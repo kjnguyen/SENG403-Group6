@@ -102,7 +102,9 @@
                                                     $results_array = modify_values($id, $CompID, $price, $sq_ft, $num_floors, 
                                                             $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type, 
                                                             $district, $maintenance, $status, $address, $description);
-                                                    
+                                                    if($results_array){
+                                                    	echo "$results_array<br>";
+                                                    }	
                                                     echo"Modifiction Sent!";
                                                     echo "<br>Values that were updated:";
     						    echo "<br>ID = $id";
