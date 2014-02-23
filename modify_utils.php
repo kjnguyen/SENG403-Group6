@@ -23,7 +23,7 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
     
-   /* $sql = "UPDATE listing SET CompID='$CompID', price='$price', sq_ft='$sq_ft', num_floors='$num_floors', "
+   /* $sql = "UPDATE Listing SET CompID='$CompID', price='$price', sq_ft='$sq_ft', num_floors='$num_floors', "
             . "num_bdrm='$num_bdrm', num_baths='$num_baths', year_built='$year_built', prop_type='$prop_type',"
             . "bldg_type='$bldg_type', district='$district', maintenance='$maintenance', status='$status',"
             . "address='$address', description='$description' WHERE ID='$id'" ;*/
@@ -31,7 +31,7 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
        return $message = "ID is required";
    }     
    
-   $sql = "UPDATE listing SET price='$price' WHERE ID='$id'";        
+   $sql = "UPDATE Listing SET price='$price' WHERE ID='$id'";        
    $result = mysqli_query($con, $sql);
  
     $sql = "SELECT * FROM listing WHERE ID='$id'";
@@ -49,7 +49,7 @@ function delete_listing($id){
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
     
-    $sql = "DELETE FROM listing WHERE ID=$id";
+    $sql = "DELETE FROM Listing WHERE ID=$id";
     $result = mysql_query($sql);
 
     
