@@ -138,7 +138,7 @@ function get_list_of_id() {
     mysqli_close($con);
     return $status;
 }
-
+/*
 //checks if user has any permissions
 function check_permission_initial(){
     if (!isset($_SESSION['Authed_UserID']){
@@ -189,9 +189,9 @@ function check_permission($id){
            
            if ($_SESSION[''] ==  )
     }*/
-    
+/*    
     mysqli_close($con);
 
-}
+}*/
 
 ?>
