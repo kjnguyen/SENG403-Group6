@@ -111,7 +111,7 @@
 	                                                    if($CompID){	
 	    						    	echo "<br>Company ID: $CompID";
 	                                                    }
-	                                                    if($Price){
+	                                                    if($price){
 	    						    	echo "<br>Price: $price";
 	                                                    }
 	                                                    if($sq_ft){
