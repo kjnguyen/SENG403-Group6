@@ -138,5 +138,44 @@ function get_list_of_id() {
     mysqli_close($con);
     return $status;
 }
+//Check permission of user to see if they are allowed to edit
+//Returns 0 if permission denied and 1 otherwise
+//input- listing id number, output-1 or 0
+
+function check_permission($id){
+    $con = getSQLConnection();
+    mysqli_select_db($con, 's403_project');
+    if (!isset($_SESSION['Authed_UserID']){
+       // echo "<br>Must be logged in to modify listings.<br>"
+        return 0;
+    }
+    //admin status - permission allowed 
+    if ($_SESSION['Authed_Permission'] == 1 ){
+        return 1;
+    }
+    //company status -  if listing belogns to the company permission allowed
+    if ($_SESSION['Authed_Permission'] == 2 ){
+           $query = "SELECT CompID from Listing WHERE ID='$id'";
+           $result = mysqli_query($con, $query);
+           if ($_SESSION['Authed_UserID'] == $result ){
+               return 1;
+           }
+           else{
+               return 0;
+           }
+    }
+        //employee status -  if listing belogns to the employee permission allowed
+        
+        //TODO Currently unsure what to check compare for permissions
+   /* if ($_SESSION['Authed_Permission'] == 3 ){
+           $query = "SELECT CompID from Listing WHERE ID='$id'";
+           $result = mysqli_query($con, $query);
+           
+           if ($_SESSION[''] ==  )
+    }*/
+    
+    mysqli_close($con);
+
+}
 
 ?>
