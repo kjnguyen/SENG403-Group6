@@ -89,7 +89,7 @@
                                                     $prop_type = $_GET['prop_type'];
                                                     $bldg_type = $_GET['bldg_type'];
                                                     $district = $_GET['district'];
-                                                    $maintenance = $_GET['maintenance_fee'];
+                                                    $maintenance_fee = $_GET['maintenance_fee'];
                                                     $status = $_GET['status'];  
                                                     $address = $_GET['address'];
                                                     $description = $_GET['description'];
@@ -101,7 +101,7 @@
 
                                                     $results_array = modify_values($id,$CompID, $price, $sq_ft, $num_floors, 
                                                             $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type, 
-                                                            $district, $maintenance, $status, $address, $description);
+                                                            $district, $maintenance_fee, $status, $address, $description);
                                                     if($results_array){
                                                     	echo "Error: An $results_array<br>";
                                                     }	
@@ -138,8 +138,8 @@
 	                                                    if($district){
 	    						    	echo "<br>district: $district";
 	                                                    }
-	                                                    if($maintenance){
-	    						    	echo "<br>Maintenance Fees: $maintenance";
+	                                                    if($maintenance_fee){
+	    						    	echo "<br>Maintenance Fees: $maintenance_fee";
 	                                                    }
 	                                                    if($status){
 	    						    	echo "<br>Status: $status";
