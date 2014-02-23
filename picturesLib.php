@@ -223,6 +223,62 @@ function removePicture(mysqli $con, $ListingID, $imgID)
   return true;
 }
 
+function swapPictureOrder(mysqli $con, $pic1, $pic2)
+{
+  if(mysqli_connect_errno($con))
+  {
+    return false;
+  }
+  else if($pic1 == $pic2)
+  {
+    return true;
+  }
+  
+  // Lock table
+  if($con->query("LOCK TABLES Pictures WRITE;") == false)
+  {
+    trigger_error("Unable to lock Pictures table.", E_NOTICE);
+  }
+  
+  $statement = $con->prepare("SELECT ID, listingID, position FROM Pictures WHERE ID = ? OR ID = ?");
+  $statement->bind_param("ii", $pic1, $pic2);
+  $statement->execute();
+  $statement->bind_result($imgID, $listingID, $order);
+  
+  if(!$statement->fetch())
+  {
+    return false;
+  }
+  
+  $ID1 = $imgID;
+  $listing1 = $listingID;
+  $pos1 = $order;
+  
+  if(!$statement->fetch())
+  {
+    return false;
+  }
+  
+  $ID2 = $imgID;
+  $listing2 = $listingID;
+  $pos2 = $order;
+  
+  $statement->close(); // Must be called otherwise the sql connection can't be used
+  
+  if($listing1 != $listing2) // Should only swap pictures of the same listing
+  {
+    return false;
+  }
+  
+  // Swap values
+  $statement = $con->prepare("UPDATE Pictures SET position=IF(id=?, ?, ?) WHERE ID = ? OR ID = ?");
+  $statement->bind_param("iiiii", $ID1, $pos2, $pos2, $ID1, $ID2);
+  $exeResult = $statement->execute();
+  $statement->close();
+  
+  return $exeResult;
+}
+
 ///////////// Private functions /////////////////////
 
 /* Gets the maximum position of the pictures for a listing. Does no error checking.
