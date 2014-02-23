@@ -26,6 +26,7 @@ include_once 'mysqlcon.php';
  * @param type $num_bdrm
  * @param type $district
  * @param type $status
+ * 
  */
 function search_listing($city, $province, $min_price, $max_price, $num_bdrm, $district, $status) {
     
