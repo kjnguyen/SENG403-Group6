@@ -34,8 +34,11 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
    $sql = "UPDATE listing SET price='$price' WHERE ID='$id'";        
    $result = mysqli_query($con, $sql);
  
-    echo "<tr><td> Id: $result[ID]</td></tr>"; 
-    echo "<tr><td>Price: $result[price]</td></tr>"; 
+    $sql = "SELECT * FROM listing WHERE ID='$id'";
+    $result = mysql_query($sql);
+    
+    echo "<br> Id: $result[ID]"; 
+    echo "<br>Price: $result[price]"; 
    
 
    mysqli_close($con);
