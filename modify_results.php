@@ -89,7 +89,7 @@
                                                     $prop_type = $_GET['prop_type'];
                                                     $bldg_type = $_GET['bldg_type'];
                                                     $district = $_GET['district'];
-                                                    $maintenance = $_GET['maintenance_fee'];
+                                                    $maintenance = $_GET['maintenance'];
                                                     $status = $_GET['status'];  
                                                     $address = $_GET['address'];
                                                     $description = $_GET['description'];
