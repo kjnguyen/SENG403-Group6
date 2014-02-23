@@ -103,7 +103,7 @@
                                                             $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type, 
                                                             $district, $maintenance, $status, $address, $description);
                                                     if($results_array){
-                                                    	echo "$results_array<br>";
+                                                    	echo "Error: An $results_array<br>";
                                                     }	
                                                     else{
 	                                                    echo"Modifiction Sent!";
