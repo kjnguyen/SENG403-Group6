@@ -138,7 +138,23 @@ function get_list_of_id() {
     mysqli_close($con);
     return $status;
 }
-//Check permission of user to see if they are allowed to edit
+
+//checks if user has any permissions
+function check_permission_initial(){
+    if (!isset($_SESSION['Authed_UserID']){
+       // echo "<br>Must be logged in to modify listings.<br>"
+        return 0;
+    }
+    //have any permissions
+    if ($_SESSION['Authed_Permission'] == 1 || $_SESSION['Authed_Permission'] == 2 || $_SESSION['Authed_Permission'] == 3){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+//Check permission of user to see if they are allowed to edit selected listing based on its id
 //Returns 0 if permission denied and 1 otherwise
 //input- listing id number, output-1 or 0
 
