@@ -52,7 +52,7 @@
         <p><label>Property Type: </label><input type=\"text\" name=\"prop_type\" value=\"".$_GET['prop_type']."\"/></p> 
         <p><label>Building Type: </label><input type=\"text\" name=\"bldg_type\" value=\"".$_GET['bldg_type']."\"/></p>    
         <p><label>District: </label><input type=\"text\" name=\"district\" value=\"".$_GET['district']."\"/></p>
-        <p><label>Maintenance: </label><input type=\"text\" maintenance=\"city\" value=\"".$_GET['maintenance']."\"/></p> 
+        <p><label>Maintenance: </label><input type=\"text\" name=\"maintenance\" value=\"".$_GET['maintenance']."\"/></p> 
         <p><label>Address: </label><input type=\"text\" name=\"address\" value=\"".$_GET['address']."\"/></p>    
         <p><label>Description: </label><input type=\"text\" name=\"description\" value=\"".$_GET['description']."\"/></p>    
 
