@@ -18,7 +18,7 @@ include_once 'mysqlcon.php';
 //TODO Check what happens if criteria are left blank 
 function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
         $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type,
-        $district, $maintenance, $status, $address, $description) {
+        $district, $maintenance_fee, $status, $address, $description) {
   
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
@@ -73,8 +73,8 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
    $sql = "UPDATE Listing SET district='$district' WHERE ID='$id'";        
    $result = mysqli_query($con, $sql);
    } 
-    if($maintenance){
-   $sql = "UPDATE Listing SET maintenance='$maintenance' WHERE ID='$id'";        
+    if($maintenance_fee){
+   $sql = "UPDATE Listing SET maintenance_fee='$maintenance_fee' WHERE ID='$id'";        
    $result = mysqli_query($con, $sql);
    }
     if($status){
