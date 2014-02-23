@@ -15,7 +15,7 @@
 <form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="font-size: 80%;">
 
 <fieldset>
-    <legend>Modification Criteria:</legend>
+    <legend>Modification Criteria: (Leaving a row blank will keep that item unchanged)</legend>
         
     <p>ID Number:
     <select name="ID">
