@@ -35,7 +35,7 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
    $result = mysqli_query($con, $sql);
  
     $sql = "SELECT * FROM listing WHERE ID='$id'";
-    $result = mysql_query($sql);
+    $result = mysqli_query($sql);
     
     echo "<br> Id: $result[ID]"; 
     echo "<br>Price: $result[price]"; 
