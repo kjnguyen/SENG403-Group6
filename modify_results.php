@@ -89,7 +89,7 @@
                                                     $prop_type = $_GET['prop_type'];
                                                     $bldg_type = $_GET['bldg_type'];
                                                     $district = $_GET['district'];
-                                                    $maintenance_fee = $_GET['maintenance_fee'];
+                                                    $maintenance = $_GET['maintenance_fee'];
                                                     $status = $_GET['status'];  
                                                     $address = $_GET['address'];
                                                     $description = $_GET['description'];
@@ -106,23 +106,50 @@
                                                     	echo "Error: An $results_array<br>";
                                                     }	
                                                     else{
-	                                                    echo"Modifiction Sent!";
+	                                                    echo"Modifictions made";
 	                                                    echo "<br>Values that were updated:";
-	    						    echo "<br>ID = $id";
-	    						    echo "<br>Company ID = $CompID";
-	    						    echo "<br>Price = $price";
-	    						    echo "<br>Square Footage = $sq_ft";
-	    						    echo "<br>Number of Floors = $num_floors";
-	    						    echo "<br>Number of Bedrooms = $num_bdrm";
-	    						    echo "<br>Number of Bathrooms = $num_baths";
-	    						    echo "<br>Year Built = $year_built";
-	    						    echo "<br>Property Type = $prop_type";
-	    						    echo "<br>Building Type = $bldg_type";
-	    						    echo "<br>district = $district";
-	    						    echo "<br>Maintenance Fees = $maintenance_fee";
-	    						    echo "<br>Status = $status";
-	    						    echo "<br>Address = $address";
-	    						    echo "<br>Description = $description";
+	                                                    if($CompID){	
+	    						    	echo "<br>Company ID: $CompID";
+	                                                    }
+	                                                    if($Price){
+	    						    	echo "<br>Price: $price";
+	                                                    }
+	                                                    if($sq_ft){
+	    						    	echo "<br>Square Footage: $sq_ft";
+	                                                    }
+	                                                    if($num_floors){
+	    						    	echo "<br>Number of Floors: $num_floors";
+	                                                    }
+	                                                    if($num_bdrm){
+	    						    	echo "<br>Number of Bedrooms: $num_bdrm";
+	                                                    }
+	                                                    if($num_baths){
+	    							 echo "<br>Number of Bathrooms: $num_baths";
+	                                                    }
+	                                                    if($year_built){
+	    						    	echo "<br>Year Built: $year_built";
+	                                                    }
+	                                                    if($prop_type){
+	    						    	echo "<br>Property Type: $prop_type";
+	                                                    }
+	                                                    if($bldg_type){
+	    						    	echo "<br>Building Type: $bldg_type";
+	                                                    }
+	                                                    if($district){
+	    						    	echo "<br>district: $district";
+	                                                    }
+	                                                    if($maintenance){
+	    						    	echo "<br>Maintenance Fees: $maintenance";
+	                                                    }
+	                                                    if($status){
+	    						    	echo "<br>Status: $status";
+	                                                    }
+	                                                    if($address){
+	    						    	echo "<br>Address: $address";
+	                                                    }
+	                                                    if($description){
+	    						    	echo "<br>Description: $description";
+	                                                    }
                                                     }
     				
                                                 ?>
