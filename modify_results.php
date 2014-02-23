@@ -79,7 +79,7 @@
                                               
                                                 
                                                     $id = $_GET['ID'];
-                                                   // $CompID = $_GET['CompID'];
+                                                    $CompID = $_GET['CompID'];
                                                     $price = $_GET['price'];
                                                     $sq_ft = $_GET['sq_ft'];                         
                                                     $num_floors = $_GET['num_floors'];
@@ -99,7 +99,7 @@
                                                     mysql_select_db("$db")or die("cannot select DB");  */
                                                     
 
-                                                    $results_array = modify_values($id, $price, $sq_ft, $num_floors, 
+                                                    $results_array = modify_values($id,$CompID $price, $sq_ft, $num_floors, 
                                                             $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type, 
                                                             $district, $maintenance, $status, $address, $description);
                                                     if($results_array){
@@ -108,9 +108,9 @@
                                                     else{
 	                                                    echo"Modifictions made";
 	                                                    echo "<br>Values that were updated:";
-	                                                   /* if($CompID){	
-	    						    //	echo "<br>Company ID: $CompID";
-	                                                    }*/
+	                                                    if($CompID){	
+	    						    	echo "<br>Company ID: $CompID";
+	                                                    }
 	                                                    if($Price){
 	    						    	echo "<br>Price: $price";
 	                                                    }
