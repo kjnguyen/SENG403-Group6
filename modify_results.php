@@ -9,7 +9,7 @@
 				<section id="mainContent" class="grid_10" style="position: relative; width: 100%;">
 					<article style="position: relative; width: 100%;">
 						<h2>Modify listing</h2>
-                                               <div id="faded" style="position: relative; width: 100%;"> 
+                                               
                                                
                                                 <?php
                                                  
@@ -63,7 +63,7 @@
     				
                                                 ?>
                                                 
-						</div>
+						
                             		
 					</article>
 				</section>
