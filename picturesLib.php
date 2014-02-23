@@ -152,7 +152,7 @@ function getPictures(mysqli $con, $ListingID)
   
   $list = array();
   
-  $statement = $con->prepare("SELECT ID, fileName, position FROM Pictures WHERE listingID = ?");
+  $statement = $con->prepare("SELECT ID, fileName, position FROM Pictures WHERE listingID = ? ORDER BY position ASC");
   
   if(!$statement) // Ensure statement is created
   {
