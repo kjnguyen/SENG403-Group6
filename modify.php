@@ -12,7 +12,7 @@
 						<h2>Modify listing</h2>
                                                
 						
-<form name="Modify" method="get" action="" id="contacts-form" style="font-size: 80%;">
+<form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="font-size: 80%;">
 
 <fieldset>
     <legend>Modification Criteria:</legend>
