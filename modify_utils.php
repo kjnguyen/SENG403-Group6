@@ -16,7 +16,7 @@ include_once 'mysqlcon.php';
 
 //Modify the selected values of the listing with ID=$id 
 //TODO Check what happens if criteria are left blank 
-function modify_values($id, $price, $sq_ft, $num_floors,
+function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
         $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type,
         $district, $maintenance, $status, $address, $description) {
   
@@ -37,9 +37,9 @@ function modify_values($id, $price, $sq_ft, $num_floors,
    $sql = "UPDATE Listing SET price='$price' WHERE ID='$id'";        
    $result = mysqli_query($con, $sql);
    }
-  //  if($CompID){
-   //$sql = "UPDATE Listing SET CompID='$CompID' WHERE ID='$id'";        
-  // $result = mysqli_query($con, $sql);
+    if($CompID){
+   $sql = "UPDATE Listing SET CompID='$CompID' WHERE ID='$id'";        
+    $result = mysqli_query($con, $sql);
    }
     if($sq_ft){
    $sql = "UPDATE Listing SET sq_ft='$sq_ft' WHERE ID='$id'";        
