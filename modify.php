@@ -1,7 +1,14 @@
 <?php
     include_once "header.php";
 ?>
-
+<?php
+	//define("modify_utils.php", True);
+       // include_once 'modify_utils.php';
+       // $permission = check_permission_initial();
+       // if ($permission != 1){
+        	
+        //}
+?>
 
 	<!-- content -->
 	<section id="content">
