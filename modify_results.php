@@ -99,7 +99,7 @@
                                                     mysql_select_db("$db")or die("cannot select DB");  */
                                                     
 
-                                                    $results_array = modify_values($id,$CompID $price, $sq_ft, $num_floors, 
+                                                    $results_array = modify_values($id,$CompID, $price, $sq_ft, $num_floors, 
                                                             $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type, 
                                                             $district, $maintenance, $status, $address, $description);
                                                     if($results_array){
