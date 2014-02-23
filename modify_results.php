@@ -43,9 +43,22 @@
                                                             $district, $maintenance, $status, $address, $description);
                                                     
                                                     echo"Modifiction Sent!";
-    						    echo "<br>id = $id";
-    						    echo "<br>price = $price";
+                                                    echo "<br>Values that were updated:"
+    						    echo "<br>ID = $id";
+    						    echo "<br>Company ID = $CompID";
+    						    echo "<br>Price = $price";
+    						    echo "<br>Square Footage = $sq_ft";
+    						    echo "<br>Number of Floors = $num_floors";
+    						    echo "<br>Number of Bedrooms = $num_bdrm";
+    						    echo "<br>Number of Bathrooms = $num_baths";
+    						    echo "<br>Year Built = $year_built";
+    						    echo "<br>Property Type = $prop_type";
+    						    echo "<br>Building Type = $bldg_type";
     						    echo "<br>district = $district";
+    						    echo "<br>Maintenance Fees = $maintenance_fee";
+    						    echo "<br>Status = $status";
+    						    echo "<br>Address = $address";
+    						    echo "<br>Description = $description";
     						    
     				
                                                 ?>
