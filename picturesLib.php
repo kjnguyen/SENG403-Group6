@@ -20,7 +20,7 @@ define("IMG_UPLOAD_DIR", "/listing/images/");
 
 /* Saves uploaded pictures to the file system and database. Looks in the $_FILES array.
  * Returns false on error otherwise the list in an array (may be empty) containing associative arrays with
- * id and path. The order order of the array is same as the $_FILES array when iterating though it with
+ * id, path and order value. The order of the array is same as the $_FILES array when iterating though it with
  * a foreach loop. Array may contain false values if that particular file failed to save.
  */
 function addPictures(mysqli $con, $ListingID)
@@ -64,13 +64,24 @@ function addPictures(mysqli $con, $ListingID)
     //&& ($file["size"] < 20000) // Size limit
     && in_array($extension, $allowedExts))
     {
+      // Lock table
+      if($con->query("LOCK TABLES Pictures WRITE;") == false)
+      {
+        trigger_error("Unable to lock Pictures table.", E_NOTICE);
+      }
+      else
+      {
+        $con->commit(); // Commit the lock
+      }
+      
       // Allocate a new id for the picture
       $statement = $con->prepare("INSERT INTO Pictures (listingID) VALUES (?)");
       $statement->bind_param("i", $ListingID);
       
       if(!$statement->execute()) // Ensure statement is executed
       {
-        return false;
+        array_push($filePaths, false);
+        continue;
       }
       
       $imgID = $statement->insert_id;
@@ -81,20 +92,24 @@ function addPictures(mysqli $con, $ListingID)
       
       if(move_uploaded_file($file["tmp_name"], $destination))
       {
-        $statement = $con->prepare("UPDATE Pictures SET fileName = ? WHERE ID = ?");
-        $statement->bind_param("si", $destination, $imgID);
+        $max = getMaxPosition($con, $ListingID);
+        
+        $position = $max == NULL ? 1 : $max + 1;
+        
+        $statement = $con->prepare("UPDATE Pictures SET fileName = ?, position = ? WHERE ID = ?");
+        $statement->bind_param("sii", $destination, $position, $imgID);
         
         if(!$statement->execute()) // Ensure statement is executed
         {
           $statement->close();
           $con->commit(); // Everything is ok with the file, save sql changes
           
-          array_push($filePaths, array("id"=>$imgID, "path"=>(IMG_UPLOAD_DIR . $destination)));
+          array_push($filePaths, array("id"=>$imgID, "path"=>(IMG_UPLOAD_DIR . $destination), "order"=>$position));
         }
         else
         {
           $statement->close();
-          $con->rollback(); // 
+          $con->rollback(); // Something went wrong
           unlink($_SERVER['DOCUMENT_ROOT'] . IMG_UPLOAD_DIR . $destination);
           array_push($filePaths, false);
         }
@@ -105,6 +120,15 @@ function addPictures(mysqli $con, $ListingID)
         array_push($filePaths, false);
       }
       
+      // Unlock table
+      if($con->query("UNLOCK TABLES;") == false)
+      {
+        trigger_error("Unable to unlock Pictures table.", E_NOTICE);
+      }
+      else
+      {
+        $con->commit(); // Commit the unlock
+      }
     }
     else
     {
@@ -117,7 +141,7 @@ function addPictures(mysqli $con, $ListingID)
 
 /* Get a list of paths to the pictures for a listing
  * Returns false on error otherwise the list in an array (may be empty) containing associative
- * arrays with id and path.
+ * arrays with id, path and order value.
  */
 function getPictures(mysqli $con, $ListingID)
 {
@@ -128,7 +152,7 @@ function getPictures(mysqli $con, $ListingID)
   
   $list = array();
   
-  $statement = $con->prepare("SELECT ID, fileName FROM Pictures WHERE listingID = ?");
+  $statement = $con->prepare("SELECT ID, fileName, position FROM Pictures WHERE listingID = ?");
   
   if(!$statement) // Ensure statement is created
   {
@@ -137,11 +161,11 @@ function getPictures(mysqli $con, $ListingID)
   
   $statement->bind_param("i", $ListingID);
   $statement->execute();
-  $statement->bind_result($imgID, $partialPath);
+  $statement->bind_result($imgID, $partialPath, $order);
   
   while($statement->fetch())
   {
-    array_push($list, array("id"=>$imgID, "path"=>(IMG_UPLOAD_DIR . $partialPath)));
+    array_push($list, array("id"=>$imgID, "path"=>(IMG_UPLOAD_DIR . $partialPath), 'order'=>$order));
   }
   
   $statement->close(); // Must be called otherwise the sql connection can't be used
@@ -197,5 +221,29 @@ function removePicture(mysqli $con, $ListingID, $imgID)
   $statement->close();
   
   return true;
+}
+
+///////////// Private functions /////////////////////
+
+/* Gets the maximum position of the pictures for a listing. Does no error checking.
+ * Returns NULL if there is no maximum otherwise returns the maximum.
+ */
+function getMaxPosition(mysqli $con, $listingID)
+{
+  $statement = $con->prepare("SELECT MAX(position) FROM Pictures WHERE listingID = ?");
+  $statement->bind_param("i", $listingID);
+  $statement->execute();
+  $statement->bind_result($max_r);
+  
+  if(!$statement->fetch())
+  {
+    trigger_error("Unable to fetch max.", E_WARNING);
+  }
+  
+  $max = $max_r;
+  
+  $statement->close();
+  
+  return $max;
 }
 ?>
