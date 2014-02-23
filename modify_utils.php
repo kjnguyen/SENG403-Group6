@@ -72,5 +72,19 @@ function modify_list_of_status() {
     return $status;
 }
 
+function get_list_of_id() {
+    $con = getSQLConnection();
+    mysqli_select_db($con, 's403_project');
+    $query = "select distinct ID from Listing";
+    $results = mysqli_query($con, $query);
+    echo mysqli_error($con);
+    $status = array();
+    
+    while ($row = mysqli_fetch_assoc($results)) {
+        $status[] = $row;
+    }
+    mysqli_close($con);
+    return $status;
+}
 
 ?>
