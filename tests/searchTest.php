@@ -23,7 +23,7 @@ class search_utilsTest extends PHPUnit_Framework_TestCase {
     /**
      * 
      *
-     * @covers get_city_id
+     * 
      */
     public function testGet_City_ID1() {
         $this->assertEquals(
@@ -34,7 +34,7 @@ class search_utilsTest extends PHPUnit_Framework_TestCase {
     /**
      * 
      *
-     * @covers get_city_id
+     * 
      */
     public function testGet_City_ID2() {
         $this->assertEquals(
@@ -45,7 +45,7 @@ class search_utilsTest extends PHPUnit_Framework_TestCase {
     /**
      * 
      *
-     * @covers get_city_id
+     * 
      */
     public function testGet_City_ID3() {
         $this->assertEquals(
@@ -56,7 +56,7 @@ class search_utilsTest extends PHPUnit_Framework_TestCase {
     /**
      * 
      *
-     * @covers parse_conditions
+     * 
      */
     public function testParse_Conditions1() {
         $this->assertEquals(
@@ -67,7 +67,7 @@ class search_utilsTest extends PHPUnit_Framework_TestCase {
     /**
      * 
      *
-     * @covers parse_conditions
+     * 
      */
     public function testParse_Conditions2() {
         $this->assertEquals(
