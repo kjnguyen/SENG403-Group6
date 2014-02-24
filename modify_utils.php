@@ -15,7 +15,6 @@ define("mysqlcon.php", True);
 include_once 'mysqlcon.php';
 
 //Modify the selected values of the listing with ID=$id 
-//TODO Check what happens if criteria are left blank 
 function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
         $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type,
         $district, $maintenance_fee, $status, $address, $description) {
