@@ -151,7 +151,7 @@ function check_permission_initial(){
     else{
         return 0;
     }
-}
+}*/
 
 //Check permission of user to see if they are allowed to edit selected listing based on its id
 //Returns 0 if permission denied and 1 otherwise
@@ -188,9 +188,9 @@ function check_permission($id){
            
            if ($_SESSION[''] ==  )
     }*/
-/*    
+   
     mysqli_close($con);
 
-}*/
+}
 
 ?>
