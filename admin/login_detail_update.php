@@ -124,9 +124,7 @@
                             }
                             
                             //Execute mysql
-                            @$query->execute();
-                            //Check execution successfull
-                            if (!$query) {
+                            if (!(@$query->execute())) {
                                 ShowErrMsg("Error: Update login detail failed, this could caused by duplicated email or username.");
                                 @mysqli_close($mysqlconn);
                                 goto EXEFinished;
