@@ -105,8 +105,9 @@
                                 echo '<td class="center ">'.$row['address'].'</td>';
                                 echo '<td class="center ">';
                                 echo '
-                                    <form name="modify.php" method="get" action="modify"">';
+                                    <form name="modify.php" method="post" action="modify"">';
                                 echo '<input type="hidden", name="ID", value="'.$row['ID'].'">';
+                                echo '<input type="hidden", name="CompID", value="'.$company_id.'">';
                                 echo '
                                     <button type="submit" value="modify" class="btn btn-small btn-primary">Edit</button>
 
