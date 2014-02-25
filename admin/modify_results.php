@@ -41,7 +41,7 @@
                                                     $price = $_GET['price'];
                                                     $sq_ft = $_GET['sq_ft'];                         
                                                     $num_floors = $_GET['num_floors'];
-                                                    $num_bdrm = $_GET['num_bdrm'];
+                                                    $num_bdrms = $_GET['num_bdrms'];
                                                     $num_baths = $_GET['num_baths'];
                                                     $year_built = $_GET['year_built'];
                                                     $prop_type = $_GET['prop_type'];
@@ -58,7 +58,7 @@
                                                     
 
                                                     $results_array = modify_values($id,$CompID, $price, $sq_ft, $num_floors, 
-                                                            $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type, 
+                                                            $num_bdrms, $num_baths, $year_built, $prop_type, $bldg_type, 
                                                             $district, $maintenance_fee, $status, $address, $description);
                                                     if($results_array){
                                                     	echo "Error: An $results_array<br>";
@@ -78,8 +78,8 @@
 	                                                    if($num_floors){
 	    						    	echo "<br>Number of Floors: $num_floors";
 	                                                    }
-	                                                    if($num_bdrm){
-	    						    	echo "<br>Number of Bedrooms: $num_bdrm";
+	                                                    if($num_bdrms){
+	    						    	echo "<br>Number of Bedrooms: $num_bdrms";
 	                                                    }
 	                                                    if($num_baths){
 	    							 echo "<br>Number of Bathrooms: $num_baths";
