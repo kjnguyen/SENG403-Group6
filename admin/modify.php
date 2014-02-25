@@ -32,7 +32,7 @@
 						<form class="form-horizontal">
 							<fieldset>
 								<div class="control-group">
-									<label class="control-label" for="focusedInput"></label>
+									<label class="control-label" for="focusedInput">Input 1</label>
 									<div class="controls">
 										<input id="focuesInput" class="input-xlarge focused" type="text"
 										value="Input Value Here"></input>
