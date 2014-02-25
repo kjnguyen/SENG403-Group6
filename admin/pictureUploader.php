@@ -6,15 +6,15 @@ require "../picturesLib.php";
 
 $con = getSQLConnection();
 
-$uploadResult = addPictures($con, $ListingID);
+$uploadResult = addPictures($con, intval($id));
 
 if($uploadResult === false)
 {
-  echo "Error uploading file.";
+  echo "<br />Error uploading file.";
 }
 else if(!empty($uploadResult) && $uploadResult[0] !== false)
 {
-  echo "Picture uploaded successfully.";
+  echo "<br />Picture uploaded successfully.";
 }
 
 ?>

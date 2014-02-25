@@ -29,7 +29,7 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<form name="Modify" method="post" action="modify_results.php" id="contacts-form" style="font-size: 80%;">
+						<form name="Modify" method="post" action="modify_results.php" id="contacts-form" style="font-size: 80%;" enctype="multipart/form-data">
 							<fieldset>
 								<div class="control-group">
 							
@@ -73,8 +73,8 @@
 										        }
 										        ?>
 										    </select></p>
+                                            <?php include_once './pictures.php'; ?>
 									</div>
-                              <?php include_once './pictures.php'; ?>
 									<div class="form-actions">
 									<button class="btn btn-primary" type="submit" value="Modify" class="button">Modify</button>
 								</div>

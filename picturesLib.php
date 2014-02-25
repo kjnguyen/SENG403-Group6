@@ -25,7 +25,7 @@ define("IMG_UPLOAD_DIR", "/listing/images/");
  */
 function addPictures(mysqli $con, $ListingID)
 {
-  if(mysqli_connect_errno($con) || !is_int($ListingID))
+  if(mysqli_connect_errno($con))
   {
     return false;
   }
@@ -53,7 +53,7 @@ function addPictures(mysqli $con, $ListingID)
     
     $allowedExts = array("gif", "jpeg", "jpg", "png", "bmp");
     $temp = explode(".", $file["name"]);
-    $extension = end($temp);
+    $extension = strtolower(end($temp));
     
     if ((($file["type"] == "image/gif")
     || ($file["type"] == "image/jpeg")
@@ -89,8 +89,14 @@ function addPictures(mysqli $con, $ListingID)
       $statement->close();
       
       $destination = $ListingID . "/" . $imgID . "." . $extension;
+      $destinationFull = $_SERVER['DOCUMENT_ROOT'] . IMG_UPLOAD_DIR . $destination;
       
-      if(move_uploaded_file($file["tmp_name"], $destination))
+      if(!is_dir($_SERVER['DOCUMENT_ROOT'] . IMG_UPLOAD_DIR . $ListingID . "/"))
+      {
+        mkdir($_SERVER['DOCUMENT_ROOT'] . IMG_UPLOAD_DIR . $ListingID);
+      }
+      
+      if(move_uploaded_file($file["tmp_name"], $destinationFull))
       {
         $max = getMaxPosition($con, $ListingID);
         
@@ -99,7 +105,7 @@ function addPictures(mysqli $con, $ListingID)
         $statement = $con->prepare("UPDATE Pictures SET fileName = ?, position = ? WHERE ID = ?");
         $statement->bind_param("sii", $destination, $position, $imgID);
         
-        if(!$statement->execute()) // Ensure statement is executed
+        if($statement->execute()) // Ensure statement is executed
         {
           $statement->close();
           $con->commit(); // Everything is ok with the file, save sql changes
@@ -110,7 +116,7 @@ function addPictures(mysqli $con, $ListingID)
         {
           $statement->close();
           $con->rollback(); // Something went wrong
-          unlink($_SERVER['DOCUMENT_ROOT'] . IMG_UPLOAD_DIR . $destination);
+          unlink($destinationFull);
           array_push($filePaths, false);
         }
       }

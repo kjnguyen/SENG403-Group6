@@ -20,8 +20,8 @@ if(!mysqli_errno($con))
 </script>
 
 <div class="control-group">
-  <label class="control-label" for="fileInput">File input</label>
+  <label class="control-label" for="fileInput">Upload Picture</label>
   <div class="controls">
-    <input class="input-file uniform_on" id="fileInput" type="file">
+    <input class="input-file uniform_on" id="fileInput" type="file" name="file">
   </div>
 </div>  
