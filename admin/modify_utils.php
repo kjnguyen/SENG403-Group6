@@ -16,7 +16,7 @@ define("mysqlcon.php", True);
 
 //Modify the selected values of the listing with ID=$id 
 function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
-        $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type,
+        $num_bdrms, $num_baths, $year_built, $prop_type, $bldg_type,
         $district, $maintenance_fee, $status, $address, $description) {
             
     $con = mysqli_connect("mysql.jack-l.com", "seng403", "WeHave4Js", "s403_project");
@@ -56,8 +56,8 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
    $sql = "UPDATE Listing SET num_floors='$num_floors' WHERE ID='$id'";        
    $result = mysqli_query($con, $sql);
    }
-    if($num_bdrm){
-   $sql = "UPDATE Listing SET num_bdrm='$num_bdrm' WHERE ID='$id'";        
+    if($num_bdrms){
+   $sql = "UPDATE Listing SET num_bdrms='$num_bdrms' WHERE ID='$id'";        
    $result = mysqli_query($con, $sql);
    }   
     if($num_baths){
