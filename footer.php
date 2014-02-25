@@ -7,9 +7,10 @@
 					<li><a href="index-6.html">contacts</a></li>		
 				</ul>
 			</nav>
+                    <a href="http://all-free-download.com/free-website-templates/real_estate_template_2245.html">Powered by All-free-download.com (GNU GPL License)</a>
             <p class="copy">-</p>
 		</div>
-            <a href="http://all-free-download.com/free-website-templates/real_estate_template_2245.html">Powered by All-free-download.com (GNU GPL License)</a>
+            
 	</footer>
 	<script type="text/javascript"> Cufon.now(); </script>
 </body>
