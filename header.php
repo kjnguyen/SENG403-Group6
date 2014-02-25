@@ -34,7 +34,7 @@
 	<header>
 		<div class="container_16">
 			<div class="logo">
-				<h1><a href="index.html"><strong>4J</strong> Estate</a></h1>
+				<h1><a href="index.html"><strong>4J</strong> Estates</a></h1>
 			</div>
 			<nav>
 				<ul>
