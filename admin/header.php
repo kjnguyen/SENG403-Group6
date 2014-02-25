@@ -101,6 +101,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li><a href="#">Profile</a></li>
+                        <li><a href="./login_detail_edit.php">Change login detail</a></li>
 						<li class="divider"></li>
 						<li><a href="./logout.php">Logout</a></li>
 					</ul>
