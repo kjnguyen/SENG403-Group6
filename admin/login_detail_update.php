@@ -53,6 +53,11 @@
                                 ShowErrMsg("Error: Invalid user ID.");
                                 goto EXEFinished;
                             }
+                            $resp = preg_match("/[.]/", $_POST['User_ID']);
+                            if ($resp > 0) {
+                                ShowErrMsg("Error: Invalid user ID.");
+                                goto EXEFinished;
+                            }
                             //If user is not admin, username must match to his own
                             if ($_POST['Username'] != $_SESSION['Authed_Username'] && $_SESSION['Authed_Permission'] != 1) {
                                 ShowErrMsg("Error: You do not have permission to modfiy username field.");
@@ -73,7 +78,7 @@
                                     goto EXEFinished;
                                 }
                             }
-                            //Check for matching massword
+                            //Check for matching password
                             if (isset($_POST['Password']) || isset($_POST['Cfm_Password'])) {
                                 if ($_POST['Password'] != $_POST['Cfm_Password']) {
                                     ShowErrMsg("Error: Passwords mismatch!");
@@ -124,9 +129,7 @@
                             }
                             
                             //Execute mysql
-                            @$query->execute();
-                            //Check execution successfull
-                            if (!$query) {
+                            if (!(@$query->execute())) {
                                 ShowErrMsg("Error: Update login detail failed, this could caused by duplicated email or username.");
                                 @mysqli_close($mysqlconn);
                                 goto EXEFinished;
