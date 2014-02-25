@@ -13,35 +13,6 @@
         CheckLogin();
     }
 ?>
-<?php
-    define("add_utils.php", True);
-    include_once 'add_utils.php';
-    
-    if($_POST['process_add_company'] == 'true') {
-        $name = $_POST['name'];
-        $address = $_POST['address'];
-        $description = $_POST['description'];
-        $manager_name = $_POST['manager_name'];
-        $phone_no = $_POST['phone_no'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $username = $_POST['username'];
-        
-//        echo $name.'<br>';
-//        echo $address.'<br>';
-//        echo $description;
-//        echo $manager_name;
-//        echo $phone_no;
-//        echo $email;
-//        echo $password;
-//        echo $username;
-        add_company($name, $address, $description, $manager_name, $phone_no, $email, $password, $username);
-        header("Location: index.php");
-////        die();
-        exit();
-    }
-    
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -163,8 +134,8 @@
                                                 <li><a class="ajax-link" href="index.php"><i class="icon-home"></i><span class="hidden-tablet"> Home</span></a></li>
                                                 <?php if ($_SESSION['Authed_Permission'] == 1) {echo '<li><a class="ajax-link" href="add_company.php"><span class="hidden-tablet"> Add a Company</span></a></li>';}?>
                                                 <?php if ($_SESSION['Authed_Permission'] == 2) {echo '<li><form action="createlisting.php" method="post">
-                                                  <input type="hidden" name="compID" value="'.$_SESSION['Authed_UserID'].'" />
-                                                  <button type="submit" class="ajax-link" value="Submit"><span class="hidden-tablet"> Add a a listing</span></button>
+                                                  <span class="hidden-tablet"><input type="hidden" name="compID" value="'.$_SESSION['Authed_UserID'].'" />
+                                                  <button type="submit" class="ajax-link btn btn-large btn-primary btn-round" value="Submit"> Add a a listing</button></span>
                                                 </form></li>';}?>
 <!--						<li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
 						<li><a class="ajax-link" href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>

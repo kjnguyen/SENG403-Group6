@@ -21,6 +21,23 @@
         $address = $_POST['address'];
         $description = $_POST['description'];
         
+//        echo $compID;
+//        echo $price;
+//        echo $sq_ft;
+//        echo $num_floors;
+//        echo $num_bdrms;
+//        echo $year_built;
+//        echo $prop_type;
+//        echo $bldg_type;
+//        echo $district;
+//        echo $city;
+//        echo $province;
+//        echo $maintenance_fee;
+//        echo $status;
+//        echo $num_baths;
+//        echo $address;
+//        echo $description;
+        
         if ($compID == NULL) {
             echo "Permission denied";
             
@@ -31,7 +48,6 @@
             $prop_type, $bldg_type, $district, $city, $province,
             $maintenance_fee, $status, $num_baths, $address, $description);
             header("Location: index.php");
-    ////        die();
             exit();
         }
     }

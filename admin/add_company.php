@@ -27,7 +27,7 @@
         </div>
 
         <div class="box-content">
-            <form class="form-horizontal" name="add_company" method="post" action="add_company.php">
+            <form class="form-horizontal" name="add_company" method="post" action="process_add_company.php">
                 <fieldset>
                   <div class="control-group">
                     <label class="control-label" for="focusedInput">Company Name</label>
