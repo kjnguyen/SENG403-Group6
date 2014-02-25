@@ -48,7 +48,7 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
 
 <div class="control-group">
   <legend>Edit Pictures</legend>
-  <table class="table table-striped">
+  <table class="table table-striped" width="35%">
   <?php echo "
     <tr>
       <td>";
@@ -61,9 +61,14 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
       </td>
     </tr>';
   ?>
+    <tr>
+      <td colspan="2">
+        <div class="controls">
+          <input class="input-file uniform_on" id="fileInput" type="file" name="file">
+        </div>
+      </td>
+    </tr>
   </table>
-  <div class="controls">
-    <input class="input-file uniform_on" id="fileInput" type="file" name="file">
-  </div>
+  
 </div>
 <input type="hidden" name="token" value="<?php echo $token; ?>" />
