@@ -23,7 +23,22 @@
 					<div class="box-header well" data-original-title>
 						<h2><i class="icon-picture"></i>Blank</h2>
 						<div class="box-icon">
-							<?php echo $_SESSION['Authed_Username']; ?>
+							<fieldset>
+							
+							    <div class="control-group"></div>
+							    <div class="control-group"></div>
+							    <div class="control-group"></div>
+							    <div class="control-group"></div>
+							    <div class="control-group warning"></div>
+							    <div class="control-group error"></div>
+							    <div class="control-group success"></div>
+							    <div class="control-group"></div>
+							    <div class="control-group"></div>
+							    <div class="control-group"></div>
+							    <div class="control-group"></div>
+							    <div class="form-actions"></div>
+							
+							</fieldset>
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
