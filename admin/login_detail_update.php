@@ -49,7 +49,7 @@
                                 goto EXEFinished;
                             }
                             //Check for valid userid
-                            if (!is_numeric($_POST['User_ID'])) {
+                            if (!is_int($_POST['User_ID'])) {
                                 ShowErrMsg("Error: Invalid user ID.");
                                 goto EXEFinished;
                             }
@@ -73,7 +73,7 @@
                                     goto EXEFinished;
                                 }
                             }
-                            //Check for matching massword
+                            //Check for matching password
                             if (isset($_POST['Password']) || isset($_POST['Cfm_Password'])) {
                                 if ($_POST['Password'] != $_POST['Cfm_Password']) {
                                     ShowErrMsg("Error: Passwords mismatch!");
