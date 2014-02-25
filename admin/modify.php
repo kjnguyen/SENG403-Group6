@@ -74,6 +74,7 @@
 										        ?>
 										    </select></p>
 									</div>
+                              <?php include_once './pictures.php'; ?>
 									<div class="form-actions">
 									<button class="btn btn-primary" type="submit" value="Modify" class="button">Modify</button>
 								</div>
