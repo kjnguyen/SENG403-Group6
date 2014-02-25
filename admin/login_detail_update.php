@@ -49,7 +49,12 @@
                                 goto EXEFinished;
                             }
                             //Check for valid userid
-                            if (!is_int($_POST['User_ID'])) {
+                            if (!is_numeric($_POST['User_ID'])) {
+                                ShowErrMsg("Error: Invalid user ID.");
+                                goto EXEFinished;
+                            }
+                            $resp = preg_match("/[^.]/", $_POST['User_ID']);
+                            if ($resp > 0) {
                                 ShowErrMsg("Error: Invalid user ID.");
                                 goto EXEFinished;
                             }
