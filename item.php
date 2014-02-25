@@ -36,11 +36,11 @@ to-do: find a better way to handle this - I only need part of the header-->
 <header>
     <div class="container_16">
         <div class="logo">
-            <h1><a href="index.html"><strong>Real</strong> Estate</a></h1>
+            <h1><a href="index.php"><strong>Real</strong> Estate</a></h1>
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.php">Home</a></li>
             </ul>
         </nav>
 <?php
