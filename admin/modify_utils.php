@@ -132,7 +132,15 @@ function modify_list_of_status() {
 
 // TO FIX: currently sorting results by CompID instead of ID
 function get_list_of_id() {
-    $con = getSQLConnection();
+   // $con = getSQLConnection();
+    $con = mysqli_connect("mysql.jack-l.com", "seng403", "WeHave4Js", "s403_project");
+
+  if($exitOnError && mysqli_connect_errno($con))
+  {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    exit();
+  }
+   
     mysqli_select_db($con, 's403_project');
     $query = "select distinct ID from Listing ORDER BY ID";
     $results = mysqli_query($con, $query);
