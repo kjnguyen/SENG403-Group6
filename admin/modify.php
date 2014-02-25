@@ -22,8 +22,8 @@
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
 						<h2><i class="icon-picture"></i>Blank</h2>
-						<?php echo $_SESSION['Authed_Username']; ?>
 						<div class="box-icon">
+							<?php echo $_SESSION['Authed_Username']; ?>
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
