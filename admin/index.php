@@ -17,20 +17,35 @@
 					</li>
 				</ul>
 			</div>
-
-			<div class="row-fluid sortable">
+                        <div class="row-fluid sortable ui-sortable">		
 				<div class="box span12">
-					<div class="box-header well" data-original-title>
-						<h2><i class="icon-picture"></i>Blank</h2>
+					<div class="box-header well" data-original-title="">
+						<h2><i class="icon-user"></i>Your Listings</h2>
 						<div class="box-icon">
-                                                    
+							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+					<div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid"><div class="row-fluid"><div class="span6"></div><div class="span6"></div></div><table class="table table-striped table-bordered bootstrap-datatable datatable dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
+                                            <thead>
+                                                      <tr role="row">
+                                                          <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 132px;">ID</th>
+                                                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Address: activate to sort column ascending" style="width: 518px;">Address</th>
+                                                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 252px;">Actions</th></tr>
+                                            </thead>   
+						  
+					  <tbody role="alert" aria-live="polite" aria-relevant="all">
                                                   <?php
                                                     define("search_utils.php", True);
                                                     include_once '../search_utils.php';
                                                     
-                                                       $company_id = 21;
+                                                    $company_id = 21;
                                                     
                                                     $user_id= $_SESSION['Authed_UserID'];
+                                                    
+                                                    $company_id = $user_id;
 
                                                     $results_array = search_company_listing($company_id);
                                                     
@@ -39,31 +54,36 @@
                                                     }
                                                     else {
                                                         foreach ($results_array as $row) {
-                                                            echo '<li class="" style="width: auto;">';
-                                                            echo '<a href="item.php?ID='.$row['ID'].'" rel="0">';
-                                                            echo '<img src="images/f_thumb1.png" alt="">';
-                                                            echo 'ID:   '.$row['ID'].'<br>';
-
-                                                            echo 'Address:    '.$row['address'].'<br>';
-
-                                                            echo '</a></li>';
+                                                            echo '<tr class="odd">';
+                                                            
+                                                            echo '<td class=" sorting_1">'.$row['ID'].'</td>';
+                                                            echo '<td class="center ">'.$row['address'].'</td>';
+                                                            echo '<td class="center ">';
+                                                            echo '
+                                                                <form name="modify.php" method="get" action="modify"">';
+                                                            echo '<input type="hidden", name="ID", value="'.$row['ID'].'">';
+                                                            echo '
+                                                                <button type="submit" value="modify" class="btn btn-small btn-primary">Edit</button>
+                                                                
+                                                                <button type="submit" value="delete" class="btn btn-small btn-danger">delete</button>
+                                                                </form>
+                                                                ';
+                                                            echo '</tr>';
+                                                            
                                                         }
                                                     }
     
                                                 ?>
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						
+							
+							</tbody></table>            
 					</div>
 				</div><!--/span-->
 			
-			</div><!--/row-->
+			</div>
 
-    
+                                                  
+
+</div>
 <?php
     include('footer.php');
 ?>
