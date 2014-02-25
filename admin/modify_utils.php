@@ -12,14 +12,22 @@ if(!defined("modify_utils.php"))
  * and open the template in the editor.
  */
 define("mysqlcon.php", True);
-include_once 'mysqlcon.php';
+//include_once 'mysqlcon.php';
 
 //Modify the selected values of the listing with ID=$id 
 function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
         $num_bdrm, $num_baths, $year_built, $prop_type, $bldg_type,
         $district, $maintenance_fee, $status, $address, $description) {
+            
+    $con = mysqli_connect("mysql.jack-l.com", "seng403", "WeHave4Js", "s403_project");
+
+  if($exitOnError && mysqli_connect_errno($con))
+  {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    exit();
+  }
   
-    $con = getSQLConnection();
+   // $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
    
    if(!$id){
