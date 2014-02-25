@@ -10,10 +10,7 @@
 <div>
     <ul class="breadcrumb">
         <li>
-            <a href="#">Home</a> <span class="divider">/</span>
-        </li>
-        <li>
-            <a href="#">Blank</a>
+            <a href="#">Home</a>
         </li>
     </ul>
 </div>
