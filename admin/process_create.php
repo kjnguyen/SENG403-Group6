@@ -26,13 +26,14 @@
             
             die();
         }
-
-        postlisting($compID, $price, $sq_ft, $num_floors,$num_bdrms, $year_built, 
-        $prop_type, $bldg_type, $district, $city, $province,
-        $maintenance_fee, $status, $num_baths, $address, $description);
-        header("Location: index.php");
-////        die();
-        exit();
+        else {
+            postlisting($compID, $price, $sq_ft, $num_floors,$num_bdrms, $year_built, 
+            $prop_type, $bldg_type, $district, $city, $province,
+            $maintenance_fee, $status, $num_baths, $address, $description);
+            header("Location: index.php");
+    ////        die();
+            exit();
+        }
     }
 
 ?>
