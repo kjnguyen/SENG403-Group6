@@ -23,29 +23,23 @@
 					<div class="box-header well" data-original-title>
 						<h2><i class="icon-picture"></i>Blank</h2>
 						<div class="box-icon">
-							<fieldset>
-							
-							    <div class="control-group"></div>
-							    <div class="control-group"></div>
-							    <div class="control-group"></div>
-							    <div class="control-group"></div>
-							    <div class="control-group warning"></div>
-							    <div class="control-group error"></div>
-							    <div class="control-group success"></div>
-							    <div class="control-group"></div>
-							    <div class="control-group"></div>
-							    <div class="control-group"></div>
-							    <div class="control-group"></div>
-							    <div class="form-actions"></div>
-							
-							</fieldset>
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
 						</div>
 					</div>
 					<div class="box-content">
-						
+						<form class="form-horizontal">
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label" for="focusedInput"></label>
+									<div class="controls">
+										<input id="focuesInput" class="input-xlarge focused" type="text"
+										value="Input Value Here"></input>
+									</div>
+								</div>
+							</fieldset>
+						</form>
 					</div>
 				</div><!--/span-->
 			
