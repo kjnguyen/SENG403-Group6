@@ -41,12 +41,6 @@ to-do: find a better way to handle this - I only need part of the header-->
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index-1.html" class="current">Selling</a></li>
-                <li><a href="index-2.html">Buying</a></li>
-                <li><a href="index-3.html">Renting</a></li>
-                <li><a href="index-4.html">Moving</a></li>
-                <li><a href="index-5.html">Finance</a></li>
-                <li><a href="index-6.html">Contacts</a></li>
             </ul>
         </nav>
 <?php
