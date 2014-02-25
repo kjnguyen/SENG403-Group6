@@ -109,7 +109,8 @@
 	    						    	echo "<br>Description: $description";
 	                                                    }
                                                     }
-    				
+                                                    
+                                                    include_once './pictureUploader.php';
                                                 ?>
 					</div>
 				</div><!--/span-->
