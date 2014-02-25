@@ -67,8 +67,7 @@
 
 	</div>
 		<div class="form-actions">
-			<button class="btn btn-primary" type="submit" value="Create">Create</button>
-			<a href="index.php" class="btn"></a>
+			<button class="btn btn-primary" type="submit" value="Create" href="index.php">Create</button>
 		</div>
 
 						
