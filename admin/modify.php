@@ -32,25 +32,7 @@
 						<form class="form-horizontal">
 							<fieldset>
 								<div class="control-group">
-									<label class="control-label" for="focusedInput">Input 1</label>
-									<div class="controls">
-										<input id="focuesInput" class="input-xlarge focused" type="text"
-										value="Input Value Here"></input>
-									</div>
-									<label class="control-label" for="focusedInput">Input 2</label>
-									<div class="controls">
-										<input id="focuesInput" class="input-xlarge focused" type="text"
-										value="Input Value Here"></input>
-									</div>
-									<label class="control-label" for="focusedInput">Input 3</label>
-									<div class="controls">
-										<input id="focuesInput" class="input-xlarge focused" type="text"
-										value="Input Value Here"></input>
-									</div>
-									<label class="control-label" for="focusedInput">Input 4</label>
-									<div class="controls">
-										<input id="focuesInput" class="input-xlarge focused" type="text"
-										value="Input Value Here"></input>
+				
 										 <?php
 											       // echo "
 											      // <p><label>ID number(required): </label><input type=\"text\" name=\"ID\" value=\"".$_GET['ID']."\"/></a></p>
