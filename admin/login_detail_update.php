@@ -53,7 +53,7 @@
                                 ShowErrMsg("Error: Invalid user ID.");
                                 goto EXEFinished;
                             }
-                            $resp = preg_match("/[^.]/", $_POST['User_ID']);
+                            $resp = preg_match("/[.]/", $_POST['User_ID']);
                             if ($resp > 0) {
                                 ShowErrMsg("Error: Invalid user ID.");
                                 goto EXEFinished;
