@@ -39,20 +39,20 @@
 											      // <p><label>Company ID: </label><input type=\"text\" name=\"CompID\" value=\"".$_GET['CompID']."\"/></p>
 										//	$ID = $_POST['ID'];
 											      echo "
-											<p><input type=\"hidden\" name=\"ID\" value=\"".$_GET['ID']."\"/></p>
-											<p><label>Company ID: </label><input type=\"text\" name=\"CompID\" value=\"".$_GET['CompID']."\"/></p>
-											<p><label>Price: </label><input type=\"text\" name=\"price\" value=\"".$_GET['price']."\"/></p>
-											<p><label>Square Feet: </label><input type=\"text\" name=\"sq_ft\" value=\"".$_GET['sq_ft']."\"/></p>
-											<p><label>Number of Floors: </label><input type=\"text\" name=\"num_floors\" value=\"".$_GET['num_floors']."\"/></p>
-											<p><label>Number of Bedrooms: </label><input type=\"text\" name=\"num_bdrms\" value=\"".$_GET['num_bdrms']."\"/></p>
-											<p><label>Number of Bathrooms: </label><input type=\"text\" name=\"num_baths\" value=\"".$_GET['num_baths']."\"/></p>
-											<p><label>Year Built: </label><input type=\"text\" name=\"year_built\" value=\"".$_GET['year_built']."\"/></p>
-											<p><label>Property Type: </label><input type=\"text\" name=\"prop_type\" value=\"".$_GET['prop_type']."\"/></p>
-											<p><label>Building Type: </label><input type=\"text\" name=\"bldg_type\" value=\"".$_GET['bldg_type']."\"/></p>
-											<p><label>District: </label><input type=\"text\" name=\"district\" value=\"".$_GET['district']."\"/></p>
-											<p><label>Maintenance: </label><input type=\"text\" name=\"maintenance_fee\" value=\"".$_GET['maintenance_fee']."\"/></p>
-											<p><label>Address: </label><input type=\"text\" name=\"address\" value=\"".$_GET['address']."\"/></p>
-											<p><label>Description: </label><input type=\"text\" name=\"description\" value=\"".$_GET['description']."\"/></p>
+											<p><input type=\"hidden\" name=\"ID\" value=\"".$_POST['ID']."\"/></p>
+											<p><label>Company ID: </label><input type=\"text\" name=\"CompID\" value=\"".$_POST['CompID']."\"/></p>
+											<p><label>Price: </label><input type=\"text\" name=\"price\" value=\"".$_POST['price']."\"/></p>
+											<p><label>Square Feet: </label><input type=\"text\" name=\"sq_ft\" value=\"".$_POST['sq_ft']."\"/></p>
+											<p><label>Number of Floors: </label><input type=\"text\" name=\"num_floors\" value=\"".$_POST['num_floors']."\"/></p>
+											<p><label>Number of Bedrooms: </label><input type=\"text\" name=\"num_bdrms\" value=\"".$_POST['num_bdrms']."\"/></p>
+											<p><label>Number of Bathrooms: </label><input type=\"text\" name=\"num_baths\" value=\"".$_POST['num_baths']."\"/></p>
+											<p><label>Year Built: </label><input type=\"text\" name=\"year_built\" value=\"".$_POST['year_built']."\"/></p>
+											<p><label>Property Type: </label><input type=\"text\" name=\"prop_type\" value=\"".$_POST['prop_type']."\"/></p>
+											<p><label>Building Type: </label><input type=\"text\" name=\"bldg_type\" value=\"".$_POST['bldg_type']."\"/></p>
+											<p><label>District: </label><input type=\"text\" name=\"district\" value=\"".$_POST['district']."\"/></p>
+											<p><label>Maintenance: </label><input type=\"text\" name=\"maintenance_fee\" value=\"".$_POST['maintenance_fee']."\"/></p>
+											<p><label>Address: </label><input type=\"text\" name=\"address\" value=\"".$_POST['address']."\"/></p>
+											<p><label>Description: </label><input type=\"text\" name=\"description\" value=\"".$_POST['description']."\"/></p>
 											"
 										 ?>
 										  <p><label>Status: </label>
