@@ -63,6 +63,7 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
   ?>
     <tr>
       <td colspan="2">
+        Upload New:
         <div class="controls">
           <input class="input-file uniform_on" id="fileInput" type="file" name="file">
         </div>
