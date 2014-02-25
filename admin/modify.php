@@ -6,7 +6,10 @@
     //---------------------------------------------------
 ?>
 
-			<?php $permission = check_permission($_GET['ID']);
+			<?php 
+				define("modify_utils.php", True);
+				include_once 'modify_utils.php';
+				$permission = check_permission($_GET['ID']);
 				if ($permission != 1){
 					header('Location: http://www.s403.jack-l.com/admin/bad_permission.php');
 				}
