@@ -181,7 +181,14 @@ function check_permission_initial(){
 //input- listing id number, output-1 or 0
 
 function check_permission($id){
-    $con = getSQLConnection();
+   // $con = getSQLConnection();
+   $con = mysqli_connect("mysql.jack-l.com", "seng403", "WeHave4Js", "s403_project");
+
+  if($exitOnError && mysqli_connect_errno($con))
+  {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    exit();
+  }
     mysqli_select_db($con, 's403_project');
     if (!isset($_SESSION['Authed_UserID'])){
        // echo "<br>Must be logged in to modify listings.<br>"
