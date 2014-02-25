@@ -29,7 +29,7 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<form class="form-horizontal">
+						<form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="font-size: 80%;">
 							<fieldset>
 								<div class="control-group">
 							
@@ -58,7 +58,7 @@
 										  
 									</div>
 									<div class="form-actions">
-										<button class="btn btn-primary" type="submit">Modify</button>
+									<button type="submit" value="Modify" class="button">Modify</button>
 								</div>
 							</fieldset>
 						</form>
