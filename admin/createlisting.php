@@ -29,27 +29,27 @@
 					<div class="box-content">
 						<div class="control-group">
 						
-	<label class="control-label" for"tyeahead">Price</label>
+<label class="control-label" for"tyeahead">Price</label>
 	<div class="controls">
-		<input id="price" name="price" class="input-xlarge focused" type="text"</input>
+		<input id="price" name="price" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
 	<label class="control-label" for"tyeahead">Square Feet</label>
 	<div class="controls">
-		<input id="square_feet" name="sq_ft" class="input-xlarge focused" type="text"</input>
+		<input id="square_feet" name="sq_ft" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
 	<label class="control-label" for"tyeahead">Number of Floors</label>
 	<div class="controls">
-		<input id="num_floors" name="num_floors" class="input-xlarge focused" type="text"</input>
+		<input id="num_floors" name="num_floors" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
 	<label class="control-label" for"tyeahead">Number of Bedrooms</label>
 	<div class="controls">
-		<input id="num_bdrms" name="num_bdrms" class="input-xlarge focused" type="text"</input>
+		<input id="num_bdrms" name="num_bdrms" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
