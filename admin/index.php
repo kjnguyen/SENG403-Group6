@@ -23,6 +23,34 @@
 					<div class="box-header well" data-original-title>
 						<h2><i class="icon-picture"></i>Blank</h2>
 						<div class="box-icon">
+                                                    
+                                                  <?php
+                                                    define("search_utils.php", True);
+                                                    include_once '../search_utils.php';
+                                                    
+                                                       $company_id = 21;
+                                                    
+                                                    $user_id= $_SESSION['Authed_UserID'];
+
+                                                    $results_array = search_company_listing($company_id);
+                                                    
+                                                    if (empty($results_array)) {
+                                                        echo "<h1>No Listing</h1>";
+                                                    }
+                                                    else {
+                                                        foreach ($results_array as $row) {
+                                                            echo '<li class="" style="width: auto;">';
+                                                            echo '<a href="item.php?ID='.$row['ID'].'" rel="0">';
+                                                            echo '<img src="images/f_thumb1.png" alt="">';
+                                                            echo 'ID:   '.$row['ID'].'<br>';
+
+                                                            echo 'Address:    '.$row['address'].'<br>';
+
+                                                            echo '</a></li>';
+                                                        }
+                                                    }
+    
+                                                ?>
 							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>

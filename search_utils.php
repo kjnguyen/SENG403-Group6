@@ -55,6 +55,29 @@ function search_listing($city, $province, $min_price, $max_price, $num_bdrm, $di
     return $listing_info;
 }
 
+function search_company_listing($company_id) {
+    
+    $con = getSQLConnection();
+    mysqli_select_db($con, 's403_project');
+    
+
+    $query = "select ID, address from Listing where CompID = $company_id";
+//    echo $query;
+    $results = mysqli_query($con, $query);
+    echo mysqli_error($con);
+    $listing_info = array();
+    
+    while ($row = mysqli_fetch_assoc($results)) {
+        $listing_info[] = $row;
+    }    
+    mysqli_close($con);
+    return $listing_info;
+}
+
+function get_company_id($user_id, $type_id) {
+    
+}
+
 /**
  * 
  * @param type $ID
