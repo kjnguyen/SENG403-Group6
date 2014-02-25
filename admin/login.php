@@ -7,7 +7,9 @@
 			<div class="row-fluid">
 				<div class="span12 center login-header">
 					<h2>Welcome!</h2>
+                                        <a href="../index.php">Back to 4J Estate Marketplace</a>
 				</div><!--/span-->
+                                
 			</div><!--/row-->
 			
 			<div class="row-fluid">
