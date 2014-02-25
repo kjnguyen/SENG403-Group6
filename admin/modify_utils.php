@@ -203,7 +203,7 @@ function check_permission($id){
            $query = "SELECT CompID from Listing WHERE ID='$id'";
            $result = mysqli_query($con, $query);
            if ($row = mysqli_fetch_assoc($result)) {
-                $number = $row;
+                $number = $row['CompID'];
             }
             echo " !!!!!!!!!!    $number";
            if ($_SESSION['Authed_UserID'] == $number ){
