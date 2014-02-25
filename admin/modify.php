@@ -37,6 +37,8 @@
 										<input id="focuesInput" class="input-xlarge focused" type="text"
 										value="Input Value Here"></input>
 									</div>
+									<div class="form-actions">
+										<button class="btn btn-primary" type="submit">Modify Listing</button>
 								</div>
 							</fieldset>
 						</form>
