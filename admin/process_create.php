@@ -21,14 +21,12 @@
         $address = $_POST['address'];
         $description = $_POST['description'];
         
-//        echo $name.'<br>';
-//        echo $address.'<br>';
-//        echo $description;
-//        echo $manager_name;
-//        echo $phone_no;
-//        echo $email;
-//        echo $password;
-//        echo $username;
+        if ($compID == NULL) {
+            echo "Permission denied";
+            
+            die();
+        }
+
         postlisting($compID, $price, $sq_ft, $num_floors,$num_bdrms, $year_built, 
         $prop_type, $bldg_type, $district, $city, $province,
         $maintenance_fee, $status, $num_baths, $address, $description);
