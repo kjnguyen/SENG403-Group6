@@ -114,16 +114,16 @@
 </div>
 
 <?php include_once './pictures.php'; ?>
-									</div>
-									<div class="form-actions">
-									<button class="btn btn-primary" type="submit" value="Create" class="button">Create</button>
-								</div>
+	</div>
+		<div class="form-actions">
+			<button class="btn btn-primary" type="submit" value="Create" class="button">Create</button>
+		</div>
 
 						
-					</div>
-				</div><!--/span-->
+		</div>
+	</div><!--/span-->
 			
-			</div><!--/row-->
+</div><!--/row-->
 
 
 
