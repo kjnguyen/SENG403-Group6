@@ -64,8 +64,8 @@
 											<p><label>District: </label><input type=\"text\" name=\"district\" value=\"".$item['district']."\"/></p>
 											<p><label>Maintenance: </label><input type=\"text\" name=\"maintenance_fee\" value=\"".$item['maintenance_fee']."\"/></p>
 											<p><label>Address: </label><input type=\"text\" name=\"address\" value=\"".$item['address']."\"/></p>
-											<p><label>Description: </label><input type=\"textarea\" name=\"description\" value=\"".$item['description']."\"/></p>
-											"
+											<p><label>Description: </label><textarea type=\"textarea\" name=\"description\" rows=\"3\" style=\"width: 500px; height: 197px;\">".$item['description']."</textarea></p>
+											";
 										 ?>
 										  <p><label>Status: </label>
 										    <select name="status">

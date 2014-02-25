@@ -46,11 +46,7 @@ if ($_SESSION['Authed_Permission'] != 1) {
                       <input class="input-xlarge focused" id="focusedInput" type="text" name="address" value="">
                     </div>
                   </div>
-                    <div class="control-group">
-                      <label class="control-label" for="textarea2">Company Description</label>
-                      <div class="controls">
-                            <textarea class="cleditor" id="textarea2" name="description" rows="3" style="display: none; width: 500px; height: 197px;"></textarea>
-                    </div>
+                    
                     <div class="control-group">
                     <label class="control-label" for="focusedInput">Manager</label>
                     <div class="controls">
@@ -81,7 +77,12 @@ if ($_SESSION['Authed_Permission'] != 1) {
                       <input class="input-xlarge focused" id="focusedInput" type="password" name="password" value="">
                     </div>
                   </div>
-
+                    <div class="control-group">
+                      <label class="control-label" for="textarea2">Company Description</label>
+                      <div class="controls">
+                            <textarea class="cleditor" id="textarea2" name="description" rows="3" style="display: none; width: 500px; height: 197px;"></textarea>
+                    </div>
+                    </div>
                       <input type="hidden" name="process_add_company" value='true'>
 
                   <div class="form-actions">
