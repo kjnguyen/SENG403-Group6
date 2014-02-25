@@ -36,21 +36,21 @@
                                                     include_once 'modify_utils.php';
                                               
                                                 
-                                                    $id = $_GET['ID'];
-                                                    $CompID = $_GET['CompID'];
-                                                    $price = $_GET['price'];
-                                                    $sq_ft = $_GET['sq_ft'];                         
-                                                    $num_floors = $_GET['num_floors'];
-                                                    $num_bdrms = $_GET['num_bdrms'];
-                                                    $num_baths = $_GET['num_baths'];
-                                                    $year_built = $_GET['year_built'];
-                                                    $prop_type = $_GET['prop_type'];
-                                                    $bldg_type = $_GET['bldg_type'];
-                                                    $district = $_GET['district'];
-                                                    $maintenance_fee = $_GET['maintenance_fee'];
-                                                    $status = $_GET['status'];  
-                                                    $address = $_GET['address'];
-                                                    $description = $_GET['description'];
+                                                    $id = $_POST['ID'];
+                                                    $CompID = $_POST['CompID'];
+                                                    $price = $_POST['price'];
+                                                    $sq_ft = $_POST['sq_ft'];                         
+                                                    $num_floors = $_POST['num_floors'];
+                                                    $num_bdrms = $_POST['num_bdrms'];
+                                                    $num_baths = $_POST['num_baths'];
+                                                    $year_built = $_POST['year_built'];
+                                                    $prop_type = $_POST['prop_type'];
+                                                    $bldg_type = $_POST['bldg_type'];
+                                                    $district = $_POST['district'];
+                                                    $maintenance_fee = $_POST['maintenance_fee'];
+                                                    $status = $_POST['status'];  
+                                                    $address = $_POST['address'];
+                                                    $description = $_POST['description'];
                                                      
                                                     
                                                   /*  mysql_connect("$host","$user", "$pass")or die("cannot connect");  
