@@ -5,6 +5,12 @@
     //Do not output anything before this line (Do not use echo or html code)
     //---------------------------------------------------
 ?>
+<?php
+if ($_POST['compID'] == NULL) {
+    echo "permission denied";
+    die();
+}
+?>
 			<div>
 				<ul class="breadcrumb">
 					<li>

@@ -5,7 +5,12 @@
     //Do not output anything before this line (Do not use echo or html code)
     //---------------------------------------------------
 ?>
-
+<?php
+if ($_SESSION['Authed_Permission'] != 1) {
+    echo "permission denied";
+    die();
+}
+?>
 
 
 <div>
