@@ -20,8 +20,9 @@ define("IMG_UPLOAD_DIR", "/listing/images/");
 
 /* Saves uploaded pictures to the file system and database. Looks in the $_FILES array.
  * Returns false on error otherwise the list in an array (may be empty) containing associative arrays with
- * id, path and order value. The order of the array is same as the $_FILES array when iterating though it with
- * a foreach loop. Array may contain false values if that particular file failed to save.
+ * id, original name (oname), path and order value. The order of the array is same as the $_FILES array when
+ * iterating though it with a foreach loop. Array may contain false values if that particular file failed to save.
+ * WARNING: oname is not escaped.
  */
 function addPictures(mysqli $con, $ListingID)
 {
@@ -75,8 +76,8 @@ function addPictures(mysqli $con, $ListingID)
       }
       
       // Allocate a new id for the picture
-      $statement = $con->prepare("INSERT INTO Pictures (listingID) VALUES (?)");
-      $statement->bind_param("i", $ListingID);
+      $statement = $con->prepare("INSERT INTO Pictures (listingID, originalName) VALUES (?, ?)");
+      $statement->bind_param("is", $ListingID, $file["name"]);
       
       if(!$statement->execute()) // Ensure statement is executed
       {
@@ -110,7 +111,7 @@ function addPictures(mysqli $con, $ListingID)
           $statement->close();
           $con->commit(); // Everything is ok with the file, save sql changes
           
-          array_push($filePaths, array("id"=>$imgID, "path"=>(IMG_UPLOAD_DIR . $destination), "order"=>$position));
+          array_push($filePaths, array("id"=>$imgID, "oname"=>$file["name"] "path"=>(IMG_UPLOAD_DIR . $destination), "order"=>$position));
         }
         else
         {
@@ -147,7 +148,8 @@ function addPictures(mysqli $con, $ListingID)
 
 /* Get a list of paths to the pictures for a listing
  * Returns false on error otherwise the list in an array (may be empty) containing associative
- * arrays with id, path and order value.
+ * arrays with id, original name (oname), path and order value.
+ * WARNING: oname is not escaped.
  */
 function getPictures(mysqli $con, $ListingID)
 {
@@ -158,7 +160,7 @@ function getPictures(mysqli $con, $ListingID)
   
   $list = array();
   
-  $statement = $con->prepare("SELECT ID, fileName, position FROM Pictures WHERE listingID = ? ORDER BY position ASC");
+  $statement = $con->prepare("SELECT ID, originalName, fileName, position FROM Pictures WHERE listingID = ? ORDER BY position ASC");
   
   if(!$statement) // Ensure statement is created
   {
@@ -167,11 +169,11 @@ function getPictures(mysqli $con, $ListingID)
   
   $statement->bind_param("i", $ListingID);
   $statement->execute();
-  $statement->bind_result($imgID, $partialPath, $order);
+  $statement->bind_result($imgID, $oname, $partialPath, $order);
   
   while($statement->fetch())
   {
-    array_push($list, array("id"=>$imgID, "path"=>(IMG_UPLOAD_DIR . $partialPath), 'order'=>$order));
+    array_push($list, array("id"=>$imgID, "oname"=>$oname, "path"=>(IMG_UPLOAD_DIR . $partialPath), 'order'=>$order));
   }
   
   $statement->close(); // Must be called otherwise the sql connection can't be used
