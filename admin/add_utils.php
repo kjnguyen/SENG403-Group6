@@ -13,12 +13,12 @@ if(!defined("add_utils.php"))
 define("mysqlcon.php", True);
 include_once '../mysqlcon.php';
 
-function add_company($name, $address, $description, $manager_name, $phone_no, $email, $password, $username) {
+function add_company($name, $address, $description, $manager_name, $phone_no, $email, $raw_password, $username) {
     
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
     
-
+    $password = hash('sha512', $raw_password);
     $user_statement = "insert into User (email, password, permission, username) values ('$email', '$password', 2, '$username')";
     mysqli_query($con, $user_statement);
     echo mysqli_error($con);
