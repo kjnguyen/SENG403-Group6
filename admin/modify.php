@@ -32,7 +32,7 @@
 						<form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="font-size: 80%;">
 							<fieldset>
 								<div class="control-group">
-							    <p>Listing ID:
+							    <p><label>Listing ID: </label>
 								    <select name="ID">
 								        <?php
 								        define("modify_utils.php", True);
@@ -71,7 +71,7 @@
 											<p><label>Description: </label><input type=\"text\" name=\"description\" value=\"".$_GET['description']."\"/></p>
 											"
 										 ?>
-										  <p>Status:
+										  <p><label>Status: </label>
 										    <select name="status">
 										        <?php
 										        define("modify_utils.php", True);
