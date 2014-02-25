@@ -19,7 +19,7 @@
                                                 if ($_SESSION['Authed_Error'] == -1) {
                                                     echo 'Internal server error. Please try again!';
                                                 } else if ($_SESSION['Authed_Error'] == 0) {
-                                                    echo 'Successfully logged out. Please try again!';
+                                                    echo 'Successfully logged out.';
                                                 } else if ($_SESSION['Authed_Error'] == 1) {
                                                     echo 'Invalid login request. Please try again!';
                                                 } else if ($_SESSION['Authed_Error'] == 2) {
