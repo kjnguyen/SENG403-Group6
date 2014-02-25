@@ -47,6 +47,7 @@
         unset($_SESSION['Authed_Email']);
         unset($_SESSION['Authed_Permission']);
         unset($_SESSION['Authed_Exipre']);
+        $_SESSION['Authed_Error'] = 0;
         header("location:./login.php");
     }
 ?>
