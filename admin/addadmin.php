@@ -1,4 +1,11 @@
 <?php
+    /*
+    * This file was written by Jack L (http://jack-l.com)
+    * Please do not change without my permission!
+    * You may use any part of the follow code on your other projects or programs.
+    * Please send me Email if you have any questions related to this page.
+    */
+
     //Include mysql connection file
     //This file should be please in the admin folder
     include_once '../mysqlcon.php';
