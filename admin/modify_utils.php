@@ -212,6 +212,9 @@ function check_permission($id){
                return 0;
            }
     }
+    else{
+        return 0;
+    }
         //employee status -  if listing belogns to the employee permission allowed
         
         //TODO Currently unsure what to check compare for permissions
