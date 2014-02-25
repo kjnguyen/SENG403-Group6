@@ -78,6 +78,20 @@ function get_company_id($user_id, $type_id) {
     
 }
 
+function get_all_companies() {
+    $con = getSQLConnection();
+    mysqli_select_db($con, 's403_project');
+    $query = "select ID, name, manager_name, phone_no from Company";
+        $results = mysqli_query($con, $query);
+    echo mysqli_error($con);
+    $companies = array();
+    
+    while ($row = mysqli_fetch_assoc($results)) {
+        $companies[] = $row;
+    }    
+    mysqli_close($con);
+    return $companies;
+}
 /**
  * 
  * @param type $ID
