@@ -28,10 +28,13 @@
                     $user_id= $_SESSION['Authed_UserID'];
                     $type_id = $_SESSION['Authed_Permission'];
                     // 1-admin, 2-company, 3-employee
+                    
 
+                    
                     echo '<h2><i class="icon-user"></i>';
                      if ($type_id == 1) {
                          echo 'Companies';
+                         echo '<p><a href="add_company.php"> <span class="green">Add a Company <i class="icon-arrow-right"></i></span></a></p>';
                      }
                      else if ($type_id == 2) {
                     $company_id = $user_id;
@@ -40,9 +43,12 @@
                      else if ($type_id == 3) {
                          echo "Employee page under construction";
                      }
+   
                     echo '</h2>
 
-                </div>
+                </div>';
+                                        
+                    echo '
                 <div class="box-content">
                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper" role="grid"><div class="row-fluid"><div class="span6"></div><div class="span6"></div></div><table class="table table-striped table-bordered bootstrap-datatable datatable dataTable" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
                 <thead>
