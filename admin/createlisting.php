@@ -28,48 +28,97 @@
 					</div>
 					<div class="box-content">
 						<div class="control-group">
-	<?php				
-	<p><input type=\"hidden\" name=\"ID\" value=\"".$_GET['ID']."\"/></p>
-											<p><label>Company ID: </label><input type=\"text\" name=\"CompID\" value=\"".$_GET['CompID']."\"/></p>
-											<p><label>Price: </label><input type=\"text\" name=\"price\" value=\"".$_GET['price']."\"/></p>
-											<p><label>Square Feet: </label><input type=\"text\" name=\"sq_ft\" value=\"".$_GET['sq_ft']."\"/></p>
-											<p><label>Number of Floors: </label><input type=\"text\" name=\"num_floors\" value=\"".$_GET['num_floors']."\"/></p>
-											<p><label>Number of Bedrooms: </label><input type=\"text\" name=\"num_bdrms\" value=\"".$_GET['num_bdrms']."\"/></p>
-											<p><label>Number of Bathrooms: </label><input type=\"text\" name=\"num_baths\" value=\"".$_GET['num_baths']."\"/></p>
-											<p><label>Year Built: </label><input type=\"text\" name=\"year_built\" value=\"".$_GET['year_built']."\"/></p>
-											<p><label>Property Type: </label><input type=\"text\" name=\"prop_type\" value=\"".$_GET['prop_type']."\"/></p>
-											<p><label>Building Type: </label><input type=\"text\" name=\"bldg_type\" value=\"".$_GET['bldg_type']."\"/></p>
-											<p><label>District: </label><input type=\"text\" name=\"district\" value=\"".$_GET['district']."\"/></p>
-											<p><label>Maintenance: </label><input type=\"text\" name=\"maintenance_fee\" value=\"".$_GET['maintenance_fee']."\"/></p>
-											<p><label>Address: </label><input type=\"text\" name=\"address\" value=\"".$_GET['address']."\"/></p>
-											<p><label>Description: </label><input type=\"text\" name=\"description\" value=\"".$_GET['description']."\"/></p>
-											"
-?>
-<p><label>Status: </label>
-										    <select name="status">
-										        <?php
-										        define("modify_utils.php", True);
-										        include_once 'modify_utils.php';
-										        $status = modify_list_of_status();
-										        if(!empty($status)) {
-										            $selected = $_GET['status'];
-										            foreach ($status as $s) {
-										                echo "<option value=\"".$s['status']."\"";
-										                if ($s['status'] == $selected) {
-										                    echo " selected=\"selected\"";
-										                }
-										                echo ">".$s['status']."</option>";
-										            }
-										        }
-										        ?>
-										    </select></p>
-							<?php include_once './pictures.php'; ?>
+						
+	<label class="control-label" for"tyeahead">Price</label>
+	<div class="controls">
+		<input id="price" name="price" class="input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">Square Feet</label>
+	<div class="controls">
+		<input id="square_feet" name="sq_ft" class="input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">Number of Floors</label>
+	<div class="controls">
+		<input id="num_floors" name="num_floors" class="input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">Number of Bedrooms</label>
+	<div class="controls">
+		<input id="num_bdrms" name="num_bdrms" class="input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">Year Built</label>
+	<div class="controls">
+		<input id="year_built" name="year_built" input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">Property Type</label>
+	<div class="controls">
+		<input id="prop_type" name="prop_type" input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">Building Type</label>
+	<div class="controls">
+		<input id="Bldg_Type" name="bldg_type" input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">District</label>
+	<div class="controls">
+		<input id="district" name="district" input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">City</label>
+	<div class="controls">
+		<input id="city" name="city" input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">Maintenance Fee</label>
+	<div class="controls">
+		<input id="maintenance_fee" name="maintenance_fee" input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">Status</label>
+	<div class="controls">
+		<input id="status" name="status" input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">Number of Bathrooms</label>
+	<div class="controls">
+		<input id="num_baths" name="num_baths" input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">Address</label>
+	<div class="controls">
+		<input id="address" name="address" input-xlarge focused" type="text"</input>
+	</div>
+</div>
+<div class="control-group">
+	<label class="control-label" for"tyeahead">Description</label>
+	<div class="controls">
+		<input id="description" name="description" input-xlarge focused" type="text"</input>
+	</div>
+</div>
+
+<?php include_once './pictures.php'; ?>
 									</div>
 									<div class="form-actions">
 									<button class="btn btn-primary" type="submit" value="Modify" class="button">Modify</button>
 								</div>
-							</fieldset>
-						</form>
+
 						
 					</div>
 				</div><!--/span-->
