@@ -39,10 +39,10 @@
 											      // <p><label>Company ID: </label><input type=\"text\" name=\"CompID\" value=\"".$_GET['CompID']."\"/></p>
 										//	$ID = $_POST['ID'];
 											      echo "
-											<p><input type=\"hidden\" name=\"ID\" value=\"".$_POST['ID']."\"/></p>
-											<p><label>Company ID: </label><input type=\"text\" name=\"CompID\" value=\"".$_POST['CompID']."\"/></p>
-											<p><label>Price: </label><input type=\"text\" name=\"price\" value=\"".$_POST['price']."\"/></p>
-											<p><label>Square Feet: </label><input type=\"text\" name=\"sq_ft\" value=\"".$_POST['sq_ft']."\"/></p>
+											<p><input type=\"hidden\" name=\"ID\" value=\"".$_GET['ID']."\"/></p>
+											<p><label>Company ID: </label><input type=\"text\" name=\"CompID\" value=\"".$_GET['CompID']."\"/></p>
+											<p><label>Price: </label><input type=\"text\" name=\"price\" value=\"".$_GET['price']."\"/></p>
+											<p><label>Square Feet: </label><input type=\"text\" name=\"sq_ft\" value=\"".$_GET['sq_ft']."\"/></p>
 											<p><label>Number of Floors: </label><input type=\"text\" name=\"num_floors\" value=\"".$_GET['num_floors']."\"/></p>
 											<p><label>Number of Bedrooms: </label><input type=\"text\" name=\"num_bdrms\" value=\"".$_GET['num_bdrms']."\"/></p>
 											<p><label>Number of Bathrooms: </label><input type=\"text\" name=\"num_baths\" value=\"".$_GET['num_baths']."\"/></p>
