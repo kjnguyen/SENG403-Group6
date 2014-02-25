@@ -205,7 +205,6 @@ function check_permission($id){
            if ($row = mysqli_fetch_assoc($result)) {
                 $number = $row['CompID'];
             }
-            echo " !!!!!!!!!!    $number";
            if ($_SESSION['Authed_UserID'] == $number ){
                return 1;
            }
