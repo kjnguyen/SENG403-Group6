@@ -37,6 +37,21 @@
 										<input id="focuesInput" class="input-xlarge focused" type="text"
 										value="Input Value Here"></input>
 									</div>
+									<label class="control-label" for="focusedInput">Input 2</label>
+									<div class="controls">
+										<input id="focuesInput" class="input-xlarge focused" type="text"
+										value="Input Value Here"></input>
+									</div>
+									<label class="control-label" for="focusedInput">Input 3</label>
+									<div class="controls">
+										<input id="focuesInput" class="input-xlarge focused" type="text"
+										value="Input Value Here"></input>
+									</div>
+									<label class="control-label" for="focusedInput">Input 4</label>
+									<div class="controls">
+										<input id="focuesInput" class="input-xlarge focused" type="text"
+										value="Input Value Here"></input>
+									</div>
 									<div class="form-actions">
 										<button class="btn btn-primary" type="submit">Modify</button>
 								</div>
