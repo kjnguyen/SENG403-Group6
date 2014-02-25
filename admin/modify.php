@@ -10,9 +10,9 @@
 				define("modify_utils.php", True);
 				include_once 'modify_utils.php';
 				$permission = check_permission($_GET['ID']);
-				//if ($permission != 1){
-				//	printf("<script>location.href='http://www.s403.jack-l.com/admin/bad_permission.php'</script>");
-				//}
+				if ($permission != 1){
+					printf("<script>location.href='http://www.s403.jack-l.com/admin/bad_permission.php'</script>");
+				}
 			?>
 			<div>
 				<ul class="breadcrumb">
