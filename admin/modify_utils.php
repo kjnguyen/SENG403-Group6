@@ -202,8 +202,8 @@ function check_permission($id){
     if ($_SESSION['Authed_Permission'] == 2 ){
            $query = "SELECT CompID from Listing WHERE ID='$id'";
            $result = mysqli_query($con, $query);
-           $row = mysql_result($result, 0);
-           echo " !!!!!!!!!!    $row";
+            $row mysqli_fetch_assoc ( mysqli_result $result );
+            echo " !!!!!!!!!!    $row";
            if ($_SESSION['Authed_UserID'] == $row ){
                return 1;
            }
