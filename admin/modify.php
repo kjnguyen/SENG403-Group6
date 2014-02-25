@@ -32,30 +32,14 @@
 						<form name="Modify" method="get" action="modify_results.php" id="contacts-form" style="font-size: 80%;">
 							<fieldset>
 								<div class="control-group">
-							    <p><label>Listing ID: </label>
-								    <select name="ID">
-								        <?php
-								        define("modify_utils.php", True);
-								        include_once 'modify_utils.php';
-								        $id = get_list_of_id();
-								        if(!empty($id)) {
-								            $selected = $_GET['ID'];
-								            foreach ($id as $i) {
-								                echo "<option value=\"".$i['ID']."\"";
-								                if ($i['ID'] == $selected) {
-								                    echo " selected=\"selected\"";
-								                }
-								                echo ">".$i['ID']."</option>";
-								            }
-								        }
-								        ?>
-								    </select></p> 
+							
 										 <?php
 											       // echo "
 											      // <p><label>ID number(required): </label><input type=\"text\" name=\"ID\" value=\"".$_GET['ID']."\"/></a></p>
 											      // <p><label>Company ID: </label><input type=\"text\" name=\"CompID\" value=\"".$_GET['CompID']."\"/></p>
-											
+										//	$ID = $_POST['ID'];
 											      echo "
+											<p><label>Listing ID: </label><input type=\"text\" name=\"ID\" value=\"".$_GET['ID']."\"/></p>
 											<p><label>Company ID: </label><input type=\"text\" name=\"CompID\" value=\"".$_GET['CompID']."\"/></p>
 											<p><label>Price: </label><input type=\"text\" name=\"price\" value=\"".$_GET['price']."\"/></p>
 											<p><label>Square Feet: </label><input type=\"text\" name=\"sq_ft\" value=\"".$_GET['sq_ft']."\"/></p>
