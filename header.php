@@ -39,7 +39,7 @@
 			<nav>
 				<ul>
 					<li><a href="index.php">Home</a></li>
-					<li><a href="admin/login.php" >Login</a></li>
+					<li><a href="admin" >Login</a></li>
 				</ul>
 			</nav>
             
