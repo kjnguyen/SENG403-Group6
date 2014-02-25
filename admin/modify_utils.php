@@ -160,7 +160,7 @@ function check_permission_initial(){
 function check_permission($id){
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
-    if (!isset($_SESSION['Authed_UserID']){
+    if (!isset($_SESSION['Authed_UserID'])){
        // echo "<br>Must be logged in to modify listings.<br>"
         return 0;
     }
