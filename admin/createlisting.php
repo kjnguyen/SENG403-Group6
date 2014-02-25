@@ -118,7 +118,8 @@ if ($_POST['compID'] == NULL) {
 <div class="control-group">
 	<label class="control-label" for"tyeahead">Description</label>
 	<div class="controls">
-		<input id="description" name="description" input-xlarge focused" type="text"</input>
+            <textarea type="textarea" name="description" rows="3" style="width: 500px; height: 197px;"></textarea>
+<!--		<input id="description" name="description" input-xlarge focused" type="text"</input>-->
 	</div>
 </div>
     <input type="hidden" name="process_add_listing" value='true'>
