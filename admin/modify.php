@@ -32,24 +32,7 @@
 						<form class="form-horizontal">
 							<fieldset>
 								<div class="control-group">
-								   <p>ID Number:
-									    <select name="ID">
-									        <?php
-									        define("modify_utils.php", True);
-									        include_once 'modify_utils.php';
-									        $id = get_list_of_id();
-									        if(!empty($id)) {
-									            $selected = $_GET['ID'];
-									            foreach ($id as $i) {
-									                echo "<option value=\"".$i['ID']."\"";
-									                if ($i['ID'] == $selected) {
-									                    echo " selected=\"selected\"";
-									                }
-									                echo ">".$i['ID']."</option>";
-									            }
-									        }
-									        ?>
-									    </select></p>
+							
 										 <?php
 											       // echo "
 											      // <p><label>ID number(required): </label><input type=\"text\" name=\"ID\" value=\"".$_GET['ID']."\"/></a></p>
@@ -72,6 +55,24 @@
 											
 											"
 										 ?>
+										     <p>Status:
+											    <select name="status">
+											        <?php
+											        define("modify_utils.php", True);
+											        include_once 'modify_utils.php';
+											        $status = modify_list_of_status();
+											        if(!empty($status)) {
+											            $selected = $_GET['status'];
+											            foreach ($status as $s) {
+											                echo "<option value=\"".$s['status']."\"";
+											                if ($s['status'] == $selected) {
+											                    echo " selected=\"selected\"";
+											                }
+											                echo ">".$s['status']."</option>";
+											            }
+											        }
+											        ?>
+											    </select></p>
 									</div>
 									<div class="form-actions">
 										<button class="btn btn-primary" type="submit">Modify</button>
