@@ -12,22 +12,22 @@ if(!defined("modify_utils.php"))
  * and open the template in the editor.
  */
 define("mysqlcon.php", True);
-//include_once 'mysqlcon.php';
+include_once '../mysqlcon.php';
 
 //Modify the selected values of the listing with ID=$id 
 function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
         $num_bdrms, $num_baths, $year_built, $prop_type, $bldg_type,
         $district, $maintenance_fee, $status, $address, $description) {
             
-    $con = mysqli_connect("mysql.jack-l.com", "seng403", "WeHave4Js", "s403_project");
-
-  if($exitOnError && mysqli_connect_errno($con))
-  {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    exit();
-  }
+//    $con = mysqli_connect("mysql.jack-l.com", "seng403", "WeHave4Js", "s403_project");
+//
+//  if($exitOnError && mysqli_connect_errno($con))
+//  {
+//    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+//    exit();
+//  }
   
-   // $con = getSQLConnection();
+    $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
    
    if(!$id){
@@ -36,10 +36,10 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
    
    //Trying to do all in one update but was not working so instead broke each section into an indivudal update
    
-    $sql = "UPDATE Listing SET CompID='$CompID', price='$price', sq_ft='$sq_ft', num_floors='$num_floors', "
+    $sql = sprintf("UPDATE Listing SET CompID='$CompID', price='$price', sq_ft='$sq_ft', num_floors='$num_floors', "
             . "num_bdrms='$num_bdrms', num_baths='$num_baths', year_built='$year_built', prop_type='$prop_type',"
             . "bldg_type='$bldg_type', district='$district', maintenance_fee='$maintenance_fee', status='$status',"
-            . "address='$address', description='$description' WHERE ID='$id'" ;
+            . "address='%s', description='%s' WHERE ID='$id'",  mysql_real_escape_string($address), mysql_real_escape_string($description));
 //   if($price){
 //   $sql = "UPDATE Listing SET price='$price' WHERE ID='$id'";        
 //   $result = mysqli_query($con, $sql);
@@ -95,8 +95,10 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
 //    if($description){
 //   $sql = "UPDATE Listing SET description='$description' WHERE ID='$id'";        
 //   $result = mysqli_query($con, $sql);
-//   }   
+//   }
+//    echo $sql;
    mysqli_query($con, $sql);
+//   echo mysqli_error($con);
    mysqli_close($con);
 
 }  

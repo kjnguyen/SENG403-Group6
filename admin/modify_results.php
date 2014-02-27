@@ -101,7 +101,7 @@ EXEFinished:
             $maintenance_fee, $status, $address) {
         $valid = True;
         $error_msg = "";
-        if(!$ID){
+        if(!$id){
             $valid = False;
             $error_msg .= "* Missing Listing ID<br>";
         }
