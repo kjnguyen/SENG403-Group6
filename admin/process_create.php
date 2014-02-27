@@ -159,11 +159,11 @@
 
         if(!$prop_type){
             $valid = False;
-            $error_msg .= "Property type is required";
+            $error_msg .= "* Property type is required<br>";
         }
         if(!$bldg_type){
             $valid = False;
-            $error_msg .= "Building type is required";
+            $error_msg .= "* Building type is required<br>";
         }
         if(!$city){
             $valid = False;
@@ -181,11 +181,11 @@
         }
         if(!$status){
             $valid = False;
-            $error_msg .= "Status is required";
+            $error_msg .= "* Status is required<br>";
         }
         if(!$address){
             $valid = False;
-            $error_msg .= "Address/location is required";
+            $error_msg .= "* Address/location is required<br>";
         }
 
 

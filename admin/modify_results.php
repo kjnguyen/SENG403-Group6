@@ -159,11 +159,11 @@ EXEFinished:
 
         if(!$prop_type){
             $valid = False;
-            $error_msg .= "Property type is required";
+            $error_msg .= "* Property type is required<br>";
         }
         if(!$bldg_type){
             $valid = False;
-            $error_msg .= "Building type is required";
+            $error_msg .= "* Building type is required<br>";
         }
         if($maintenance_fee){
             if (!is_numeric($maintenance_fee)) {
