@@ -111,7 +111,7 @@ function addPictures(mysqli $con, $ListingID)
           $statement->close();
           $con->commit(); // Everything is ok with the file, save sql changes
           
-          array_push($filePaths, array("id"=>$imgID, "oname"=>$file["name"] "path"=>(IMG_UPLOAD_DIR . $destination), "order"=>$position));
+          array_push($filePaths, array("id"=>$imgID, "oname"=>$file["name"], "path"=>(IMG_UPLOAD_DIR . $destination), "order"=>$position));
         }
         else
         {
