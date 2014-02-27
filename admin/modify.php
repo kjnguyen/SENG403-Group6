@@ -9,7 +9,11 @@
 			<?php 
 				define("modify_utils.php", True);
 				include_once 'modify_utils.php';
-				$permission = check_permission($_POST['ID']);
+                                $ID = $_POST['ID'];
+                                if (!$ID) {
+                                     $ID = $_GET['ID'];
+                                 }
+				$permission = check_permission($ID);
 				if ($permission != 1){
 					printf("<script>location.href='bad_permission.php'</script>");
 				}
@@ -44,6 +48,9 @@
                                                                                  define("search_utils.php", True);
                                                                                  include_once '../search_utils.php';
                                                                                  $ID = $_POST['ID'];
+                                                                                 if (!$ID) {
+                                                                                     $ID = $_GET['ID'];
+                                                                                 }
                                                                                  $item = search_one_item($ID);
 											       // echo "
 											      // <p><label>ID number(required): </label><input type=\"text\" name=\"ID\" value=\"".$_GET['ID']."\"/></a></p>
