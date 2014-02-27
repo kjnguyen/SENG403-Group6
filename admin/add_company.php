@@ -77,6 +77,14 @@ if ($_SESSION['Authed_Permission'] != 1) {
                       <input class="input-xlarge focused" id="focusedInput" type="password" name="password" value="">
                     </div>
                   </div>
+                                                    <!--Confirm password-->
+                    <div class="control-group">
+                        <label class="control-label">Confirm Password: </label>
+                        <div class="controls">
+                    <input class="input-xlarge focused" id="focusedInput" type="password" name="Cfm_Password" value="">
+                    <p class="help-block">Please confirm your password!</p>
+                        </div>
+                    </div>
                     <div class="control-group">
                       <label class="control-label" for="textarea2">Company Description</label>
                       <div class="controls">

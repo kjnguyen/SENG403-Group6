@@ -36,6 +36,7 @@ if($_POST['process_add_company'] == 'true') {
     $phone_no = $_POST['phone_no'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $cmf_password = $_POST['Cfm_Password'];
     $username = $_POST['username'];
 
 //        echo $name.'<br>';
@@ -47,7 +48,7 @@ if($_POST['process_add_company'] == 'true') {
 //        echo $password;
 //        echo $username;
     $success = True;
-    if ($error_msg = is_input_invalid($name, $phone_no, $email, $password, $username)) {
+    if ($error_msg = is_input_invalid($name, $phone_no, $email, $password, $cmf_password, $username)) {
         echo '<div class="alert alert-error">ERROR: <br>'.$error_msg.'</div>';
         $success = False;
         goto EXEFinished; 
@@ -86,40 +87,52 @@ EXEFinished:
  * @param type $password - required
  * @param type $username - required and unique
  */
-function is_input_invalid($name, $phone_no, $email, $password, $username) {
+function is_input_invalid($name, $phone_no, $email, $password, $cmf_password, $username) {
     $valid = True;
     $error_msg = "";
     if (!$name) {
         $valid = False;
-        $error_msg .= 'Company Name is required<br>';
+        $error_msg .= '* Company Name is required<br>';
     }
     if (!$phone_no) {
         $valid = False;
-        $error_msg .= 'Phone Number is required<br>';
+        $error_msg .= '* Phone Number is required<br>';
     }
     if (!$password) {
         $valid = False;
-        $error_msg .= 'Password is required<br>';
+        $error_msg .= '* Password is required<br>';
+    }
+    else {
+        if ($cmf_password != $password) {
+            $valid = False;
+            $error_msg .= '* Password Mismatch<br>';
+        }
     }
     if (!$email) {
         $valid = False;
-        $error_msg .= 'Email is required<br>';
+        $error_msg .= '* Email is required<br>';
     }
     else {
         if (!email_unique($email))  {
             $valid = False;
-            $error_msg .= 'Email is already in use<br>';
+            $error_msg .= '* Email is already in use<br>';
+        }
+        else {
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $valid = False;
+                $error_msg .= "* $email is not a valid Email<br>";
+            }
         }
     }
     
     if (!$username) {
         $valid = False;
-        $error_msg .= 'Username is required<br>';
+        $error_msg .= '* Username is required<br>';
     }
     else {
         if (!username_unique($username))  {
             $valid = False;
-            $error_msg .= 'Username is already in use<br>';
+            $error_msg .= '* Username is already in use<br>';
         }
     }
     
