@@ -1,4 +1,6 @@
 <?php
+// TEMP: This file is a test file to learn about file uploading
+
 //if ($_SERVER['PHP_SELF'] == '/' . basename(__FILE__))
 if(!(isset($_GET['debug']) && $_GET['debug'] == 1) && !(isset($_POST['debug']) && $_POST['debug'] == 1)) // Page should only appear on certain conditions
 {

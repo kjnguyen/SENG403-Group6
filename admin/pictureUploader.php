@@ -1,4 +1,5 @@
 <?php
+// TEMP: This file is a temporary implementation
 // This a quick picture upload handler
 
 require_once "../mysqlcon.php";

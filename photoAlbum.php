@@ -1,4 +1,6 @@
 <?php
+// TEMP: This file is a temporary implementation
+
 require_once "mysqlcon.php";
 require "picturesLib.php";
 
