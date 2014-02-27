@@ -27,7 +27,32 @@ function add_company($name, $address, $description, $manager_name, $phone_no, $e
     $company_statement = "insert into Company (ID, name, address, description, manager_name, phone_no) values ($ID, '$name', '$address', '$description', '$manager_name', '$phone_no')";
     mysqli_query($con, $company_statement);
     echo mysqli_error($con);
+    mysqli_close($con);
 //    echo $query;
+    return True;
+}
+
+function email_unique($email) {
+    $con = getSQLConnection();
+    mysqli_select_db($con, 's403_project');
+    $query = "select * from User where email = '$email' limit 1";
+    $result = mysqli_query($con, $query);
+    mysqli_close($con);
+    if(mysqli_fetch_array($result)) {
+        return False;
+    }
+    return True;
+}
+
+function username_unique($username) {
+    $con = getSQLConnection();
+    mysqli_select_db($con, 's403_project');
+    $query = "select * from User where username = '$username' limit 1";
+    $result = mysqli_query($con, $query);
+    mysqli_close($con);
+    if(mysqli_fetch_array($result)) {
+        return False;
+    }
     return True;
 }
 ?>
