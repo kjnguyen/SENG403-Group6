@@ -31,7 +31,6 @@
                     echo '<h2><i class="icon-user"></i>';
                      if ($type_id == 1) {
                          echo 'Companies';
-                         echo '<p><a href="add_company.php"> <span class="green">Add a Company <i class="icon-arrow-right"></i></span></a></p>';
                      }
                      else if ($type_id == 2) {
                     $company_id = $user_id;

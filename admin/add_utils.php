@@ -19,12 +19,14 @@ function add_company($name, $address, $description, $manager_name, $phone_no, $e
     mysqli_select_db($con, 's403_project');
     
     $password = hash('sha512', $raw_password);
-    $user_statement = "insert into User (email, password, permission, username) values ('$email', '$password', 2, '$username')";
+    $user_statement = sprintf("insert into User (email, password, permission, username) values ('%s', '$password', 2, '$username')", mysql_real_escape_string($email));
     mysqli_query($con, $user_statement);
     echo mysqli_error($con);
     $ID = mysqli_insert_id($con);
     
-    $company_statement = "insert into Company (ID, name, address, description, manager_name, phone_no) values ($ID, '$name', '$address', '$description', '$manager_name', '$phone_no')";
+    $company_statement = sprintf("insert into Company (ID, name, address, description, manager_name, phone_no) "
+            . "values ($ID, '%s', '%s', '%s', '%s', '%s')", mysql_real_escape_string($name), mysql_real_escape_string($address)
+            , mysql_real_escape_string($description), mysql_real_escape_string($manager_name), mysql_real_escape_string($phone_no));
     mysqli_query($con, $company_statement);
     echo mysqli_error($con);
     mysqli_close($con);

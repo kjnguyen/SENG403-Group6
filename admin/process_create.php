@@ -1,4 +1,22 @@
 <?php
+    define("INCLUDE_FILE", true);
+    include('header.php');
+    
+    //Do not output anything before this line (Do not use echo or html code)
+    //---------------------------------------------------
+?>
+<!-- *****************************************************************************-->
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="#">Blank</a>
+        </li>
+    </ul>
+</div>
+<?php
 
     define("postlisting.php", True);
     include_once 'postlistingfunc.php';
@@ -37,19 +55,144 @@
 //        echo $num_baths;
 //        echo $address;
 //        echo $description;
-        
+        $success = True;
         if ($compID == NULL) {
             echo "Permission denied";
-            
-            die();
+            $success = False;
+            goto EXEFinished; 
+        }
+        if ($error_msg = is_create_invalid($compID, $price, $sq_ft, $num_floors,$num_bdrms, $year_built, 
+                        $prop_type, $bldg_type, $city, $province,
+                        $maintenance_fee, $status, $num_baths, $address)) {
+            echo '<div class="alert alert-error">ERROR: <br>'.$error_msg.'</div>';
+            $success = False;
+            goto EXEFinished; 
+        }
+        
+        
+        postlisting($compID, $price, $sq_ft, $num_floors,$num_bdrms, $year_built, 
+        $prop_type, $bldg_type, $district, $city, $province,
+        $maintenance_fee, $status, $num_baths, $address, $description);
+        
+        echo '<div class="alert alert alert-success">';
+        echo 'Listing successfully created';
+        echo '</div>';
+
+    EXEFinished:
+        if ($success) {
+            echo '<a href="index.php" class="btn btn-info">Go Back</a>';
         }
         else {
-            postlisting($compID, $price, $sq_ft, $num_floors,$num_bdrms, $year_built, 
-            $prop_type, $bldg_type, $district, $city, $province,
-            $maintenance_fee, $status, $num_baths, $address, $description);
-            header("Location: index.php");
-            exit();
+            echo
+            '<script>
+            function goBack()
+              {
+              window.history.back()
+              }
+            </script>
+            <button class="btn btn-info" onclick="goBack()">Go Back</button>
+            ';
         }
+
+    }
+    
+    function is_create_invalid($compID, $price, $sq_ft, $num_floors,$num_bdrms, $year_built, 
+            $prop_type, $bldg_type, $city, $province,
+            $maintenance_fee, $status, $num_baths, $address){
+        $valid = True;
+        $error_msg = "";
+        if(!$compID){
+            $valid = False;
+            $error_msg .= "* Missing Company ID<br>";
+        }
+        if(!$price){
+            $valid = False;
+            $error_msg .= "* Price is required<br>";
+        }
+        else {
+            if (!is_numeric($price)) {
+                $valid = False;
+                $error_msg .= "* Price must be numeric<br>";
+            }
+        }
+        if(!$sq_ft){
+            $valid = False;
+            $error_msg .= "Size is required<br>";
+        }
+        else {
+            if (!is_numeric($sq_ft)) {
+                $valid = False;
+                $error_msg .= "* Size must be numeric<br>";
+            }
+        }
+        if($num_floors){
+            $i = intval($num_floors);
+            if ("$i" != "$num_floors") {
+                $valid = False;
+                $error_msg .= "* Floors number must be integer<br>";
+            }
+
+        }
+
+        if($num_bdrms){
+            $i = intval($num_bdrms);
+            if ("$i" != "$num_bdrms") {
+                $valid = False;
+                $error_msg .= "* Bedrooms number must be integer<br>";
+            }
+        }
+        if($num_baths){
+            $i = intval($num_baths);
+            if ("$i" != "$num_baths") {
+                $valid = False;
+                $error_msg .= "* Baths number must be integer<br>";
+            }
+        }
+
+        if($year_built){
+            $i = intval($year_built);
+            if ("$i" != "$year_built") {
+                $valid = False;
+                $error_msg .= "* $year_built is not a valid year<br>";
+            }
+        }
+
+        if(!$prop_type){
+            $valid = False;
+            $error_msg .= "Property type is required";
+        }
+        if(!$bldg_type){
+            $valid = False;
+            $error_msg .= "Building type is required";
+        }
+        if(!$city){
+            $valid = False;
+            $error_msg .= "* City/Town is required<br>";
+        }
+        if(!$province){
+            $valid = False;
+            $error_msg .= "* Province/State is required<br>";
+        }
+        if($maintenance_fee){
+            if (!is_numeric($maintenance_fee)) {
+                $valid = False;
+                $error_msg .= "* Maintenance fee must be numeric<br>";
+            }
+        }
+        if(!$status){
+            $valid = False;
+            $error_msg .= "Status is required";
+        }
+        if(!$address){
+            $valid = False;
+            $error_msg .= "Address/location is required";
+        }
+
+
+        if (!$valid) {
+            return $error_msg;
+        }
+        return NULL;
     }
 
 ?>
