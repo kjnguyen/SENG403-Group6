@@ -117,7 +117,7 @@ EXEFinished:
         }
         if(!$sq_ft){
             $valid = False;
-            $error_msg .= "Size is required<br>";
+            $error_msg .= "* Size is required<br>";
         }
         else {
             if (!is_numeric($sq_ft)) {

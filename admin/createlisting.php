@@ -14,10 +14,10 @@ if ($_POST['compID'] == NULL) {
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="index.php">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Create Employee Account</a>
+						<a href="#">Create a new listing</a>
 					</li>
 				</ul>
 			</div>
@@ -25,7 +25,7 @@ if ($_POST['compID'] == NULL) {
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-picture"></i>Create Employee Account</h2>
+						<h2><i class="icon-picture"></i>Create a new listing</h2>
 
 					</div>
 					<div class="box-content">
