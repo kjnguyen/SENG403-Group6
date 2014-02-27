@@ -105,7 +105,7 @@
                                 echo '<td class="center ">'.$row['address'].'</td>';
                                 echo '<td class="center ">';
                                 echo '
-                                    <form name="modify.php" method="post" action="modify"">';
+                                    <form name="modify_listing" method="post" action="modify.php"">';
                                 echo '<input type="hidden", name="ID", value="'.$row['ID'].'">';
                                 echo '<input type="hidden", name="CompID", value="'.$company_id.'">';
                                 echo '
