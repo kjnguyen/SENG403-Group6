@@ -5,12 +5,7 @@
     //Do not output anything before this line (Do not use echo or html code)
     //---------------------------------------------------
 ?>
-<?php
-if ($_SESSION['Authed_Permission'] != 1) {
-    echo "permission denied";
-    die();
-}
-?>
+
 
 
 <div>
@@ -24,6 +19,11 @@ if ($_SESSION['Authed_Permission'] != 1) {
     </ul>
 </div>
 <?php
+if ($_SESSION['Authed_Permission'] != 1) {
+    echo "permission denied";
+    goto EXEFinished; 
+}
+
 
 define("add_utils.php", True);
 include_once 'add_utils.php';
@@ -48,7 +48,7 @@ if($_POST['process_add_company'] == 'true') {
 //        echo $username;
     $success = True;
     if ($error_msg = is_input_invalid($name, $phone_no, $email, $password, $username)) {
-        echo '<div class="alert alert-error">'.$error_msg.'</div>';
+        echo '<div class="alert alert-error">ERROR: <br>'.$error_msg.'</div>';
         $success = False;
         goto EXEFinished; 
     }
@@ -67,15 +67,13 @@ EXEFinished:
     else {
         echo
         '<script>
-function goBack()
-  {
-  window.history.back()
-  }
-</script>
-
-
-<button onclick="goBack()">Go Back</button>
-';
+        function goBack()
+          {
+          window.history.back()
+          }
+        </script>
+        <button class="btn btn-info" onclick="goBack()">Go Back</button>
+        ';
     }
 }
 
@@ -130,4 +128,7 @@ function is_input_invalid($name, $phone_no, $email, $password, $username) {
     }
     return NULL;
 }
+?>
+<?php
+    include('footer.php');
 ?>
