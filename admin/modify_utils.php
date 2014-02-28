@@ -18,8 +18,7 @@ include_once '../mysqlcon.php';
 function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
         $num_bdrms, $num_baths, $year_built, $prop_type, $bldg_type,
         $district, $maintenance_fee, $status, $address, $description) {
-            
-//    $con = mysqli_connect("mysql.jack-l.com", "seng403", "WeHave4Js", "s403_project");
+
 //
 //  if($exitOnError && mysqli_connect_errno($con))
 //  {
@@ -28,7 +27,6 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
 //  }
   
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
    
    if(!$id){
        return $message = "ID is required";
@@ -107,7 +105,6 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
 //Delete listing with passed in id number
 function delete_listing($id){
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
     
     $sql = "DELETE FROM Listing WHERE ID=$id";
     $result = mysql_query($sql);
@@ -118,8 +115,7 @@ function delete_listing($id){
 
 
 function modify_list_of_status() {
-    //$con = getSQLConnection();
-     $con = mysqli_connect("mysql.jack-l.com", "seng403", "WeHave4Js", "s403_project");
+    $con = getSQLConnection();
 
   if($exitOnError && mysqli_connect_errno($con))
   {
@@ -141,8 +137,7 @@ function modify_list_of_status() {
 
 // TO FIX: currently sorting results by CompID instead of ID
 function get_list_of_id() {
-   // $con = getSQLConnection();
-    $con = mysqli_connect("mysql.jack-l.com", "seng403", "WeHave4Js", "s403_project");
+    $con = getSQLConnection();
 
   if($exitOnError && mysqli_connect_errno($con))
   {
@@ -183,8 +178,7 @@ function check_permission_initial(){
 //input- listing id number, output-1 or 0
 
 function check_permission($id){
-   // $con = getSQLConnection();
-   $con = mysqli_connect("mysql.jack-l.com", "seng403", "WeHave4Js", "s403_project");
+    $con = getSQLConnection();
 
   if($exitOnError && mysqli_connect_errno($con))
   {
