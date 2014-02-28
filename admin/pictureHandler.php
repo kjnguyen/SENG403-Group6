@@ -18,4 +18,21 @@ if(!check_permission($_POST['id']))
   die();
 }
 
+if($_POST['cmd'] != "order")
+{
+  
+}
+elseif($_POST['cmd'] != "remove")
+{
+  
+}
+elseif($_POST['cmd'] != "upload")
+{
+
+}
+else
+{
+  echo "Bad Command";
+  die();
+}
 ?>

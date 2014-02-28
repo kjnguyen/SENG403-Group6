@@ -58,7 +58,7 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
   {
     width: 35%;
   }
-  .picDelete
+  .picButtons
   {
       width: 1%;
       white-space: nowrap;
@@ -84,14 +84,28 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     {
       continue;
     }
-    
-    echo "
+    //$pic = array("id"=>3, "oname"=>"house.png", "path"=>"1.png", "order"=>1);
+
+    echo '
       <tr>
-        <td>";
-        echo '<span data-rel="popover" data-content="<img src=\'/listing/images/2/1.jpg\'/>" >Test Picture</span>';
-        echo '</td>
-        <td class="picDelete"><a class="btn btn-danger" href="#" onclick="removePic(this, 3);">
-            <i class="icon-trash icon-white"></i> 
+        <td class="picButtons">
+          <a class="btn" href="#" onclick="orderPic(this, ';
+        echo $pic["id"];
+        echo ');"><i class="icon-chevron-down"/></i></a>
+          <a class="btn" href="#" onclick="orderPic(this, ';
+        echo $pic["id"];
+        echo ');"><i class="icon-chevron-up"/></i></a>
+        </td>
+        <td>';
+        echo '<span data-rel="popover" data-content="<img src=\'';
+        echo ".." . $pic["path"];
+        echo "\'/>\" >";
+        echo htmlspecialchars($pic["oname"]);
+        echo '</span></td>
+        <td class="picButtons"><a class="btn btn-danger" href="#" onclick="removePic(this, ';
+        echo $pic["id"];
+        echo ');">
+            <i class="icon-trash icon-white"/></i>
             Delete
           </a>
         </td>
@@ -104,6 +118,10 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
         <div class="controls">
           <input class="input-file uniform_on" id="fileInput" type="file" name="file">
         </div>
+      </td>
+      <td class="picButtons">
+        <br />
+        <a class="btn btn-success" href="#"><i class="icon-arrow-up icon-white"/></i>Upload</a>
       </td>
     </tr>
   </table>
