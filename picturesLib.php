@@ -16,7 +16,7 @@ if ($_SERVER['PHP_SELF'] == '/' . basename(__FILE__))
   exit();
 }
 
-define("IMG_UPLOAD_DIR", "/seng403/listing/images/");
+define("IMG_UPLOAD_DIR", "/listing/images/");
 
 /* Saves uploaded pictures to the file system and database. Looks in the $_FILES array.
  * Returns false on error otherwise the list in an array (may be empty) containing associative arrays with
@@ -201,7 +201,7 @@ function removePicture(mysqli $con, $ListingID, $imgID)
   
   $statement->bind_param("ii", $imgID, $ListingID);
   $statement->execute();
-  $statement->bind_result($imgID, $partialPath);
+  $statement->bind_result($partialPath);
   
   if(!$statement->fetch()) // If ID and listingID combination not found quit
   {
@@ -219,7 +219,7 @@ function removePicture(mysqli $con, $ListingID, $imgID)
     $statement = $con->prepare("DELETE FROM Pictures WHERE ID = ?");
     $statement->bind_param("i", $imgID);
     
-    if($statement->execute())
+    if(!$statement->execute())
     {
       $statement->close();
       return false;
