@@ -97,7 +97,13 @@ echo '
             <section id="mainContent" class="grid_10" style="position: relative; width: 100%;">
                 <article style="position: relative; width: 100%;">
                         <h2>Item Details</h2>
-                        <a href=”#” onClick=”Javascript:history.back();”>GO back (do not click this, javascript is not working, just click the browser "BACK" button</a><br>
+                                    <script>
+                                    function goBack()
+                                      {
+                                      window.history.back()
+                                      }
+                                    </script>
+                                    <button onclick="goBack()">Go Back</button><br>
 ';
                                                        
                         if (!$item_found) {
