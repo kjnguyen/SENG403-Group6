@@ -37,7 +37,7 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
     $sql = sprintf("UPDATE Listing SET CompID='$CompID', price='$price', sq_ft='$sq_ft', num_floors='$num_floors', "
             . "num_bdrms='$num_bdrms', num_baths='$num_baths', year_built='$year_built', prop_type='$prop_type',"
             . "bldg_type='$bldg_type', district='$district', maintenance_fee='$maintenance_fee', status='$status',"
-            . "address='%s', description='%s' WHERE ID='$id'",  mysql_real_escape_string($address), mysql_real_escape_string($description));
+            . "address='%s', description='%s' WHERE ID='$id'",  mysqli_real_escape_string($con, $address), mysqli_real_escape_string($con, $description));
 //   if($price){
 //   $sql = "UPDATE Listing SET price='$price' WHERE ID='$id'";        
 //   $result = mysqli_query($con, $sql);
