@@ -68,7 +68,7 @@ echo '
         <!-- faded slider begin -->
         <div id="faded">
             <div class="rap">';
-if($pictureList === false || empty($pictureList))
+if($pictureList !== false && !empty($pictureList))
 {
   foreach($pictureList as $pic)
   {
@@ -84,7 +84,7 @@ else
 echo        '</div>
             <ul class="pagination">
                 ';
-if($pictureList === false || empty($pictureList))
+if($pictureList !== false && !empty($pictureList))
 {
   $i = 0;
   foreach($pictureList as $pic)
