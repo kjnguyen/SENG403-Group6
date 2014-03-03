@@ -95,8 +95,9 @@ if($pictureList !== false && !empty($pictureList))
                                       Picture '. $i+1 . '
                       </a>
                   </li>';
+    $i++;
   }
-  $i++;
+  
 }
 else
 {
