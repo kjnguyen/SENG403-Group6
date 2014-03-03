@@ -12,7 +12,7 @@
                                                 <div id="faded" style="position: relative; width: 100%;">
                                                 <ul class="pagination" style="position: relative; top: 0px; left: 0px;">
                                                 <?php
-                                                    define("search_utils.php", True);
+                                                    if(!defined("search_utils.php")) {define("search_utils.php", True);}
                                                     include_once 'search_utils.php';
                                                     
                                                     $city = $_GET['city'];
