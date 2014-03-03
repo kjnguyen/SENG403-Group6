@@ -41,7 +41,7 @@ function postlisting($compID,
         $cityID = $ID_array['ID'];
     }
     if ($cityID == 0) {
-        $new_city = sprintf("insert into City (name, province, country) values ('%s', '%s', 'Canada')", mysql_real_escape_string($city), mysql_real_escape_string($province));
+        $new_city = sprintf("insert into City (name, province, country) values ('%s', '%s', 'Canada')", mysqli_real_escape_string($con, $city), mysqli_real_escape_string($con, $province));
         mysqli_query($con, $new_city);
         echo mysqli_error($con);
         $cityID = mysqli_insert_id($con);
@@ -50,7 +50,7 @@ function postlisting($compID,
     $sql = sprintf("INSERT INTO Listing (CompID, price, sq_ft, num_floors, num_bdrms, "
             . "year_built, prop_type, bldg_type, district, cityID, maintenance_fee, status, num_baths, address, description) "
             . "VALUES ($compID, $price, $sq_ft, $num_floors, $num_bdrms, $year_built, '$prop_type', '$bldg_type', '$district', "
-            . "$cityID, $maintenance_fee, '$status', $num_baths, '%s', '%s')", mysql_real_escape_string($address), mysql_real_escape_string($description));
+            . "$cityID, $maintenance_fee, '$status', $num_baths, '%s', '%s')", mysqli_real_escape_string($con, $address), mysqli_real_escape_string($con, $description));
     echo mysqli_query($con);
     mysqli_query($con, $sql);
 
