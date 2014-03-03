@@ -25,7 +25,7 @@ if ($_SESSION['Authed_Permission'] != 1) {
 }
 
 
-define("add_utils.php", True);
+if(!defined("add_utils.php")) {define("add_utils.php", True);}
 include_once 'add_utils.php';
 
 if($_POST['process_add_company'] == 'true') {

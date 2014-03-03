@@ -18,7 +18,7 @@
 </div>
 <?php
 
-    define("postlisting.php", True);
+    if(!defined("postlisting.php")) {define("postlisting.php", True);}
     include_once 'postlistingfunc.php';
     
     if($_POST['process_add_listing'] == 'true') {
