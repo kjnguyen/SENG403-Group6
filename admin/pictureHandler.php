@@ -38,7 +38,11 @@ elseif($_POST['cmd'] === "remove")
   $imgID = intval($_POST['id']);
   
   $removeResult = removePicture($con, $_SESSION['listing'], $imgID);
-  var_dump($removeResult);
+  
+  if($removeResult)
+  {
+    echo "Removed";
+  }
 }
 elseif($_POST['cmd'] === "upload")
 {

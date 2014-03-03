@@ -30,7 +30,7 @@
 		</div>
 
 		<footer>
-			<p class="pull-left">&copy;
+			<p class="pull-left">
             <p class="pull-right"></p>
 		</footer>
 		<?php } ?>

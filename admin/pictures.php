@@ -27,6 +27,11 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     xmlhttp.open("POST", "pictureHandler.php", true);
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     
+    xhr.onload = function()
+    {
+      
+    };
+    
     var request = "token=" + token + "&id=" + id + "&cmd=" + command;
     
     xmlhttp.send(request);
@@ -39,8 +44,7 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     
     var progress = document.createElement("img");
     progress.src = "img/ajax-loaders/ajax-loader-1.gif";
-    //progress.width = 75;
-    //progress.height = 19;
+    
     
     var removeText = document.createTextNode(" Removing");
     
@@ -49,7 +53,29 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     
     node.parentNode.replaceChild(removeSpan, node);
     
-    sendRequest(id, "remove");
+    var xmlhttp = new XMLHttpRequest();
+    
+    //xmlhttp.onreadystatechange=
+    
+    xmlhttp.open("POST", "pictureHandler.php", true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    
+    xmlhttp.onload = function()
+    {
+      if(xmlhttp.responseText == "Removed")
+      {
+        // Remove the row if server say it succeeded
+        removeSpan.parentNode.parentNode.parentNode.removeChild(removeSpan.parentNode.parentNode);
+      }
+      else
+      {
+        removeSpan.innerHTML = "Failed!";
+      }
+    };
+    
+    var request = "token=" + token + "&id=" + id + "&cmd=remove";
+    
+    xmlhttp.send(request);
   }
   
   // This is from http://html5demos.com/dnd-upload, but modified
@@ -130,6 +156,9 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     var files = fileInput.files;
     
     readfiles(files, progress);
+    
+    // Clear file input
+    fileInput.parentNode.innerHTML = fileInput.parentNode.innerHTML;
   }
 </script>
 
