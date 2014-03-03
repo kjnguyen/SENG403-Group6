@@ -10,7 +10,7 @@ if(!defined("search.php"))
 }
 ?>
 
-<form name="Search" method="get" action="search_results" id="contacts-form" style="position: absolute; top: 0px; font-size: 80%;">
+<form name="Search" method="get" action="search_results" id="contacts-form" style="position: absolute; top: -20px; font-size: 80%; border-style: solid; border-color: red; border-width: 2px; padding-left: 10px; padding-right: 10px; padding-top: 5px;">
 
 <fieldset>
     <legend>Input Search Criteria (leave optional fields blank to search all)</legend><br>
@@ -28,12 +28,12 @@ if(!defined("search.php"))
         if (isset($_GET['max_price'])){$max_price = $_GET['max_price'];}
         if (isset($_GET['num_bdrm'])){$num_bdrm = $_GET['num_bdrm'];}
         echo "
-        <p><label>Province (full name) (Required): </label><input type=\"text\" name=\"province\" value=\"".$province."\"/></a></p>
-        <p><label>City (Required): </label><input type=\"text\" name=\"city\" value=\"".$city."\"/></p>
-        <p><label>District: </label><input type=\"text\" name=\"district\" value=\"".$district."\"/></p>
-        <p><label>Min Price: </label><input type=\"text\" name=\"min_price\" value=\"".$min_price."\"/></p>
-        <p><label>Max Price: </label><input type=\"text\" name=\"max_price\" value=\"".$max_price."\"/></li>
-        <p><label>Number of Bedrooms: </label><input type=\"text\" name=\"num_bdrm\" value=\"".$num_bdrm."\"/></p>
+        <label>Province (full name) (Required): </label><input type=\"text\" name=\"province\" value=\"".$province."\"/></a><br>
+        <label>City (Required): </label><input type=\"text\" name=\"city\" value=\"".$city."\"/><br>
+        <label>District: </label><input type=\"text\" name=\"district\" value=\"".$district."\"/><br>
+        <label>Min Price: </label><input type=\"text\" name=\"min_price\" value=\"".$min_price."\"/><br>
+        <label>Max Price: </label><input type=\"text\" name=\"max_price\" value=\"".$max_price."\"/><br>
+        <label>Number of Bedrooms: </label><input type=\"text\" name=\"num_bdrm\" value=\"".$num_bdrm."\"/><br>
          "
          ?>
     <p>Status:
