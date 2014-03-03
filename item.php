@@ -57,17 +57,49 @@ else {
         $item_found = False;
     }
 }
+
+include "pictureLib.php";
+
+$con = getSQLConnection();
+$pictureList = getPictures($con, intval($ID));
+mysqli_close($con);
 // following part are place-holder for pictures
 echo '
         <!-- faded slider begin -->
         <div id="faded">
-            <div class="rap">
-                <a href="#"><img src="images/big-img1.jpg" alt="" width="571" height="398"></a>
+            <div class="rap">';
+if($pictureList === false || empty($pictureList))
+{
+  foreach($pictureList as $pic)
+  {
+    echo '<a href="#"><img src="' . $pic["path"] . '" alt="" width="571" height="398"></a>';
+  }
+}
+else
+{
+   echo '       <a href="#"><img src="images/big-img1.jpg" alt="" width="571" height="398"></a>
                 <a href="#"><img src="images/big-img2.jpg" alt="" width="571" height="398"></a>
-                <a href="#"><img src="images/big-img3.jpg" alt="" width="571" height="398"></a>
-            </div>
+                <a href="#"><img src="images/big-img3.jpg" alt="" width="571" height="398"></a>';
+}
+echo        '</div>
             <ul class="pagination">
-                <li>
+                ';
+if($pictureList === false || empty($pictureList))
+{
+  $i = 0;
+  foreach($pictureList as $pic)
+  {
+    echo '<li>
+                      <a href="#" rel="' . $i . '">
+                        <img src="' . $pic["path"] . '" alt="">
+                                      Picture '. $i . '
+                      </a>
+                  </li>';
+  }
+}
+else
+{
+  echo '    <li>
                     <a href="#" rel="0">
                         <img src="images/f_thumb1.png" alt="">
                                     Pictures Place-Holder
@@ -84,7 +116,9 @@ echo '
                         <img src="images/f_thumb3.png" alt="">
                                     Pictures Place-Holder
                     </a>
-                </li>
+                </li>';
+}
+    echo '
             </ul>
         </div>
         <!-- faded slider end -->
