@@ -122,7 +122,7 @@ function get_city_id($city, $province) {
     mysqli_select_db($con, 's403_project');
     if (!isset($city) || !isset($province)) {goto funcFinished;}
     $city_query = sprintf("select ID from City where lower(name)=lower('%s') and lower(province)=lower('%s') LIMIT 1", 
-            mysql_real_escape_string($city), mysql_real_escape_string($province));
+            $city, $province);
     $city_result = mysqli_query($con, $city_query);
     mysqli_close($con);
 //    echo mysqli_error($con);
@@ -148,8 +148,8 @@ function parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district
     if (is_numeric($min_price)) {$conditions .= " price >= $min_price and";}
     if (is_numeric($max_price)) {$conditions .= " price <= $max_price and";}
     if (is_numeric($num_bdrm)) {$conditions .= " num_bdrms = $num_bdrm and";}
-    if (isset($district) && $district != '') {$conditions .= sprintf(" lower(district) = lower('%s') and", mysql_real_escape_string($district));}
-    if (isset($status) && $status != '') {$conditions .= sprintf(" lower(status) = lower('%s') and", mysql_real_escape_string($status));}
+    if (isset($district) && $district != '') {$conditions .= sprintf(" lower(district) = lower('%s') and", $district);}
+    if (isset($status) && $status != '') {$conditions .= sprintf(" lower(status) = lower('%s') and", $status);}
     return substr($conditions, 0, -4);
 }
 
