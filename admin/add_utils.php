@@ -26,7 +26,7 @@ function add_company($name, $address, $description, $manager_name, $phone_no, $e
     
     $company_statement = sprintf("insert into Company (ID, name, address, description, manager_name, phone_no) "
             . "values ($ID, '%s', '%s', '%s', '%s', '%s')", mysqli_real_escape_string($con, $name), mysqli_real_escape_string($con, $address)
-            , mysql_real_escape_string($description), mysqli_real_escape_string($con, $manager_name), mysqli_real_escape_string($con, $phone_no));
+            , mysqli_real_escape_string($con, $description), mysqli_real_escape_string($con, $manager_name), mysqli_real_escape_string($con, $phone_no));
     mysqli_query($con, $company_statement);
     echo mysqli_error($con);
     mysqli_close($con);
