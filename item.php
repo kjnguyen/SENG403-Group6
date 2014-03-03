@@ -58,7 +58,7 @@ else {
     }
 }
 
-include "pictureLib.php";
+include "picturesLib.php";
 
 $con = getSQLConnection();
 $pictureList = getPictures($con, intval($ID));
