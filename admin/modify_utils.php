@@ -38,68 +38,38 @@ function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
             . "num_bdrms='$num_bdrms', num_baths='$num_baths', year_built='$year_built', prop_type='$prop_type',"
             . "bldg_type='$bldg_type', district='$district', maintenance_fee='$maintenance_fee', status='$status',"
             . "address='%s', description='%s' WHERE ID='$id'",  mysqli_real_escape_string($con, $address), mysqli_real_escape_string($con, $description));
-//   if($price){
-//   $sql = "UPDATE Listing SET price='$price' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   }
-//    if($CompID){
-//   $sql = "UPDATE Listing SET CompID='$CompID' WHERE ID='$id'";        
-//    $result = mysqli_query($con, $sql);
-//   }
-//    if($sq_ft){
-//   $sql = "UPDATE Listing SET sq_ft='$sq_ft' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   }   
-//    if($num_floors){
-//   $sql = "UPDATE Listing SET num_floors='$num_floors' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   }
-//    if($num_bdrms){
-//   $sql = "UPDATE Listing SET num_bdrms='$num_bdrms' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   }   
-//    if($num_baths){
-//   $sql = "UPDATE Listing SET num_baths='$num_baths' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   }   
-//    if($year_built){
-//   $sql = "UPDATE Listing SET year_built='$year_built' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   }   
-//    if($prop_type){
-//   $sql = "UPDATE Listing SET prop_type='$prop_type' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   }   
-//    if($bldg_type){
-//   $sql = "UPDATE Listing SET bldg_type='$bldg_type' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   }   
-//    if($district){
-//   $sql = "UPDATE Listing SET district='$district' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   } 
-//    if($maintenance_fee){
-//   $sql = "UPDATE Listing SET maintenance_fee='$maintenance_fee' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   }
-//    if($status){
-//   $sql = "UPDATE Listing SET status='$status' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   }  
-//    if($address){
-//   $sql = "UPDATE Listing SET address='$address' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   }
-//    if($description){
-//   $sql = "UPDATE Listing SET description='$description' WHERE ID='$id'";        
-//   $result = mysqli_query($con, $sql);
-//   }
-//    echo $sql;
    mysqli_query($con, $sql);
 //   echo mysqli_error($con);
    mysqli_close($con);
 
 }  
+
+function modify_values_secure($id, $price, $sq_ft, $num_floors,
+        $num_bdrms, $num_baths, $year_built, $prop_type, $bldg_type,
+        $district, $maintenance_fee, $status, $address, $description) {
+    
+    $con = getSQLConnection();
+    
+    mysqli_select_db($con, 's403_project');
+   
+    if(!$id){goto funcError;}  
+      
+    $sql = "UPDATE Listing SET price=?, sq_ft=?, num_floors=?, num_bdrms=?, num_baths=?, year_built=?, prop_type=?,bldg_type=?, district=?, maintenance_fee=?, status=?, address=?, description=? WHERE ID=?";
+    
+    if ($stmt = mysqli_prepare($con, $sql)) {
+        $stmt->bind_param('ddiiiisssdsssi', $price, $sq_ft, $num_floors, $num_bdrms, $num_baths, $year_built, $prop_type, $bldg_type, $district, 
+                $maintenance_fee, $status, $address, $description, $id);
+        if(!($stmt->execute())) {goto funcError;}
+        $stmt->close();
+    }
+    else {goto funcError;}
+
+    mysqli_close($con);
+
+    return True;
+    funcError:
+    return False;
+} 
 
 
 //Delete listing with passed in id number

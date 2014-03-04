@@ -52,11 +52,12 @@
     mysql_select_db("$db")or die("cannot select DB");  */
 
 
-    $results_array = modify_values($id,$CompID, $price, $sq_ft, $num_floors, 
+    $success = modify_values_secure($id, $price, $sq_ft, $num_floors, 
             $num_bdrms, $num_baths, $year_built, $prop_type, $bldg_type, 
             $district, $maintenance_fee, $status, $address, $description);
-    if($results_array){
-        echo "Error: An $results_array<br>";
+    if(!$success){
+        echo '<div class="alert alert-error">ERROR: <br> Database operation failed</div>';
+        goto EXEFinished;
     }	
 
     echo '<div class="alert alert alert-success">';
