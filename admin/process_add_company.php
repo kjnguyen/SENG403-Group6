@@ -55,7 +55,8 @@ if($_POST['process_add_company'] == 'true') {
     }
     
     
-    add_company($name, $address, $description, $manager_name, $phone_no, $email, $password, $username);
+    $success = add_company_secure($name, $address, $description, $manager_name, $phone_no, $email, $password, $username);
+    if (!$success) {goto EXEFinished;}
     echo '<div class="alert alert alert-success">';
     echo 'Company successfully added';
     echo '</div>';
