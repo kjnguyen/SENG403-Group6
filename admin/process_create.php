@@ -70,10 +70,13 @@
         }
         
         
-        postlisting($compID, $price, $sq_ft, $num_floors,$num_bdrms, $year_built, 
+        $success = postlisting_secure($compID, $price, $sq_ft, $num_floors,$num_bdrms, $year_built, 
         $prop_type, $bldg_type, $district, $city, $province,
         $maintenance_fee, $status, $num_baths, $address, $description);
-        
+        if (!$success) {
+            echo '<div class="alert alert-error">ERROR: <br> Database operation failed</div>';
+            goto EXEFinished;
+        }
         echo '<div class="alert alert alert-success">';
         echo 'Listing successfully created';
         echo '</div>';

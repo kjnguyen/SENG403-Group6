@@ -56,7 +56,11 @@ if($_POST['process_add_company'] == 'true') {
     
     
     $success = add_company_secure($name, $address, $description, $manager_name, $phone_no, $email, $password, $username);
-    if (!$success) {goto EXEFinished;}
+    if (!$success) {
+        echo '<div class="alert alert-error">ERROR: <br> Database operation failed</div>';
+        goto EXEFinished;
+        
+    }
     echo '<div class="alert alert alert-success">';
     echo 'Company successfully added';
     echo '</div>';
