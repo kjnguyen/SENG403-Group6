@@ -17,6 +17,7 @@
         if ($permission != 1){
                 printf("<script>location.href='bad_permission.php'</script>");
         }
+
 ?>
 <div>
         <ul class="breadcrumb">
@@ -28,6 +29,57 @@
                 </li>
         </ul>
 </div>
+<?php
+        if (isset($_POST['process_delete'])) {
+            // do delete instead of modify
+            if(!defined("modify_utils.php")) {define("modify_utils.php", True);}
+            include_once 'modify_utils.php';
+
+
+            $id = $_POST['ID'];
+
+            $success = True;
+            if (!isset($id)) {
+                echo '<div class="alert alert-error">ERROR: <br> Unable to process your request</div>';
+                $success = False;
+                goto EXEFinished; 
+            }
+
+          /*  mysql_connect("$host","$user", "$pass")or die("cannot connect");  
+            mysql_select_db("$db")or die("cannot select DB");  */
+
+
+            $success = delete_listing_secure($id);
+            if(!$success){
+                echo '<div class="alert alert-error">ERROR: <br> Database operation failed</div>';
+                goto EXEFinished;
+            }	
+
+            echo '<div class="alert alert alert-success">';
+            echo 'Listing successfully deleted';
+            echo '</div>';
+
+        EXEFinished:
+            if ($success) {
+                echo '<a href="index.php" class="btn btn-info">Go Back</a>';
+            }
+            else {
+                echo
+                '<script>
+                function goBack()
+                  {
+                  window.history.back()
+                  }
+                </script>
+                <button class="btn btn-info" onclick="goBack()">Go Back</button>
+                ';
+            }
+
+            include_once "footer.php";
+            exit();
+        }
+
+?>
 
 <div class="row-fluid sortable">
         <div class="box span12">

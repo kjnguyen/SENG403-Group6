@@ -109,6 +109,7 @@ function postlisting_secure($compID,
     else {goto funcError;}
     return True;
     funcError:
+    mysqli_close($con);
     return False;
 
 }

@@ -68,6 +68,7 @@ function modify_values_secure($id, $price, $sq_ft, $num_floors,
 
     return True;
     funcError:
+    mysqli_close($con);
     return False;
 } 
 
@@ -76,11 +77,33 @@ function modify_values_secure($id, $price, $sq_ft, $num_floors,
 function delete_listing($id){
     $con = getSQLConnection();
     
+    mysqli_select_db($con, 's403_project');
+    
     $sql = "DELETE FROM Listing WHERE ID=$id";
     $result = mysql_query($sql);
 
     
     mysqli_close($con);
+
+}
+
+function delete_listing_secure($id){
+    $con = getSQLConnection();
+    
+    $sql = "DELETE FROM Listing WHERE ID=?";
+    if ($stmt = mysqli_prepare($con, $sql)) {
+        $stmt->bind_param('i', $id);
+        if(!($stmt->execute())) {goto funcError1;}
+        $stmt->close();
+    }
+    else {goto funcError1;}
+
+    
+    mysqli_close($con);
+    return True;
+    funcError1:
+    mysqli_close($con);
+    return False;
 }
 
 

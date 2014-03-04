@@ -108,9 +108,9 @@
                                 echo '<input type="hidden", name="ID", value="'.$row['ID'].'">';
                                 echo '<input type="hidden", name="CompID", value="'.$company_id.'">';
                                 echo '
-                                    <button type="submit" value="modify" class="btn btn-small btn-primary">Edit</button>
+                                    <button type="submit" name="process_modify" value="modify" class="btn btn-small btn-primary">Edit</button>
 
-                                    <button type="submit" value="delete" class="btn btn-small btn-danger">delete</button>
+                                    <button type="submit" name="process_delete" value="delete" class="btn btn-small btn-danger">delete</button>
                                     </form>
                                     ';
                                 echo '</tr>';
