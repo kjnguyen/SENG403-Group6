@@ -14,7 +14,7 @@
             <a href="../">Home</a> <span class="divider">/</span>
         </li>
         <li>
-            <a href="add_company.php">Add a Company</a>
+            <a href="./add_company.php">Add a Company</a> <span class="divider">/</span>
         </li>
         <li>
             <b>Confirmation</b>

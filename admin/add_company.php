@@ -16,7 +16,7 @@ if ($_SESSION['Authed_Permission'] != 1) {
 <div>
     <ul class="breadcrumb">
         <li>
-            <a href="../">Home</a> <span class="divider">/</span>
+            <a href="./">Home</a> <span class="divider">/</span>
         </li>
         <li>
             <b>Add a Company</b>
