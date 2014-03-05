@@ -11,10 +11,13 @@
 <div>
     <ul class="breadcrumb">
         <li>
-            <a href="#">Home</a> <span class="divider">/</span>
+            <a href="../">Home</a> <span class="divider">/</span>
         </li>
         <li>
-            <a href="#">Blank</a>
+            <a href="add_company.php">Add a Company</a>
+        </li>
+        <li>
+            <b>Confirmation</b>
         </li>
     </ul>
 </div>
