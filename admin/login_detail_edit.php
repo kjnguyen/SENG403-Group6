@@ -15,10 +15,10 @@
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="./index.php">Home</a> <span class="divider">/</span> 
+						<a href="./">Home</a> <span class="divider">/</span> 
 					</li>
 					<li>
-						<a href="#">Edit Login Details</a>
+                                          <a href="#"><b>Edit Login Details</b></a>
 					</li>
 				</ul>
 			</div>

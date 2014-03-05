@@ -14,10 +14,10 @@ if ($_POST['compID'] == NULL) {
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="index.php">Home</a> <span class="divider">/</span>
+						<a href="./">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Create a new listing</a>
+                                          <a href="#"><b>Create a new listing</b></a>
 					</li>
 				</ul>
 			</div>

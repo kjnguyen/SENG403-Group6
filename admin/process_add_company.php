@@ -17,7 +17,7 @@
             <a href="./add_company.php">Add a Company</a> <span class="divider">/</span>
         </li>
         <li>
-            <b>Confirmation</b>
+          <a href ="#"><b>Confirmation</b></a>
         </li>
     </ul>
 </div>

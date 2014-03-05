@@ -18,7 +18,11 @@
 						<a href="./index.php">Home</a> <span class="divider">/</span> 
 					</li>
 					<li>
-						<a href="#">Edit Login Details</a>
+                                          <a href="./login_detail_edit.php">Edit Login Details</a> <span class="divider">/</span>
+        </li>
+        <li>
+          <a href ="#"><b>Confirmation</b></a>
+        </li>
 					</li>
 				</ul>
 			</div>

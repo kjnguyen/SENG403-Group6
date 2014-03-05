@@ -8,10 +8,10 @@
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="#">Home</a> <span class="divider">/</span>
+						<a href="./">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-						<a href="#">Create Employee Account</a>
+                                          <a href="#"><b>Create Employee Account</b></a>
 					</li>
 				</ul>
 			</div>
