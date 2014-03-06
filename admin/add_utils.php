@@ -13,27 +13,20 @@ if(!defined("add_utils.php"))
 define("mysqlcon.php", True);
 include_once '../mysqlcon.php';
 
-function add_company($name, $address, $description, $manager_name, $phone_no, $email, $raw_password, $username) {
-    
-    $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
-    
-    $password = hash('sha512', $raw_password);
-    $user_statement = sprintf("insert into User (email, password, permission, username) values ('%s', '$password', 2, '$username')", mysqli_real_escape_string($con, $email));
-    mysqli_query($con, $user_statement);
-//    echo mysqli_error($con);
-    $ID = mysqli_insert_id($con);
-    
-    $company_statement = sprintf("insert into Company (ID, name, address, description, manager_name, phone_no) "
-            . "values ($ID, '%s', '%s', '%s', '%s', '%s')", mysqli_real_escape_string($con, $name), mysqli_real_escape_string($con, $address)
-            , mysqli_real_escape_string($con, $description), mysqli_real_escape_string($con, $manager_name), mysqli_real_escape_string($con, $phone_no));
-    mysqli_query($con, $company_statement);
-    echo mysqli_error($con);
-    mysqli_close($con);
-//    echo $query;
-    return True;
-}
 
+/**
+ * Add a company (protected against sql injection)
+ * 
+ * @param type $name
+ * @param type $address
+ * @param type $description
+ * @param type $manager_name
+ * @param type $phone_no
+ * @param type $email
+ * @param type $raw_password
+ * @param type $username
+ * @return boolean - True if successful, False if not
+ */
 function add_company_secure($name, $address, $description, $manager_name, $phone_no, $email, $raw_password, $username) {
     
     $con = getSQLConnection();
@@ -63,6 +56,12 @@ function add_company_secure($name, $address, $description, $manager_name, $phone
     return False;
 }
 
+/**
+ * Is there a user with same email in the database already?
+ * 
+ * @param type $email
+ * @return boolean
+ */
 function email_unique($email) {
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
@@ -75,6 +74,11 @@ function email_unique($email) {
     return True;
 }
 
+/**
+ * Is there a user with the same username in the database already?
+ * @param type $username
+ * @return boolean
+ */
 function username_unique($username) {
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');

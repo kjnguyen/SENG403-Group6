@@ -33,11 +33,11 @@
                          echo 'Companies';
                      }
                      else if ($type_id == 2) {
-                    $company_id = $user_id;
-                    echo 'Your Listings';
+                        $company_id = $user_id;
+                        echo 'Your Listings';
                      }
                      else if ($type_id == 3) {
-                         echo "Employee page under construction";
+                        echo "Your Listings";
                      }
    
                     echo '</h2>
