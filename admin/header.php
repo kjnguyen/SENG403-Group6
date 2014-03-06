@@ -131,9 +131,16 @@
 						<li class="nav-header hidden-tablet">Main</li>
                                                 <li><a class="ajax-link" href="index.php"><i class="icon-home"></i><span class="hidden-tablet"> Home</span></a></li>
                                                 <?php if ($_SESSION['Authed_Permission'] == 1) {echo '<li><a class="ajax-link" href="add_company.php"><span class="hidden-tablet"> Add a Company</span></a></li>';}?>
-                                                <?php if ($_SESSION['Authed_Permission'] == 2) {echo '<li><form action="createlisting.php" method="post">
-                                                  <span class="hidden-tablet"><input type="hidden" name="compID" value="'.$_SESSION['Authed_UserID'].'" />
-                                                  <button type="submit" class="ajax-link btn btn-large btn-primary btn-round" value="Submit"> Add a a listing</button></span>
+                                                <?php if ($_SESSION['Authed_Permission'] == 2) {echo '<li style="margin-left: 10px; margin-top: 10px;"><form action="createlisting.php" method="post">
+                                                  <input type="hidden" name="compID" value="'.$_SESSION['Authed_UserID'].'" />
+                                                  <a class="ajax-link" href="JAVASCRIPT:addListing.submit()"><i class="icon-edit"></i><span class="hidden-tablet"> Add a a listing</span></a>
+                                                </form></li>';}?>
+                                                <?php if ($_SESSION['Authed_Permission'] == 3) {
+                                                    if(!defined("search_utils.php")) {define("search_utils.php", True);}
+                                                    include_once '../search_utils.php';
+                                                    echo '<li style="margin-left: 10px; margin-top: 10px;"><form name="addListing" action="createlisting.php" method="post">
+                                                  <input type="hidden" name="compID" value="'.get_company_id($_SESSION['Authed_UserID']).'" />
+                                                  <a class="ajax-link" href="JAVASCRIPT:addListing.submit()"><i class="icon-edit"></i><span class="hidden-tablet"> Add a a listing</span></a>
                                                 </form></li>';}?>
 <!--						<li><a class="ajax-link" href="index.html"><i class="icon-home"></i><span class="hidden-tablet"> Dashboard</span></a></li>
 						<li><a class="ajax-link" href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>

@@ -18,7 +18,7 @@
         <div class="box span12">
                 <div class="box-header well" data-original-title="">
                  <?php
-                    define("search_utils.php", True);
+                    if(!defined("search_utils.php")) {define("search_utils.php", True);}
                     include_once '../search_utils.php';
 
 
@@ -38,6 +38,7 @@
                      }
                      else if ($type_id == 3) {
                         echo "Your Listings";
+                        $company_id = get_company_id($user_id);
                      }
    
                     echo '</h2>
@@ -57,16 +58,14 @@
                       <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Phone: activate to sort column ascending" style="width: 252px;">Phone</th>
                       ';
                      }
-                     else if ($type_id == 2) {
+                     else if ($type_id == 2 || $type_id == 3) {
                         echo '
                       <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 132px;">ID</th>
                       <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Address: activate to sort column ascending" style="width: 518px;">Address</th>
                       <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 252px;">Actions</th>
                       ';
                      }
-                     else if ($type_id == 3) {
-                         echo "Employee page under construction";
-                     }
+
                    
                     echo '
                   </tr>
@@ -91,7 +90,7 @@
                             }
                         }
                      }
-                     else if ($type_id == 2) {
+                     else if ($type_id == 2 || $type_id == 3) {
                         $results_array = search_company_listing($company_id);
                         if (empty($results_array)) {
                             echo "<h1>No Listing</h1>";
@@ -118,9 +117,7 @@
                             }
                         }
                      }
-                     else if ($type_id == 3) {
-                         echo "Employee page under construction";
-                     }
+
                     
 
                     ?>

@@ -69,7 +69,7 @@ function search_company_listing($company_id) {
     $query = "select ID, address from Listing where CompID = $company_id";
 //    echo $query;
     $results = mysqli_query($con, $query);
-    echo mysqli_error($con);
+//    echo mysqli_error($con);
     $listing_info = array();
     
     while ($row = mysqli_fetch_assoc($results)) {
@@ -79,8 +79,25 @@ function search_company_listing($company_id) {
     return $listing_info;
 }
 
-function get_company_id($user_id, $type_id) {
+/**
+ * Get the company id for an employee (assuming user has correct permission)
+ * 
+ * @param int $user_id
+ * @return $compID if successful
+ */
+function get_company_id($user_id) {
+    $con = getSQLConnection();
+    mysqli_select_db($con, 's403_project');
     
+    $query = "select compID from Employee where ID = $user_id LIMIT 1";
+    $results = mysqli_query($con, $query);
+    if ($row = mysqli_fetch_assoc($results)) {
+        $compID = $row['compID'];
+        return $compID;
+    }
+    else {
+        return NULL;
+    }
 }
 
 /**
