@@ -17,14 +17,14 @@ include_once '../mysqlcon.php';
 /**
  * Add a company (protected against sql injection)
  * 
- * @param type $name
- * @param type $address
- * @param type $description
- * @param type $manager_name
- * @param type $phone_no
- * @param type $email
- * @param type $raw_password
- * @param type $username
+ * @param string $name
+ * @param string $address
+ * @param string $description
+ * @param string $manager_name
+ * @param string $phone_no
+ * @param string $email
+ * @param string $raw_password
+ * @param string $username
  * @return boolean - True if successful, False if not
  */
 function add_company_secure($name, $address, $description, $manager_name, $phone_no, $email, $raw_password, $username) {
@@ -59,7 +59,7 @@ function add_company_secure($name, $address, $description, $manager_name, $phone
 /**
  * Is there a user with same email in the database already?
  * 
- * @param type $email
+ * @param string $email
  * @return boolean
  */
 function email_unique($email) {
@@ -76,7 +76,7 @@ function email_unique($email) {
 
 /**
  * Is there a user with the same username in the database already?
- * @param type $username
+ * @param string $username
  * @return boolean
  */
 function username_unique($username) {

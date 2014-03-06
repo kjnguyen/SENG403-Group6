@@ -55,6 +55,11 @@ function search_listing($city, $province, $min_price, $max_price, $num_bdrm, $di
     return $listing_info;
 }
 
+/**
+ * Get all listings created by a specific company
+ * @param type $company_id
+ * @return array of ['ID', 'address']
+ */
 function search_company_listing($company_id) {
     
     $con = getSQLConnection();
@@ -78,6 +83,10 @@ function get_company_id($user_id, $type_id) {
     
 }
 
+/**
+ * Get all companies
+ * @return array of ['ID', 'name', 'manager_name', 'phone_no']
+ */
 function get_all_companies() {
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
@@ -93,9 +102,9 @@ function get_all_companies() {
     return $companies;
 }
 /**
- * 
+ * Get all details (including its company info) of one item
  * @param type $ID
- * @return null
+ * @return array of ['...all columns of listing...', 'c_name', 'c_address', 'c_manager_name', 'c_phone_no']
  */
 function search_one_item($ID) {
     $con = getSQLConnection();
@@ -112,10 +121,10 @@ function search_one_item($ID) {
 }
 
 /**
- * 
- * @param type $city
- * @param type $province
- * @return null
+ * Get city's ID
+ * @param string $city
+ * @param string $province
+ * @return int cityID
  */
 function get_city_id($city, $province) {
     $con = getSQLConnection();
@@ -134,14 +143,14 @@ function get_city_id($city, $province) {
 }
 
 /**
- * 
- * @param type $city_id
- * @param type $min_price
- * @param type $max_price
- * @param type $num_bdrm
- * @param type $district
- * @param type $status
- * @return type
+ * Generate dynamic conditions for select statement 
+ * @param int $city_id
+ * @param double $min_price
+ * @param double $max_price
+ * @param int $num_bdrm
+ * @param string $district
+ * @param string $status
+ * @return string
  */
 function parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district, $status) {
     $conditions = " where cityID = $city_id and";
@@ -154,8 +163,8 @@ function parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district
 }
 
 /**
- * 
- * @return type
+ * Get a list of all possible status of listings
+ * @return array of ['status']
  */
 function get_list_of_status() {
     $con = getSQLConnection();

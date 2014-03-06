@@ -14,36 +14,27 @@ if(!defined("modify_utils.php"))
 define("mysqlcon.php", True);
 include_once '../mysqlcon.php';
 
-//Modify the selected values of the listing with ID=$id 
-function modify_values($id, $CompID, $price, $sq_ft, $num_floors,
-        $num_bdrms, $num_baths, $year_built, $prop_type, $bldg_type,
-        $district, $maintenance_fee, $status, $address, $description) {
 
-//
-//  if($exitOnError && mysqli_connect_errno($con))
-//  {
-//    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-//    exit();
-//  }
-  
-    $con = getSQLConnection();
-   
-   if(!$id){
-       return $message = "ID is required";
-   }  
-   
-   //Trying to do all in one update but was not working so instead broke each section into an indivudal update
-   
-    $sql = sprintf("UPDATE Listing SET CompID='$CompID', price='$price', sq_ft='$sq_ft', num_floors='$num_floors', "
-            . "num_bdrms='$num_bdrms', num_baths='$num_baths', year_built='$year_built', prop_type='$prop_type',"
-            . "bldg_type='$bldg_type', district='$district', maintenance_fee='$maintenance_fee', status='$status',"
-            . "address='%s', description='%s' WHERE ID='$id'",  mysqli_real_escape_string($con, $address), mysqli_real_escape_string($con, $description));
-   mysqli_query($con, $sql);
-//   echo mysqli_error($con);
-   mysqli_close($con);
-
-}  
-
+/**
+ * Modify one listing specified by $id (protected against sql injection)
+ * 
+ * 
+ * @param int $id
+ * @param double $price
+ * @param double $sq_ft
+ * @param int $num_floors
+ * @param int $num_bdrms
+ * @param int $num_baths
+ * @param int $year_built
+ * @param string $prop_type
+ * @param string $bldg_type
+ * @param string $district
+ * @param double $maintenance_fee
+ * @param string $status
+ * @param string $address
+ * @param string $description
+ * @return boolean - True if successful, False if not
+ */
 function modify_values_secure($id, $price, $sq_ft, $num_floors,
         $num_bdrms, $num_baths, $year_built, $prop_type, $bldg_type,
         $district, $maintenance_fee, $status, $address, $description) {
@@ -73,20 +64,11 @@ function modify_values_secure($id, $price, $sq_ft, $num_floors,
 } 
 
 
-//Delete listing with passed in id number
-function delete_listing($id){
-    $con = getSQLConnection();
-    
-    mysqli_select_db($con, 's403_project');
-    
-    $sql = "DELETE FROM Listing WHERE ID=$id";
-    $result = mysql_query($sql);
-
-    
-    mysqli_close($con);
-
-}
-
+/**
+ * Delete a listing (protected against sql injection)
+ * @param int $id
+ * @return boolean - True if successful, False if not
+ */
 function delete_listing_secure($id){
     $con = getSQLConnection();
     

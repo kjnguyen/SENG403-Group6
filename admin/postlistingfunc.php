@@ -11,6 +11,26 @@ include_once '../mysqlcon.php';
 
 
 
+/**
+ * Add one listing
+ * @param int $compID
+ * @param double $price
+ * @param double $sq_ft
+ * @param int $num_floors
+ * @param int $num_bdrms
+ * @param int $year_built
+ * @param string $prop_type
+ * @param string $bldg_type
+ * @param string $district
+ * @param string $city
+ * @param string $province
+ * @param double $maintenance_fee
+ * @param string $status
+ * @param int $num_baths
+ * @param string $address
+ * @param string $description
+ * @return boolean - True if successful, False if not
+ */
 function postlisting_secure($compID, 
         $price, 
         $sq_ft, 
