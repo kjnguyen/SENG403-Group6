@@ -97,17 +97,18 @@
                         }
                         else {
                             foreach ($results_array as $row) {
-                                echo '<tr class="odd">';
+                                $item = search_one_item($row['ID']);
+                                echo '<tr class="odd" >';
 
-                                echo '<td class=" sorting_1">'.$row['ID'].'</td>';
-                                echo '<td class="center ">'.$row['address'].'</td>';
-                                echo '<td class="center ">';
+                                echo '<td class=" sorting_1" title="'.$item['description'].'" data-rel="tooltip">'.$row['ID'].'</td>';
+                                echo '<td class="center " title="'.$item['description'].'" data-rel="tooltip">'.$row['address'].'</td>';
+                                echo '<td class="center " >';
                                 echo '
                                     <form name="modify_listing" method="post" action="modify.php"">';
                                 echo '<input type="hidden", name="ID", value="'.$row['ID'].'">';
                                 echo '<input type="hidden", name="CompID", value="'.$company_id.'">';
                                 echo '
-                                    <button type="submit" name="process_modify" value="modify" class="btn btn-small btn-primary">Edit</button>
+                                    <button type="submit" name="process_modify" value="modify" class="btn btn-small btn-primary" title="Click on Edit to see full details and modify any value" data-rel="tooltip">Edit</button>
 
                                     <button type="submit" name="process_delete" value="delete" class="btn btn-small btn-danger">delete</button>
                                     </form>
