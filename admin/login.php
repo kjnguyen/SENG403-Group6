@@ -68,6 +68,9 @@
 							<p class="center span5">
 							<button type="submit" class="btn btn-primary">Login</button>
 							</p>
+                                                        <p class="center span5">
+							<a href="request_account_info.html">Request Account</a>
+							</p>
 						</fieldset>
 					</form>
 				</div><!--/span-->
