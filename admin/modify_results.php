@@ -10,14 +10,10 @@
 <div>
     <ul class="breadcrumb">
         <li>
-            <a href="./">Home</a> <span class="divider">/</span>
+            <a href="index.php">Home</a> <span class="divider">/</span>
         </li>
         <li>
-          <a href="./modify.php">Modify Listing</a>  <span class="divider">/</span>
-        </li>
-        <li>
-          <a href ="#"><b>Confirmation</b></a>
-        </li>
+          <a href ="#"><b>Modify Listing Confirmation</b></a>
         </li>
     </ul>
 </div>

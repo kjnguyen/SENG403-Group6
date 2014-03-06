@@ -79,6 +79,24 @@ function search_company_listing($company_id) {
     return $listing_info;
 }
 
+function search_company_employee($company_id) {
+    $con = getSQLConnection();
+    mysqli_select_db($con, 's403_project');
+    
+
+    $query = "select e.ID, name, phone_no, email, username from Employee as e join User as u on e.ID = u.ID where compID = $company_id";
+//    echo $query;
+    $results = mysqli_query($con, $query);
+//    echo mysqli_error($con);
+    $employees = array();
+    
+    while ($row = mysqli_fetch_assoc($results)) {
+        $employees[] = $row;
+    }    
+    mysqli_close($con);
+    return $employees;
+}
+
 /**
  * Get the company id for an employee (assuming user has correct permission)
  * 

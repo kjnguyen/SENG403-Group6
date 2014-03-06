@@ -23,7 +23,7 @@ if ($permission != 1){
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="./">Home</a> <span class="divider">/</span>
+						<a href="index.php">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
                                           <a href="#"><b>Create a new listing</b></a>
