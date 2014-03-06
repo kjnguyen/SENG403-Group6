@@ -43,6 +43,7 @@ to-do: find a better way to handle this - I only need part of the header-->
                 <li><a href="index.php">Home</a></li>
             </ul>
         </nav>
+
 <?php
 define("search_utils.php", True);
 include_once 'search_utils.php';
@@ -126,7 +127,10 @@ else
         <!-- faded slider end -->
     </div>
 </header>
-    
+';
+    if(!defined("compare_chooser.php")) {define("compare_chooser.php", True);}
+    include 'compare_chooser.php';
+    echo '
 <section id="content">
     <div class="container_16">
         <div class="clearfix">
@@ -141,11 +145,15 @@ else
                                     </script>
                                     <button onclick="goBack()">Go Back</button><br>
 ';
-                                                       
+                               
+                        
+                                       
                         if (!$item_found) {
                             echo "Item Not Found!";
                         }
                         else {
+                            echo '<p><form name="addCompareItem" method="post"><input type="hidden" name="compareItemID" value="'.$item['ID'].'"/>'
+                            . '<button name="addCompareItem" type="submit" value="addCompare">Add this item to comparison list</button></form></p>';
                             echo 'Price: $'.$item['price'].'</br>';
                             echo "Date Listed: ".$item['date_listed'].'</br>';
                             echo "Size: ".$item['sq_ft'].' Sqr Ft. </br>';

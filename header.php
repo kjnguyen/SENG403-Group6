@@ -62,3 +62,7 @@
 			<!-- faded slider end -->
 		</div>
 	</header>
+        <?php
+        if(!defined("compare_chooser.php")) {define("compare_chooser.php", True);}
+        include 'compare_chooser.php';
+        ?>
