@@ -6,9 +6,18 @@
     //---------------------------------------------------
 ?>
 <?php
-if ($_POST['compID'] == NULL) {
-    echo "permission denied";
-    die();
+if (!isset($_POST['compID'])) {
+    $permission = 0;
+}
+else
+{
+    if(!defined("postlisting.php")) {define("postlisting.php", True);}
+    include_once 'postlistingfunc.php';
+    $permission = check_createListing_permission($_POST['compID']);
+    
+}
+if ($permission != 1){
+    printf("<script>location.href='bad_permission.php'</script>");
 }
 ?>
 			<div>

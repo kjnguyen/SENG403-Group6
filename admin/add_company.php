@@ -7,8 +7,7 @@
 ?>
 <?php
 if ($_SESSION['Authed_Permission'] != 1) {
-    echo "permission denied";
-    die();
+    printf("<script>location.href='bad_permission.php'</script>");
 }
 ?>
 

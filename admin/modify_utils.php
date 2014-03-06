@@ -174,18 +174,6 @@ function check_permission($id){
     else{
         return 0;
     }
-
-    
-        //employee status -  if listing belogns to the employee permission allowed
-        
-        //TODO Currently unsure what to check compare for permissions
-   /* if ($_SESSION['Authed_Permission'] == 3 ){
-           $query = "SELECT CompID from Listing WHERE ID='$id'";
-           $result = mysqli_query($con, $query);
-           
-           if ($_SESSION[''] ==  )
-    }*/
-   
     mysqli_close($con);
 }
 
