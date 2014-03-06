@@ -152,21 +152,30 @@ function check_permission($id){
     }
     //company status -  if listing belogns to the company permission allowed
     if ($_SESSION['Authed_Permission'] == 2 ){
-           $query = "SELECT CompID from Listing WHERE ID='$id'";
-           $result = mysqli_query($con, $query);
-           if ($row = mysqli_fetch_assoc($result)) {
-                $number = $row['CompID'];
-            }
-           if ($_SESSION['Authed_UserID'] == $number ){
-               return 1;
-           }
-           else{
-               return 0;
-           }
+        $compID = $_SESSION['Authed_UserID'];
+    }
+    else if ($_SESSION['Authed_Permission'] == 3)
+    {
+        if(!defined("search_utils.php")) {define("search_utils.php", True);}
+        include_once '../search_utils.php';
+        $compID = get_company_id($_SESSION['Authed_UserID']);
     }
     else{
         return 0;
     }
+    $query = "SELECT CompID from Listing WHERE ID='$id'";
+    $result = mysqli_query($con, $query);
+    if ($row = mysqli_fetch_assoc($result)) {
+         $number = $row['CompID'];
+     }
+    if ($compID == $number ){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+
+    
         //employee status -  if listing belogns to the employee permission allowed
         
         //TODO Currently unsure what to check compare for permissions
