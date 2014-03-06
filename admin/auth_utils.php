@@ -22,7 +22,10 @@
      * $_SESSION['Authed_Exipre'], expire time
      */
     
-    //This function must be call before login
+    //This function must be call before any html output!
+    //No input
+    //Output: If failed, user will be redirect to login page with error id in session.
+    //Output: If success, nothing happen. Page will continue to load
     function CheckLogin() {
         $_SESSION['Authed_Error'] = 4;
         //Check variable set
@@ -48,6 +51,7 @@
     }
     
     //Must be call before any header output
+    //Output: Unset login sessions and redirect user to login page
     function Logout() {
         unset($_SESSION['Authed_UserID']);
         unset($_SESSION['Authed_Username']);

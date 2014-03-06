@@ -16,7 +16,8 @@
     Login($_POST['username'], $_POST['password']);
     
     //Login function
-    //Should receive username as input, and sha512 password as the 2nd input
+    //Should receive username as input, and password
+    //Function do not retrun anything, but will call ReturnToLogin(int) upon failure with error id.
     function Login($Username = null, $Password = null) {
         global $email_usr;
         //Check for valid inputs
@@ -79,7 +80,8 @@
     
     /*
      * This function will match username and email with database
-     * Input: $Username, $Passowrd ($Password should be in sha 512 format)
+     * Input: $Username, $Passowrd
+     * Return: 0 on failure and return 1 if password matched
      */
     function CompareData($Username, $Password) {
         //Get global variable
@@ -162,13 +164,15 @@
     
     /*
      * Redirect userback to login page
-     * $ReturnID definition
      * -1 = internal server error, database cannot be connect
      * 0 = logout
      * 1 = Invalid function call, missing arugs?
      * 2 = Invalid username
      * 3 = Username & password not match
      * 4 = not logged in
+     * 
+     * Input: ID
+     * Output: Redirect user back to login page
      */
     
     function ReturnToLoginPage($ReturnID) {

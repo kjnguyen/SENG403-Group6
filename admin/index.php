@@ -10,7 +10,7 @@
 <div>
     <ul class="breadcrumb">
         <li>
-            <a href="#">Home</a>
+          <a href="#"><b>Home</b></a>
         </li>
     </ul>
 </div>

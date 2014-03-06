@@ -15,10 +15,10 @@
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="./index.php">Home</a> <span class="divider">/</span> 
+						<a href="./">Home</a> <span class="divider">/</span> 
 					</li>
 					<li>
-						<a href="#">Edit Login Details</a>
+                                          <a href="#"><b>Edit Login Details</b></a>
 					</li>
 				</ul>
 			</div>
@@ -103,7 +103,7 @@
                                 <!--Buttons-->
 							    <div class="form-actions">
 							        <button type="submit" class="btn btn-primary">Save changes</button>
-							        <button type="reset" class="btn">Cancel</button>
+							        <button type="reset" class="btn">Reset</button>
 							    </div>
 						    </fieldset>
 					    </form>   
