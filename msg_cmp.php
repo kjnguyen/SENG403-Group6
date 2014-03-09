@@ -13,13 +13,13 @@ if(!defined("search_utils.php"))
  */
 function Show_Msg_Form() {?>
     <form method="post" action="./send_msg.php">
-        <label>Your name:</label>
-        <input required type="text" name="SenderName" maxlength="64" value="" />
-        <label>Your Email:</label>
-        <input required type="text" name="SenderEmail" maxlength="64" value="" />
-        <label>Your message:</label>
-        <textarea required rows="4" cols="50" name="Message" maxlength="4096"></textarea>
-        <button type="submit">Submit</button>
+        <label>Your name:</label><br />
+        <input required type="text" name="SenderName" maxlength="64" value="" /><br />
+        <label>Your Email:</label><br />
+        <input required type="text" name="SenderEmail" maxlength="64" value="" /><br />
+        <label>Your message:</label><br />
+        <textarea required rows="4" cols="50" name="Message" maxlength="4096"></textarea><br />
+        <button type="submit">Submit</button><br />
     </form>
 <?php 
     //Set variables
