@@ -175,6 +175,11 @@ else
                             echo "Address: ".$item['c_address'].'</br>';
                             echo "Manager: ".$item['c_manager_name'].'</br>';
                             echo "Phone: ".$item['c_phone_no'].'</br>';
+                            //Lines added by Jack L for MSG system
+                            echo "<br /><br />";
+                            include_once "msg_cmp.php";
+                            Show_Msg_Form();
+                            //End of lines added by Jack L
                             echo '</ul></div>';
 
                         }
