@@ -46,6 +46,9 @@
                             if (!isset($_POST['Ref_PG']) || $_POST['Ref_PG'] != "update_login_detail") {
                                 ShowErrMsg("Error: No direct access to this page.");
                                 goto EXEFinished;
+                            } else {
+                                //Unset
+                                unset($_POST['Ref_PG']);
                             }
                             //If user is not admin, user id must match to his own
                             if ($_POST['User_ID'] != $_SESSION['Authed_UserID'] && $_SESSION['Authed_Permission'] != 1) {
