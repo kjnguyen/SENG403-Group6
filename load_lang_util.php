@@ -13,9 +13,8 @@
     if (!isset($CurrentPageToRootDir)) { //If it is unset, assume the file is located at root folder
         $CurrentPageToRootDir = '.';
     }
-    echo basename(__FILE__).'<br />!';
     if (!file_exists($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_admin_general.php') || !file_exists($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_'.basename($_SERVER['PHP_SELF']))) {$Cur_LangID = "en";}
     if (!file_exists($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_admin_general.php') || !file_exists($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_'.basename($_SERVER['PHP_SELF']))) {die("Fatal Error: Unable to load language files.");}
     //Import language files
-    include_once ($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_'.basename(__FILE__));
+    include_once ($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_'.basename($_SERVER['PHP_SELF']));
 ?>
