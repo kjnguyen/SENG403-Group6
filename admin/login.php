@@ -13,7 +13,7 @@
 
 			<div class="row-fluid">
 				<div class="span12 center login-header">
-					<h2><?php echo $$Lang_Welcome_To_Admin_Page; ?></h2>
+					<h2><?php echo $Lang_Welcome_To_Admin_Page; ?></h2>
                                         <a href="../index.php"><?php echo $Lang_Go_Back_To_Market; ?></a>
 				</div><!--/span-->
                                 
