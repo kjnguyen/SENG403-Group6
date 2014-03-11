@@ -14,8 +14,8 @@
         $CurrentPageToRootDir = '.';
     }
     echo basename(__FILE__).'<br />!';
-    if (!file_exists($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_admin_general.php') || !file_exists($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_'.basename(__FILE__))) {$Cur_LangID = "en";}
-    if (!file_exists($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_admin_general.php') || !file_exists($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_'.basename(__FILE__))) {die("Fatal Error: Unable to load language files.");}
+    if (!file_exists($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_admin_general.php') || !file_exists($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_'.basename($_SERVER['PHP_SELF']))) {$Cur_LangID = "en";}
+    if (!file_exists($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_admin_general.php') || !file_exists($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_'.basename($_SERVER['PHP_SELF']))) {die("Fatal Error: Unable to load language files.");}
     //Import language files
     include_once ($CurrentPageToRootDir.'/langs/lang_'.$Cur_LangID.'_'.basename(__FILE__));
 ?>
