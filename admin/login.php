@@ -13,8 +13,8 @@
 
 			<div class="row-fluid">
 				<div class="span12 center login-header">
-					<h2>Welcome!</h2>
-                                        <a href="../index.php">Back to 4J Estate Marketplace</a>
+					<h2><?php echo $Welcome_To_Admin_Page; ?></h2>
+                                        <a href="../index.php"><?php echo $Go_Back_To_Market; ?></a>
 				</div><!--/span-->
                                 
 			</div><!--/row-->
@@ -26,35 +26,35 @@
                                             //Display login message or error message
                                             if (isset($_SESSION['Authed_Error'])) {
                                                 if ($_SESSION['Authed_Error'] == -1) {
-                                                    echo 'Internal server error. Please try again!';
+                                                    echo $Internal_Server_Err;
                                                 } else if ($_SESSION['Authed_Error'] == 0) {
-                                                    echo 'Successfully logged out.';
+                                                    echo $Successfully_Loggedout;
                                                 } else if ($_SESSION['Authed_Error'] == 1) {
-                                                    echo 'Invalid login request. Please try again!';
+                                                    echo $Invalid_Login_Req;
                                                 } else if ($_SESSION['Authed_Error'] == 2) {
-                                                    echo 'Invalid username. Please try again!';
+                                                    echo $Invalid_Username;
                                                 } else if ($_SESSION['Authed_Error'] == 3) {
-                                                    echo 'Invalid username or password!';
+                                                    echo $Lang_Pswd_Not_Match;
                                                 } else if ($_SESSION['Authed_Error'] == 4) {
-                                                    echo 'You are not logged in, please login first!';
+                                                    echo $Lang_Not_Logged_In;
                                                 } else {
-                                                    echo 'Please enter your username and password to login.';
+                                                    echo $Lang_Please_Enter_Data_To_Login;
                                                 }
                                                 unset($_SESSION['Authed_Error']);
                                             } else {
-                                                echo 'Please enter your username and password to login.';
+                                                echo $Lang_Please_Enter_Data_To_Login;
                                             }
                                             ?>
                                             
 					</div>
 					<form class="form-horizontal" action="auth.php" method="post">
 						<fieldset>
-							<div class="input-prepend" title="Username or Email" data-rel="tooltip">
+							<div class="input-prepend" title="<?php echo $Lang_Username_or_Email; ?>" data-rel="tooltip">
 								<span class="add-on"><i class="icon-user"></i></span><input autofocus class="input-large span10" name="username" id="username" type="text" value="" />
 							</div>
 							<div class="clearfix"></div>
 
-							<div class="input-prepend" title="Password" data-rel="tooltip">
+							<div class="input-prepend" title="<?php echo $Lang_Password; ?>" data-rel="tooltip">
 								<span class="add-on"><i class="icon-lock"></i></span><input class="input-large span10" name="password" id="password" type="password" value="" />
 							</div>
 							<div class="clearfix"></div>
@@ -66,10 +66,10 @@
 							<div class="clearfix"></div>
 
 							<p class="center span5">
-							<button type="submit" class="btn btn-primary">Login</button>
+							<button type="submit" class="btn btn-primary"><?php echo $Lang_Login; ?></button>
 							</p>
                                                         <p class="center span5">
-							<a href="request_account_info.html">Request Account</a>
+							<a href="request_account_info.html"><?php echo $Lang_Req_Account; ?></a>
 							</p>
 						</fieldset>
 					</form>

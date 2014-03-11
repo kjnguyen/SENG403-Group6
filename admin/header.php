@@ -7,6 +7,10 @@
     //Start session
     session_start();
     
+    //Lang file stuff
+    $CurrentPageToRootDir = '../';
+    include_once $CurrentPageToRootDir.'load_lang_util.php';
+    
     //Check user login
     include_once 'auth_utils.php';
     if(!isset($no_visible_elements) || !$no_visible_elements) {
