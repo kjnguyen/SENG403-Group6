@@ -46,7 +46,7 @@
     }
     
     //Retrieve company email from database
-    include_once "./mysqlconn.php";
+    include_once "./mysqlcon.php";
     $mysqlconn = getSQLConnection();
     $query = "";
     //Prepare
