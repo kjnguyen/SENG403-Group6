@@ -135,7 +135,7 @@
         $F_email;
         $F_Perm;
         $F_Count = 0;
-        $query->bind_result($T_uID, $T_email, $T_Pass, $T_Perm, $T_User);
+        @$query->bind_result($T_uID, $T_email, $T_Pass, $T_Perm, $T_User);
         while(@$query->fetch()) {
             $F_uID = $T_uID;
             $F_User = $T_User;

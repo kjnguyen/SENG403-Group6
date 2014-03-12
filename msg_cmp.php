@@ -33,7 +33,7 @@ function Show_Msg_Form() {?>
 //No arug, return URL string
 function Get_Client_URL() {
     $ReqURL = 'http';
-    if ($_SERVER["HTTPS"] == "on") {$ReqURL .= "s";}
+    if (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on") {$ReqURL .= "s";}
         $ReqURL .= "://";
         if ($_SERVER["SERVER_PORT"] != "80") {
             $ReqURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];

@@ -45,12 +45,56 @@
         goto ShowReURL;
     }
     
-    //Get company admin ID 
+    //Retrieve company email from database
+    include_once "./mysqlconn.php";
+    $mysqlconn = getSQLConnection();
+    $query = "";
+    //Prepare
+    @$query = $mysqlconn->prepare("SELECT email FROM User as u, Listing as l WHERE l.CompID = '?' AND l.CompID = u.ID LIMIT 1, 1");
+    if (!$query) {
+        echo "Error: Prepare stm failed.<br />";
+        goto ShowReURL;
+    }
+    //Bind variables
+    @$query->bind_param('d', $_SESSION["Send_Message_Targeted_Company_ID"]);
+    if (!$query) {
+        echo "Error: Bind param stm failed.<br />";
+        goto ShowReURL;
+    }
     
+    //Execute
+    @$query->execute();
+    if (!$query) {
+        echo "Error: Execute stm failed.<br />";
+        goto ShowReURL;
+    }
 
+    //Fetch data
+    $F_Email = "";
+    $F_Count = 0;
+    @$query->bind_result($T_Email);
+    while(@$query->fetch()) {
+        $F_Email = $T_Email;
+        $F_Count++;
+    }
+    
+    //Check data fetched
+    if ($F_Count != 1 || !filter_var($F_Email, FILTER_VALIDATE_EMAIL)) {
+        echo "Error: Data fetch failed.<br />";
+        goto ShowReURL;
+    }
+    
+    //Call email function to send data
+    include_once "./mail_func.php";
+    Mail_Send($F_Email, "New message from customer", $_POST['Message']);
+    
+    
     //Show return URL
-    die();
 ShowReURL:
+    //Close mysql connection
+    if (isset($mysqlconn) && ($mysqlconn != null || $mysqlconn = "")) {
+        @mysqli_close($mysqlconn);
+    }
     echo '<br /><a href="'.$_SESSION["Send_Message_Return_URL"].'">Click here to return</a><br />';
     die();
 ?>
