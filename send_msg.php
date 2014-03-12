@@ -1,6 +1,7 @@
 <?php
     //Start session
     session_start();
+    define("INCLUDE_FILE", true);
     //Start basic html output
 ?>
 <html><head></head><body>
@@ -17,7 +18,7 @@
     //Validate user inputs
     //Name
     if (!isset($_POST['SenderName']) || strlen($_POST['SenderName']) < 3 || strlen($_POST['SenderName']) > 64) {
-        echo "Error: Invalid length. Range: 3 to 64 characters.<br />";
+        echo "Error: Invalid name length. Range: 3 to 64 characters.<br />";
         goto ShowReURL;
     }
     

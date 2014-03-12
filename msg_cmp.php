@@ -14,11 +14,11 @@ if(!defined("search_utils.php"))
 function Show_Msg_Form() {?>
     <form method="post" action="./send_msg.php">
         <label>Contact the company:</label><br />
-        <label>Your name:</label><br />
+        <label>Your name (3 to 64 characters):</label><br />
         <input required type="text" name="SenderName" maxlength="64" value="" /><br />
         <label>Your Email:</label><br />
         <input required type="text" name="SenderEmail" maxlength="64" value="" /><br />
-        <label>Your message:</label><br />
+        <label>Your message (10 to 4096 characters):</label><br />
         <textarea required rows="10" cols="100" name="Message" maxlength="4096"></textarea><br />
         <br /><button type="submit">Submit</button><br />
     </form>
