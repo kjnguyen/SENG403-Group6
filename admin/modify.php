@@ -78,7 +78,6 @@
             include_once "footer.php";
             exit();
         }
-
 ?>
 
 <div class="row-fluid sortable">
@@ -144,13 +143,13 @@ if(!empty($status)) {
     }
 }
 ?>
-</select></p>										    
-                    <?php include_once './pictures.php'; ?>
+</select></p>			
                     <div class="form-actions">
                         <button class="btn btn-primary" type="submit" value="Modify" class="button">Modify</button>
                     </div>
                 </fieldset>
             </form>
+            <?php include_once './pictures.php'; ?>
         </div>
     </div>
 </div>

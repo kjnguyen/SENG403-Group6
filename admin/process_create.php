@@ -9,10 +9,10 @@
 <div>
     <ul class="breadcrumb">
         <li>
-            <a href="#">Home</a> <span class="divider">/</span>
+            <a href="index.php">Home</a> <span class="divider">/</span>
         </li>
         <li>
-            <a href="#">Blank</a>
+            <a href="#"><b>Create a new listing</b></a>
         </li>
     </ul>
 </div>
@@ -80,6 +80,9 @@
         echo '<div class="alert alert alert-success">';
         echo 'Listing successfully created';
         echo '</div>';
+        
+        // Need new listing ID
+        //echo '<a href="./modify?ID= "><span class="label label-info">Click Here to add pictures.</span></a>';
 
     EXEFinished:
         if ($success) {

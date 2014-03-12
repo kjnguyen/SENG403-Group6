@@ -137,8 +137,8 @@ if ($permission != 1){
 			<button class="btn btn-primary" type="submit" class="button">Create</button>
                         <a href="index.php" class="btn">Cancel</a>
 		</div>
-<?php include_once './pictures.php'; ?>
     </form>
+    You can add pictures after you create the listing.
 	</div>
 
 
