@@ -13,6 +13,8 @@
     //$message: some string. If mail type is html, please organize your message with html code.
     //$mailtype: text or html, default is text if not defined.
     Function Mail_Send($to, $subject, $message, $mailtype = "text") {
+        define('MAIL_TextCharLimitEachLine', 100, true);
+        define('MAIL_TextBreakChar', "\r\n", true);
         /*if (constant('MAIL_SendMethod') == 0) {
             echo "<br />Send mail failed: Mail function disabled.<br />";
             return;
