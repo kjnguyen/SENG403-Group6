@@ -50,7 +50,7 @@
     $mysqlconn = getSQLConnection();
     $query = "";
     //Prepare
-    @$query = $mysqlconn->prepare("SELECT email FROM User as u, Listing as l WHERE l.CompID = '?' AND l.CompID = u.ID LIMIT 1, 1");
+    @$query = $mysqlconn->prepare("SELECT u.email FROM User as u, Listing as l WHERE l.ID = '?' AND l.CompID = u.ID");
     if (!$query) {
         echo "Error: Prepare stm failed.<br />";
         goto ShowReURL;
