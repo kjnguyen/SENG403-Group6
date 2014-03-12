@@ -10,8 +10,8 @@
     if (isset($_SESSION['Send_Message']) && $_SESSION['Send_Message'] == 1) {
         unset($_SESSION['Send_Message']);
     } else {
-        echo "No direct access!<br />";
-        die();
+        //echo "No direct access!<br />";
+        //die();
     }
     
     //Validate user inputs
@@ -71,15 +71,13 @@
 
     //Fetch data
     $F_Email = "";
-    $F_Count = 0;
     @$query->bind_result($T_Email);
     while(@$query->fetch()) {
         $F_Email = $T_Email;
-        $F_Count++;
     }
     
     //Check data fetched
-    if ($F_Count != 1 || !filter_var($F_Email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($F_Email, FILTER_VALIDATE_EMAIL)) {
         echo "Error: Data fetch failed.<br />";
         goto ShowReURL;
     }
