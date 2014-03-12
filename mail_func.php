@@ -27,7 +27,7 @@
             //$from = constant('MAIL_From');
         //}
         $from = "mailing@s403.jack-l.com";
-        $header = "";
+        $headers = "";
         if ($mailtype == "html") {
             $headers .= 'MIME-Version: 1.0' . constant('MAIL_TextBreakChar');
             $headers .= 'Content-type: text/html; charset=iso-8859-1' . constant('MAIL_TextBreakChar');
