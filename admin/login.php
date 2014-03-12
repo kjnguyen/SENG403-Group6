@@ -26,13 +26,13 @@
                                             //Display login message or error message
                                             if (isset($_SESSION['Authed_Error'])) {
                                                 if ($_SESSION['Authed_Error'] == -1) {
-                                                    echo $Internal_Server_Err;
+                                                    echo $Lang_Internal_Server_Err;
                                                 } else if ($_SESSION['Authed_Error'] == 0) {
-                                                    echo $Successfully_Loggedout;
+                                                    echo $Lang_Successfully_Loggedout;
                                                 } else if ($_SESSION['Authed_Error'] == 1) {
-                                                    echo $Invalid_Login_Req;
+                                                    echo $Lang_Invalid_Login_Req;
                                                 } else if ($_SESSION['Authed_Error'] == 2) {
-                                                    echo $Invalid_Username;
+                                                    echo $Lang_Invalid_Username;
                                                 } else if ($_SESSION['Authed_Error'] == 3) {
                                                     echo $Lang_Pswd_Not_Match;
                                                 } else if ($_SESSION['Authed_Error'] == 4) {

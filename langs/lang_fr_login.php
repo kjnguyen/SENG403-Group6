@@ -14,7 +14,7 @@
     
     //French file for login page
     $Lang_Welcome_To_Admin_Page = 'Bonjour!';
-    $Lang_Go_Back_To_Market = 'Retour ид 4J Estate Marketplace';
+    $Lang_Go_Back_To_Market = 'Retour a 4J Estate Marketplace';
     $Lang_Please_Enter_Data_To_Login = '';
     $Lang_Username_or_Email = 'Nom d\'utilisateur ou e-mail';
     $Lang_Password = 'Mot de passe';
