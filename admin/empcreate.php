@@ -66,6 +66,7 @@
 </div>
 
 	</div>
+	<input type="hidden" name="process_add_emp" value='true'>
 		<div class="form-actions">
 			<button class="btn btn-primary" type="submit" value="Create">Create</button>
 		</div>
