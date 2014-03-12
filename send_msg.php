@@ -78,13 +78,14 @@
     
     //Check data fetched
     if (!filter_var($F_Email, FILTER_VALIDATE_EMAIL)) {
-        echo "Error: Data fetch failed.<br />";
+        echo "Error: Data fetch failed. Company email: $F_Email<br />";
         goto ShowReURL;
     }
     
     //Call email function to send data
     include_once "./mail_func.php";
-    Mail_Send($F_Email, "New message from customer", $_POST['Message']);
+    $Message = 'Message from: '.$_POST['SenderName'].' ('.$_POST['SenderEmail'].')\n'.$_POST['Message'];
+    Mail_Send($F_Email, "New message from customer - ".$_POST['SenderName'], $_POST['Message']);
     
     
     //Show return URL
