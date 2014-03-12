@@ -88,7 +88,7 @@
     $Message = 'Message from: '.$_POST['SenderName'].' ('.$_POST['SenderEmail'].')\n'.$_POST['Message'];
     Mail_Send($F_Email, "New message from customer - ".$_POST['SenderName'], $_POST['Message']);
     
-    
+    echo 'Message successfully sent out. <br />';
     //Show return URL
 ShowReURL:
     //Close mysql connection
