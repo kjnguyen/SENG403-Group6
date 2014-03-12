@@ -78,7 +78,7 @@
     
     //Check data fetched
     if (!filter_var($F_Email, FILTER_VALIDATE_EMAIL)) {
-        echo "Error: Data fetch failed. Company email: $F_Email<br />";
+        echo "Error: Data fetch failed. Company Email: $F_Email<br />";
         goto ShowReURL;
     }
     
