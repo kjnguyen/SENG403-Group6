@@ -56,7 +56,7 @@
         goto ShowReURL;
     }
     //Bind variables
-    @$query->bind_param('d', $_SESSION["Send_Message_Targeted_Company_ID"]);
+    @$query->bind_param('i', $_SESSION["Send_Message_Targeted_Company_ID"]);
     if (!$query) {
         echo "Error: Bind param stm failed.<br />";
         goto ShowReURL;
