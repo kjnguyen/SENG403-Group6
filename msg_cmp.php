@@ -25,7 +25,7 @@ function Show_Msg_Form() {?>
 <?php
     //Set variables
     $_SESSION["Send_Message"] = 1;
-    $_SESSION["Send_Message_Targeted_Company_ID"] = $_GET['ID'];
+    $_SESSION["Send_Message_Targeted_Listing_ID"] = $_GET['ID'];
     $_SESSION["Send_Message_Return_URL"] = Get_Client_URL();
 }
 

@@ -40,7 +40,7 @@
     }
     
     //Validate input company ID
-    if (!isset($_SESSION["Send_Message_Targeted_Company_ID"]) || !is_numeric($_SESSION["Send_Message_Targeted_Company_ID"])) {
+    if (!isset($_SESSION["Send_Message_Targeted_Listing_ID"]) || !is_numeric($_SESSION["Send_Message_Targeted_Listing_ID"])) {
         echo "Error: Invalid company ID.<br />";
         goto ShowReURL;
     }
@@ -56,7 +56,7 @@
         goto ShowReURL;
     }
     //Bind variables
-    @$query->bind_param('i', $_SESSION["Send_Message_Targeted_Company_ID"]);
+    @$query->bind_param('i', $_SESSION["Send_Message_Targeted_Listing_ID"]);
     if (!$query) {
         echo "Error: Bind param stm failed.<br />";
         goto ShowReURL;
