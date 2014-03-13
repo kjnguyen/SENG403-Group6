@@ -45,7 +45,7 @@ to-do: find a better way to handle this - I only need part of the header-->
         </nav>
 
 <?php
-define("search_utils.php", True);
+if(!defined("search_utils.php")) {define("search_utils.php", True);}
 include_once 'search_utils.php';
 $ID = $_GET['ID'];
 $item_found = True;
