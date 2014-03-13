@@ -10,7 +10,7 @@ include_once "header.php";
 <section id="mainContent" class="grid_10" style="position: relative; width: 100%;">
 <article style="position: relative; width: 100%;">
 <style>
-table,th,td:not(:first-child)
+table,th,td:nth-child(n)
 {
 border:2px solid red;
 /*border-collapse:collapse;*/
@@ -94,7 +94,7 @@ echo '</tr>';
 foreach ($compareItems[0] as $key => $item){
     
     echo '<tr>';
-    echo '<td>'.$fields_map[$key].'</td>';
+    echo '<td><h4>'.$fields_map[$key].'</h4></td>';
     for ($i = 0; $i < $itemCount; $i ++) {
         echo '<td>';
         echo $compareItems[$i][$key];

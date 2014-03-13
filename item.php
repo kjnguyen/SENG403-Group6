@@ -137,13 +137,7 @@ else
             <section id="mainContent" class="grid_10" style="position: relative; width: 100%;">
                 <article style="position: relative; width: 100%;">
                         <h2>Item Details</h2>
-                                    <script>
-                                    function goBack()
-                                      {
-                                      window.history.back()
-                                      }
-                                    </script>
-                                    <button onclick="goBack()">Go Back</button><br>
+
 ';
                                
                         
@@ -154,20 +148,26 @@ else
                         else {
                             echo '<p><form name="addCompareItem" method="post"><input type="hidden" name="compareItemID" value="'.$item['ID'].'"/>'
                             . '<button name="addCompareItem" type="submit" value="addCompare">Add this item to comparison list</button></form></p>';
-                            echo 'Price: $'.$item['price'].'</br>';
-                            echo "Date Listed: ".$item['date_listed'].'</br>';
-                            echo "Size: ".$item['sq_ft'].' Sqr Ft. </br>';
-                            echo "Floors: ".$item['num_floors'].'</br>';
-                            echo "Bedrooms: ".$item['num_bdrms'].'</br>';
-                            echo "Baths: ".$item['num_baths'].'</br>';
-                            echo "Year Built: ".$item['year_built'].'</br>';
-                            echo "Property Type: ".$item['prop_type'].'</br>';
-                            echo "Building Type: ".$item['bldg_type'].'</br>';
-                            echo "Maintenance Fee: ".$item['maintenance_fee'].'</br>';
-                            echo "Status: ".$item['status'].'</br>';
-                            echo "Address: ".$item['address'].'</br>';
-                            echo "Description: ".$item['description'].'</br>';
-                            
+                            echo '<p><h4>Price: </h4> $'.$item['price'].'</p>';
+                            echo "<p><h4>Date Listed: </h4>".$item['date_listed'].'</p>';
+                            echo "<p><h4>Size: </h4>".$item['sq_ft'].' Sqr Ft. </p>';
+                            echo "<p><h4>Floors: </h4>".$item['num_floors'].'</p>';
+                            echo "<p><h4>Bedrooms: </h4>".$item['num_bdrms'].'</p>';
+                            echo "<p><h4>Baths: </h4>".$item['num_baths'].'</p>';
+                            echo "<p><h4>Year Built: </h4>".$item['year_built'].'</p>';
+                            echo "<p><h4>Property Type: </h4>".$item['prop_type'].'</p>';
+                            echo "<p><h4>Building Type: </h4>".$item['bldg_type'].'</p>';
+                            echo "<p><h4>Maintenance Fee: </h4>".$item['maintenance_fee'].'</p>';
+                            echo "<p><h4>Status: </h4>".$item['status'].'</p>';
+                            echo "<p><h4>Address: </h4>".$item['address'].'</p>';
+                            echo "<p><h4>Description: </h4>".$item['description'].'</p>';
+                            echo '<script>
+                                    function goBack()
+                                      {
+                                      window.history.back()
+                                      }
+                                    </script>
+                                    <button onclick="goBack()">Go Back</button><br>';
                             echo '<div id="faded" style="position: relative; width: 100%;">
                                   <ul class="pagination" style="position: relative; top: 0px; left: 0px;">';
                             echo '<label>Realtor Contact Info</label><br>';
@@ -175,6 +175,8 @@ else
                             echo "Address: ".$item['c_address'].'</br>';
                             echo "Manager: ".$item['c_manager_name'].'</br>';
                             echo "Phone: ".$item['c_phone_no'].'</br>';
+                            
+                            
                             //Lines added by Jack L for MSG system
                             echo "<br /><br />";
                             include_once "msg_cmp.php";
