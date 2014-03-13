@@ -181,6 +181,14 @@ function getPictures(mysqli $con, $ListingID)
   return $list;
 }
 
+/* Place holder for get thumbnails of pictures
+ * to-do: John will do this later
+ */
+function getThumnails(mysqli $con, $ListingID)
+{
+  return getPictures($con, $ListingID);
+}
+
 /* Deletes a picture from the file system and database.
  * Returns TRUE on success or FALSE on failure.
  */
