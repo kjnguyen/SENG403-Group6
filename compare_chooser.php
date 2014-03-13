@@ -7,7 +7,7 @@
 <div class="container_16">
 <?php
 // choose items to compare
-if (session_status() == PHP_SESSION_NONE) {
+if(session_id() == '') {
     session_start();
 }
 

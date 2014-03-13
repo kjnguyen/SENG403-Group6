@@ -56,6 +56,15 @@ if ($itemCount == 0) {
     die();
 }
 
+include "picturesLib.php";
+
+$con = getSQLConnection();
+
+mysqli_close($con);
+// following part are place-holder for pictures
+
+
+
 $fields_map = array(
     'price' => 'Price($)',
     'date_listed' => 'Lising Date',
@@ -80,7 +89,9 @@ echo '<tr>';
 echo '<th>Fields</th>';
 for ($i = 0; $i < $itemCount; $i ++) {
     echo '<th>';
-    echo '<a href=item.php?ID="'.$compareItems[$i]['ID'].'" rel="0"><img src="images/f_thumb1.png" alt=""></a>';
+    $pictureList = getPictures($con, intval($compareItems[$i]['ID']));
+    if($pictureList !== false && !empty($pictureList)){echo '<a href=item.php?ID="'.$compareItems[$i]['ID'].'" rel="0"><img src="'.$pictureList[0]['path'].'" alt=""></a>';}
+    else {echo '<a href=item.php?ID="'.$compareItems[$i]['ID'].'" rel="0">No Pic</a>'; }
     echo '</th>';
     unset($compareItems[$i]['ID']);
     unset($compareItems[$i]['description']);
