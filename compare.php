@@ -10,23 +10,27 @@ include_once "header.php";
 <section id="mainContent" class="grid_10" style="position: relative; width: 100%;">
 <article style="position: relative; width: 100%;">
 <style>
-table,th,td
+table,th,td:not(:first-child)
 {
 border:2px solid red;
-border-collapse:collapse;
+/*border-collapse:collapse;*/
+table-layout: fixed;
+width: 150px;
 padding:5px;
+border-spacing:15px;
+}
+th td:first-child {
+    column-width: 50px;
+width: 50px; 
 }
 th,td
 {
 padding:5px;
 }
+
 th
 {
 text-align:left;
-}
-table
-{
-border-spacing:15px;
 }
 </style>
 <?php
@@ -71,7 +75,7 @@ $fields_map = array(
 );
 
 
-echo '<table style="width:500px">';
+echo '<table style="">';
 echo '<tr>';
 echo '<th>Fields</th>';
 for ($i = 0; $i < $itemCount; $i ++) {
