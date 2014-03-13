@@ -86,7 +86,7 @@ function is_emp_input_invalid($compID, $agent_name, $phone_no, $email, $permissi
     }
 	if (!$agent_name) {
 		$valid = False;
-		$error_msg .= '*Agent Name is required<br>';
+        $error_msg .= '*Agent Name is required<br>';}
 	
     if (!$phone_no) {
         $valid = False;
@@ -110,7 +110,7 @@ function is_emp_input_invalid($compID, $agent_name, $phone_no, $email, $permissi
     }    
 	if(!$permission) {
 		$valid = False;
-		$error_msg .= '* Permission is required<br>';
+        $error_msg .= '* Permission is required<br>';}
     if (!$username) {
         $valid = False;
         $error_msg .= '* Username is required<br>';
