@@ -7,7 +7,9 @@
 <div class="container_16">
 <?php
 // choose items to compare
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (isset($_POST['deleteCompareItem1'])) {unset($_SESSION['compare_item1']);}
 if (isset($_POST['deleteCompareItem2'])) {unset($_SESSION['compare_item2']);}
