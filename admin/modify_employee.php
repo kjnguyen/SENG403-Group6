@@ -6,7 +6,7 @@
     //---------------------------------------------------
 ?>
 
-<?php /*
+<?php 
         define("modify_employee_utils.php", True);
         include_once 'modify_utils.php';
         $ID = $_POST['ID'];
@@ -17,7 +17,7 @@
         if ($permission != 1){
                 printf("<script>location.href='bad_permission.php'</script>");
         }
-*/
+
 ?>
 
 
