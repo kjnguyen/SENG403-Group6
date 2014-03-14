@@ -53,7 +53,7 @@ function check_permission($id){
     if ($_SESSION['Authed_Permission'] == 1 ){
         return 1;
     }
-    //company status -  if listing belogns to the company permission allowed
+    //company status -  if employee belogns to the company permission allowed
     if ($_SESSION['Authed_Permission'] == 2 ){
         $compID = $_SESSION['Authed_UserID'];
     }
@@ -66,7 +66,7 @@ function check_permission($id){
     else{
         return 0;
     }
-    $query = "SELECT CompID from Listing WHERE ID='$id'";
+    $query = "SELECT CompID from Employee WHERE ID='$id'";
     $result = mysqli_query($con, $query);
     if ($row = mysqli_fetch_assoc($result)) {
          $number = $row['CompID'];
