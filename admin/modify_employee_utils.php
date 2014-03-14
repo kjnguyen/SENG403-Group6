@@ -18,8 +18,6 @@ include_once '../mysqlcon.php';
 
 /**
  * Modify one employee specified by $id (protected against sql injection)
- * 
- * 
  * @param int $id
  * @param type $name
  * @param type $phone_no
@@ -29,7 +27,7 @@ include_once '../mysqlcon.php';
  * @return string|null
  * @return boolean - True if successful, False if not
  */
-function modify_values_secure($id, $name, $phone_no, $email, $username, $password) {
+function modify_values_secure_emp($id, $name, $phone_no) {
     
     $con = getSQLConnection();
     
@@ -47,7 +45,35 @@ function modify_values_secure($id, $name, $phone_no, $email, $username, $passwor
     else {goto funcError;}
 
 // email=?, username=?, password=?
+//$email, $username, $password
+    mysqli_close($con);
 
+    return True;
+    funcError:
+    mysqli_close($con);
+    return False;
+} 
+
+
+function modify_values_secure_user($id, $email, $username, $password) {
+    
+    $con = getSQLConnection();
+    
+    mysqli_select_db($con, 's403_project');
+   
+    if(!$id){goto funcError;}  
+      
+    $sql = "UPDATE Employee SET name=?, phone_no=?, WHERE ID=?";
+    
+    if ($stmt = mysqli_prepare($con, $sql)) {
+        $stmt->bind_param('ssi', $name, $phone_no, $id);
+        if(!($stmt->execute())) {goto funcError;}
+        $stmt->close();
+    }
+    else {goto funcError;}
+
+// email=?, username=?, password=?
+//$email, $username, $password
     mysqli_close($con);
 
     return True;
