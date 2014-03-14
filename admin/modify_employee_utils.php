@@ -122,6 +122,20 @@ function check_permission($id){
     mysqli_close($con);
 }
 
+function search_one_item($ID) {
+    $con = getSQLConnection();
+    mysqli_select_db($con, 's403_project');
+    $query = "select * FROM Employee join User on Employee.ID = User.ID WHERE Employee.ID = $ID";
+    $result = mysqli_query($con, $query);
+    mysqli_close($con);
+    if ($row = mysqli_fetch_assoc($result)){
+        return $row;
+    }
+    else {
+        return NULL;
+    }
+}
+
 
 ?>
 
