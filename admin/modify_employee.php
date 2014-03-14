@@ -124,9 +124,12 @@ echo '
 					<div class="form-actions">
                         <button class="btn btn-primary" type="submit" value="Modify" class="button">Modify</button>
                     </div>
+               </fieldset>
+            </form>
 
-
-
+        </div>
+    </div>
+</div>
 
 <?php
     include('footer.php');
