@@ -27,7 +27,7 @@
                         <a href="index.php">Home</a> <span class="divider">/</span>
                 </li>
                 <li>
-                  <a href="#"><b>Modify Listing</b></a>
+                  <a href="#"><b>Modify Employee</b></a>
                 </li>
         </ul>
 </div>
@@ -90,11 +90,11 @@
 <div class="row-fluid sortable">
         <div class="box span12">
                 <div class="box-header well" data-original-title>
-                        <h2><i class="icon-picture"></i>Modify Listing</h2>
+                        <h2><i class="icon-picture"></i>Modify Employee</h2>
 
                 </div>
                 <div class="box-content">
-                        <form name="Modify" method="post" action="modify_results.php" enctype="multipart/form-data" class="form-horizontal" >
+                        <form name="Modify" method="post" action="modify_employee_results.php" enctype="multipart/form-data" class="form-horizontal" >
                                 <fieldset>
 
 <?php
