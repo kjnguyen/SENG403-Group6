@@ -98,8 +98,8 @@
                                 <fieldset>
 
 <?php
-	define("search_utils.php", True);
-	include_once '../search_utils.php';
+	define("modiy_employee_utils.php", True);
+	include_once 'modiy_employee_utils.php';
 	$ID = $_POST['ID'];
 	if (!$ID) {
 	$ID = $_GET['ID'];
