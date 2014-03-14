@@ -63,7 +63,6 @@
 ';
 echo '
 <input type="hidden" name="ID" value="'.$ID.'"/>
-<input type="hidden" name="CompID" value="'.$_POST['CompID'].'"/>
 ';
 ?>
 </select></p>
