@@ -23,12 +23,13 @@ include_once '../mysqlcon.php';
  * @param int $id
  * @param type $name
  * @param type $phone_no
+ * @param type $email
  * @param type $username
  * @param type $password
  * @return string|null
  * @return boolean - True if successful, False if not
  */
-function modify_values_secure($id, $name, $phone_no, $username, $password) {
+function modify_values_secure($id, $name, $phone_no, $email, $username, $password) {
     
     $con = getSQLConnection();
     
@@ -36,14 +37,16 @@ function modify_values_secure($id, $name, $phone_no, $username, $password) {
    
     if(!$id){goto funcError;}  
       
-    $sql = "UPDATE Employee SET name=?, phone_no=?, username=?, password=? WHERE ID=?";
+    $sql = "UPDATE Employee SET name=?, phone_no=?, WHERE ID=?";
     
     if ($stmt = mysqli_prepare($con, $sql)) {
-        $stmt->bind_param('ssssi', $name, $phone_no, $username, $password, $id);
+        $stmt->bind_param('ssi', $name, $phone_no, $id);
         if(!($stmt->execute())) {goto funcError;}
         $stmt->close();
     }
     else {goto funcError;}
+
+// email=?, username=?, password=?
 
     mysqli_close($con);
 
