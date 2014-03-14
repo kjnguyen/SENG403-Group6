@@ -41,9 +41,9 @@
 
 
 
-    $success = modify_values_secure($id, $name, $phone_no, $email, $username, $password );
+    $success = modify_values_secure_emp($id, $name, $phone_no);
     if(!$success){
-        echo '<div class="alert alert-error">ERROR: <br> Database operation failed</div>';
+        echo '<div class="alert alert-error">ERROR: <br> Employee Database operation failed</div>';
         goto EXEFinished;
     }	
 
