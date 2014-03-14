@@ -75,7 +75,7 @@ EXEFinished:
      * @param type $password
      * @return string|null
      */
-    function is_modify_invalid($id, $name, $phone_no, $username, $password) {
+    function is_modify_invalid($id, $name, $phone_no, $email, $username, $password) {
         $valid = True;
         $error_msg = "";
         if(!$id){
