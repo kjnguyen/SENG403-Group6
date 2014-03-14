@@ -15,6 +15,45 @@ define("mysqlcon.php", True);
 include_once '../mysqlcon.php';
 
 
+
+/**
+ * Modify one employee specified by $id (protected against sql injection)
+ * 
+ * 
+ * @param int $id
+ * @param type $name
+ * @param type $phone_no
+ * @param type $username
+ * @param type $password
+ * @return string|null
+ * @return boolean - True if successful, False if not
+ */
+function modify_values_secure($id, $name, $phone_no, $username, $password) {
+    
+    $con = getSQLConnection();
+    
+    mysqli_select_db($con, 's403_project');
+   
+    if(!$id){goto funcError;}  
+      
+    $sql = "UPDATE Employee SET name=?, phone_no=?, username=?, password=? WHERE ID=?";
+    
+    if ($stmt = mysqli_prepare($con, $sql)) {
+        $stmt->bind_param('ssssi', $name, $phone_no, $username, $password, $id);
+        if(!($stmt->execute())) {goto funcError;}
+        $stmt->close();
+    }
+    else {goto funcError;}
+
+    mysqli_close($con);
+
+    return True;
+    funcError:
+    mysqli_close($con);
+    return False;
+} 
+
+
 /**
  * Delete a listing (protected against sql injection)
  * @param int $id
