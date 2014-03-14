@@ -111,10 +111,10 @@
 <div class="control-group"><label class="control-label" for="focusedInput">ID: </label><div class="controls"> <input class="input-xlarge disabled" id="disabledInput" value="'.$ID.'" disabled/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Agent Name: </label><div class="controls"><input type="text" name="name" value="'.$item['name'].'"/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Phone Number: </label><div class="controls"><input type="text" name="phone_no" value="'.$item['phone_no'].'"/></div></div>
-<div class="control-group"><label class="control-label" for="focusedInput">Permission: </label><div class="controls"><input type="text" name="permission" value="'.$item['permission'].'"/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Username: </label><div class="controls"><input type="text" name="username" value="'.$item['username'].'"/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Password: </label><div class="controls"><input type="text" name="password" value="'.$item['password'].'"/></div></div>
 ';
+//<div class="control-group"><label class="control-label" for="focusedInput">Permission: </label><div class="controls"><input type="text" name="permission" value="'.$item['permission'].'"/></div></div>
 echo '
 <input type="hidden" name="ID" value="'.$ID.'"/>
 ';
