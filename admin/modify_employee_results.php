@@ -25,14 +25,15 @@
 
     $id = $_POST['ID'];
     $name = $_POST['name'];
-    $phone_no = $_POST['phone_no'];                         
+    $phone_no = $_POST['phone_no'];
+    $email = $_POST['email'];
     //$permission = $_POST['permission'];
     $username = $_POST['username'];
     $password = $_POST['password'];
    
 
     $success = True;
-    if ($error_msg = is_modify_invalid($id, $name, $phone_no,$username, $password )) {
+    if ($error_msg = is_modify_invalid($id, $name, $phone_no, $email, $username, $password )) {
         echo '<div class="alert alert-error">ERROR: <br>'.$error_msg.'</div>';
         $success = False;
         goto EXEFinished; 
@@ -40,7 +41,7 @@
 
 
 
-    $success = modify_values_secure($id, $name, $phone_no,$username, $password );
+    $success = modify_values_secure($id, $name, $phone_no, $email, $username, $password );
     if(!$success){
         echo '<div class="alert alert-error">ERROR: <br> Database operation failed</div>';
         goto EXEFinished;
@@ -88,6 +89,10 @@ EXEFinished:
         if(!$phone_no){
             $valid = False;
             $error_msg .= "* Phone number is required<br>";
+        }
+        if(!$email){
+            $valid = False;
+            $error_msg .= "* Email is required<br>";
         }
         if(!$username){
             $valid = False;
