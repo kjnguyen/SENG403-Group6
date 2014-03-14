@@ -41,6 +41,7 @@ to-do: find a better way to handle this - I only need part of the header-->
         <nav>
             <ul>
                 <li><a href="index.php">Home</a></li>
+                <li><a href="admin" >Login</a></li>
             </ul>
         </nav>
 
