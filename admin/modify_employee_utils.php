@@ -1,7 +1,7 @@
 <?php
 
 //Prevent Direct Access, return 404 page not found
-if(!defined("modify_utils.php"))
+if(!defined("modify_employee_utils.php"))
 {
     echo '404 Not Found';
      header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);die();
@@ -85,7 +85,7 @@ function check_permission($id){
     $con = getSQLConnection(true);
     
     if (!isset($_SESSION['Authed_UserID'])){
-       // echo "<br>Must be logged in to modify listings.<br>"
+       // echo "<br>Must be logged in to modify employee.<br>"
         return 0;
     }
     //admin status - permission allowed 
