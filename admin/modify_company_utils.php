@@ -37,14 +37,11 @@ function modify_values_secure($id, $name, $address, $manager_name, $phone_no, $d
       
     $sql = "UPDATE Company SET name=?, address=?, manager_name=?, phone_no=?, decription=? WHERE ID=?";
     if ($stmt = mysqli_prepare($con, $sql)) {
-        $stmt->bind_param('sssssi', $name, $address, $manager_name, $phone_no, $description,  $id);
+        $stmt->bind_param('sssssi', $name, $address, $manager_name, $phone_no, $description, $id);
         if(!($stmt->execute())) {goto funcError;}
         $stmt->close();
     }
     else {goto funcError;}
-
-// email=?, username=?, password=?
-//$email, $username, $password
     mysqli_close($con);
 
     return True;
@@ -58,7 +55,7 @@ function modify_values_secure($id, $name, $address, $manager_name, $phone_no, $d
 
 
 /**
- * Delete a listing (protected against sql injection)
+ * Delete a company (protected against sql injection)
  * @param int $id
  * @return boolean - True if successful, False if not
  */
