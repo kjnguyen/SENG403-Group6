@@ -109,7 +109,7 @@
 
       echo '
 <div class="control-group"><label class="control-label" for="focusedInput">ID: </label><div class="controls"> <input class="input-xlarge disabled" id="disabledInput" value="'.$ID.'" disabled/></div></div>
-<div class="control-group"><label class="control-label" for="focusedInput">Agent Name: </label><div class="controls"><input type="text" name="name" value="'.$item['name'].'"/></div></div>
+<div class="control-group"><label class="control-label" for="focusedInput">Company Name: </label><div class="controls"><input type="text" name="name" value="'.$item['name'].'"/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Address: </label><div class="controls"><input type="text" name="address" value="'.$item['address'].'"/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Manager Name: </label><div class="controls"><input type="text" name="manager_name" value="'.$item['manager_name'].'"/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Phone Number: </label><div class="controls"><input type="text" name="phone_no" value="'.$item['phone_no'].'"/></div></div>
