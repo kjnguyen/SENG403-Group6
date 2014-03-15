@@ -47,7 +47,7 @@ elseif($_POST['cmd'] === "remove")
 elseif($_POST['cmd'] === "upload")
 {
   $pictures = addPictures($con, $_SESSION['listing']);
-  var_dump($pictures);
+  echo json_encode($pictures);
 }
 else
 {

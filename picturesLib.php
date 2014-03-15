@@ -221,7 +221,7 @@ function removePicture(mysqli $con, $ListingID, $imgID)
   
   $fullPath = $_SERVER['DOCUMENT_ROOT'] . IMG_UPLOAD_DIR . $partialPath;
   
-  if(!file_exists($fullPath) || unlink($fullPath)) // Ensure file has been deleted
+  if(is_null($partialPath) || !file_exists($fullPath) || unlink($fullPath)) // Ensure file has been deleted
   {
     // Listing ID is used to ensure we are removing from the correct listing
     $statement = $con->prepare("DELETE FROM Pictures WHERE ID = ?");

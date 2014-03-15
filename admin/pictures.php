@@ -18,6 +18,7 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
 <script type="text/javascript">
   var token = "<?php echo $token; ?>";
   
+  // This is not currectly used
   function sendRequest(id, command)
   {
     var xmlhttp = new XMLHttpRequest();
@@ -100,8 +101,18 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     xhr.onload = function()
     {
       //progress.value = progress.innerHTML = 100;
-      progress.style.width = "100%";
-      c1.innerHTML = "Done!";
+      var result = JSON.parse(xhr.responseText);
+      
+      if(result instanceof Array && result[0] != false)
+      {
+        progress.style.width = "100%";
+        c1.innerHTML = "Done!";
+      }
+      else
+      {
+        progress.style.width = "100%";
+        c1.innerHTML = "<div class=\"control-group error\"><span class=\"controls help-inline\">Failed!</span></div>";
+      }
     };
 
     //if (tests.progress)
@@ -120,6 +131,7 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     xhr.send(formData);
   }
   var c1 = 1;
+  var lastFile = "";
   function uploadPic()
   {
     var fileInput = document.getElementById("fileInput");
@@ -130,6 +142,11 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     if(fileInput.value == "")
     {
       picMsg.innerHTML = "<div class=\"control-group error\"><span class=\"controls help-inline\">Please choose a file.</span></div>";
+      return false;
+    }
+    else if(lastFile == fileInput.value)
+    {
+      picMsg.innerHTML = "<div class=\"control-group error\"><span class=\"controls help-inline\">You have just uploaded this file.</span></div>";
       return false;
     }
     
@@ -150,7 +167,7 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     progressBox.appendChild(progress);
     
     cell1.innerHTML = "Uploading...";
-    cell2.innerHTML = fileInput.value;
+    cell2.innerHTML = lastFile = fileInput.value;
     cell3.appendChild(progressBox);
     c1 = cell1;
     var files = fileInput.files;
@@ -158,7 +175,8 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     readfiles(files, progress);
     
     // Clear file input
-    fileInput.parentNode.innerHTML = fileInput.parentNode.innerHTML;
+    // fileInput.nextSibling.innerHTML = "No file selected.";
+    // fileInput.parentNode.innerHTML = fileInput.parentNode.innerHTML;
   }
 </script>
 
@@ -173,14 +191,6 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
       white-space: nowrap;
   }
 </style>
-<!--
-<div class="control-group">
-  <label class="control-label" for="fileInput">Add Picture</label>
-  <div class="controls">
-    <input class="input-file uniform_on" id="fileInput" type="file" name="file">
-  </div>
-</div>
-<input type="hidden" name="token" value="<?php echo $token; ?>" /> -->
 
 <div class="control-group">
   <legend>Edit Pictures</legend>
@@ -235,6 +245,10 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     </tr>
   </table>
   <div id="picMsg"></div>
-  <div>Reordering is not supported yet.</div>
+  <br/>
+  <div>
+    Reordering is not supported yet.<br/>
+    Currently only 3 pictures can be displayed.
+  </div>
 </div>
 <input type="hidden" name="token" value="<?php echo $token; ?>" />
