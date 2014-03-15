@@ -38,7 +38,7 @@ function modify_values_secure($id, $name, $address, $manager_name, $phone_no, $d
     $sql = "UPDATE Company SET name=?, address=?, manager_name=?, phone_no=?, description=? WHERE ID=?";
   
     if ($stmt = mysqli_prepare($con, $sql)) {
-        $stmt->bind_param('ssssi', $name, $address, $manager_name, $phone_no, $description, $id);
+        $stmt->bind_param('sssssi', $name, $address, $manager_name, $phone_no, $description, $id);
         if(!($stmt->execute())) {goto funcError;}
         $stmt->close();
     }
