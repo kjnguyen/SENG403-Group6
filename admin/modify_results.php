@@ -64,7 +64,7 @@
     echo 'Listing successfully modified';
     echo '</div>';
 
-    include_once './pictureUploader.php';
+    //include_once './pictureUploader.php';
 EXEFinished:
     if ($success) {
         echo '<a href="index.php" class="btn btn-info">Go Back</a>';

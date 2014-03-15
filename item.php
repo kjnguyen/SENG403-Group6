@@ -72,9 +72,21 @@ echo '
             <div class="rap">';
 if($pictureList !== false && !empty($pictureList))
 {
+  $i = 0;
+  $lastPicHTML;
   foreach($pictureList as $pic)
   {
-    echo '<a href="#"><img src="' . $pic["path"] . '" alt="" width="571" height="398"></a>';
+    $lastPicHTML = '<a href="#"><img src="' . $pic["path"] . '" alt="" width="571" height="398"></a>';
+    echo $lastPicHTML;
+    if(++$i >= 3) // only 3 pictures for now
+    {
+      break;
+    }
+  }
+  
+  if($i == 1)
+  {
+    echo $lastPicHTML; // Copy this to prevent error
   }
 }
 else
