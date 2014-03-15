@@ -35,10 +35,12 @@ function modify_values_secure($id, $name, $address, $manager_name, $phone_no, $d
    
     if(!$id){goto funcError;}  
       
-    $sql = "UPDATE Company SET name=?, address=?, manager_name=?, phone_no=?, decription=? WHERE ID=?";
+    $sql = "UPDATE Company SET name=? WHERE ID=?";
+    //, address=?, manager_name=?, phone_no=?, decription=?
     echo $sql;
     if ($stmt = mysqli_prepare($con, $sql)) {
-        $stmt->bind_param('sssssi', $name, $address, $manager_name, $phone_no, $description, $id);
+        $stmt->bind_param('si', $name, $id);
+        // $address, $manager_name, $phone_no, $description,
         if(!($stmt->execute())) {goto funcError;}
         $stmt->close();
     }
