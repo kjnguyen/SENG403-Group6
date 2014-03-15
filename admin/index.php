@@ -85,14 +85,6 @@
                                 echo '<td class="center ">'.$row['name'].'</td>';
                                 echo '<td class="center ">'.$row['manager_name'].'</td>';
                                 echo '<td class="center ">'.$row['phone_no'].'</td>';
-                                <form name="modify_company" method="post" action="modify_company.php"">';
-                                echo '<input type="hidden", name="ID", value="'.$row['ID'].'">';
-                                echo '
-                                <button type="submit" name="process_modify" value="modify" class="btn btn-small btn-primary" title="Click on Edit to see full details and modify any value" data-rel="tooltip">Edit</button>
-
-                                <button type="submit" name="process_delete" value="delete" class="btn btn-small btn-danger">delete</button>
-                                </form>
-                                ';                                
                                 echo '</tr>';
 
                             }
