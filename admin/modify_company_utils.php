@@ -1,7 +1,7 @@
 <?php
 
 //Prevent Direct Access, return 404 page not found
-if(!defined("modify_employee_utils.php"))
+if(!defined("modify_company_utils.php"))
 {
     echo '404 Not Found';
      header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);die();
@@ -17,7 +17,7 @@ include_once '../mysqlcon.php';
 
 
 /**
- * Modify one employee specified by $id (protected against sql injection)
+ * Modify one company specified by $id (protected against sql injection)
  * @param int $id
  * @param type $name
  * @param type $phone_no
@@ -35,7 +35,7 @@ function modify_values_secure_emp($id, $name, $phone_no) {
    
     if(!$id){goto funcError;}  
       
-    $sql = "UPDATE Employee SET name=?, phone_no=? WHERE ID=?";
+    $sql = "UPDATE Company SET name=?, phone_no=? WHERE ID=?";
     if ($stmt = mysqli_prepare($con, $sql)) {
         $stmt->bind_param('ssi', $name, $phone_no, $id);
         if(!($stmt->execute())) {goto funcError;}
@@ -87,10 +87,10 @@ function modify_values_secure_user($id, $email, $username, $password) {
  * @param int $id
  * @return boolean - True if successful, False if not
  */
-function delete_employee_secure($id){
+function delete_company_secure($id){
     $con = getSQLConnection();
     
-    $sql = "DELETE FROM Employee WHERE ID=?";
+    $sql = "DELETE FROM Company WHERE ID=?";
     if ($stmt = mysqli_prepare($con, $sql)) {
         $stmt->bind_param('i', $id);
         if(!($stmt->execute())) {goto funcError1;}
@@ -113,14 +113,14 @@ function check_permission($id){
     $con = getSQLConnection(true);
     
     if (!isset($_SESSION['Authed_UserID'])){
-       // echo "<br>Must be logged in to modify employee.<br>"
+       // echo "<br>Must be logged in to modify company.<br>"
         return 0;
     }
     //admin status - permission allowed 
     if ($_SESSION['Authed_Permission'] == 1 ){
         return 1;
     }
-    //company status -  if employee belogns to the company permission allowed
+    //company status -  if company belogns to the company permission allowed
     if ($_SESSION['Authed_Permission'] == 2 ){
         $compID = $_SESSION['Authed_UserID'];
     }
@@ -133,7 +133,7 @@ function check_permission($id){
     else{
         return 0;
     }
-    $query = "SELECT CompID from Employee WHERE ID='$id'";
+    $query = "SELECT CompID from Company WHERE ID='$id'";
     $result = mysqli_query($con, $query);
     if ($row = mysqli_fetch_assoc($result)) {
          $number = $row['CompID'];
@@ -150,7 +150,7 @@ function check_permission($id){
 function search_one_item($ID) {
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
-    $query = "select * FROM Employee join User on Employee.ID = User.ID WHERE Employee.ID = $ID";
+    $query = "select * FROM Company WHERE Employee.ID = $ID";
     $result = mysqli_query($con, $query);
     mysqli_close($con);
     if ($row = mysqli_fetch_assoc($result)){
