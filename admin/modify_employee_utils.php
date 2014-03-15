@@ -35,11 +35,10 @@ function modify_values_secure_emp($id, $name, $phone_no) {
    
     if(!$id){goto funcError;}  
       
-    $sql = "UPDATE Employee SET name=?, phone_no=?, WHERE ID=?";
-    echo $sql;
+    $sql = "UPDATE Employee SET name=? WHERE ID=?";
     if ($stmt = mysqli_prepare($con, $sql)) {
         echo $sql;
-        $stmt->bind_param('ssi', $name, $phone_no, $id);
+        $stmt->bind_param('si', $name, $id);
         if(!($stmt->execute())) {goto funcError;}
         $stmt->close();
     }
