@@ -98,7 +98,7 @@
                                 <fieldset>
 
 <?php
-	define("modify_company_utils.php", True);
+	if(!defined("modify_company_utils.php")) {define("modify_company_utils.php", True);}
 	include_once 'modify_company_utils.php';
 	$ID = $_POST['ID'];
 	if (!$ID) {
