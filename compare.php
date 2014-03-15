@@ -67,7 +67,7 @@ mysqli_close($con);
 
 $fields_map = array(
     'price' => 'Price($)',
-    'date_listed' => 'Lising Date',
+    'date_listed' => 'Listing Date',
     'sq_ft' => 'Area(sqft)',
     'num_floors' => 'Floors',
     'num_bdrms' => 'Bedrooms',
@@ -76,7 +76,7 @@ $fields_map = array(
     'prop_type' => 'Property Type',
     'bldg_type' => 'Building Type',
     'district' => 'District',
-    'maintenance_fee' => 'Maitenance($)',
+    'maintenance_fee' => 'Maintenance($)',
     'status' => 'Status',
     'address' => 'Address',
     'c_name' => 'Company'
