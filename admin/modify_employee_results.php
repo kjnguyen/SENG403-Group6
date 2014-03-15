@@ -45,6 +45,11 @@
     if(!$success){
         echo '<div class="alert alert-error">ERROR: <br> Employee Database operation failed</div>';
         goto EXEFinished;
+    }
+    $success = modify_values_secure_user($id, $email, $username, $password);
+    if(!$success){
+        echo '<div class="alert alert-error">ERROR: <br> User Database operation failed</div>';
+        goto EXEFinished;
     }	
 
     echo '<div class="alert alert alert-success">';
