@@ -146,6 +146,12 @@
                             echo '<div class="alert alert alert-success">';
                             echo 'Profile successfully updated!';
                             echo '</div>';
+                            
+                            //Update current login data if username is the same
+                            if ($_SESSION['Authed_UserID'] == $TargetedID) {
+                                $_SESSION['Authed_Username'] = $Username;
+                                $_SESSION['Authed_Email'] = $Email;
+                            }
 EXEFinished:
                         ?>
                         
