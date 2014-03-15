@@ -150,7 +150,7 @@ function check_permission($id){
 function search_one_item($ID) {
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
-    $query = "select * FROM Company WHERE Employee.ID = $ID";
+    $query = "select * FROM Company WHERE ID = $ID";
     $result = mysqli_query($con, $query);
     mysqli_close($con);
     if ($row = mysqli_fetch_assoc($result)){
