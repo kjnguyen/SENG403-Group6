@@ -13,14 +13,14 @@
             <a href="index.php">Home</a> <span class="divider">/</span>
         </li>
         <li>
-          <a href ="#"><b>Modify Employee Confirmation</b></a>
+          <a href ="#"><b>Modify Company Confirmation</b></a>
         </li>
     </ul>
 </div>
  <?php
 
-    if(!defined("modify_employee_utils.php")) {define("modify_employee_utils.php", True);}
-    include_once 'modify_employee_utils.php';
+    if(!defined("modify_company_utils.php")) {define("modify_company_utils.php", True);}
+    include_once 'modify_company_utils.php';
 
 
     $id = $_POST['ID'];
@@ -43,17 +43,12 @@
 
     $success = modify_values_secure_emp($id, $name, $phone_no);
     if(!$success){
-        echo '<div class="alert alert-error">ERROR: <br> Employee Database operation failed</div>';
+        echo '<div class="alert alert-error">ERROR: <br> Company Database operation failed</div>';
         goto EXEFinished;
     }
-    $success = modify_values_secure_user($id, $email, $username, $password);
-    if(!$success){
-        echo '<div class="alert alert-error">ERROR: <br> User Database operation failed</div>';
-        goto EXEFinished;
-    }	
 
     echo '<div class="alert alert alert-success">';
-    echo 'Employee successfully modified';
+    echo 'Company successfully modified';
     echo '</div>';
 EXEFinished:
     if ($success) {
@@ -85,7 +80,7 @@ EXEFinished:
         $error_msg = "";
         if(!$id){
             $valid = False;
-            $error_msg .= "* Missing Employee ID<br>";
+            $error_msg .= "* Missing Comapny ID<br>";
         }
         if(!$name){
             $valid = False;
