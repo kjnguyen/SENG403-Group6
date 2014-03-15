@@ -98,13 +98,13 @@
                                 <fieldset>
 
 <?php
-	/*define("modify_company_utils.php", True);
+	define("modify_company_utils.php", True);
 	include_once 'modify_company_utils.php';
 	$ID = $_POST['ID'];
 	if (!$ID) {
 	$ID = $_GET['ID'];
 	}
-	$item = search_one_item($ID);*/
+	$item = search_one_item($ID);
 
 
       echo '
@@ -114,7 +114,7 @@
 <div class="control-group"><label class="control-label" for="focusedInput">Manager Name: </label><div class="controls"><input type="text" name="manager_name" value="'.$item['manager_name'].'"/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Phone Number: </label><div class="controls"><input type="text" name="phone_no" value="'.$item['phone_no'].'"/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Description: </label><div class="controls"><textarea type="textarea" name="description" rows="3" style="width: 500px; height: 197px;">'.$item['description'].'</textarea></div></div>
-
+';
 echo '
 <input type="hidden" name="ID" value="'.$ID.'"/>
 ';
