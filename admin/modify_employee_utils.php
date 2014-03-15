@@ -38,14 +38,12 @@ function modify_values_secure_emp($id, $name, $phone_no) {
     $sql = "UPDATE Employee SET name=?, phone_no=?, WHERE ID=?";
     echo $sql;
     if ($stmt = mysqli_prepare($con, $sql)) {
-        echo "TEST IF";
+        echo $sql;
         $stmt->bind_param('ssi', $name, $phone_no, $id);
         if(!($stmt->execute())) {goto funcError;}
         $stmt->close();
     }
-    else {
-        echo "ELSE";
-        goto funcError;}
+    else {goto funcError;}
 
 // email=?, username=?, password=?
 //$email, $username, $password
