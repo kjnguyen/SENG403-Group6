@@ -89,7 +89,7 @@
                                 echo '<td class="center ">'.$row['phone_no'].'</td>';
                                 echo '<td class="center " >';
                                 echo '
-                                    <form name="modify_employee" method="post" action="modify_employee.php"">';
+                                    <form name="modify_company" method="post" action="modify_company.php"">';
                                 echo '<input type="hidden", name="ID", value="'.$row['ID'].'">';
                                 echo '
                                 <button type="submit" name="process_modify" value="modify" class="btn btn-small btn-primary" title="Click on Edit to see full details and modify any value" data-rel="tooltip">Edit</button>
