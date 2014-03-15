@@ -21,13 +21,13 @@ include_once '../mysqlcon.php';
  * @param int $id
  * @param type $name
  * @param type $phone_no
- * @param type $email
- * @param type $username
- * @param type $password
+ * @param type $address
+ * @param type $manager_name
+ * @param type $description
  * @return string|null
  * @return boolean - True if successful, False if not
  */
-function modify_values_secure_emp($id, $name, $phone_no) {
+function modify_values_secure($id, $name, $address, $manager_name, $phone_no, $description) {
     
     $con = getSQLConnection();
     
@@ -35,9 +35,9 @@ function modify_values_secure_emp($id, $name, $phone_no) {
    
     if(!$id){goto funcError;}  
       
-    $sql = "UPDATE Company SET name=?, phone_no=? WHERE ID=?";
+    $sql = "UPDATE Company SET name=?, address=?, manager_name=?, phone_no=?, decription=? WHERE ID=?";
     if ($stmt = mysqli_prepare($con, $sql)) {
-        $stmt->bind_param('ssi', $name, $phone_no, $id);
+        $stmt->bind_param('sssssi', $name, $address, $manager_name, $phone_no, $description,  $id);
         if(!($stmt->execute())) {goto funcError;}
         $stmt->close();
     }
@@ -54,32 +54,7 @@ function modify_values_secure_emp($id, $name, $phone_no) {
 } 
 
 
-function modify_values_secure_user($id, $email, $username, $password) {
-    
-    $con = getSQLConnection();
-    
-    mysqli_select_db($con, 's403_project');
-   
-    if(!$id){goto funcError;}  
-      
-    $sql = "UPDATE User SET email=?, username=?, password=? WHERE ID=?";
-    
-    if ($stmt = mysqli_prepare($con, $sql)) {
-        $stmt->bind_param('sssi', $email, $username, $password, $id);
-        if(!($stmt->execute())) {goto funcError;}
-        $stmt->close();
-    }
-    else {goto funcError;}
 
-// email=?, username=?, password=?
-//$email, $username, $password
-    mysqli_close($con);
-
-    return True;
-    funcError:
-    mysqli_close($con);
-    return False;
-} 
 
 
 /**
