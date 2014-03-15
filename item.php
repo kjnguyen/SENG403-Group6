@@ -97,7 +97,11 @@ if($pictureList !== false && !empty($pictureList))
                                       Picture '. ($i+1) . '
                       </a>
                   </li>';
-    $i++;
+    
+    if(++$i >= 3) // only 3 pictures for now
+    {
+      break;
+    }
   }
   
 }
