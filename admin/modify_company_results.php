@@ -25,15 +25,14 @@
 
     $id = $_POST['ID'];
     $name = $_POST['name'];
+    $address = $_POST['address'];
+    $manager_name = $_POST['manager_name'];
     $phone_no = $_POST['phone_no'];
-    $email = $_POST['email'];
-    //$permission = $_POST['permission'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $description = $_POST['description'];
    
 
     $success = True;
-    if ($error_msg = is_modify_invalid($id, $name, $phone_no, $email, $username, $password )) {
+    if ($error_msg = is_modify_invalid($id, $name, $address, $manager_name, $phone_no, $description )) {
         echo '<div class="alert alert-error">ERROR: <br>'.$error_msg.'</div>';
         $success = False;
         goto EXEFinished; 
@@ -41,7 +40,7 @@
 
 
 
-    $success = modify_values_secure_emp($id, $name, $phone_no);
+    $success = modify_values_secure($id, $name, $address, $manager_name, $phone_no, $description);
     if(!$success){
         echo '<div class="alert alert-error">ERROR: <br> Company Database operation failed</div>';
         goto EXEFinished;
@@ -75,7 +74,7 @@ EXEFinished:
      * @param type $password
      * @return string|null
      */
-    function is_modify_invalid($id, $name, $phone_no, $email, $username, $password) {
+    function is_modify_invalid($id, $name, $address, $manager_name, $phone_no, $description) {
         $valid = True;
         $error_msg = "";
         if(!$id){
@@ -84,23 +83,19 @@ EXEFinished:
         }
         if(!$name){
             $valid = False;
-            $error_msg .= "* Name is required<br>";
+            $error_msg .= "* Company name is required<br>";
         }
         if(!$phone_no){
             $valid = False;
             $error_msg .= "* Phone number is required<br>";
         }
-        if(!$email){
+        if(!$address){
             $valid = False;
-            $error_msg .= "* Email is required<br>";
+            $error_msg .= "* Address is required<br>";
         }
-        if(!$username){
+        if(!$manager_name){
             $valid = False;
-            $error_msg .= "* Username is required<br>";
-        }
-        if(!$password){
-            $valid = False;
-            $error_msg .= "* Password is required<br>";
+            $error_msg .= "* Manager name is required<br>";
         }
         if (!$valid) {
             return $error_msg;
