@@ -43,7 +43,9 @@ function modify_values_secure_emp($id, $name, $phone_no) {
         if(!($stmt->execute())) {goto funcError;}
         $stmt->close();
     }
-    else {goto funcError;}
+    else {
+        echo $stmt;
+        goto funcError;}
 
 // email=?, username=?, password=?
 //$email, $username, $password
