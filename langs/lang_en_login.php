@@ -13,7 +13,7 @@
     }
     
     //English file for login page
-    $Lang_Welcome_To_Admin_Page = 'Welcome to admin control panel';
+    $Lang_Welcome_To_Admin_Page = 'Welcome to control panel';
     $Lang_Go_Back_To_Market = 'Back to 4J Estate Marketplace';
     $Lang_Please_Enter_Data_To_Login = 'Please enter your username and password to login.';
     $Lang_Username_or_Email = 'Username or Email';
