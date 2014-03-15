@@ -98,13 +98,13 @@
                                 <fieldset>
 
 <?php
-	define("modify_company_utils.php", True);
+	/*define("modify_company_utils.php", True);
 	include_once 'modify_company_utils.php';
 	$ID = $_POST['ID'];
 	if (!$ID) {
 	$ID = $_GET['ID'];
 	}
-	$item = search_one_item($ID);
+	$item = search_one_item($ID);*/
 
 
       echo '
