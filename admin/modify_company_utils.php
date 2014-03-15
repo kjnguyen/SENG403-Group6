@@ -36,6 +36,7 @@ function modify_values_secure($id, $name, $address, $manager_name, $phone_no, $d
     if(!$id){goto funcError;}  
       
     $sql = "UPDATE Company SET name=?, address=?, manager_name=?, phone_no=?, decription=? WHERE ID=?";
+    echo $sql;
     if ($stmt = mysqli_prepare($con, $sql)) {
         $stmt->bind_param('sssssi', $name, $address, $manager_name, $phone_no, $description, $id);
         if(!($stmt->execute())) {goto funcError;}
@@ -78,7 +79,7 @@ function delete_company_secure($id){
     return False;
 }
 
-//Check permission of user to see if they are allowed to edit selected listing based on its id
+//Check permission of user to see if they are allowed to edit comapny
 //Returns 0 if permission denied and 1 otherwise
 //input- listing id number, output-1 or 0
 function check_permission($id){
@@ -90,27 +91,6 @@ function check_permission($id){
     }
     //admin status - permission allowed 
     if ($_SESSION['Authed_Permission'] == 1 ){
-        return 1;
-    }
-    //company status -  if company belogns to the company permission allowed
-    if ($_SESSION['Authed_Permission'] == 2 ){
-        $compID = $_SESSION['Authed_UserID'];
-    }
-    else if ($_SESSION['Authed_Permission'] == 3)
-    {
-        if(!defined("search_utils.php")) {define("search_utils.php", True);}
-        include_once '../search_utils.php';
-        $compID = get_company_id($_SESSION['Authed_UserID']);
-    }
-    else{
-        return 0;
-    }
-    $query = "SELECT CompID from Company WHERE ID='$id'";
-    $result = mysqli_query($con, $query);
-    if ($row = mysqli_fetch_assoc($result)) {
-         $number = $row['CompID'];
-     }
-    if ($compID == $number ){
         return 1;
     }
     else{
