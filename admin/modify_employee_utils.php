@@ -37,7 +37,6 @@ function modify_values_secure_emp($id, $name, $phone_no) {
       
     $sql = "UPDATE Employee SET name=?, phone_no=? WHERE ID=?";
     if ($stmt = mysqli_prepare($con, $sql)) {
-        echo $sql;
         $stmt->bind_param('ssi', $name, $phone_no, $id);
         if(!($stmt->execute())) {goto funcError;}
         $stmt->close();
@@ -63,10 +62,10 @@ function modify_values_secure_user($id, $email, $username, $password) {
    
     if(!$id){goto funcError;}  
       
-    $sql = "UPDATE Employee SET name=?, phone_no=?, WHERE ID=?";
+    $sql = "UPDATE User SET email=?, username=?, password=? WHERE ID=?";
     
     if ($stmt = mysqli_prepare($con, $sql)) {
-        $stmt->bind_param('ssi', $name, $phone_no, $id);
+        $stmt->bind_param('sssi', $email, $username, $password, $id);
         if(!($stmt->execute())) {goto funcError;}
         $stmt->close();
     }
