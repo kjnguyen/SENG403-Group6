@@ -7,8 +7,8 @@
 ?>
 
 <?php 
-        define("modify_employee_utils.php", True);
-        include_once 'modify_employee_utils.php';
+        define("modify_company_utils.php", True);
+        include_once 'modify_company_utils.php';
         $ID = $_POST['ID'];
         if (!$ID) {
              $ID = $_GET['ID'];
@@ -27,7 +27,7 @@
                         <a href="index.php">Home</a> <span class="divider">/</span>
                 </li>
                 <li>
-                  <a href="#"><b>Modify Employee</b></a>
+                  <a href="#"><b>Modify Company</b></a>
                 </li>
         </ul>
 </div>
@@ -36,8 +36,8 @@
 <?php
         if (isset($_POST['process_delete'])) {
             // do delete instead of modify
-            if(!defined("modify_employee_utils.php")) {define("modify_employee_utils.php", True);}
-            include_once 'modify_employee_utils.php';
+            if(!defined("modify_company_utils.php")) {define("modify_company_utils.php", True);}
+            include_once 'modify_company_utils.php';
 
 
             $id = $_POST['ID'];
@@ -50,14 +50,14 @@
             }
 
 
-            $success = delete_employee_secure($id);
+            $success = delete_company_secure($id);
             if(!$success){
                 echo '<div class="alert alert-error">ERROR: <br> Database operation failed</div>';
                 goto EXEFinished;
             }	
 
             echo '<div class="alert alert alert-success">';
-            echo 'Employee successfully deleted';
+            echo 'Company successfully deleted';
             echo '</div>';
 
         EXEFinished:
@@ -90,16 +90,16 @@
 <div class="row-fluid sortable">
         <div class="box span12">
                 <div class="box-header well" data-original-title>
-                        <h2><i class="icon-picture"></i>Modify Employee</h2>
+                        <h2><i class="icon-picture"></i>Modify Company</h2>
 
                 </div>
                 <div class="box-content">
-                        <form name="Modify" method="post" action="modify_employee_results.php" enctype="multipart/form-data" class="form-horizontal" >
+                        <form name="Modify" method="post" action="modify_company_results.php" enctype="multipart/form-data" class="form-horizontal" >
                                 <fieldset>
 
 <?php
-	define("modify_employee_utils.php", True);
-	include_once 'modify_employee_utils.php';
+	define("modify_company_utils.php", True);
+	include_once 'modify_company_utils.php';
 	$ID = $_POST['ID'];
 	if (!$ID) {
 	$ID = $_GET['ID'];
@@ -110,11 +110,11 @@
       echo '
 <div class="control-group"><label class="control-label" for="focusedInput">ID: </label><div class="controls"> <input class="input-xlarge disabled" id="disabledInput" value="'.$ID.'" disabled/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Agent Name: </label><div class="controls"><input type="text" name="name" value="'.$item['name'].'"/></div></div>
+<div class="control-group"><label class="control-label" for="focusedInput">Address: </label><div class="controls"><input type="text" name="address" value="'.$item['address'].'"/></div></div>
+<div class="control-group"><label class="control-label" for="focusedInput">Manager Name: </label><div class="controls"><input type="text" name="manager_name" value="'.$item['manager_name'].'"/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Phone Number: </label><div class="controls"><input type="text" name="phone_no" value="'.$item['phone_no'].'"/></div></div>
-<div class="control-group"><label class="control-label" for="focusedInput">Email: </label><div class="controls"><input type="text" name="email" value="'.$item['email'].'"/></div></div>
-<div class="control-group"><label class="control-label" for="focusedInput">Username: </label><div class="controls"><input type="text" name="username" value="'.$item['username'].'"/></div></div>
-<div class="control-group"><label class="control-label" for="focusedInput">Password: </label><div class="controls"><input type="text" name="password" value="'.$item['password'].'"/></div></div>
-';
+<div class="control-group"><label class="control-label" for="focusedInput">Description: </label><div class="controls"><textarea type="textarea" name="description" rows="3" style="width: 500px; height: 197px;">'.$item['description'].'</textarea></div></div>
+
 echo '
 <input type="hidden" name="ID" value="'.$ID.'"/>
 ';
