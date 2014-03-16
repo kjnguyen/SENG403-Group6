@@ -60,7 +60,6 @@ include "picturesLib.php";
 
 $con = getSQLConnection();
 
-mysqli_close($con);
 // following part are place-holder for pictures
 
 
@@ -114,12 +113,9 @@ foreach ($compareItems[0] as $key => $item){
     echo '</tr>';
 }
 echo '<tr>';
-
-
-
-
 echo '</table>';
 
+mysqli_close($con);
 ?>
 </article>
 </section>
