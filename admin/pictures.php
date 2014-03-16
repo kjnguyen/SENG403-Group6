@@ -80,7 +80,7 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
   }
   
   // This is from http://html5demos.com/dnd-upload, but modified
-  function readfiles(files, progress)
+  function readfiles(files, progress, cell1, cell2)
   {
     if(files.length === 0)
       return false;
@@ -101,17 +101,35 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     xhr.onload = function()
     {
       //progress.value = progress.innerHTML = 100;
-      var result = JSON.parse(xhr.responseText);
-      
-      if(result instanceof Array && result[0] != false)
+      var result;
+      try
+      {
+        result = JSON.parse(xhr.responseText);
+      }
+      catch(e) // Catch JSON.parse exceptions
       {
         progress.style.width = "100%";
-        c1.innerHTML = "Done!";
+        cell1.innerHTML = "<div class=\"control-group error\"><span class=\"controls help-inline\">Failed!</span></div>";
+        return;
+      }
+      
+      // Uploaded correctly
+      if(result instanceof Array && result[0] != false)
+      {
+        cell1.innerHTML = "<div class=\"control-group success\"><span class=\"controls help-inline\">Done!</span></div>";
+        progress.style.width = "100%";
+        /*// This does not do what is expected
+        cell2.firstChild.dataset.content = "<img src='" + result[0]["path"] + "'/>";
+        cell2.firstChild.dataset.rel = "popover";
+        cell2.firstChild.dataset.originalTitle = "";
+        
+        progress.parentNode.innerHTML = '<a class="btn btn-danger" href="#" onclick="removePic(this, ' + result[0]["id"] +
+                ');"><i class="icon-trash icon-white"/></i> Delete\n </a>';*/
       }
       else
       {
         progress.style.width = "100%";
-        c1.innerHTML = "<div class=\"control-group error\"><span class=\"controls help-inline\">Failed!</span></div>";
+        cell1.innerHTML = "<div class=\"control-group error\"><span class=\"controls help-inline\">Failed!</span></div>";
       }
     };
 
@@ -130,7 +148,7 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
 
     xhr.send(formData);
   }
-  var c1 = 1;
+  
   var lastFile = "";
   function uploadPic()
   {
@@ -166,13 +184,13 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     progress.style.width = '0%';
     progressBox.appendChild(progress);
     
+    lastFile = fileInput.value;
     cell1.innerHTML = "Uploading...";
-    cell2.innerHTML = lastFile = fileInput.value;
+    cell2.innerHTML = "<span>" + fileInput.value + "</span>";
     cell3.appendChild(progressBox);
-    c1 = cell1;
     var files = fileInput.files;
     
-    readfiles(files, progress);
+    readfiles(files, progress, cell1, cell2);
     
     // Clear file input
     // fileInput.nextSibling.innerHTML = "No file selected.";
@@ -183,7 +201,7 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
 <style type="text/css">
   .picTable
   {
-    width: 35%;
+    width: 50%;
   }
   .picButtons
   {
@@ -207,10 +225,10 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     echo '
       <tr>
         <td class="picButtons">
-          <a class="btn" href="#" onclick="orderPic(this, ';
+          <a class="btn" href="#" disabled onclick="orderPic(this, ';
         echo $pic["id"];
         echo ');"><i class="icon-chevron-down"/></i></a>
-          <a class="btn" href="#" onclick="orderPic(this, ';
+          <a class="btn" href="#" disabled onclick="orderPic(this, ';
         echo $pic["id"];
         echo ');"><i class="icon-chevron-up"/></i></a>
         </td>
@@ -237,6 +255,7 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
         <div class="controls">
           <input class="input-file uniform_on" id="fileInput" type="file">
         </div>
+        <h6>Accepted formats: *.jpeg, *.jpg, *.png, *.bmp, *.gif</h6>
       </td>
       <td class="picButtons">
         <br />
