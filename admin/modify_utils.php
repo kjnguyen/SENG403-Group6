@@ -11,7 +11,7 @@ if(!defined("modify_utils.php"))
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-define("mysqlcon.php", True);
+if(!defined("mysqlcon.php")) {define("mysqlcon.php", true);}
 include_once '../mysqlcon.php';
 
 

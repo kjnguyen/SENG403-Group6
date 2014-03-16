@@ -4,20 +4,23 @@
     
     //Do not output anything before this line (Do not use echo or html code)
     //---------------------------------------------------
-?>
 
-<?php 
-        define("modify_utils.php", True);
-        include_once 'modify_utils.php';
-        $ID = $_POST['ID'];
-        if (!$ID) {
-             $ID = $_GET['ID'];
-         }
-        $permission = check_permission($ID);
-        if ($permission != 1){
-                printf("<script>location.href='bad_permission.php'</script>");
-        }
+    define("modify_utils.php", True);
+    include_once 'modify_utils.php';
 
+    if(array_key_exists("ID", $_POST))
+    {
+      $ID = intval($_POST['ID']);
+    }
+    else
+    {
+      $ID = intval($_GET['ID']);
+    }
+    $permission = check_permission($ID);
+    if ($permission != 1)
+    {
+      printf("<script>location.href='bad_permission.php'</script>");
+    }
 ?>
 <div>
         <ul class="breadcrumb">
@@ -94,10 +97,10 @@
 <?php
 define("search_utils.php", True);
 include_once '../search_utils.php';
-$ID = $_POST['ID'];
+/*$ID = $_POST['ID'];
 if (!$ID) {
 $ID = $_GET['ID'];
-}
+}*/
 $item = search_one_item($ID);
        // echo "
       // <p><label>ID number(required): </label><input type=\"text\" name=\"ID\" value=\"".$_GET['ID']."\"/></a></p>
@@ -153,8 +156,6 @@ if(!empty($status)) {
         </div>
     </div>
 </div>
-
-
     
 <?php
     include('footer.php');
