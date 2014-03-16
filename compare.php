@@ -86,11 +86,20 @@ $fields_map = array(
 echo '<table style="">';
 echo '<tr>';
 echo '<th>Fields</th>';
-for ($i = 0; $i < $itemCount; $i ++) {
+for ($i = 0; $i < $itemCount; $i ++)
+{
     echo '<th>';
+    echo '<a href=item.php?ID="' . $compareItems[$i]['ID'] . '" rel="0"><img src="';
     $pictureList = getPictures($con, intval($compareItems[$i]['ID']));
-    if($pictureList !== false && !empty($pictureList)){echo '<a href=item.php?ID="'.$compareItems[$i]['ID'].'" rel="0"><img src="'.$pictureList[0]['path'].'" alt=""></a>';}
-    else {echo '<a href=item.php?ID="'.$compareItems[$i]['ID'].'" rel="0">No Pic</a>'; }
+    if($pictureList !== false && !empty($pictureList))
+    {
+        echo $pictureList[0]['path'];
+    }
+    else
+    {
+        echo 'images/no-image.jpg';
+    }
+    echo '" height="84" width="93"></a>';
     echo '</th>';
     unset($compareItems[$i]['ID']);
     unset($compareItems[$i]['description']);
