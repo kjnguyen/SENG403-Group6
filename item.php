@@ -117,10 +117,11 @@ else
   echo '</div>
   </header>';
   
-  echo '<style type="text/css">header {height: 100px;}</style>';
+  echo '<style type="text/css">header {height: 100px;}
+  .noimage{color: rgb(228, 228, 230);}  </style>';
   
   echo "<div class=\"container_16\">";
-  echo '<center><img src="images/no-image.jpg" height="84" width="93"></center></div>';
+  echo '<center><div class="noimage">No images available</div></center></div>';
 }
     if(!defined("compare_chooser.php")) {define("compare_chooser.php", True);}
     include 'compare_chooser.php';
@@ -192,10 +193,6 @@ else
         </div>
     </div>
 </section>
-<?php
-
-
-?>
 
 <?php
     include_once "footer.php";
