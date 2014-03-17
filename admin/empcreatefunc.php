@@ -1,6 +1,6 @@
 <?php
 
-if(!defined("empcreate.php"))
+if(!defined("empcreatefunc.php"))
 {
     echo '404 Not Found';
      header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);die();
