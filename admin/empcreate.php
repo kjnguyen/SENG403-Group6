@@ -36,31 +36,31 @@ if ($_SESSION['Authed_Permission'] != 1) {
 					<div class="control-group">
 						<label class="control-label" for"focusedInput">Agent Name</label>
 						<div class="controls">
-						<input class="input-xlarge focuse" id="agent_name" name="agent_name" type="text"</input>
+						<input class="input-xlarge focused" id="agent_name" name="agent_name" type="text"</input>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for"tyeahead">Phone Number</label>
+						<label class="control-label" for"focusedInput">Phone Number</label>
 						<div class="controls">
-						<input id="phone_no" name="phone_no" type="text"</input>
+						<input class="input-xlarge focused" id="phone_no" name="phone_no" type="text"</input>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for"tyeahead">Email</label>
+						<label class="control-label" for"focusedInput">Email</label>
 						<div class="controls">
-						<input id="email" name="email" type="text"</input>
+						<input class="input-xlarge focused" id="email" name="email" type="text"</input>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for"tyeahead">Username</label>
+						<label class="control-label" for"focusedInput">Username</label>
 						<div class="controls">
-						<input id="username" name="username" input-xlarge focused" type="text"</input>
+						<input class="input-xlarge focused" id="username" name="username" input-xlarge focused" type="text"</input>
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for"tyeahead">Password</label>
+						<label class="control-label" for"focusedInput">Password</label>
 						<div class="controls">
-						<input id="password" name="password" input-xlarge focused" type="text"</input>
+						<input class="input-xlarge focused" id="password" name="password" input-xlarge focused" type="text"</input>
 						</div>
 					</div>
 
