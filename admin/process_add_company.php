@@ -11,7 +11,7 @@
 <div>
     <ul class="breadcrumb">
         <li>
-            <a href="../">Home</a> <span class="divider">/</span>
+          <a href="./">Home</a> <span class="divider">/</span>
         </li>
         <li>
             <a href="./add_company.php">Add a Company</a> <span class="divider">/</span>
