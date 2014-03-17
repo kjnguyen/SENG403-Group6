@@ -34,7 +34,7 @@ if(!defined("add_utils.php")) {define("add_utils.php", True);}
 include_once 'add_utils.php';
 
 if($_POST['process_add_emp'] == 'true') {
-	$compID = $SESSION['Authed_CompID']; //** not sure if this is a function? any other way to get it?
+	$compID = $POST['Comp_ID'];
     $agent_name = $_POST['agent_name'];
     $phone_no = $_POST['phone_no'];
     $email = $_POST['email'];

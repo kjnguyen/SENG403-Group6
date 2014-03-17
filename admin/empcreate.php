@@ -34,6 +34,12 @@ if ($_SESSION['Authed_Permission'] != 1) {
 			<form class="form-horizontal" name="emp_create" method="post" action="process_add_emp.php">
 				<fieldset>
 					<div class="control-group">
+					<label class="control-label" for"focusedInput">Company ID</label>
+						<div class="controls">
+						<input class="input-xlarge focused" id="Comp_ID" name="Comp_ID" type="text"</input>
+						</div>
+					</div>
+					<div class="control-group">
 						<label class="control-label" for"focusedInput">Agent Name</label>
 						<div class="controls">
 						<input class="input-xlarge focused" id="agent_name" name="agent_name" type="text"</input>
