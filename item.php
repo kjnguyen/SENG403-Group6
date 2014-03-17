@@ -106,7 +106,6 @@ if($pictureList !== false && !empty($pictureList))
     echo '<li>
                       <a href="#" rel="' . $i . '">
                         <img src="' . $pic["path"] . '" alt="" width="93" height="84">
-                                      Picture '. ($i+1) . '
                       </a>
                   </li>';
     
