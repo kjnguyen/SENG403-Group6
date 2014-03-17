@@ -117,8 +117,8 @@ else
   echo '</div>
   </header>';
   
-  echo '<style type="text/css">header {height: 100px;}
-  .noimage{color: rgb(228, 228, 230);}  </style>';
+  echo '<style type="text/css">header {height: 175px;}
+  .noimage{background-color: #E4E4E6; color: #000; width: 200px;}</style>';
   
   echo "<div class=\"container_16\">";
   echo '<center><div class="noimage">No images available</div></center></div>';
