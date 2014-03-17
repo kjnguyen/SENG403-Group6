@@ -7,7 +7,7 @@
 ?>
 
 <?php
-if ($_SESSION['Authed_Permission'] != 1) {
+if ($_SESSION['Authed_Permission'] != 1 && $_SESSION['Authed_Permission'] != 2) {
     printf("<script>location.href='bad_permission.php'</script>");
 }
 ?>
