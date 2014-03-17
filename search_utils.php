@@ -28,19 +28,19 @@ include_once 'mysqlcon.php';
  * @param type $status
  * 
  */
-function search_listing($city, $province, $min_price, $max_price, $num_bdrm, $district, $status) {
+function search_listing($city_id, $min_price, $max_price, $num_bdrm, $district, $status) {
     
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
     
-    $city_id = get_city_id($city, $province);
-    if ($city_id == NULL) {
-        echo "ERROR: you must specify a valid city and province, try calgary/alberta";
-//        echo "<br> Example URL: <br>";
-//        echo "http://www.s403.jack-l.com/search_results.php?city=Calgary&province=Alberta&max_price=200000<br>";
-        mysqli_close($con);
-        return NULL;
-    }
+//    $city_id = get_city_id($city, $province);
+//    if ($city_id == NULL) {
+//        echo "ERROR: you must specify a valid city and province, try calgary/alberta";
+////        echo "<br> Example URL: <br>";
+////        echo "http://www.s403.jack-l.com/search_results.php?city=Calgary&province=Alberta&max_price=200000<br>";
+//        mysqli_close($con);
+//        return NULL;
+//    }
     $condition_args = parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district, $status);
     $query = 'select ID, date_listed, sq_ft, price, num_bdrms, address, description from Listing'.$condition_args;
 //    echo $query;
@@ -188,12 +188,14 @@ function get_city_id($city, $province) {
  * @return string
  */
 function parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district, $status) {
-    $conditions = " where cityID = $city_id and";
+    $conditions = " where";
+    if (is_numeric($city_id)) {$conditions .= " cityID = $city_id and";}
     if (is_numeric($min_price)) {$conditions .= " price >= $min_price and";}
     if (is_numeric($max_price)) {$conditions .= " price <= $max_price and";}
     if (is_numeric($num_bdrm)) {$conditions .= " num_bdrms = $num_bdrm and";}
     if (isset($district) && $district != '') {$conditions .= sprintf(" lower(district) = lower('%s') and", $district);}
     if (isset($status) && $status != '') {$conditions .= sprintf(" lower(status) = lower('%s') and", $status);}
+    if ($conditions == " where") return "";
     return substr($conditions, 0, -4);
 }
 
@@ -214,5 +216,25 @@ function get_list_of_status() {
     }
     mysqli_close($con);
     return $status;
+}
+
+/**
+ * Get a list of all cities
+ * @return array of ['ID', 'name', 'province']
+ */
+function get_list_of_cities($db = 's403_project') {
+
+    $con = getSQLConnection();
+    mysqli_select_db($con, $db);
+    $query = "select ID, name, province from City Order by province";
+    $results = mysqli_query($con, $query);
+    echo mysqli_error($con);
+    $cities = array();
+    
+    while ($row = mysqli_fetch_assoc($results)) {
+        $cities[] = $row;
+    }
+    mysqli_close($con);
+    return $cities;
 }
 ?>

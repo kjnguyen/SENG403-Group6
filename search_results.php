@@ -15,8 +15,8 @@
                                     if(!defined("search_utils.php")) {define("search_utils.php", True);}
                                     include_once 'search_utils.php';
 
-                                    $city = $_GET['city'];
-                                    $province = $_GET['province'];
+                                    $city_id = $_GET['city_id'];
+
                                     $min_price = $_GET['min_price'];
                                     $max_price = $_GET['max_price'];
                                     $num_bdrm = $_GET['num_bdrm'];
@@ -26,7 +26,7 @@
     //                                                    echo "Search Criteria: <br>";
     //                                                    echo "city = $city, province = $province, min_price = $min_price, max_price = $max_price, num_bdrm = $num_bdrm, district  = $district, status = ".$status."<br>";
 
-                                    $results_array = search_listing($city, $province, $min_price, $max_price, $num_bdrm, $district, $status);
+                                    $results_array = search_listing($city_id, $min_price, $max_price, $num_bdrm, $district, $status);
 
                                     if (empty($results_array))
                                     {
