@@ -11,8 +11,8 @@
     if (isset($_SESSION['Send_Message']) && $_SESSION['Send_Message'] == 1) {
         unset($_SESSION['Send_Message']);
     } else {
-        //echo "No direct access!<br />";
-        //die();
+        echo "No direct access and do not refresh the page<br />";
+        die();
     }
     
     //Validate user inputs
