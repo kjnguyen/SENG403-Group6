@@ -6,8 +6,8 @@ if(!defined("empcreatefunc.php"))
      header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);die();
 }
 
-define("mysqlcon.php", True);
-include_once '../mysqlcon.php';
+//define("mysqlcon.php", True);
+//include_once '../mysqlcon.php';
 
 function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $raw_password) {
     
