@@ -32,7 +32,7 @@ function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $
 	static $empID = 0;
 	
     $password = hash('sha512', $raw_password);
-    $user_statement = "insert into Employee (empID, compID, agent_name, phone_no, email, permission, username, password) values (?, ?, ?, ?, ?, 2, ?, ?)";
+    $user_statement = "insert into Employee (empID, compID, agent_name, phone_no, email, permission, username, password) values (?, ?, ?, ?, ?, 3, ?, ?)";
     if ($stmt = mysqli_prepare($con, $user_statement)) {
         $stmt->bind_param('sssssss', $empID, $compID, $agent_name, $phone_no, $email, $username, $password);
         if (!($stmt->execute())) {goto funcFail;}
