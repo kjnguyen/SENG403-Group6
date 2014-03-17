@@ -108,11 +108,11 @@ echo        '</div>
     echo '
             </ul>
         </div>
-        <!-- faded slider end -->
-    </div>';
+        <!-- faded slider end -->';
 }
 else
 {
+  echo "</div>\n";
   echo '<img src="images/no-image.jpg" height="84" width="93">';
 }
 
