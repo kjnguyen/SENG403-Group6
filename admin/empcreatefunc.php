@@ -15,15 +15,15 @@ function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $
     mysqli_select_db($con, 's403_project');
     
     $password = hash('sha512', $raw_password);
-    $user_statement = "insert into Employee (empID, compID, agent_name, phone_no, email, permission, username, password) values (?, ?, ?, ?, ?, 3, ?, ?)";
+    $user_statement = "insert into Employee (ID, compID, name, phone_no, email, permission, username, password) values (?, ?, ?, ?, ?, 3, ?, ?)";
 
-	static $empID = 0;
+	static $ID = 0;
 
     if ($stmt = mysqli_prepare($con, $user_statement)) {
-        $stmt->bind_param('sssssss', $empID, $compID, $agent_name, $phone_no, $email, $username, $password);
+        $stmt->bind_param('sssssss', $ID, $compID, $agent_name, $phone_no, $email, $username, $password);
         if (!($stmt->execute())) {goto funcFail;}
         $stmt->close();
-		$empID ++;
+		$ID ++;
     }
     else {goto funcFail;}
  
