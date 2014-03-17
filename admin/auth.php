@@ -12,6 +12,11 @@
     //Variable
     $email_usr = false; //Use to check username type
     
+    //Check both username and password is set
+    if (!isset($_POST['username']) || !isset($_POST['password'])) {
+        ReturnToLoginPage(1);
+    }
+    
     //Call login function
     Login($_POST['username'], $_POST['password']);
     
