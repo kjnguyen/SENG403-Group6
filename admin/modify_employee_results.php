@@ -29,11 +29,12 @@
     $email = $_POST['email'];
     //$permission = $_POST['permission'];
     $username = $_POST['username'];
-    $password = $_POST['password'];
+   // $password = $_POST['password'];
    
 
     $success = True;
-    if ($error_msg = is_modify_invalid($id, $name, $phone_no, $email, $username, $password )) {
+    if ($error_msg = is_modify_invalid($id, $name, $phone_no, $email, $username )) {
+        //, $password
         echo '<div class="alert alert-error">ERROR: <br>'.$error_msg.'</div>';
         $success = False;
         goto EXEFinished; 
@@ -46,7 +47,8 @@
         echo '<div class="alert alert-error">ERROR: <br> Employee Database operation failed</div>';
         goto EXEFinished;
     }
-    $success = modify_values_secure_user($id, $email, $username, $password);
+    $success = modify_values_secure_user($id, $email, $username);
+    //, $password
     if(!$success){
         echo '<div class="alert alert-error">ERROR: <br> User Database operation failed</div>';
         goto EXEFinished;
@@ -80,7 +82,8 @@ EXEFinished:
      * @param type $password
      * @return string|null
      */
-    function is_modify_invalid($id, $name, $phone_no, $email, $username, $password) {
+    function is_modify_invalid($id, $name, $phone_no, $email, $username) {
+        //, $password
         $valid = True;
         $error_msg = "";
         if(!$id){
@@ -103,9 +106,9 @@ EXEFinished:
             $valid = False;
             $error_msg .= "* Username is required<br>";
         }
-        if(!$password){
+       /* if(!$password){
             $valid = False;
-            $error_msg .= "* Password is required<br>";
+            $error_msg .= "* Password is required<br>";*/
         }
         if (!$valid) {
             return $error_msg;
