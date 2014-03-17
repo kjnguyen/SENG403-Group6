@@ -5,29 +5,31 @@
     //Do not output anything before this line (Do not use echo or html code)
     //---------------------------------------------------
 ?>
-			<div>
-				<ul class="breadcrumb">
-					<li>
-						<a href="index.php">Home</a> <span class="divider">/</span>
-					</li>
-					<li>
-                                          <a href="#"><b>Create Employee Account</b></a>
-					</li>
-				</ul>
-			</div>
+<div>
+	<ul class="breadcrumb">
+		<li>
+			<a href="index.php">Home</a> <span class="divider">/</span>
+		</li>
+		<li>
+            <a href="#"><b>Create Employee Account</b></a>
+		</li>
+	</ul>
+</div>
 
-			<div class="row-fluid sortable">
-				<div class="box span12">
-					<div class="box-header well" data-original-title>
-						<h2><i class="icon-picture"></i>Create Employee Account</h2>
-						<div class="box-icon">
-							<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
-							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
-							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<div class="control-group">
+<div class="row-fluid sortable">
+	<div class="box span12">
+		<div class="box-header well" data-original-title>
+			<h2><i class="icon-picture"></i>Create Employee Account</h2>
+				<div class="box-icon">
+					<a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a>
+					<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+					<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
+				</div>
+		</div>
+	<div class="box-content">
+		<form class="form-horizontal" name=emp_create" method=post action"process_add_emp.php">
+		<fieldset>
+	<div class="control-group">
 						
 <label class="control-label" for"tyeahead">Agent Name</label>
 	<div class="controls">
@@ -62,8 +64,11 @@
 	</div>
 	<input type="hidden" name="process_add_emp" value='true'>
 		<div class="form-actions">
-			<button class="btn btn-primary" type="submit" value="Create">Create</button>
+			<button type="submit" class="btn btn-primary">Create</button>
+			<a href="index.php class="btn">Cancel</a>
 		</div>
+		</fieldset>
+		</form>
 
 						
 		</div>
