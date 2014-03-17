@@ -54,18 +54,19 @@ function modify_values_secure_emp($id, $name, $phone_no) {
 } 
 
 
-function modify_values_secure_user($id, $email, $username, $password) {
-    
+function modify_values_secure_user($id, $email, $username) {
+    //, $password
     $con = getSQLConnection();
     
     mysqli_select_db($con, 's403_project');
    
     if(!$id){goto funcError;}  
       
-    $sql = "UPDATE User SET email=?, username=?, password=? WHERE ID=?";
-    
+    $sql = "UPDATE User SET email=?, username=? WHERE ID=?";
+    //, password=?
     if ($stmt = mysqli_prepare($con, $sql)) {
-        $stmt->bind_param('sssi', $email, $username, $password, $id);
+        $stmt->bind_param('ssi', $email, $username, $id);
+        //, $password,
         if(!($stmt->execute())) {goto funcError;}
         $stmt->close();
     }
