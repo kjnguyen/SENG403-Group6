@@ -66,12 +66,12 @@ $con = getSQLConnection();
 $pictureList = getPictures($con, intval($ID));
 mysqli_close($con);
 // following part are place-holder for pictures
+if($pictureList !== false && !empty($pictureList))
+{
 echo '
         <!-- faded slider begin -->
         <div id="faded">
             <div class="rap">';
-if($pictureList !== false && !empty($pictureList))
-{
   $i = 0;
   $lastPicHTML;
   foreach($pictureList as $pic)
@@ -88,18 +88,9 @@ if($pictureList !== false && !empty($pictureList))
   {
     echo $lastPicHTML; // Copy this to prevent error
   }
-}
-else
-{
-   echo '       <a href="#"><img src="images/big-img1.jpg" alt="" width="571" height="398"></a>
-                <a href="#"><img src="images/big-img2.jpg" alt="" width="571" height="398"></a>
-                <a href="#"><img src="images/big-img3.jpg" alt="" width="571" height="398"></a>';
-}
 echo        '</div>
             <ul class="pagination">
                 ';
-if($pictureList !== false && !empty($pictureList))
-{
   $i = 0;
   foreach($pictureList as $pic)
   {
@@ -114,36 +105,19 @@ if($pictureList !== false && !empty($pictureList))
       break;
     }
   }
-  
-}
-else
-{
-  echo '    <li>
-                    <a href="#" rel="0">
-                        <img src="images/f_thumb1.png" alt="">
-                                    Pictures Place-Holder
-                    </a>
-                </li>
-                <li>
-                    <a href="#" rel="1">
-                        <img src="images/f_thumb2.png" alt="">
-                                    Pictures Place-Holder
-                    </a>
-                </li>
-                <li>
-                    <a href="#" rel="2">
-                        <img src="images/f_thumb3.png" alt="">
-                                    Pictures Place-Holder
-                    </a>
-                </li>';
-}
     echo '
             </ul>
         </div>
         <!-- faded slider end -->
-    </div>
-</header>
-';
+    </div>';
+}
+else
+{
+  echo '<img src="images/no-image.jpg" height="84" width="93">';
+}
+
+echo "</header>
+";
     if(!defined("compare_chooser.php")) {define("compare_chooser.php", True);}
     include 'compare_chooser.php';
     echo '
