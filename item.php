@@ -109,17 +109,19 @@ echo        '</div>
             </ul>
         </div>
         <!-- faded slider end -->
-        </div>';
+        </div>
+        </header>';
 }
 else
 {
-  echo "</div>\n";
+  echo '</div>
+  </header>';
+  
+  echo '<style type="text/css">header {height: 100px;}</style>';
+  
   echo "<div class=\"container_16\">";
   echo '<img src="images/no-image.jpg" height="84" width="93"></div>';
 }
-
-echo "</header>
-";
     if(!defined("compare_chooser.php")) {define("compare_chooser.php", True);}
     include 'compare_chooser.php';
     echo '
