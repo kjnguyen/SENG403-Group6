@@ -48,7 +48,7 @@ if($_POST['process_add_emp'] == 'true') {
         goto EXEFinished; 
     }
 	
-	$success = create_employee_secure($compID, $agent_name, $phone_no, $email, $username, $password);
+	$success = create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $password);
     if (!$success) {
         echo '<div class="alert alert-error">ERROR: <br> Database operation failed</div>';
         goto EXEFinished;
