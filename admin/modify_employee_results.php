@@ -108,8 +108,8 @@ EXEFinished:
         }
        /* if(!$password){
             $valid = False;
-            $error_msg .= "* Password is required<br>";*/
-        }
+            $error_msg .= "* Password is required<br>";
+        }*/
         if (!$valid) {
             return $error_msg;
         }
