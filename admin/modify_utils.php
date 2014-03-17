@@ -37,11 +37,11 @@ include_once '../mysqlcon.php';
  */
 function modify_values_secure($id, $price, $sq_ft, $num_floors,
         $num_bdrms, $num_baths, $year_built, $prop_type, $bldg_type,
-        $district, $maintenance_fee, $status, $address, $description) {
+        $district, $maintenance_fee, $status, $address, $description, $db = 's403_project') {
     
     $con = getSQLConnection();
     
-    mysqli_select_db($con, 's403_project');
+    mysqli_select_db($con, $db);
    
     if(!$id){goto funcError;}  
       
@@ -69,9 +69,9 @@ function modify_values_secure($id, $price, $sq_ft, $num_floors,
  * @param int $id
  * @return boolean - True if successful, False if not
  */
-function delete_listing_secure($id){
+function delete_listing_secure($id, $db = 's403_project'){
     $con = getSQLConnection();
-    
+    mysqli_select_db($con, $db);
     $sql = "DELETE FROM Listing WHERE ID=?";
     if ($stmt = mysqli_prepare($con, $sql)) {
         $stmt->bind_param('i', $id);
@@ -89,9 +89,9 @@ function delete_listing_secure($id){
 }
 
 
-function modify_list_of_status() {
+function modify_list_of_status($db = 's403_project') {
     $con = getSQLConnection(true);
-    
+    mysqli_select_db($con, $db);
     $query = "select distinct status from Listing";
     $results = mysqli_query($con, $query);
     echo mysqli_error($con);
@@ -105,9 +105,9 @@ function modify_list_of_status() {
 }
 
 // TO FIX: currently sorting results by CompID instead of ID
-function get_list_of_id() {
+function get_list_of_id($db = 's403_project') {
     $con = getSQLConnection(true);
-    
+    mysqli_select_db($con, $db);
     $query = "select distinct ID from Listing ORDER BY ID";
     $results = mysqli_query($con, $query);
     echo mysqli_error($con);
@@ -139,9 +139,9 @@ function check_permission_initial(){
 //Returns 0 if permission denied and 1 otherwise
 //input- listing id number, output-1 or 0
 
-function check_permission($id){
+function check_permission($id, $db = 's403_project'){
     $con = getSQLConnection(true);
-    
+    mysqli_select_db($con, $db);
     if (!isset($_SESSION['Authed_UserID'])){
        // echo "<br>Must be logged in to modify listings.<br>"
         return 0;

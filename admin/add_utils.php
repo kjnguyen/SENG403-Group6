@@ -27,10 +27,10 @@ include_once '../mysqlcon.php';
  * @param string $username
  * @return boolean - True if successful, False if not
  */
-function add_company_secure($name, $address, $description, $manager_name, $phone_no, $email, $raw_password, $username) {
+function add_company_secure($name, $address, $description, $manager_name, $phone_no, $email, $raw_password, $username, $db = 's403_project') {
     
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
+    mysqli_select_db($con, $db);
     
     $password = hash('sha512', $raw_password);
     $user_statement = "insert into User (email, password, permission, username) values (?, ?, 2, ?)";
@@ -62,9 +62,9 @@ function add_company_secure($name, $address, $description, $manager_name, $phone
  * @param string $email
  * @return boolean
  */
-function email_unique($email) {
+function email_unique($email, $db = 's403_project') {
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
+    mysqli_select_db($con, $db);
     $query = "select * from User where email = '$email' limit 1";
     $result = mysqli_query($con, $query);
     mysqli_close($con);
@@ -79,9 +79,9 @@ function email_unique($email) {
  * @param string $username
  * @return boolean
  */
-function username_unique($username) {
+function username_unique($username, $db = 's403_project') {
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
+    mysqli_select_db($con, $db);
     $query = "select * from User where username = '$username' limit 1";
     $result = mysqli_query($con, $query);
     mysqli_close($con);

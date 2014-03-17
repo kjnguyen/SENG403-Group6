@@ -28,10 +28,10 @@ include_once 'mysqlcon.php';
  * @param type $status
  * 
  */
-function search_listing($city_id, $min_price, $max_price, $num_bdrm, $district, $status) {
+function search_listing($city_id, $min_price, $max_price, $num_bdrm, $district, $status, $db = 's403_project') {
     
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
+    mysqli_select_db($con, $db);
     
 //    $city_id = get_city_id($city, $province);
 //    if ($city_id == NULL) {
@@ -60,10 +60,10 @@ function search_listing($city_id, $min_price, $max_price, $num_bdrm, $district, 
  * @param type $company_id
  * @return array of ['ID', 'address']
  */
-function search_company_listing($company_id) {
+function search_company_listing($company_id, $db = 's403_project') {
     
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
+    mysqli_select_db($con, $db);
     
 
     $query = "select ID, address from Listing where CompID = $company_id";
@@ -79,9 +79,9 @@ function search_company_listing($company_id) {
     return $listing_info;
 }
 
-function search_company_employee($company_id) {
+function search_company_employee($company_id, $db = 's403_project') {
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
+    mysqli_select_db($con, $db);
     
 
     $query = "select e.ID, name, phone_no, email, username from Employee as e join User as u on e.ID = u.ID where compID = $company_id";
@@ -103,9 +103,9 @@ function search_company_employee($company_id) {
  * @param int $user_id
  * @return $compID if successful
  */
-function get_company_id($user_id) {
+function get_company_id($user_id, $db = 's403_project') {
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
+    mysqli_select_db($con, $db);
     
     $query = "select compID from Employee where ID = $user_id LIMIT 1";
     $results = mysqli_query($con, $query);
@@ -122,9 +122,9 @@ function get_company_id($user_id) {
  * Get all companies
  * @return array of ['ID', 'name', 'manager_name', 'phone_no']
  */
-function get_all_companies() {
+function get_all_companies($db = 's403_project') {
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
+    mysqli_select_db($con, $db);
     $query = "select ID, name, manager_name, phone_no from Company";
         $results = mysqli_query($con, $query);
     echo mysqli_error($con);
@@ -141,9 +141,9 @@ function get_all_companies() {
  * @param type $ID
  * @return array of ['...all columns of listing...', 'c_name', 'c_address', 'c_manager_name', 'c_phone_no']
  */
-function search_one_item($ID) {
+function search_one_item($ID, $db = 's403_project') {
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
+    mysqli_select_db($con, $db);
     $query = "select l.*, c.name as c_name, c.address as c_address, c.manager_name as c_manager_name, c.phone_no as c_phone_no from Listing as l join Company as c on l.CompID = c.ID where l.ID = $ID";
     $result = mysqli_query($con, $query);
     mysqli_close($con);
@@ -161,9 +161,9 @@ function search_one_item($ID) {
  * @param string $province
  * @return int cityID
  */
-function get_city_id($city, $province) {
+function get_city_id($city, $province, $db = 's403_project') {
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
+    mysqli_select_db($con, $db);
     if (!isset($city) || !isset($province)) {goto funcFinished;}
     $city_query = sprintf("select ID from City where lower(name)=lower('%s') and lower(province)=lower('%s') LIMIT 1", 
             $city, $province);
@@ -203,9 +203,9 @@ function parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district
  * Get a list of all possible status of listings
  * @return array of ['status']
  */
-function get_list_of_status() {
+function get_list_of_status($db = 's403_project') {
     $con = getSQLConnection();
-    mysqli_select_db($con, 's403_project');
+    mysqli_select_db($con, $db);
     $query = "select distinct status from Listing";
     $results = mysqli_query($con, $query);
     echo mysqli_error($con);
