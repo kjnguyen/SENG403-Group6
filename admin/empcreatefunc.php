@@ -14,10 +14,11 @@ function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
     
-	static $empID = 0;
-	
     $password = hash('sha512', $raw_password);
     $user_statement = "insert into Employee (empID, compID, agent_name, phone_no, email, permission, username, password) values (?, ?, ?, ?, ?, 3, ?, ?)";
+
+	static $empID = 0;
+
     if ($stmt = mysqli_prepare($con, $user_statement)) {
         $stmt->bind_param('sssssss', $empID, $compID, $agent_name, $phone_no, $email, $username, $password);
         if (!($stmt->execute())) {goto funcFail;}
@@ -27,8 +28,8 @@ function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $
     else {goto funcFail;}
  
     mysqli_close($con);
-    return True;
+		return True;
     funcFail:
-    mysqli_close($con);
-    return False;
+		mysqli_close($con);
+		return False;
 }
