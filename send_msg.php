@@ -85,8 +85,8 @@
     
     //Call email function to send data
     include_once "./mail_func.php";
-    $Message = 'Message from: '.$_POST['SenderName'].' ('.$_POST['SenderEmail'].')\n'.$_POST['Message'];
-    Mail_Send($F_Email, "New message from customer - ".$_POST['SenderName'], $_POST['Message']);
+    $Message = 'Message from: '.$_POST['SenderName'].' ('.$_POST['SenderEmail'].')\n--------------------\n'.$_POST['Message'].'\n--------------------\n';
+    Mail_Send($F_Email, "New message from customer - ".$_POST['SenderName'], $Message);
     
     echo 'Message successfully sent out. <br />';
     //Show return URL
