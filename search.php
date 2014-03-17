@@ -15,21 +15,33 @@ if(!defined("search.php"))
 <fieldset>
     <legend>Input Search Criteria (leave optional fields blank to search all)</legend><br>
         <?php
-        $province ="";
-        $city = "";
+        if(!defined("search_utils.php")) {define("search_utils.php", True);}
+        include_once 'search_utils.php';
         $district = "";
         $min_price = "";
         $max_price = "";
         $num_bdrm = "";
-        if (isset($_GET['province'])){$province = $_GET['province'];}
-        if (isset($_GET['city'])){$city = $_GET['city'];}
+        
         if (isset($_GET['district'])){$district = $_GET['district'];}
         if (isset($_GET['min_price'])){$min_price = $_GET['min_price'];}
         if (isset($_GET['max_price'])){$max_price = $_GET['max_price'];}
         if (isset($_GET['num_bdrm'])){$num_bdrm = $_GET['num_bdrm'];}
+        $cities = get_list_of_cities();
+        echo '<p>City: <select name="city_id">';
+        echo "<option value=\"\">Any</option>";
+        if(!empty($cities)) {
+            $city_id = ""; 
+            if (isset($_GET['city_id'])){$city_id = $_GET['city_id'];}
+            foreach ($cities as $c) {
+                echo "<option value=\"".$c['ID']."\"";
+                if ($c['ID'] == $city_id) {
+                    echo " selected=\"selected\"";
+                }
+                echo ">".$c['province'].': '.$c['name']."</option>";
+            }
+        }
+        echo '</select></p>';
         echo "
-        <label>Province (full name) (Required): </label><input type=\"text\" name=\"province\" value=\"".$province."\"/></a><br>
-        <label>City (Required): </label><input type=\"text\" name=\"city\" value=\"".$city."\"/><br>
         <label>District: </label><input type=\"text\" name=\"district\" value=\"".$district."\"/><br>
         <label>Min Price: </label><input type=\"text\" name=\"min_price\" value=\"".$min_price."\"/><br>
         <label>Max Price: </label><input type=\"text\" name=\"max_price\" value=\"".$max_price."\"/><br>
