@@ -24,7 +24,7 @@ $empID ++;
 
 }
 
-function create_emp_secure($compID, $agent_name, $phone_no, $email, $permission, $username, $raw_password) {
+function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $raw_password) {
     
     $con = getSQLConnection();
     mysqli_select_db($con, 's403_project');
@@ -32,9 +32,9 @@ function create_emp_secure($compID, $agent_name, $phone_no, $email, $permission,
 	static $empID = 0;
 	
     $password = hash('sha512', $raw_password);
-    $user_statement = "insert into Employee (empID, compID, agent_name, phone_no, email, permission, username, password) values (?, ?, ?, ?, ?, ?, ?, ?)";
+    $user_statement = "insert into Employee (empID, compID, agent_name, phone_no, email, permission, username, password) values (?, ?, ?, ?, ?, 2, ?, ?)";
     if ($stmt = mysqli_prepare($con, $user_statement)) {
-        $stmt->bind_param('ssssssss', $empID, $compID, $agent_name, $phone_no, $email, $permission, $username, $password);
+        $stmt->bind_param('sssssss', $empID, $compID, $agent_name, $phone_no, $email, $username, $password);
         if (!($stmt->execute())) {goto funcFail;}
         $stmt->close();
 		$empID ++;

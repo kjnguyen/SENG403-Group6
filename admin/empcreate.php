@@ -47,12 +47,6 @@
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">Permission</label>
-	<div class="controls">
-		<input id="permission" name="permission" type="text"</input>
-	</div>
-</div>
-<div class="control-group">
 	<label class="control-label" for"tyeahead">Username</label>
 	<div class="controls">
 		<input id="username" name="username" input-xlarge focused" type="text"</input>

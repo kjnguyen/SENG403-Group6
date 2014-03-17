@@ -38,18 +38,17 @@ if($_POST['process_add_emp'] == 'true') {
     $agent_name = $_POST['agent_name'];
     $phone_no = $_POST['phone_no'];
     $email = $_POST['email'];
-    $permission = $_POST['permission'];
     $username = $_POST['username'];
     $password = $_POST['password'];
 	
 	$success = True;
-    if ($error_msg = is_emp_input_invalid($compID, $agent_name, $phone_no, $email, $permission, $username, $password)) {
+    if ($error_msg = is_emp_input_invalid($compID, $agent_name, $phone_no, $email, $username, $password)) {
         echo '<div class="alert alert-error">ERROR: <br>'.$error_msg.'</div>';
         $success = False;
         goto EXEFinished; 
     }
 	
-	$success = create_employee_secure($compID, $agent_name, $phone_no, $email, $permission, $username, $password);
+	$success = create_employee_secure($compID, $agent_name, $phone_no, $email, $username, $password);
     if (!$success) {
         echo '<div class="alert alert-error">ERROR: <br> Database operation failed</div>';
         goto EXEFinished;
@@ -77,7 +76,7 @@ EXEFinished:
     }
 }
 
-function is_emp_input_invalid($compID, $agent_name, $phone_no, $email, $permission, $username, $password) {
+function is_emp_input_invalid($compID, $agent_name, $phone_no, $email, $username, $password) {
     $valid = True;
     $error_msg = "";
     if (!$compID) {
@@ -108,9 +107,7 @@ function is_emp_input_invalid($compID, $agent_name, $phone_no, $email, $permissi
             }
         }
     }    
-	if(!$permission) {
-		$valid = False;
-        $error_msg .= '* Permission is required<br>';}
+	
     if (!$username) {
         $valid = False;
         $error_msg .= '* Username is required<br>';
