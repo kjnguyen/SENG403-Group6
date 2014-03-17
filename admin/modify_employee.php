@@ -113,8 +113,10 @@
 <div class="control-group"><label class="control-label" for="focusedInput">Phone Number: </label><div class="controls"><input type="text" name="phone_no" value="'.$item['phone_no'].'"/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Email: </label><div class="controls"><input type="text" name="email" value="'.$item['email'].'"/></div></div>
 <div class="control-group"><label class="control-label" for="focusedInput">Username: </label><div class="controls"><input type="text" name="username" value="'.$item['username'].'"/></div></div>
-<div class="control-group"><label class="control-label" for="focusedInput">Password: </label><div class="controls"><input type="text" name="password" value="'.$item['password'].'"/></div></div>
+
 ';
+//<div class="control-group"><label class="control-label" for="focusedInput">Password: </label><div class="controls"><input type="text" name="password" value="'.$item['password'].'"/></div></div>
+
 echo '
 <input type="hidden" name="ID" value="'.$ID.'"/>
 ';
