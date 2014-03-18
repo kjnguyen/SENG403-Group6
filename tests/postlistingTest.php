@@ -1,5 +1,7 @@
 <?php
 
+include 'admin/postlistingfunc.php';
+
 class postlistingTest extends PHPUnit_Framework_TestCase
 {
 	public function testPostListingSecure_EmptyStrings()

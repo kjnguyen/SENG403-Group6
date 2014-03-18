@@ -1,5 +1,7 @@
 <?php
 
+include 'admin/add_utils.php';
+
 class addUtilsTest extends PHPUnit_Framework_TestCase
 {
 	public function testAddCompanySecure_EmptyInput()
