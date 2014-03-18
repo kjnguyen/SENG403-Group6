@@ -24,7 +24,7 @@ class empcreatefuncTest extends PHPUnit_Framework_TestCase
 
 	public function testCreateEmployee_ValidInput()
 	{
-            $result = create_emp_secure(0, "Joanne Tester", "403-555-8378", "joannetest@testing.com", "joannatest", "testing");
+            $result = create_emp_secure(0, "Joanne Tester", "403-555-8378", "joannetest@testing.com", "joannetest", "testing");
             $this->assertTrue($result);
 	}
 }
