@@ -78,7 +78,7 @@ function postlisting_secure($compID,
         $stmt2->bind_param('iddiiisssidsiss', $compID,  $price, $sq_ft, $num_floors, $num_bdrms, $year_built, $prop_type, $bldg_type, $district, $cityID,
                 $maintenance_fee, $status, $num_baths, $address, $description);
         if(!($stmt2->execute())) {goto funcError;}
-        $ID = $stmt->insert_id;
+        $ID = $stmt2->insert_id;
         $stmt2->close();
     }
     else {goto funcError;}
