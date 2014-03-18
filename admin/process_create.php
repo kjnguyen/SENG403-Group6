@@ -70,10 +70,10 @@
         }
         
         
-        $success = postlisting_secure($compID, $price, $sq_ft, $num_floors,$num_bdrms, $year_built, 
+        $listingID = postlisting_secure($compID, $price, $sq_ft, $num_floors,$num_bdrms, $year_built, 
         $prop_type, $bldg_type, $district, $city, $province,
         $maintenance_fee, $status, $num_baths, $address, $description);
-        if (!$success) {
+        if (!$listingID) {
             echo '<div class="alert alert-error">ERROR: <br> Database operation failed</div>';
             goto EXEFinished;
         }
@@ -81,11 +81,16 @@
         echo 'Listing successfully created';
         echo '</div>';
         
-        // Need new listing ID
-        //echo '<a href="./modify?ID= "><span class="label label-info">Click Here to add pictures.</span></a>';
+        include_once "../mysqlcon.php";
+        include_once "../pictureLib.php";
+        
+        $con = getSQLConnection();
+        
+        // TODO Indicate success or failure
+        addPictures($con, $listingID);
 
     EXEFinished:
-        if ($success) {
+        if ($listingID) {
             echo '<a href="index.php" class="btn btn-info">Go Back</a>';
         }
         else {
