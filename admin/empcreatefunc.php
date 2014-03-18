@@ -15,9 +15,9 @@ function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $
     mysqli_select_db($con, 's403_project');
     
     $password = hash('sha512', $raw_password);
+	
 	$user_statement = "insert into User (email, password, permission, username) values (?, ?, 3, ?)";
-   
-	if ($stmt = mysqli_prepare($con, $user_statement)) {
+   	if ($stmt = mysqli_prepare($con, $user_statement)) {
 		$stmt->bind_param('sis', $email, $password, $username);
 		if (!($stmt->execute())) {goto funcFail;}
 		$ID = $stmt->insert_id;
