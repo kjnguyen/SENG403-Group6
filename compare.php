@@ -90,7 +90,7 @@ echo '<th>Fields</th>';
 for ($i = 0; $i < $itemCount; $i ++)
 {
     echo '<th>';
-    echo '<a href=item.php?ID="' . $compareItems[$i]['ID'] . '" rel="0"><img src="';
+    echo '<a href=item.php?ID=' . $compareItems[$i]['ID'] . ' rel="0"><img src="';
     $pictureList = getPictures($con, intval($compareItems[$i]['ID']));
     if($pictureList !== false && !empty($pictureList))
     {
