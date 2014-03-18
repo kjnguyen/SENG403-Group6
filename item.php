@@ -54,10 +54,7 @@ if ($ID == NULL) {
      $item_found = False;
 }
 else {
-    $item = search_one_item($ID);
-    if ($item == NULL) {
-        $item_found = False;
-    }
+
 }
 
 include "picturesLib.php";
@@ -139,13 +136,17 @@ else
                             echo '<p><a href="'.$_SESSION['mostRecentSearchResults'].'" >Go back to search result</a></p>';
                             
                         }
-                                       
+                        $item = search_one_item($ID);
+                        if ($item == NULL) {
+                            $item_found = False;
+                        }      
                         if (!$item_found) {
                             echo "Item Not Found!";
                         }
                         else {
                             echo '<p><form name="addCompareItem" method="post"><input type="hidden" name="compareItemID" value="'.$ID.'"/>'
                             . '<button name="addCompareItem" type="submit" value="addCompare">Add this item to comparison list</button></form></p>';
+                            
                             echo '<p><h4>Price: </h4>&nbsp&nbsp $'.$item['price'].'</p>';
                             echo "<p><h4>Date Listed: </h4>&nbsp&nbsp".$item['date_listed'].'</p>';
                             echo "<p><h4>Size: </h4>&nbsp&nbsp".$item['sq_ft'].' Sqr Ft. </p>';
