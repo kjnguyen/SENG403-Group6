@@ -18,7 +18,7 @@ if ($_SERVER['PHP_SELF'] == '/' . basename(__FILE__))
 
 define("IMG_UPLOAD_DIR", "/listing/images/");
 
-/* Saves uploaded pictures to the file system and database. Looks in the $_FILES array.
+/** Saves uploaded pictures to the file system and database. Looks in the $_FILES array.
  * Returns false on error otherwise the list in an array (may be empty) containing associative arrays with
  * id, original name (oname), path and order value. The order of the array is same as the $_FILES array when
  * iterating though it with a foreach loop. Array may contain false values if that particular file failed to save.
@@ -146,7 +146,7 @@ function addPictures(mysqli $con, $ListingID)
   return $filePaths;
 }
 
-/* Get a list of paths to the pictures for a listing
+/** Get a list of paths to the pictures for a listing
  * Returns false on error otherwise the list in an array (may be empty) containing associative
  * arrays with id, original name (oname), path and order value.
  * WARNING: oname is not escaped.
@@ -189,7 +189,7 @@ function getThumnails(mysqli $con, $ListingID)
   return getPictures($con, $ListingID);
 }
 
-/* Deletes a picture from the file system and database.
+/** Deletes a picture from the file system and database.
  * Returns TRUE on success or FALSE on failure.
  */
 function removePicture(mysqli $con, $ListingID, $imgID)

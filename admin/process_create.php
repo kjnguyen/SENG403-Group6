@@ -86,8 +86,31 @@
         
         $con = getSQLConnection();
         
-        // TODO Indicate success or failure
-        addPictures($con, $listingID);
+        $result = addPictures($con, $listingID);
+        
+        $i = 0;
+        
+        if($result === false)
+        {
+          echo "An error has occurred when uploading files.<br/>";
+        }
+        else
+        {
+          foreach($_FILES as $file)
+          {
+            if($result[$i++] === false) // Since the order of the results array is the same order as the files array this will work
+            {
+              if($file['error'] != 4)
+              {
+                echo htmlspecialchars($file['name']) . " failed to upload.<br/>"; 
+              }
+            }
+            else
+            {
+              echo htmlspecialchars($file['name']) . " uploaded.<br/>"; 
+            }
+          }
+        }
 
     EXEFinished:
         if ($listingID) {
