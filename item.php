@@ -144,19 +144,19 @@ else
                             echo '<p><form name="addCompareItem" method="post"><input type="hidden" name="compareItemID" value="'.$ID.'"/>'
                             . '<button name="addCompareItem" type="submit" value="addCompare">Add this item to comparison list</button></form></p>';
                             
-                            echo '<p><h4>Price: </h4>&nbsp&nbsp $'.$item['price'].'</p>';
-                            echo "<p><h4>Date Listed: </h4>&nbsp&nbsp".$item['date_listed'].'</p>';
-                            echo "<p><h4>Size: </h4>&nbsp&nbsp".$item['sq_ft'].' Sqr Ft. </p>';
-                            echo "<p><h4>Floors: </h4>&nbsp&nbsp".$item['num_floors'].'</p>';
-                            echo "<p><h4>Bedrooms: </h4>&nbsp&nbsp".$item['num_bdrms'].'</p>';
-                            echo "<p><h4>Baths: </h4>&nbsp&nbsp".$item['num_baths'].'</p>';
-                            echo "<p><h4>Year Built: </h4>&nbsp&nbsp".$item['year_built'].'</p>';
-                            echo "<p><h4>Property Type: </h4>&nbsp&nbsp".$item['prop_type'].'</p>';
-                            echo "<p><h4>Building Type: </h4>&nbsp&nbsp".$item['bldg_type'].'</p>';
-                            echo "<p><h4>Maintenance Fee: </h4>&nbsp&nbsp".$item['maintenance_fee'].'</p>';
-                            echo "<p><h4>Status: </h4>&nbsp&nbsp".$item['status'].'</p>';
-                            echo "<p><h4>Address: </h4>&nbsp&nbsp".$item['address'].'</p>';
-                            echo "<p><h4>Description: </h4>&nbsp&nbsp".$item['description'].'</p>';
+                            echo '<p><h5>Price: </h5>&nbsp&nbsp $'.$item['price'].'</p>';
+                            echo "<p><h5>Date Listed: </h5>&nbsp&nbsp".$item['date_listed'].'</p>';
+                            echo "<p><h5>Size: </h5>&nbsp&nbsp".$item['sq_ft'].' Sqr Ft. </p>';
+                            echo "<p><h5>Floors: </h5>&nbsp&nbsp".$item['num_floors'].'</p>';
+                            echo "<p><h5>Bedrooms: </h5>&nbsp&nbsp".$item['num_bdrms'].'</p>';
+                            echo "<p><h5>Baths: </h5>&nbsp&nbsp".$item['num_baths'].'</p>';
+                            echo "<p><h5>Year Built: </h5>&nbsp&nbsp".$item['year_built'].'</p>';
+                            echo "<p><h5>Property Type: </h5>&nbsp&nbsp".$item['prop_type'].'</p>';
+                            echo "<p><h5>Building Type: </h5>&nbsp&nbsp".$item['bldg_type'].'</p>';
+                            echo "<p><h5>Maintenance Fee: </h5>&nbsp&nbsp".$item['maintenance_fee'].'</p>';
+                            echo "<p><h5>Status: </h5>&nbsp&nbsp".$item['status'].'</p>';
+                            echo "<p><h5>Address: </h5>&nbsp&nbsp".$item['address'].'</p>';
+                            echo "<p><h5>Description: </h5>&nbsp&nbsp".$item['description'].'</p>';
 
                             echo '<div id="faded" style="position: relative; width: 100%;">
                                   <ul class="pagination" style="position: relative; top: 0px; left: 0px;">';
