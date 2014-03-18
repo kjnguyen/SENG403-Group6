@@ -26,7 +26,7 @@ if ($permission != 1){
 						<a href="index.php">Home</a> <span class="divider">/</span>
 					</li>
 					<li>
-                                          <a href="#"><b>Create a new listing</b></a>
+                        <a href="#"><b>Create a new listing</b></a>
 					</li>
 				</ul>
 			</div>
@@ -131,6 +131,46 @@ if ($permission != 1){
 <!--		<input id="description" name="description" input-xlarge focused" type="text"</input>-->
 	</div>
 </div>
+  
+  <!--<script type="text/javascript">
+    
+    function addAnotherFileInput(fileInput)
+    {
+      var newFile = document.createElement("input");
+      newFile.className = "input-file uniform_on";
+      newFile.name = "files[]";
+      newFile.type = "file";
+      newFile.onchange = "addAnotherFileInput(this);";
+      
+      var newDiv = document.createElement("div");
+      newDiv.className = "controls";
+      newDiv.appendChild(newFile);
+      
+      fileInput.parentNode.parentNode.appendChild(newDiv);
+    }
+  </script>-->
+  
+  <!-- Add pictures -->
+  <div class="control-group">
+    <hr/>
+    <label class="control-label">Add Pictures</label>
+    <div class="controls">
+      <input class="input-file uniform_on" name="files[]" type="file">
+    </div>
+    <div class="controls">
+      <input class="input-file uniform_on" name="files[]" type="file">
+    </div>
+    <div class="controls">
+      <input class="input-file uniform_on" name="files[]" type="file">
+    </div>
+    <h6>Accepted formats: *.jpeg, *.jpg, *.png, *.bmp, *.gif</h6>
+
+    <div id="picMsg"></div>
+    <br/>
+    <div>
+      Currently only 3 pictures can be displayed.
+    </div>
+  </div>
     <input type="hidden" name="process_add_listing" value='true'>
     <?php echo '<input type="hidden" name="compID" value='.$_POST['compID'].'>'; ?>
 		<div class="form-actions">
@@ -138,21 +178,11 @@ if ($permission != 1){
                         <a href="index.php" class="btn">Cancel</a>
 		</div>
     </form>
-    You can add pictures after you create the listing.
-	</div>
-
-
-						
+	</div>			
 		</div>
                             
 	</div><!--/span-->
         
-
-
-
-
-
-    
 <?php
     include('footer.php');
 ?>
