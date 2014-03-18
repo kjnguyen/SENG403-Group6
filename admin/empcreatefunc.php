@@ -16,8 +16,7 @@ function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $
     
     $password = hash('sha512', $raw_password);
 	$user_statement = "insert into User (ID, email, password, permission, username) values (?, ?, ?, 3, ?)";
-    $emp_statement = "insert into Employee (ID, name, compID, phone_no) values (?, ?, ?, ?,)";
-
+   
 	static $ID = 1;
 
 	if ($stmt = mysqli_prepare($con, $user_statement)) {
@@ -25,6 +24,9 @@ function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $
 		if (!($stmt->execute())) {goto funcFail;}
 		$stmt->close();
 	}
+	else {goto funcFail;}
+	
+	$emp_statement = "insert into Employee (ID, name, compID, phone_no) values (?, ?, ?, ?,)";
     if ($stmt2 = mysqli_prepare($con, $emp_statement)) {
         $stmt2->bind_param('isis', $ID, $agent_name, $compID, $phone_no);
         if (!($stmt2->execute())) {goto funcFail;}
