@@ -2,6 +2,14 @@
 
 include 'admin/process_create.php';
 
+/**
+ * testIsCreateInvalid_NoFloors(): Fail, No check for empty input
+ * testIsCreateInvalid_NoBdRms(): Fail, No check for empty input
+ * testIsCreateInvalid_NoYear(): Fail, No check for empty input
+ * testIsCreateInvalid_NoMainFee(): Fail, No check for empty input
+ * testIsCreateInvalid_NoBaths(): Fail, No check for empty input
+ */
+
 class processcreateTest extends PHPUnit_Framework_TestCase
 {
     public function testIsCreateInvalid_EmptyInput()
