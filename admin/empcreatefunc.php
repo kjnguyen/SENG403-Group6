@@ -20,7 +20,7 @@ function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $
 	static $ID = 0;
 
     if ($stmt = mysqli_prepare($con, $user_statement)) {
-        $stmt->bind_param('iissssi', $ID, $compID, $agent_name, $phone_no, $email, $username, $password);
+        $stmt->bind_param("iissssi", $ID, $compID, $agent_name, $phone_no, $email, $username, $password);
         if (!($stmt->execute())) {goto funcFail;}
         $stmt->close();
 		$ID ++;
