@@ -41,12 +41,12 @@ if(!defined("search.php"))
             }
         }
         echo '</select></p>';
-        echo "
+        echo "<p>
         <label>District: </label><input type=\"text\" name=\"district\" value=\"".$district."\"/><br>
         <label>Min Price: </label><input type=\"text\" name=\"min_price\" value=\"".$min_price."\"/><br>
         <label>Max Price: </label><input type=\"text\" name=\"max_price\" value=\"".$max_price."\"/><br>
         <label>Number of Bedrooms: </label><input type=\"text\" name=\"num_bdrm\" value=\"".$num_bdrm."\"/><br>
-         "
+        </p>"
          ?>
     <p>Status:
     <select name="status">
