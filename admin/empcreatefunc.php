@@ -24,12 +24,12 @@ function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $
 		$stmt->bind_param('isii', $ID, $compID, $agent_name, $phone_no);
 		if (!($stmt->execute())) {goto funcFail;}
 		$stmt->close();
-		$ID ++;	
 	}
     if ($stmt2 = mysqli_prepare($con, $emp_statement)) {
         $stmt2->bind_param('iiss', $ID, $compID, $agent_name, $phone_no);
         if (!($stmt2->execute())) {goto funcFail;}
         $stmt2->close();
+		$ID ++;	
     }
     else {goto funcFail;}
  
