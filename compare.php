@@ -50,7 +50,7 @@ if (isset($_GET['compareItem2'])) {$compareItems[] = search_one_item(intval($_GE
 if (isset($_GET['compareItem3'])) {$compareItems[] = search_one_item(intval($_GET['compareItem3']));}
 if (isset($_GET['compareItem4'])) {$compareItems[] = search_one_item(intval($_GET['compareItem4']));}
 
-
+if (isset($_SESSION['mostRecentSearchResults'])) {echo '<p><a href="'.$_SESSION['mostRecentSearchResults'].'" >Go back to search result</a></p>';}
 $itemCount = count($compareItems);
 if ($itemCount == 0) {
     echo 'Nothing to compare!';
@@ -86,7 +86,7 @@ $fields_map = array(
 
 echo '<table style="">';
 echo '<tr>';
-echo '<th>Fields</th>';
+echo '<th></th>';
 for ($i = 0; $i < $itemCount; $i ++)
 {
     echo '<th>';

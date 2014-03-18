@@ -129,10 +129,7 @@ else
 
 ';
                                
-                        if (isset($_SESSION['mostRecentSearchResults'])) {
-                            echo '<p><a href="'.$_SESSION['mostRecentSearchResults'].'" >Go back to search result</a></p>';
-                            
-                        }
+                        if (isset($_SESSION['mostRecentSearchResults'])) {echo '<p><a href="'.$_SESSION['mostRecentSearchResults'].'" >Go back to search result</a></p>';}
                         $item = search_one_item($ID);
                         if ($item == NULL) {
                             $item_found = False;
