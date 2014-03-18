@@ -18,7 +18,7 @@ function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $
 	$user_statement = "insert into User (ID, email, password, permission, username) values (?, ?, ?, 3, ?)";
     $emp_statement = "insert into Employee (ID, name, compID, phone_no) values (?, ?, ?, ?,)";
 
-	static $ID = 0;
+	static $ID = 1;
 
 	if ($stmt = mysqli_prepare($con, $user_statement)) {
 		$stmt->bind_param('isis', $ID, $email, $password, $username);
