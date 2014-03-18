@@ -53,7 +53,7 @@ if (isset($_GET['compareItem5'])) {$compareItems[] = search_one_item(intval($_GE
 $itemCount = count($compareItems);
 if ($itemCount == 0) {
     echo 'Nothing to compare!';
-    die();
+    goto PageFinished;
 }
 
 include "picturesLib.php";
@@ -125,6 +125,7 @@ echo '<tr>';
 echo '</table>';
 
 mysqli_close($con);
+PageFinished:
 ?>
 </article>
 </section>
