@@ -14,7 +14,10 @@
                                 <?php
                                     if(!defined("search_utils.php")) {define("search_utils.php", True);}
                                     include_once 'search_utils.php';
-
+                                    if (isset($_SESSION['mostRecentSearchResults'])) {
+                                        unset($_SESSION['mostRecentSearchResults']);
+                                    }
+                                    $_SESSION['mostRecentSearchResults'] = $_SERVER['REQUEST_URI'];
                                     $city_id = $_GET['city_id'];
 
                                     $min_price = $_GET['min_price'];

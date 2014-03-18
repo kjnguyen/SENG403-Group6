@@ -44,11 +44,12 @@ include_once 'search_utils.php';
 
 $compareItems = array();
 
+if (isset($_GET['compareItem0'])) {$compareItems[] = search_one_item(intval($_GET['compareItem0']));}
 if (isset($_GET['compareItem1'])) {$compareItems[] = search_one_item(intval($_GET['compareItem1']));}
 if (isset($_GET['compareItem2'])) {$compareItems[] = search_one_item(intval($_GET['compareItem2']));}
 if (isset($_GET['compareItem3'])) {$compareItems[] = search_one_item(intval($_GET['compareItem3']));}
 if (isset($_GET['compareItem4'])) {$compareItems[] = search_one_item(intval($_GET['compareItem4']));}
-if (isset($_GET['compareItem5'])) {$compareItems[] = search_one_item(intval($_GET['compareItem5']));}
+
 
 $itemCount = count($compareItems);
 if ($itemCount == 0) {

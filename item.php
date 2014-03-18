@@ -48,7 +48,7 @@ to-do: find a better way to handle this - I only need part of the header-->
 <?php
 if(!defined("search_utils.php")) {define("search_utils.php", True);}
 include_once 'search_utils.php';
-$ID = $_GET['ID'];
+$ID = intval($_GET['ID']);
 $item_found = True;
 if ($ID == NULL) {
      $item_found = False;
@@ -135,13 +135,16 @@ else
 
 ';
                                
-                        
+                        if (isset($_SESSION['mostRecentSearchResults'])) {
+                            echo '<p><a href="'.$_SESSION['mostRecentSearchResults'].'" >Go back to search result</a></p>';
+                            
+                        }
                                        
                         if (!$item_found) {
                             echo "Item Not Found!";
                         }
                         else {
-                            echo '<p><form name="addCompareItem" method="post"><input type="hidden" name="compareItemID" value="'.$item['ID'].'"/>'
+                            echo '<p><form name="addCompareItem" method="post"><input type="hidden" name="compareItemID" value="'.$ID.'"/>'
                             . '<button name="addCompareItem" type="submit" value="addCompare">Add this item to comparison list</button></form></p>';
                             echo '<p><h4>Price: </h4>&nbsp&nbsp $'.$item['price'].'</p>';
                             echo "<p><h4>Date Listed: </h4>&nbsp&nbsp".$item['date_listed'].'</p>';
@@ -156,13 +159,7 @@ else
                             echo "<p><h4>Status: </h4>&nbsp&nbsp".$item['status'].'</p>';
                             echo "<p><h4>Address: </h4>&nbsp&nbsp".$item['address'].'</p>';
                             echo "<p><h4>Description: </h4>&nbsp&nbsp".$item['description'].'</p>';
-                            echo '<script>
-                                    function goBack()
-                                      {
-                                      window.history.back()
-                                      }
-                                    </script>
-                                    <button onclick="goBack()">Go Back</button><br>';
+
                             echo '<div id="faded" style="position: relative; width: 100%;">
                                   <ul class="pagination" style="position: relative; top: 0px; left: 0px;">';
                             echo '<label>Realtor Contact Info</label><br>';

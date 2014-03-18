@@ -144,6 +144,7 @@ function get_all_companies($db = 's403_project') {
 function search_one_item($ID, $db = 's403_project') {
     $con = getSQLConnection();
     mysqli_select_db($con, $db);
+    echo mysqli_error($con);
     $query = "select l.*, c.name as c_name, c.address as c_address, c.manager_name as c_manager_name, c.phone_no as c_phone_no from Listing as l join Company as c on l.CompID = c.ID where l.ID = $ID";
     $result = mysqli_query($con, $query);
     mysqli_close($con);
