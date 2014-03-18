@@ -53,9 +53,6 @@ $item_found = True;
 if ($ID == NULL) {
      $item_found = False;
 }
-else {
-
-}
 
 include "picturesLib.php";
 
@@ -86,7 +83,7 @@ echo '
     echo $lastPicHTML; // Copy this to prevent error
   }
 echo        '</div>
-            <ul class="pagination">
+            <ul class="pagination" style="width: 0px;">
                 ';
   $i = 0;
   foreach($pictureList as $pic)
