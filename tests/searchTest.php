@@ -1,6 +1,6 @@
 <?php
 define("search_utils.php", True);
-include_once "search_utils.php";
+include_once "../search_utils.php";
 
 class search_utilsTest extends PHPUnit_Framework_TestCase {
 

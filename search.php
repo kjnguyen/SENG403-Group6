@@ -37,7 +37,7 @@ if(!defined("search.php"))
                 if ($c['ID'] == $city_id) {
                     echo " selected=\"selected\"";
                 }
-                echo ">".$c['province'].': '.$c['name']."</option>";
+                echo ">".$c['name'].' ('.$c['province'].")</option>";
             }
         }
         echo '</select></p>';
