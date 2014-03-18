@@ -15,15 +15,21 @@ function create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $
     mysqli_select_db($con, 's403_project');
     
     $password = hash('sha512', $raw_password);
-    $user_statement = "insert into Employee (ID, compID, name, phone_no, email, permission, username, password) values (?, ?, ?, ?, ?, 3, ?, ?)";
+	$user_statement = "insert into User (ID, email, password, permission, username) values (?, ?, ?, 3, ?)";
+    $emp_statement = "insert into Employee (ID, compID, name, phone_no) values (?, ?, ?, ?,)";
 
 	static $ID = 0;
 
-    if ($stmt = mysqli_prepare($con, $user_statement)) {
-        $stmt->bind_param("iissssi", $ID, $compID, $agent_name, $phone_no, $email, $username, $password);
-        if (!($stmt->execute())) {goto funcFail;}
-        $stmt->close();
-		$ID ++;
+	if ($stmt = mysqli_prepare($con, $user_statement)) {
+		$stmt->bind_param('isii', $ID, $compID, $agent_name, $phone_no);
+		if (!($stmt->execute())) {goto funcFail;}
+		$stmt->close();
+		$ID ++;	
+	}
+    if ($stmt2 = mysqli_prepare($con, $emp_statement)) {
+        $stmt2->bind_param('iiss', $ID, $compID, $agent_name, $phone_no);
+        if (!($stmt2->execute())) {goto funcFail;}
+        $stmt2->close();
     }
     else {goto funcFail;}
  
