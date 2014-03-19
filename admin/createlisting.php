@@ -155,13 +155,13 @@ if ($permission != 1){
     <hr/>
     <label class="control-label">Add Pictures</label>
     <div class="controls">
-      <input class="input-file uniform_on" name="files[]" type="file">
+      <input class="input-file uniform_on" name="file1" type="file">
     </div>
     <div class="controls">
-      <input class="input-file uniform_on" name="files[]" type="file">
+      <input class="input-file uniform_on" name="file2" type="file">
     </div>
     <div class="controls">
-      <input class="input-file uniform_on" name="files[]" type="file">
+      <input class="input-file uniform_on" name="file3" type="file">
     </div>
     <h6>Accepted formats: *.jpeg, *.jpg, *.png, *.bmp, *.gif</h6>
 
