@@ -13,10 +13,15 @@ if(!mysqli_errno($con))
 }
 
 $_SESSION["token"] = $token = uniqid(rand(), true);
+
+define("PIC_LIMIT", 3);
 ?>
 
 <script type="text/javascript">
   var token = "<?php echo $token; ?>";
+  var numOfPics = <?php if($pictureList !== false){echo count($pictureList);} else{echo "0";} ?>;
+  
+  var PIC_LIMIT = <?php echo PIC_LIMIT; ?>;
   
   // This is not currectly used
   function sendRequest(id, command)
@@ -67,6 +72,12 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
       {
         // Remove the row if server say it succeeded
         removeSpan.parentNode.parentNode.parentNode.removeChild(removeSpan.parentNode.parentNode);
+        
+        if(--numOfPics < PIC_LIMIT)
+        {
+          var uploadRow = document.getElementById("uploadRow");
+          uploadRow.style.display = "";
+        }
       }
       else
       {
@@ -116,20 +127,27 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
       // Uploaded correctly
       if(result instanceof Array && result[0] != false)
       {
-        cell1.innerHTML = "<div class=\"control-group success\"><span class=\"controls help-inline\">Done!</span></div>";
-        progress.style.width = "100%";
+        cell1.innerHTML = "<img width=\"93\" height=\"84\" onmouseover=\"enlargePic(this);\" onmouseout=\"shrinkPic(this);\" src=\"" +
+                result[0]['path'] + "\"/>";
+        //progress.style.width = "100%";
         /*// This does not do what is expected
         cell2.firstChild.dataset.content = "<img src='" + result[0]["path"] + "'/>";
         cell2.firstChild.dataset.rel = "popover";
-        cell2.firstChild.dataset.originalTitle = "";
+        cell2.firstChild.dataset.originalTitle = "";*/
         
-        progress.parentNode.innerHTML = '<a class="btn btn-danger" href="#" onclick="removePic(this, ' + result[0]["id"] +
-                ');"><i class="icon-trash icon-white"/></i> Delete\n </a>';*/
+        progress.parentNode.parentNode.innerHTML = '<a class="btn btn-danger" href="#" onclick="removePic(this, ' +
+                result[0]["id"] + ');"><i class="icon-trash icon-white"/></i> Delete\n </a>';
       }
       else
       {
         progress.style.width = "100%";
-        cell1.innerHTML = "<div class=\"control-group error\"><span class=\"controls help-inline\">Failed!</span></div>";
+        progress.parentNode.parentNode.innerHTML = "<div class=\"control-group error\"><span class=\"controls help-inline\">Failed!</span></div>";
+        
+        if(--numOfPics < PIC_LIMIT)
+        {
+          var uploadRow = document.getElementById("uploadRow");
+          uploadRow.style.display = "";
+        }
       }
     };
 
@@ -190,11 +208,32 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     cell3.appendChild(progressBox);
     var files = fileInput.files;
     
+    cell2.style.verticalAlign = "middle";
+    cell3.style.verticalAlign = "middle";
+    
+    if(++numOfPics >= PIC_LIMIT)
+    {
+      var uploadRow = document.getElementById("uploadRow");
+      uploadRow.style.display = "none";
+    }
+    
     readfiles(files, progress, cell1, cell2);
     
     // Clear file input
     // fileInput.nextSibling.innerHTML = "No file selected.";
     // fileInput.parentNode.innerHTML = fileInput.parentNode.innerHTML;
+  }
+  
+  function enlargePic(img)
+  {
+    img.width = 571;
+    img.height = 398;
+  }
+  
+  function shrinkPic(img)
+  {
+    img.width = 93;
+    img.height = 84;
   }
 </script>
 
@@ -225,20 +264,15 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
     echo '
       <tr>
         <td class="picButtons">
-          <a class="btn" href="#" disabled onclick="orderPic(this, ';
-        echo $pic["id"];
-        echo ');"><i class="icon-chevron-down"/></i></a>
-          <a class="btn" href="#" disabled onclick="orderPic(this, ';
-        echo $pic["id"];
-        echo ');"><i class="icon-chevron-up"/></i></a>
-        </td>
-        <td>';
-        echo '<span data-rel="popover" data-content="<img src=\'';
+          <img width="93" height="84" onmouseover="enlargePic(this);" onmouseout="shrinkPic(this);" src="';
         echo $pic["path"];
-        echo "'/>\" >";
+        echo '"/>';
+        echo '
+        </td>
+        <td style="vertical-align:middle;">';
         echo htmlspecialchars($pic["oname"]);
-        echo '</span></td>
-        <td class="picButtons"><a class="btn btn-danger" href="#" onclick="removePic(this, ';
+        echo '</td>
+        <td class="picButtons" style="vertical-align:middle;"><a class="btn btn-danger" href="#" onclick="removePic(this, ';
         echo $pic["id"];
         echo ');">
             <i class="icon-trash icon-white"/></i>
@@ -249,7 +283,7 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
   }
   ?>
 
-    <tr>
+    <tr id="uploadRow" <?php if($pictureList !== false && count($pictureList) >= PIC_LIMIT){echo "style=\"display:none;\"";} ?>>
       <td colspan="2">
         Upload New:
         <div class="controls">
@@ -266,7 +300,6 @@ $_SESSION["token"] = $token = uniqid(rand(), true);
   <div id="picMsg"></div>
   <br/>
   <div>
-    Reordering is not supported yet.<br/>
     Currently only 3 pictures can be displayed.
   </div>
 </div>
