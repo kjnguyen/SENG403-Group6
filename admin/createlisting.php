@@ -38,7 +38,7 @@ if ($permission != 1){
 
 					</div>
 			<div class="box-content">
-<form class="form-horizontal" name="create_listing" method="post" action="process_create.php">
+<form class="form-horizontal" name="create_listing" method="post" action="process_create.php" enctype="multipart/form-data">
 <div class="control-group">
 						
 <label class="control-label" for="tyeahead">Price</label>
