@@ -113,8 +113,7 @@
         }
 
     EXEFinished:
-        
-        if(!$listingID)
+        if(!defined($listingID) || !$listingID)
         {
 //            echo
 //            '<script>
