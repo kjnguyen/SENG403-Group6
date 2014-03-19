@@ -62,15 +62,16 @@ EXEFinished:
         echo '<a href="index.php" class="btn btn-info">Go Back</a>';
     }
     else {
-        echo
-        '<script>
-        function goBack()
-          {
-          window.history.back()
-          }
-        </script>
-        <button class="btn btn-info" onclick="goBack()">Go Back</button>
-        ';
+//        echo
+//        '<script>
+//        function goBack()
+//          {
+//          window.history.back()
+//          }
+//        </script>
+//        <button class="btn btn-info" onclick="goBack()">Go Back</button>
+//        ';
+        echo '<a href="index.php" class="btn btn-info">Go Back to Home Page</a>';
     }
 
     /**

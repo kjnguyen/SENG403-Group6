@@ -110,6 +110,6 @@
 	<script src="js/jquery.history.js"></script>
 	<!-- application script for Charisma demo -->
 	<script src="js/charisma.js"></script>
-        <a href="http://usman.it/free-responsive-admin-template/">  Template provided by Charisma Admin Template by Muhammad Usman  (licensed under Apache License v2.0)</a>
+        <center><a href="http://usman.it/free-responsive-admin-template/">  Template provided by Charisma Admin Template by Muhammad Usman  (licensed under Apache License v2.0)</a></center>
 </body>
 </html>

@@ -23,7 +23,7 @@
 </div>
 
 <?php
-if ($_SESSION['Authed_Permission'] != 1) {
+if ($_SESSION['Authed_Permission'] != 2) {
     echo "permission denied";
     goto EXEFinished; 
 }
@@ -34,21 +34,21 @@ if(!defined("add_utils.php")) {define("add_utils.php", True);}
 include_once 'add_utils.php';
 
 if($_POST['process_add_emp'] == 'true') {
-	$compID = $_POST['Comp_ID'];
-    $agent_name = $_POST['agent_name'];
+    $compID = $_POST['compID'];
+    $employee_name = $_POST['employee_name'];
     $phone_no = $_POST['phone_no'];
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $cmf_password = $_POST['Cfm_Password'];
 	
 	$success = True;
-    if ($error_msg = is_emp_input_invalid($compID, $agent_name, $phone_no, $email, $username, $password)) {
+    if ($error_msg = is_emp_input_invalid($employee_name, $phone_no, $email, $username, $password, $cmf_password)) {
         echo '<div class="alert alert-error">ERROR: <br>'.$error_msg.'</div>';
         $success = False;
         goto EXEFinished; 
     }
-	
-	$success = create_emp_secure($compID, $agent_name, $phone_no, $email, $username, $password);
+    $success = create_emp_secure($compID, $employee_name, $phone_no, $email, $username, $password);
     if (!$success) {
         echo '<div class="alert alert-error">ERROR: <br> Database operation failed</div>';
         goto EXEFinished;
@@ -64,28 +64,27 @@ EXEFinished:
         echo '<a href="index.php" class="btn btn-info">Go Back</a>';
     }
     else {
-        echo
-        '<script>
-        function goBack()
-          {
-          window.history.back()
-          }
-        </script>
-        <button class="btn btn-info" onclick="goBack()">Go Back</button>
-        ';
+//        echo
+//        '<script>
+//        function goBack()
+//          {
+//          window.history.back()
+//          }
+//        </script>
+//        <button class="btn btn-info" onclick="goBack()">Go Back</button>
+//        ';
+        echo '<a href="index.php" class="btn btn-info">Go Back to Home Page</a>';
     }
 }
 
-function is_emp_input_invalid($compID, $agent_name, $phone_no, $email, $username, $password) {
+function is_emp_input_invalid($employee_name, $phone_no, $email, $username, $password, $cmf_password) {
     $valid = True;
     $error_msg = "";
-    if (!$compID) {
+
+    if (!$employee_name) {
         $valid = False;
-        $error_msg .= '* Company ID is required<br>';
+        $error_msg .= '* Employee Name is required<br>';
     }
-	if (!$agent_name) {
-		$valid = False;
-        $error_msg .= '*Agent Name is required<br>';}
 	
     if (!$phone_no) {
         $valid = False;
@@ -118,10 +117,16 @@ function is_emp_input_invalid($compID, $agent_name, $phone_no, $email, $username
             $error_msg .= '* Username is already in use<br>';
         }
     }    
-	 if (!$password) {
+     if (!$password) {
         $valid = False;
         $error_msg .= '* Password is required<br>';
-    }	
+    }
+    else {
+        if ($cmf_password != $password) {
+            $valid = False;
+            $error_msg .= '* Password Mismatch<br>';
+        }
+    }
     if (!$valid) {
         return $error_msg;
     }

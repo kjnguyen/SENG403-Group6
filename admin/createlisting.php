@@ -37,95 +37,95 @@ if ($permission != 1){
 						<h2><i class="icon-picture"></i>Create a new listing</h2>
 
 					</div>
-					<div class="box-content">
+			<div class="box-content">
 <form class="form-horizontal" name="create_listing" method="post" action="process_create.php">
-                                            <div class="control-group">
+<div class="control-group">
 						
-<label class="control-label" for"tyeahead">Price</label>
+<label class="control-label" for="tyeahead">Price</label>
 	<div class="controls">
 		<input id="price" name="price" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">Square Feet</label>
+	<label class="control-label" for="tyeahead">Square Feet</label>
 	<div class="controls">
 		<input id="square_feet" name="sq_ft" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">Number of Floors</label>
+	<label class="control-label" for="tyeahead">Number of Floors</label>
 	<div class="controls">
 		<input id="num_floors" name="num_floors" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">Number of Bedrooms</label>
+	<label class="control-label" for="tyeahead">Number of Bedrooms</label>
 	<div class="controls">
 		<input id="num_bdrms" name="num_bdrms" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">Year Built</label>
+	<label class="control-label" for="tyeahead">Year Built</label>
 	<div class="controls">
-		<input id="year_built" name="year_built" input-xlarge focused" type="text"</input>
+		<input id="year_built" name="year_built" class="input-xlarge focused" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">Property Type</label>
+	<label class="control-label" for="tyeahead">Property Type</label>
 	<div class="controls">
-		<input id="prop_type" name="prop_type" input-xlarge focused" type="text"</input>
+		<input id="prop_type" name="prop_type" class="input-xlarge focused" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">Building Type</label>
+	<label class="control-label" for="tyeahead">Building Type</label>
 	<div class="controls">
-		<input id="Bldg_Type" name="bldg_type" input-xlarge focused" type="text"</input>
+		<input id="Bldg_Type" name="bldg_type" class="input-xlarge focused" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">District</label>
+	<label class="control-label" for="tyeahead">District</label>
 	<div class="controls">
 		<input id="district" name="district" input-xlarge focused" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">City</label>
+	<label class="control-label" for="tyeahead">City</label>
 	<div class="controls">
 		<input id="city" name="city" input-xlarge focused" type="text"</input>
 	</div>
 </div>
  <div class="control-group">
-	<label class="control-label" for"tyeahead">Province</label>
+	<label class="control-label" for="tyeahead">Province</label>
 	<div class="controls">
 		<input id="city" name="province" input-xlarge focused" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">Maintenance Fee</label>
+	<label class="control-label" for="tyeahead">Maintenance Fee</label>
 	<div class="controls">
 		<input id="maintenance_fee" name="maintenance_fee" input-xlarge focused" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">Status</label>
+	<label class="control-label" for="tyeahead">Status</label>
 	<div class="controls">
 		<input id="status" name="status" input-xlarge focused" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">Number of Bathrooms</label>
+	<label class="control-label" for="tyeahead">Number of Bathrooms</label>
 	<div class="controls">
 		<input id="num_baths" name="num_baths" input-xlarge focused" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">Address</label>
+	<label class="control-label" for="tyeahead">Address</label>
 	<div class="controls">
 		<input id="address" name="address" input-xlarge focused" type="text"</input>
 	</div>
 </div>
 <div class="control-group">
-	<label class="control-label" for"tyeahead">Description</label>
+	<label class="control-label" for="tyeahead">Description</label>
 	<div class="controls">
             <textarea type="textarea" name="description" rows="3" style="width: 500px; height: 197px;"></textarea>
 <!--		<input id="description" name="description" input-xlarge focused" type="text"</input>-->
