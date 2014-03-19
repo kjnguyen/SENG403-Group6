@@ -4,12 +4,6 @@ include 'admin/auth_utils.php';
 
 class authTest extends PHPUnit_Framework_TestCase
 {
-    // Not sure how to test this one. Maybe Jack L can help clear up some details?
-	/*public function testLogin_EmptyInput()
-	{
-		Login("", "", "", "", "", "", "", "");
-	}*/
-
 	public function testCheckUsername_EmptyInput()
 	{
             $testuser = "";
