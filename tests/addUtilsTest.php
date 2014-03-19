@@ -7,7 +7,7 @@ class addUtilsTest extends PHPUnit_Framework_TestCase
 	public function testAddCompanySecure_EmptyInput()
         {
 	       $result = add_company_secure("", "", "", "", "", "", "", "");
-	       $this->assertTrue($result);
+	       $this->assertFalse($result);
 	}
         
         public function testAddCompanySecure_NullInput()
