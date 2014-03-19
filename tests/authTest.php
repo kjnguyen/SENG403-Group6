@@ -1,6 +1,7 @@
 <?php
-define("add_utils.php", true);
-include 'admin/auth_utils.php';
+
+define("auth.php", true);
+include 'admin/auth.php';
 
 class authTest extends PHPUnit_Framework_TestCase
 {
