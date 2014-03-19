@@ -82,7 +82,7 @@
         echo '</div>';
         
         include_once "../mysqlcon.php";
-        include_once "../pictureLib.php";
+        include_once "../picturesLib.php";
         
         $con = getSQLConnection();
         
