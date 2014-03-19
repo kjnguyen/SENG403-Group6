@@ -113,10 +113,9 @@
         }
 
     EXEFinished:
-        if ($listingID) {
-            echo '<a href="index.php" class="btn btn-info">Go Back</a>';
-        }
-        else {
+        
+        if(!$listingID)
+        {
 //            echo
 //            '<script>
 //            function goBack()
@@ -128,7 +127,10 @@
 //            ';
             echo '<a href="index.php" class="btn btn-info">Go Back to Home Page</a>';
         }
-
+        else
+        {
+            echo '<a href="index.php" class="btn btn-info">Go Back</a>';
+        }
     }
     
     function is_create_invalid($compID, $price, $sq_ft, $num_floors,$num_bdrms, $year_built, 
@@ -229,5 +231,4 @@
         }
         return NULL;
     }
-
 ?>
