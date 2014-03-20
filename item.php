@@ -144,11 +144,11 @@ else
                         }
                         else
                         {
-                            echo '<p><form name="addCompareItem" method="post"><input type="hidden" name="compareItemID" value="'.$ID.'"/>'
-                            . '<button name="addCompareItem" type="submit" value="addCompare">Add this item to comparison list</button></form></p>';
+                            echo '<form name="addCompareItem" method="post"><input type="hidden" name="compareItemID" value="'.$ID.'"/>'
+                            . '<button name="addCompareItem" type="submit" value="addCompare">Add this item to comparison list</button></form>';
                             
-                            echo '<p><h5>Price: </h5>&nbsp&nbsp $'.$item['price'].'</p>';
-                            echo "<p><h5>Date Listed: </h5>&nbsp&nbsp".$item['date_listed'].'</p>';
+                            echo "\n<h5>Price: </h5><p>&nbsp;&nbsp; $".$item['price']."</p>\n";
+                            echo "<p><h5>Date Listed: </h5>&nbsp;&nbsp;".$item['date_listed'].'</p>';
                             echo "<p><h5>Size: </h5>&nbsp&nbsp".$item['sq_ft'].' Sqr Ft. </p>';
                             echo "<p><h5>Floors: </h5>&nbsp&nbsp".$item['num_floors'].'</p>';
                             echo "<p><h5>Bedrooms: </h5>&nbsp&nbsp".$item['num_bdrms'].'</p>';
