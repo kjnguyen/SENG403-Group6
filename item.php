@@ -129,15 +129,21 @@ else
 
 ';
                                
-                        if (isset($_SESSION['mostRecentSearchResults'])) {echo '<p><a href="'.$_SESSION['mostRecentSearchResults'].'" >Go back to search result</a></p>';}
+                        if(isset($_SESSION['mostRecentSearchResults']))
+                        {
+                            echo '<p><a href="'.htmlspecialchars($_SESSION['mostRecentSearchResults']).'" >Go back to search result</a></p>';
+                        }
                         $item = search_one_item($ID);
-                        if ($item == NULL) {
+                        /*if($item == NULL)
+                        {
                             $item_found = False;
-                        }      
-                        if (!$item_found) {
+                        }*/
+                        if(is_null($item))
+                        {
                             echo "Item Not Found!";
                         }
-                        else {
+                        else
+                        {
                             echo '<p><form name="addCompareItem" method="post"><input type="hidden" name="compareItemID" value="'.$ID.'"/>'
                             . '<button name="addCompareItem" type="submit" value="addCompare">Add this item to comparison list</button></form></p>';
                             
@@ -157,11 +163,11 @@ else
 
                             echo '<div id="faded" style="position: relative; width: 100%;">
                                   <ul class="pagination" style="position: relative; top: 0px; left: 0px;">';
-                            echo '<label>Realtor Contact Info</label><br>';
-                            echo "Company: ".$item['c_name'].'</br>';
-                            echo "Address: ".$item['c_address'].'</br>';
-                            echo "Manager: ".$item['c_manager_name'].'</br>';
-                            echo "Phone: ".$item['c_phone_no'].'</br>';
+                            echo '<label>Realtor Contact Info</label><br/>';
+                            echo "Company: ".$item['c_name'].'<br/>';
+                            echo "Address: ".$item['c_address'].'<br/>';
+                            echo "Manager: ".$item['c_manager_name'].'<br/>';
+                            echo "Phone: ".$item['c_phone_no'].'<br/>';
                             
                             
                             //Lines added by Jack L for MSG system
