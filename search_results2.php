@@ -61,7 +61,7 @@ include 'compare_chooser.php';
     //                                                    echo "city = $city, province = $province, min_price = $min_price, max_price = $max_price, num_bdrm = $num_bdrm, district  = $district, status = ".$status."<br>";
 
                                     $results_array = search_listing($city_id, $min_price, $max_price, $num_bdrm, $district, $status);
-
+                                    
                                     if (empty($results_array))
                                     {
                                         echo "<h1>No Results Found</h1>";
@@ -71,15 +71,31 @@ include 'compare_chooser.php';
                                         $con = getSQLConnection();
                                         include_once './picturesLib.php';
                                         
-                                        foreach ($results_array as $row)
+                                        $listings = array();
+                                        foreach($results_array as $row)
                                         {
-                                            $thumbs = getThumnails($con, $row['ID']);
+                                            array_push($listings, intval($row['ID']));
+                                        }
+                                        
+                                        $thumbs = getThumnails($con, $listings);
+                                        
+                                        foreach($results_array as $row)
+                                        {
+                                            $ti = -1;
+                                            foreach($thumbs as $key => $value)
+                                            {
+                                                if($value['listing'] == $row['ID'])
+                                                {
+                                                    $ti = $key;
+                                                    break;
+                                                }
+                                            }
                                             
                                             echo '<li class="" style="width: auto;">';
                                             echo '<a href="item.php?ID='.$row['ID'].'" rel="0">';
-                                            if(!empty($thumbs))
+                                            if($ti != -1)
                                             {
-                                                echo '<img src="' . $thumbs[0]['path'] . '" height="84" width="93">';
+                                                echo '<img src="' . $thumbs[$ti]['path'] . '" height="84" width="93">';
                                             }
                                             else
                                             {

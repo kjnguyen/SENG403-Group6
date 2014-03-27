@@ -16,7 +16,7 @@ if ($_SERVER['PHP_SELF'] == '/' . basename(__FILE__))
   exit();
 }
 
-define("LISTING_IMG_DIR", "/listing/images/");
+define("LISTING_IMG_DIR", "/seng403/listing/images/");
 
 /** Saves uploaded pictures to the file system and database. Looks in the $_FILES array.
  * Returns false on error otherwise the list in an array (may be empty) containing associative arrays with
@@ -153,7 +153,7 @@ function addPictures(mysqli $con, $ListingID)
  * arrays with id, listing ID (listing), original name (oname), path and order value.
  * WARNING: oname is not escaped.
  */
-function getPictures(mysqli $con, $ListingID)
+function getPictures(mysqli $con, &$ListingID)
 {
   if(mysqli_connect_errno($con))
   {
@@ -168,7 +168,7 @@ function getPictures(mysqli $con, $ListingID)
     {
       return 0;
     }
-    $qqm = str_repeat("?, ", count($ListingID)) + "?";
+    $qqm = str_repeat("?, ", count($ListingID) - 1) . "?";
   }
   else
   {
@@ -186,9 +186,14 @@ function getPictures(mysqli $con, $ListingID)
   if(is_array($ListingID))
   {
     $qtypes = str_repeat("i", count($ListingID));
-    
+    $refs = array();
+    foreach($ListingID as $key => $value)
+    {
+      $refs[$key] = &$ListingID[$key];
+    }
+    array_unshift($refs, $qtypes);
     // This calls $statement->bind_param()
-    call_user_func_array(array($statement, "bind_param"), array_merge(array($qtypes), $ListingID));
+    call_user_func_array(array($statement, "bind_param"), $refs);
   }
   else
   {
