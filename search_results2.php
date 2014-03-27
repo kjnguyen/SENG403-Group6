@@ -3,19 +3,18 @@
 ?>
         
 
-<!-- Floating window created using JQuery, credit goes to user: neurotik in StackOverflow-->
+<!-- Floating window created using JQuery, credit goes to user: neurotik in StackOverflow -->
+
 <div id="notification-anchor"></div>
 <div id="notification">
 <?php
 define("search.php", True);
 include_once 'search.php';
-
 ?>
-    
-    <?php
-        if(!defined("compare_chooser.php")) {define("compare_chooser.php", True);}
-        include 'compare_chooser.php';
-        ?>
+<?php
+if(!defined("compare_chooser.php")) {define("compare_chooser.php", True);}
+include 'compare_chooser.php';
+?>
 </div>
 <script type="text/javascript"> 
     $(function() {
@@ -24,12 +23,12 @@ include_once 'search.php';
             var d = $("#notification-anchor").offset().top;
             var c = $("#notification");
             if (b > d) {
-                c.css({position:"fixed",top:"10px", right:"400px"})
+                c.css({position:"fixed",top:"10px", right:"400px"});
             } else {
-                c.css({position:"absolute",top:"100px", right:"400px"})
+                c.css({position:"absolute",top:"100px", right:"400px"});
             }
         };
-        $(window).scroll(a);a()
+        $(window).scroll(a);a();
     });
 </script> 
 
