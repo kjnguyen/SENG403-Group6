@@ -49,13 +49,13 @@ include_once 'search.php';
                                         unset($_SESSION['mostRecentSearchResults']);
                                     }
                                     $_SESSION['mostRecentSearchResults'] = $_SERVER['REQUEST_URI'];
-                                    $city_id = $_GET['city_id'];
-
-                                    $min_price = $_GET['min_price'];
-                                    $max_price = $_GET['max_price'];
-                                    $num_bdrm = $_GET['num_bdrm'];
-                                    $district = $_GET['district'];
-                                    $status = $_GET['status'];
+                                    
+                                    if(isset($_GET['city_id'])) {$city_id = $_GET['city_id'];} else { $city_id = NULL;}
+                                    if(isset($_GET['min_price'])) {$min_price = $_GET['min_price'];}else { $min_price = NULL;}
+                                    if(isset($_GET['max_price'])) {$max_price = $_GET['max_price'];}else { $max_price = NULL;}
+                                    if(isset($_GET['num_bdrm'])) {$num_bdrm = $_GET['num_bdrm'];}else { $num_bdrm = NULL;}
+                                    if(isset($_GET['district'])) {$district = $_GET['district'];}else { $district = NULL;}
+                                    if(isset($_GET['status'])) {$status = $_GET['status'];}else { $status = NULL;}
 
     //                                                    echo "Search Criteria: <br>";
     //                                                    echo "city = $city, province = $province, min_price = $min_price, max_price = $max_price, num_bdrm = $num_bdrm, district  = $district, status = ".$status."<br>";
