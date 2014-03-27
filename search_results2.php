@@ -14,9 +14,9 @@
             var d = $("#notification-anchor").offset().top;
             var c = $("#notification");
             if (b > d) {
-                c.css({position:"fixed",top:"10px", right:"400px"});
+                c.css({position:"fixed",top:"50px", right:"400px"});
             } else {
-                c.css({position:"absolute",top:"100px", right:"400px"});
+                c.css({position:"absolute",top:"200px", right:"400px"});
             }
         };
         $(window).scroll(a);a();
@@ -35,7 +35,7 @@ if(!defined("compare_chooser.php")) {define("compare_chooser.php", True);}
 include 'compare_chooser.php';
 ?>
 </div>
-		<div class="container_16">
+		<div class="container_16" style="margin-left: 10px">
 			<div class="clearfix">
 				<section id="mainContent" class="grid_10" style="position: relative; width: 100%;">
 					<article style="position: relative; width: 100%;">
