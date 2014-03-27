@@ -10,7 +10,7 @@ if(!defined("search.php"))
 }
 ?>
 
-<form name="Search" method="get" action="search_results" id="contacts-form" style="position: absolute; top: -5px; font-size: 85%; border-style: solid; border-color: red; border-width: 2px; padding-left: 10px; padding-right: 10px; padding-top: 5px;">
+<form name="Search" method="get" action="search_results" id="contacts-form" style="position: absolute; top: -5px; font-size: 85%; border-style: solid; border-color: red; border-width: 2px; padding-left: 10px; padding-right: 10px; padding-top: 5px; width: 350px;">
 
 <fieldset>
     <legend>Input Search Criteria (leave optional fields blank to search all)</legend><br>
@@ -41,12 +41,12 @@ if(!defined("search.php"))
             }
         }
         echo '</select></p>';
-        echo "<p>
-        <label>District: </label><input type=\"text\" name=\"district\" value=\"".$district."\"/><br>
-        <label>Min Price: </label><input type=\"text\" name=\"min_price\" value=\"".$min_price."\"/><br>
-        <label>Max Price: </label><input type=\"text\" name=\"max_price\" value=\"".$max_price."\"/><br>
-        <label>Number of Bedrooms: </label><input type=\"text\" name=\"num_bdrm\" value=\"".$num_bdrm."\"/><br>
-        </p>"
+        echo '<p>
+        <p><label><span>District: </span><input type="text" name="district" value="'.$district.'"/></label></p>
+        <p><label><span>Min Price($): </span><input type="text" name="min_price" value="'.$min_price.'"/></label></p>
+        <p><label><span>Max Price($): </span><input type="text" name="max_price" value="'.$max_price.'"/></label></p>
+        <p><label><span>Number of Bedrooms: </span><input type="text" name="num_bdrm" value="'.$num_bdrm.'"/></label></p>
+        </p>';
          ?>
     <p>Status:
     <select name="status">

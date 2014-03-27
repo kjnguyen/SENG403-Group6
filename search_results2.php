@@ -6,16 +6,7 @@
 <!-- Floating window created using JQuery, credit goes to user: neurotik in StackOverflow -->
 
 <div id="notification-anchor"></div>
-<div id="notification">
-<?php
-define("search.php", True);
-include_once 'search.php';
-?>
-<?php
-if(!defined("compare_chooser.php")) {define("compare_chooser.php", True);}
-include 'compare_chooser.php';
-?>
-</div>
+
 <script type="text/javascript"> 
     $(function() {
         var a = function() {
@@ -34,12 +25,22 @@ include 'compare_chooser.php';
 
 	<!-- Search Results Page -->
 	<section id="content">
+            <div id="notification" style="z-index: 2;">
+<?php
+define("search.php", True);
+include_once 'search.php';
+?>
+<?php
+if(!defined("compare_chooser.php")) {define("compare_chooser.php", True);}
+include 'compare_chooser.php';
+?>
+</div>
 		<div class="container_16">
 			<div class="clearfix">
 				<section id="mainContent" class="grid_10" style="position: relative; width: 100%;">
 					<article style="position: relative; width: 100%;">
 						<h2>Listing Search Results</h2>
-                            <div id="faded" style="position: relative; width: 100%; top: 10px;">
+                            <div id="faded" style="position: relative; width: auto; top: 10px; z-index: 1;">
                                 <ul class="pagination" style="position: relative; top: 0px; left: 0px;">
                                 <?php
                                     if(!defined("search_utils.php")) {define("search_utils.php", True);}
