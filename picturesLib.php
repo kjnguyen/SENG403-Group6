@@ -183,11 +183,17 @@ function getPictures(mysqli $con, $ListingID)
     return false;
   }
   
-  $qtypes = str_repeat("i", count($ListingID));
-  
-  // This calls $statement->bind_param()
-  call_user_func_array(array($statement, "bind_param"), array_merge(array($qtypes), $ListingID));
-  //$statement->bind_param("i", $ListingID);
+  if(is_array($ListingID))
+  {
+    $qtypes = str_repeat("i", count($ListingID));
+    
+    // This calls $statement->bind_param()
+    call_user_func_array(array($statement, "bind_param"), array_merge(array($qtypes), $ListingID));
+  }
+  else
+  {
+    $statement->bind_param("i", $ListingID);
+  }
   $statement->execute();
   $statement->bind_result($imgID, $listing, $oname, $partialPath, $order);
   
