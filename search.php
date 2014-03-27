@@ -10,7 +10,7 @@ if(!defined("search.php"))
 }
 ?>
 
-<form name="Search" method="get" action="search_results" id="contacts-form" style="position: absolute; top: -5px; font-size: 85%; border-style: solid; border-color: red; border-width: 2px; padding-left: 10px; padding-right: 10px; padding-top: 5px; width: 350px;">
+<form name="Search" method="get" action="search_results" id="contacts-form" style="position: absolute; top: -5px; font-size: 85%; border-style: solid; border-color: red; border-width: 2px; padding-left: 10px; padding-right: 10px; padding-top: 5px; width: 350px; background: black;">
 
 <fieldset>
     <legend>Input Search Criteria (leave optional fields blank to search all)</legend><br>
