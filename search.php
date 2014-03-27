@@ -42,10 +42,10 @@ if(!defined("search.php"))
         }
         echo '</select></p>';
         echo '<p>
-        <p><label><span>District: </span><input type="text" name="district" value="'.$district.'"/></label></p>
-        <p><label><span>Min Price($): </span><input type="text" name="min_price" value="'.$min_price.'"/></label></p>
-        <p><label><span>Max Price($): </span><input type="text" name="max_price" value="'.$max_price.'"/></label></p>
-        <p><label><span>Number of Bedrooms: </span><input type="text" name="num_bdrm" value="'.$num_bdrm.'"/></label></p>
+        <p><label><span style="width: 100px;">District: </span><input type="text" name="district" value="'.$district.'"/></label></p>
+        <p><label><span style="width: 100px;">Min Price($): </span><input type="text" name="min_price" value="'.$min_price.'"/></label></p>
+        <p><label><span style="width: 100px;">Max Price($): </span><input type="text" name="max_price" value="'.$max_price.'"/></label></p>
+        <p><label><span style="width: auto;">Number of Bedrooms: </span><input style="width: auto;" type="text" name="num_bdrm" value="'.$num_bdrm.'"/></label></p>
         </p>';
          ?>
     <p>Status:
