@@ -147,8 +147,10 @@ function addPictures(mysqli $con, $ListingID)
 }
 
 /** Get a list of paths to the pictures for a listing
+ * Requires a mysqli connection object.
+ * Requires a Listing ID or an array of Listing IDs
  * Returns false on error otherwise the list in an array (may be empty) containing associative
- * arrays with id, original name (oname), path and order value.
+ * arrays with id, listing ID (listing), original name (oname), path and order value.
  * WARNING: oname is not escaped.
  */
 function getPictures(mysqli $con, $ListingID)
@@ -160,20 +162,38 @@ function getPictures(mysqli $con, $ListingID)
   
   $list = array();
   
-  $statement = $con->prepare("SELECT ID, originalName, fileName, position FROM Pictures WHERE listingID = ? ORDER BY position ASC");
+  if(is_array($ListingID))
+  {
+    if(count($ListingID) == 0)
+    {
+      return 0;
+    }
+    $qqm = str_repeat("?, ", count($ListingID)) + "?";
+  }
+  else
+  {
+    $qqm = "?";
+  }
+  
+  $statement = $con->prepare("SELECT ID, listingID, originalName, fileName, position FROM Pictures WHERE listingID IN ("
+      . $qqm . ") ORDER BY position ASC");
   
   if(!$statement) // Ensure statement is created
   {
     return false;
   }
   
-  $statement->bind_param("i", $ListingID);
+  $qtypes = str_repeat("i", count($ListingID));
+  
+  // This calls $statement->bind_param()
+  call_user_func_array(array($statement, "bind_param"), array_merge(array($qtypes), $ListingID));
+  //$statement->bind_param("i", $ListingID);
   $statement->execute();
-  $statement->bind_result($imgID, $oname, $partialPath, $order);
+  $statement->bind_result($imgID, $listing, $oname, $partialPath, $order);
   
   while($statement->fetch())
   {
-    array_push($list, array("id"=>$imgID, "oname"=>$oname, "path"=>(LISTING_IMG_DIR . $partialPath), 'order'=>$order));
+    array_push($list, array("id"=>$imgID, "listing"=>$listing, "oname"=>$oname, "path"=>(LISTING_IMG_DIR . $partialPath), 'order'=>$order));
   }
   
   $statement->close(); // Must be called otherwise the sql connection can't be used
