@@ -153,7 +153,7 @@ function addPictures(mysqli $con, $ListingID)
  * arrays with id, listing ID (listing), original name (oname), path and order value.
  * WARNING: oname is not escaped.
  */
-function getPictures(mysqli $con, &$ListingID)
+function getPictures(mysqli $con, $ListingID)
 {
   if(mysqli_connect_errno($con))
   {
