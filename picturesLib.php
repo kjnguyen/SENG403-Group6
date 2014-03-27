@@ -16,7 +16,7 @@ if ($_SERVER['PHP_SELF'] == '/' . basename(__FILE__))
   exit();
 }
 
-define("LISTING_IMG_DIR", "/seng403/listing/images/");
+define("LISTING_IMG_DIR", "/listing/images/");
 
 /** Saves uploaded pictures to the file system and database. Looks in the $_FILES array.
  * Returns false on error otherwise the list in an array (may be empty) containing associative arrays with
