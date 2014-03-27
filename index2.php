@@ -31,8 +31,8 @@
 
 <body>
 	<!-- header -->
-        <header style="height: 140px;">
-		<div class="container_16">
+        <header style="height: 80px;">
+		<div class="container_16" style="margin-top: -60px;">
 			<div class="logo">
 				<h1><a href="./"><strong>4J</strong> Estates</a></h1>
 			</div>
