@@ -4,7 +4,7 @@
      header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);die();
 }
 ?>
-<div class="container_16">
+<div style="position: absolute; top: 450px;">
 <?php
 // choose items to compare
 if(session_id() == '') {

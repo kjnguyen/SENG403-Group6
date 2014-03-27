@@ -34,17 +34,12 @@
 	<header>
 		<div class="container_16">
 			<div class="logo">
-				<h1><a href="index.html"><strong>Real</strong> Estate</a></h1>
+				<h1><a href="./"><strong>4J</strong> Estates</a></h1>
 			</div>
 			<nav>
 				<ul>
 					<li><a href="index.php">Home</a></li>
-					<li><a href="index-1.html" class="current">Selling</a></li>
-					<li><a href="index-2.html">Buying</a></li>
-					<li><a href="index-3.html">Renting</a></li>
-					<li><a href="modify.php">Moving</a></li>
-					<li><a href="index-5.html">Finance</a></li>
-					<li><a href="index-6.html">Contacts</a></li>
+					<li><a href="admin" >Login</a></li>
 				</ul>
 			</nav>
             
@@ -56,55 +51,18 @@
 					<a href="#"><img src="images/big-img2.jpg" alt="" width="571" height="398"></a>
 					<a href="#"><img src="images/big-img3.jpg" alt="" width="571" height="398"></a>
 				</div>
-				<ul class="pagination">
-					<li>
-						<a href="#" rel="0">
-							<img src="images/f_thumb1.png" alt="">
-							<span class="left">
-								Villa<br />
-								2007 year<br />
-								5000 sq.ft
-							</span>
-							<span class="right">
-								Brick, glass<br />
-								3 beds<br />
-								2 baths
-							</span>
-						</a>
-					</li>
-					<li>
-						<a href="#" rel="1">
-							<img src="images/f_thumb2.png" alt="">
-							<span class="left">
-								Villa<br />
-								2009 year<br />
-								3500 sq.ft
-							</span>
-							<span class="right">
-								Brick, glass<br />
-								5 beds<br />
-								3 baths
-							</span>
-						</a>
-					</li>
-					<li>
-						<a href="#" rel="2">
-							<img src="images/f_thumb3.png" alt="">
-							<span class="left">
-								Villa<br />
-								2010 year<br />
-								4200 sq.ft
-							</span>
-							<span class="right">
-								Brick, glass<br />
-								4 beds<br />
-								3 baths
-							</span>
-						</a>
-					</li>
+				<ul class="pagination" style="right: auto; left: 600px;">
+                                    <?php
+                                    define("search.php", True);
+                                    include_once 'search.php';
+                                    ?>
 				</ul>
 				<img src="images/extra-banner.png" alt="" class="extra-banner">
 			</div>
 			<!-- faded slider end -->
 		</div>
 	</header>
+        <?php
+        if(!defined("compare_chooser.php")) {define("compare_chooser.php", True);}
+        include 'compare_chooser.php';
+        ?>
