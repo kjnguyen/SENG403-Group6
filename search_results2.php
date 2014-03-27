@@ -85,12 +85,13 @@ include 'compare_chooser.php';
                                             {
                                                 echo '<img src="images/no-image.jpg" height="84" width="93">';
                                             }
-                                            echo 'ID:   '.$row['ID'].'<br>';
-                                            echo $row['sq_ft'].' Sqr. Ft.<br>';                                                                
+//                                            echo 'ID:   '.$row['ID'].'<br>';
+                                            echo 'Price ($): <font style="font-size: large; font-weight: bold;">'.$row['price'].'</font><br>';
+                                            echo 'Area (sqr ft): '.$row['sq_ft'].'<br>';                                                                
                                             echo $row['num_bdrms'].' bedrooms<br>';
     //                                        echo 'Date Listed:  '.$row['date_listed'].'<br>';
                                             echo 'Address:    '.$row['address'].'<br>';
-                                            echo 'Price:    $'.$row['price'];
+
                                             echo '</a></li>';
                                         }
                                         
