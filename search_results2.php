@@ -39,7 +39,7 @@ include 'compare_chooser.php';
 				<section id="mainContent" class="grid_10" style="position: relative; width: 100%;">
 					<article style="position: relative; width: 100%;">
 						<h2>Listing Search Results</h2>
-                            <div id="faded" style="position: relative; width: 100%;">
+                            <div id="faded" style="position: relative; width: 100%; top: 10px;">
                                 <ul class="pagination" style="position: relative; top: 0px; left: 0px;">
                                 <?php
                                     if(!defined("search_utils.php")) {define("search_utils.php", True);}
