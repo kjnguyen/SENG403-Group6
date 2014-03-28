@@ -42,7 +42,7 @@ function search_listing($city_id, $min_price, $max_price, $num_bdrm, $district, 
 //        return NULL;
 //    }
     $condition_args = parse_conditions($city_id, $min_price, $max_price, $num_bdrm, $district, $status);
-    $query = 'select ID, date_listed, sq_ft, price, num_bdrms, address, description from Listing'.$condition_args;
+    $query = 'select ID, date_listed, sq_ft, price, num_bdrms, address, description from Listing'.$condition_args.' ORDER BY ID ASC';
 //    echo $query;
     $results = mysqli_query($con, $query);
 //    echo mysqli_error($con);

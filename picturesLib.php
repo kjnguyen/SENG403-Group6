@@ -16,7 +16,7 @@ if ($_SERVER['PHP_SELF'] == '/' . basename(__FILE__))
   exit();
 }
 
-define("IMG_UPLOAD_DIR", "/listing/images/");
+define("LISTING_IMG_DIR", "/listing/images/");
 
 /** Saves uploaded pictures to the file system and database. Looks in the $_FILES array.
  * Returns false on error otherwise the list in an array (may be empty) containing associative arrays with
@@ -90,11 +90,11 @@ function addPictures(mysqli $con, $ListingID)
       $statement->close();
       
       $destination = $ListingID . "/" . $imgID . "." . $extension;
-      $destinationFull = $_SERVER['DOCUMENT_ROOT'] . IMG_UPLOAD_DIR . $destination;
+      $destinationFull = $_SERVER['DOCUMENT_ROOT'] . LISTING_IMG_DIR . $destination;
       
-      if(!is_dir($_SERVER['DOCUMENT_ROOT'] . IMG_UPLOAD_DIR . $ListingID . "/"))
+      if(!is_dir($_SERVER['DOCUMENT_ROOT'] . LISTING_IMG_DIR . $ListingID . "/"))
       {
-        mkdir($_SERVER['DOCUMENT_ROOT'] . IMG_UPLOAD_DIR . $ListingID);
+        mkdir($_SERVER['DOCUMENT_ROOT'] . LISTING_IMG_DIR . $ListingID);
       }
       
       if(move_uploaded_file($file["tmp_name"], $destinationFull))
@@ -111,7 +111,7 @@ function addPictures(mysqli $con, $ListingID)
           $statement->close();
           $con->commit(); // Everything is ok with the file, save sql changes
           
-          array_push($filePaths, array("id"=>$imgID, "oname"=>$file["name"], "path"=>(IMG_UPLOAD_DIR . $destination), "order"=>$position));
+          array_push($filePaths, array("id"=>$imgID, "oname"=>$file["name"], "path"=>(LISTING_IMG_DIR . $destination), "order"=>$position));
         }
         else
         {
@@ -147,8 +147,10 @@ function addPictures(mysqli $con, $ListingID)
 }
 
 /** Get a list of paths to the pictures for a listing
+ * Requires a mysqli connection object.
+ * Requires a Listing ID or an array of Listing IDs
  * Returns false on error otherwise the list in an array (may be empty) containing associative
- * arrays with id, original name (oname), path and order value.
+ * arrays with id, listing ID (listing), original name (oname), path and order value.
  * WARNING: oname is not escaped.
  */
 function getPictures(mysqli $con, $ListingID)
@@ -160,20 +162,49 @@ function getPictures(mysqli $con, $ListingID)
   
   $list = array();
   
-  $statement = $con->prepare("SELECT ID, originalName, fileName, position FROM Pictures WHERE listingID = ? ORDER BY position ASC");
+  if(is_array($ListingID))
+  {
+    if(count($ListingID) == 0)
+    {
+      return 0;
+    }
+    $qqm = str_repeat("?, ", count($ListingID) - 1) . "?";
+  }
+  else
+  {
+    $qqm = "?";
+  }
+  
+  $statement = $con->prepare("SELECT ID, listingID, originalName, fileName, position FROM Pictures WHERE listingID IN ("
+      . $qqm . ") ORDER BY position ASC");
   
   if(!$statement) // Ensure statement is created
   {
     return false;
   }
   
-  $statement->bind_param("i", $ListingID);
+  if(is_array($ListingID))
+  {
+    $qtypes = str_repeat("i", count($ListingID));
+    $refs = array();
+    foreach($ListingID as $key => $value)
+    {
+      $refs[$key] = &$ListingID[$key];
+    }
+    array_unshift($refs, $qtypes);
+    // This calls $statement->bind_param()
+    call_user_func_array(array($statement, "bind_param"), $refs);
+  }
+  else
+  {
+    $statement->bind_param("i", $ListingID);
+  }
   $statement->execute();
-  $statement->bind_result($imgID, $oname, $partialPath, $order);
+  $statement->bind_result($imgID, $listing, $oname, $partialPath, $order);
   
   while($statement->fetch())
   {
-    array_push($list, array("id"=>$imgID, "oname"=>$oname, "path"=>(IMG_UPLOAD_DIR . $partialPath), 'order'=>$order));
+    array_push($list, array("id"=>$imgID, "listing"=>$listing, "oname"=>$oname, "path"=>(LISTING_IMG_DIR . $partialPath), 'order'=>$order));
   }
   
   $statement->close(); // Must be called otherwise the sql connection can't be used
@@ -219,7 +250,7 @@ function removePicture(mysqli $con, $ListingID, $imgID)
   
   $statement->close();
   
-  $fullPath = $_SERVER['DOCUMENT_ROOT'] . IMG_UPLOAD_DIR . $partialPath;
+  $fullPath = $_SERVER['DOCUMENT_ROOT'] . LISTING_IMG_DIR . $partialPath;
   
   if(is_null($partialPath) || !file_exists($fullPath) || unlink($fullPath)) // Ensure file has been deleted
   {
@@ -299,6 +330,11 @@ function swapPictureOrder(mysqli $con, $pic1, $pic2)
   }
   
   return $exeResult;
+}
+
+function resizeImage()
+{
+  
 }
 
 ///////////// Private functions /////////////////////
