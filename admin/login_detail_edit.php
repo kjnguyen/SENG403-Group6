@@ -84,7 +84,7 @@
 							    </div>
                                 <!--password field-->
                                 <div class="control-group">
-							        <label class="control-label"><?php $Lang_New_Pswd; ?>: </label>
+							        <label class="control-label"><?php echo $Lang_New_Pswd; ?>: </label>
 							        <div class="controls">
                                         <input type="password" name="Password" value="">
                                         <p class="help-block"><?php echo $Lang_Leave_Empty_For_No_Change_Pswd; ?></p>
@@ -102,7 +102,7 @@
                                 <input type="hidden" name="Ref_PG" value="update_login_detail" />
                                 <!--Buttons-->
 							    <div class="form-actions">
-							        <button type="submit" class="btn btn-primary"><?php echo $Lang_Save; ?>/button>
+							        <button type="submit" class="btn btn-primary"><?php echo $Lang_Save; ?></button>
 							        <button type="reset" class="btn"><?php echo $Lang_Reset; ?></button>
 							    </div>
 						    </fieldset>
