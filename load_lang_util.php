@@ -8,8 +8,13 @@
     //This file contains functions to load/switch language, it should be included in all multi-lang support pages
     if (isset($_GET["lang"])) {
         $Cur_LangID = $_GET["lang"];
+        $_SESSION["lang"] = $Cur_LangID;
     } else {
-        $Cur_LangID = "en";
+        if (isset($_SESSION["lang"])) {
+            $Cur_LangID = $_SESSION["lang"];
+        } else {
+            $Cur_LangID = "en";
+        }
     }
     //If there is no input, we will use the default lang
     if ($Cur_LangID == "") {$Cur_LangID = "en";}

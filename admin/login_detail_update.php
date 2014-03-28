@@ -15,13 +15,13 @@
 			<div>
 				<ul class="breadcrumb">
 					<li>
-						<a href="./index.php">Home</a> <span class="divider">/</span> 
+						<a href="./index.php"><?php $Lang_Home; ?></a> <span class="divider">/</span> 
 					</li>
 					<li>
-                                          <a href="./login_detail_edit.php">Edit Login Details</a> <span class="divider">/</span>
+                                          <a href="./login_detail_edit.php"><?php echo $Lang_Edit_Login_Details; ?></a> <span class="divider">/</span>
         </li>
         <li>
-          <a href ="#"><b>Confirmation</b></a>
+          <a href ="#"><b><?php echo $Lang_Confirmation; ?></b></a>
         </li>
 					</li>
 				</ul>
@@ -30,7 +30,7 @@
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-picture"></i>Edit Login Details</h2>
+						<h2><i class="icon-picture"></i><?php echo $Lang_Edit_Login_Details; ?></h2>
 						<div class="box-icon">
 							<!-- <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a> -->
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
@@ -44,7 +44,7 @@
                             //Check for valid username, id and permission
                             //Check for valid access
                             if (!isset($_POST['Ref_PG']) || $_POST['Ref_PG'] != "update_login_detail") {
-                                ShowErrMsg("Error: No direct access to this page.");
+                                ShowErrMsg($Lang_Error.$Lang_No_Direct_Access);
                                 goto EXEFinished;
                             } else {
                                 //Unset
@@ -52,49 +52,49 @@
                             }
                             //If user is not admin, user id must match to his own
                             if ($_POST['User_ID'] != $_SESSION['Authed_UserID'] && $_SESSION['Authed_Permission'] != 1) {
-                                ShowErrMsg("Error: You do not have permission to perform this action!");
+                                ShowErrMsg($Lang_Error.$Lang_No_Permission);
                                 goto EXEFinished;
                             }
                             //Check for valid userid
                             if (!is_numeric($_POST['User_ID'])) {
-                                ShowErrMsg("Error: Invalid user ID.");
+                                ShowErrMsg($Lang_Error.$Lang_Invalid_User_ID);
                                 goto EXEFinished;
                             }
                             $resp = preg_match("/[.]/", $_POST['User_ID']);
                             if ($resp > 0) {
-                                ShowErrMsg("Error: Invalid user ID.");
+                                ShowErrMsg($Lang_Error.$Lang_Invalid_User_ID);
                                 goto EXEFinished;
                             }
                             //If user is not admin, username must match to his own
                             if ($_POST['Username'] != $_SESSION['Authed_Username'] && $_SESSION['Authed_Permission'] != 1) {
-                                ShowErrMsg("Error: You do not have permission to modfiy username field.");
+                                ShowErrMsg($Lang_Error.$Lang_No_Permission_Mod_Username);
                                 goto EXEFinished;
                             }
                             //Check for valid username
                             if (isset($_POST['Username']) && $_POST['Username'] != "") {
                                 $resp = preg_match("/[^A-Za-z0-9]/", $_POST['Username']);
                                 if ($resp > 0) {
-                                    ShowErrMsg("Error: Username contains invalid characters. Only letters and numbers are allowed!");
+                                    ShowErrMsg($Lang_Error.$Lang_Invalid_User_Name);
                                     goto EXEFinished;
                                 }
                             }
                             //Check for valid email
                             if (isset($_POST['Email']) && $_POST['Email'] != "") {
                                 if (!filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL)) {
-                                    ShowErrMsg("Error: Invalid email address.");
+                                    ShowErrMsg($Lang_Error.$Lang_Invalid_Email_Adr);
                                     goto EXEFinished;
                                 }
                             }
                             //Check for matching password
                             if (isset($_POST['Password']) || isset($_POST['Cfm_Password'])) {
                                 if ($_POST['Password'] != $_POST['Cfm_Password']) {
-                                    ShowErrMsg("Error: Passwords mismatch!");
+                                    ShowErrMsg($Lang_Error.$Lang_Pswd_Mismatch);
                                     goto EXEFinished;
                                 }
                             }
                             //Check for empty fields
                             if ((!isset($_POST['Username']) || $_POST['Username'] == "") && (!isset($_POST['Email']) || $_POST['Email'] == "") && (!isset($_POST['Password']) || $_POST['Password'] == "")) {
-                                ShowErrMsg("Error: You are not changing anything...");
+                                ShowErrMsg($Lang_Error.$Lang_Nothing_Being_Changed);
                                 goto EXEFinished;
                             }
                             
@@ -137,7 +137,7 @@
                             
                             //Execute mysql
                             if (!(@$query->execute())) {
-                                ShowErrMsg("Error: Update login detail failed, this could caused by duplicated email or username.");
+                                ShowErrMsg($Lang_Error.$Lang_Updated_Failed);
                                 @mysqli_close($mysqlconn);
                                 goto EXEFinished;
                             }
