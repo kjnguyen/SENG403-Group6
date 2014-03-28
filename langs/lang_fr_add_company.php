@@ -28,5 +28,5 @@
     $Lang_Company_Cfm_Pswd_Msg = "[FR]Please confirm your password!";
     $Lang_Company_Description = "[FR]Company Description";
     $Lang_Company_Add = "[FR]Add";
-    $Lang_Company_Cancel = "[FR]Cancel;"
+    $Lang_Company_Cancel = "[FR]Cancel";
 ?>
