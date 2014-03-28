@@ -13,8 +13,8 @@
     }
     
     //Bad permission page
-    $Lang_Home = "Home";
-    $Lang_Error = "Error";
-    $Lang_Permission_Denied = "Permission Denied";
-    $Lang_No_Permission_Msg = "Sorry you don't have permission to edit this Listing";
+    $Lang_Home = "[FR]Home";
+    $Lang_Error = "[FR]Error";
+    $Lang_Permission_Denied = "[FR]Permission Denied";
+    $Lang_No_Permission_Msg = "[FR]Sorry you don't have permission to edit this Listing";
 ?>
