@@ -53,7 +53,7 @@ function addPictures(mysqli $con, $ListingID)
       continue;
     }
     
-    array_push($filePaths, saveUploadedPictures($con, $file));
+    array_push($filePaths, saveUploadedPictures($con, $ListingID, $file));
   }
   
   return $filePaths;
@@ -279,7 +279,7 @@ function getMaxPosition(mysqli $con, $listingID)
  * Returns false on error otherwise an associative arrays with id, original name (oname), path and order value.
  * WARNING: oname is not escaped.
  */
-function saveUploadedPictures(mysqli $con, $file)
+function saveUploadedPictures(mysqli $con, $ListingID, $file)
 {
   $returnValue = false;
   
