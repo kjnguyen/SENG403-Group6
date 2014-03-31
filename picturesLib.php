@@ -17,6 +17,7 @@ if ($_SERVER['PHP_SELF'] == '/' . basename(__FILE__))
 }
 
 define("LISTING_IMG_DIR", "/listing/images/");
+define("LISTING_THUMB_DIR", "/listing/thumbs/");
 
 /** Saves uploaded pictures to the file system and database. Looks in the $_FILES array.
  * Returns false on error otherwise the list in an array (may be empty) containing associative arrays with
@@ -52,95 +53,7 @@ function addPictures(mysqli $con, $ListingID)
       continue;
     }
     
-    $allowedExts = array("gif", "jpeg", "jpg", "png", "bmp");
-    $temp = explode(".", $file["name"]);
-    $extension = strtolower(end($temp));
-    
-    if ((($file["type"] == "image/gif")
-    || ($file["type"] == "image/jpeg")
-    || ($file["type"] == "image/jpg")
-    || ($file["type"] == "image/pjpeg")
-    || ($file["type"] == "image/x-png")
-    || ($file["type"] == "image/png"))
-    //&& ($file["size"] < 20000) // Size limit
-    && in_array($extension, $allowedExts))
-    {
-      // Lock table
-      if($con->query("LOCK TABLES Pictures WRITE;") == false)
-      {
-        trigger_error("Unable to lock Pictures table.", E_NOTICE);
-      }
-      else
-      {
-        $con->commit(); // Commit the lock
-      }
-      
-      // Allocate a new id for the picture
-      $statement = $con->prepare("INSERT INTO Pictures (listingID, originalName) VALUES (?, ?)");
-      $statement->bind_param("is", $ListingID, $file["name"]);
-      
-      if(!$statement->execute()) // Ensure statement is executed
-      {
-        array_push($filePaths, false);
-        continue;
-      }
-      
-      $imgID = $statement->insert_id;
-      
-      $statement->close();
-      
-      $destination = $ListingID . "/" . $imgID . "." . $extension;
-      $destinationFull = $_SERVER['DOCUMENT_ROOT'] . LISTING_IMG_DIR . $destination;
-      
-      if(!is_dir($_SERVER['DOCUMENT_ROOT'] . LISTING_IMG_DIR . $ListingID . "/"))
-      {
-        mkdir($_SERVER['DOCUMENT_ROOT'] . LISTING_IMG_DIR . $ListingID);
-      }
-      
-      if(move_uploaded_file($file["tmp_name"], $destinationFull))
-      {
-        $max = getMaxPosition($con, $ListingID);
-        
-        $position = $max == NULL ? 1 : $max + 1;
-        
-        $statement = $con->prepare("UPDATE Pictures SET fileName = ?, position = ? WHERE ID = ?");
-        $statement->bind_param("sii", $destination, $position, $imgID);
-        
-        if($statement->execute()) // Ensure statement is executed
-        {
-          $statement->close();
-          $con->commit(); // Everything is ok with the file, save sql changes
-          
-          array_push($filePaths, array("id"=>$imgID, "oname"=>$file["name"], "path"=>(LISTING_IMG_DIR . $destination), "order"=>$position));
-        }
-        else
-        {
-          $statement->close();
-          $con->rollback(); // Something went wrong
-          unlink($destinationFull);
-          array_push($filePaths, false);
-        }
-      }
-      else // Unable to properly save uploaded file
-      {
-        $con->rollback();
-        array_push($filePaths, false);
-      }
-      
-      // Unlock table
-      if($con->query("UNLOCK TABLES;") == false)
-      {
-        trigger_error("Unable to unlock Pictures table.", E_NOTICE);
-      }
-      else
-      {
-        $con->commit(); // Commit the unlock
-      }
-    }
-    else
-    {
-      array_push($filePaths, false);
-    }
+    array_push($filePaths, saveUploadedPictures($con, $file));
   }
   
   return $filePaths;
@@ -359,5 +272,114 @@ function getMaxPosition(mysqli $con, $listingID)
   $statement->close();
   
   return $max;
+}
+
+/** 'PRIVATE' FUNCTION: DO NOT USE
+ * Saves uploaded pictures to the file system and database.
+ * Returns false on error otherwise an associative arrays with id, original name (oname), path and order value.
+ * WARNING: oname is not escaped.
+ */
+function saveUploadedPictures(mysqli $con, $file)
+{
+  $returnValue = false;
+  
+  $allowedExts = array("gif", "jpeg", "jpg", "png", "bmp");
+  $temp = explode(".", $file["name"]);
+  $extension = strtolower(end($temp));
+  
+  //$picSize = @getimagesize($_FILES['img1']['tmp_name']);
+  
+  if ((($file["type"] == "image/gif")
+  || ($file["type"] == "image/jpeg")
+  || ($file["type"] == "image/jpg")
+  || ($file["type"] == "image/pjpeg")
+  || ($file["type"] == "image/x-png")
+  || ($file["type"] == "image/png"))
+  //&& ($file["size"] < 20000) // Size limit
+  && in_array($extension, $allowedExts))
+  {
+    // Lock table
+    if($con->query("LOCK TABLES Pictures WRITE;") == false)
+    {
+      trigger_error("Unable to lock Pictures table.", E_NOTICE);
+    }
+    else
+    {
+      $con->commit(); // Commit the lock
+    }
+    
+    // Allocate a new id for the picture
+    $statement = $con->prepare("INSERT INTO Pictures (listingID, originalName) VALUES (?, ?)");
+    $statement->bind_param("is", $ListingID, $file["name"]);
+
+    if(!$statement->execute()) // Ensure statement is executed
+    {
+      // Unlock table
+      if($con->query("UNLOCK TABLES;") == false)
+      {
+        trigger_error("Unable to unlock Pictures table.", E_WARNING);
+      }
+      else
+      {
+        $con->commit(); // Commit the unlock
+      }
+      
+      return false;
+    }
+    
+    $imgID = $statement->insert_id;
+    
+    $statement->close();
+    
+    $destination = $ListingID . "/" . $imgID . "." . $extension;
+    $destinationFull = $_SERVER['DOCUMENT_ROOT'] . LISTING_IMG_DIR . $destination;
+
+    if(!is_dir($_SERVER['DOCUMENT_ROOT'] . LISTING_IMG_DIR . $ListingID . "/"))
+    {
+      mkdir($_SERVER['DOCUMENT_ROOT'] . LISTING_IMG_DIR . $ListingID);
+    }
+    
+    if(move_uploaded_file($file["tmp_name"], $destinationFull))
+    {
+      $max = getMaxPosition($con, $ListingID);
+
+      $position = $max == NULL ? 1 : $max + 1;
+
+      $statement = $con->prepare("UPDATE Pictures SET fileName = ?, position = ? WHERE ID = ?");
+      $statement->bind_param("sii", $destination, $position, $imgID);
+
+      if($statement->execute()) // Ensure statement is executed
+      {
+        $statement->close();
+        $con->commit(); // Everything is ok with the file, save sql changes
+
+        $returnValue = array("id"=>$imgID, "oname"=>$file["name"], "path"=>(LISTING_IMG_DIR . $destination), "order"=>$position);
+      }
+      else
+      {
+        $statement->close();
+        $con->rollback(); // Something went wrong
+        unlink($destinationFull);
+        $returnValue = false;
+      }
+    }
+    else // Unable to properly save uploaded file
+    {
+      $con->rollback();
+      $returnValue = false;
+    }
+    
+    // Unlock table
+    if($con->query("UNLOCK TABLES;") == false)
+    {
+      trigger_error("Unable to unlock Pictures table.", E_WARNING);
+    }
+    else
+    {
+      $con->commit(); // Commit the unlock
+    }
+  }
+  
+  return $returnValue;
 }
 ?>
