@@ -289,7 +289,7 @@ define("PIC_LIMIT", 3);
         <div class="controls">
           <input class="input-file uniform_on" id="fileInput" type="file">
         </div>
-        <h6>Accepted formats: *.jpeg, *.jpg, *.png, *.bmp, *.gif</h6>
+        <h6>Accepted formats: *.jpeg, *.jpg, *.png, *.gif</h6>
       </td>
       <td class="picButtons">
         <br />
